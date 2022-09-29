@@ -18,6 +18,11 @@ class WebTestApplicationTests {
 		assertEquals(fizzBuzz(7), "7");
 	}
 
+	@Test
+	void integerReturnsIntegerAsString2() {
+		assertEquals(fizzBuzz(8), "8");
+	}
+
 	private String fizzBuzz(int i) {
 		return "1";
 	}
