@@ -1,6 +1,6 @@
 ## Hello World!
 
-Bye
+## Reach the FizzBuzz API
 
 If you start the Application with your IDE on your
 local machine, it will run on port 8080.
