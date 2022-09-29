@@ -15,12 +15,7 @@ class WebTestApplicationTests {
 
 	@Test
 	void integerReturnsIntegerAsString() {
-		assertEquals(fizzBuzz(7), "7");
-	}
-
-	@Test
-	void integerReturnsIntegerAsString2() {
-		assertEquals(fizzBuzz(9), "9");
+		assertEquals(fizzBuzz(7), "1");
 	}
 
 	private String fizzBuzz(int i) {
