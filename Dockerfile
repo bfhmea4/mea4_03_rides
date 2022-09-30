@@ -2,8 +2,12 @@
 
 FROM eclipse-temurin:17-jdk-jammy
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+RUN apk add --no-cache maven
+
+COPY pom.xml ./
+
+RUN mvn install
+
 
 RUN ./mvnw dependency:resolve
 
