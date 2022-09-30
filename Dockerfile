@@ -11,9 +11,9 @@ RUN mvn clean package --quiet -DskipTests --batch-mode --fail-fast --no-transfer
 
 FROM eclipse-temurin:${JDK_VERSION}
 
-USER nobody
+USER 65534
 
-COPY --from=builder --chown=nobody /build/target/ /
+COPY --from=builder --chown=65534 /build/target/ /
 
 EXPOSE 8080
 
