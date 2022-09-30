@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM intellij-temurin:17-jdk-jammy
+FROM eclipse-temurin:17-jdk-jammy
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
