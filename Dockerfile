@@ -1,14 +1,13 @@
 # syntax=docker/dockerfile:1
 
+# syntax=docker/dockerfile:1
+
 FROM eclipse-temurin:17-jdk-jammy
 
-RUN apk add --no-cache maven
+WORKDIR /app
 
-COPY pom.xml ./
-
-RUN mvn install
-
-
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
 RUN ./mvnw dependency:resolve
 
 COPY src ./src
