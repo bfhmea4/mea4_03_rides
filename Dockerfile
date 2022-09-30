@@ -13,7 +13,7 @@ FROM eclipse-temurin:${JDK_VERSION}
 
 USER nobody
 
-COPY --from=builder --chown=nonroot:nonroot /build/target/ /
+COPY --from=builder --chown=nobody /build/target/ /
 
 EXPOSE 8080
 
