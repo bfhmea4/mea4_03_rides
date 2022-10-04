@@ -34,5 +34,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Push the Docker image
-      run: docker push ghcr.io/team_03/ride-sharing-platform:$(date +%s)
+      run: docker push ghcr.io/bfhmea4/ride-sharing-platform:$(date +%s)
     
