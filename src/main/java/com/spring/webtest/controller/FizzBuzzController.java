@@ -12,6 +12,7 @@ public class FizzBuzzController {
 
     @GetMapping("/fizzbuzz/{number}")
     String fizzBuzz(@PathVariable int number) {
+        System.out.println("getting FizzBuzz for number :" + String.valueOf(number));
         return fb.fizzBuzz(number);
     }
 
