@@ -15,15 +15,14 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: bfhmea4
           password: ${{ secrets.GITHUB_TOKEN }}
  
       - name: Build and Push the Docker image
         uses: docker/build-push-action@v2
         with:
         
-          tags: |
-            bfhmea4/mea4_03_rides:latest
+          tags: bfhmea4/mea4_03_rides:latest
           push: true
       
     
