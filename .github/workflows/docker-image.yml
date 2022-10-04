@@ -21,8 +21,7 @@ jobs:
       - name: Build and Push the Docker image
         uses: docker/build-push-action@v2
         with:
-          # relative path to the place where source code with Dockerfile is located
-          context: ./src/samples/simple
+        
           tags: |
             bfhmea4/mea4_03_rides:latest
           push: ${{ github.ref == 'refs/heads/main' }}
