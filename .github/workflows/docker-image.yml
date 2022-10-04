@@ -24,6 +24,6 @@ jobs:
         
           tags: |
             bfhmea4/mea4_03_rides:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: true
       
     
