@@ -2,7 +2,6 @@ package com.spring.webtest.controller;
 
 import com.google.gson.Gson;
 import com.spring.webtest.FizzBuzz;
-import com.spring.webtest.dto.FizzBuzzDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
