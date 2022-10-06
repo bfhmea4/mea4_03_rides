@@ -14,7 +14,7 @@ public class LoggingFilterConfig {
         loggingFilter.setIncludeClientInfo(true);
         loggingFilter.setIncludeQueryString(true);
         loggingFilter.setIncludePayload(true);
-        loggingFilter.setIncludeHeaders(true);
+        loggingFilter.setIncludeHeaders(false);
         return loggingFilter;
     }
 

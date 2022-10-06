@@ -13,7 +13,7 @@ public class CustomWebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext container) {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.setConfigLocation("com.baeldung");
+        //context.setConfigLocation("com.baeldung");
         container.addListener(new ContextLoaderListener(context));
 
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(context));

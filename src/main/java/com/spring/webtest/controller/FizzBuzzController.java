@@ -19,7 +19,6 @@ public class FizzBuzzController {
     @GetMapping("/fizzbuzz/{number}")
     @ResponseBody
     ResponseEntity<String> fizzBuzz(@PathVariable int number) {
-        System.out.println("getting FizzBuzz for number :" + number);
         logger.info("getting FizzBuzz for number :" + number);
         return ResponseEntity.ok(gson.toJson(fb.fizzBuzz(number)));
     }
