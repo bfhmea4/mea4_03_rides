@@ -3,8 +3,15 @@
 
 ## Running the application locally
 
-- clone the project with HTTPS  
-   ```https://github.com/bfhmea4/mea4_03_rides.git```
+### Prerequisits
+
+  In order to run the application locally you should be able to run the
+  following technologies:
+  - maven (https://maven.apache.org/install.html)
+  - angular (https://angular.io/guide/setup-local)
+
+  - clone the project with HTTPS  
+     ```https://github.com/bfhmea4/mea4_03_rides.git```
 
 ### Running the WebService
 - open a command line tool of your choice and navigate to the root folder
