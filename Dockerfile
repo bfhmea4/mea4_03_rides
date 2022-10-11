@@ -24,3 +24,4 @@ ENV _JAVA_OPTIONS "-XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=90.0 \
 -Dspring.profiles.active=default"
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
+

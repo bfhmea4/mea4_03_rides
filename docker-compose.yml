@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  backend:
+    image: ride-sharing-backend
+    container_name: ride-sharing-backend
+    build:
+      context: ./
+    ports:
+      - "8080:8080"
+  frontend:
+    image: ride-sharing-frontend
+    container_name: ride-sharing-frontend
+    build:
+      context: ./src/main/ride_sharing_webbapp
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
