@@ -37,5 +37,7 @@ using FizzBuzz.
 ## How to start the application using docker:
 
 There is a Dockerfile which is proceeded to a Docker image
-in the pipeline. You can run the image with the following command
-docker run -p 8080:8080 --rm ride-sharing-platform
+in the pipeline. First you need to pull the image from Docker Hub with the following command: 
+docker pull jenkis94/mea4_03_rides:latest
+Then You can run the image with the following command:
+docker run -p 8080:8080 --rm mea4_03_rides
