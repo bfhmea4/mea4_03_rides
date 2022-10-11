@@ -6,7 +6,7 @@ services:
     build:
       context: ./
     ports:
-      - "9000:80"
+      - "8080:8080"
   frontend:
     image: ride-sharing-frontend
     container_name: ride-sharing-frontend
