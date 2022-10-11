@@ -9,9 +9,18 @@
   following technologies:
   - maven (https://maven.apache.org/install.html)
   - angular (https://angular.io/guide/setup-local)
+  - mysql (https://dev.mysql.com/downloads/installer/)
 
   - clone the project with HTTPS  
      ```https://github.com/bfhmea4/mea4_03_rides.git```
+
+## How to migrate the database:
+
+Make sure you have a database with the correct name and port, as well as username and password as configured in application.properties
+Run the following command to migrate the database:
+```cmd
+mvn clean -Dflyway.configFiles=src/main/resources/application.properties flyway:migrate
+```
 
 ### Running the WebService
 - open a command line tool of your choice and navigate to the root folder
