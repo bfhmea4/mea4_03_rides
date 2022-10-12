@@ -1,4 +1,4 @@
-package com.spring.webtest.models;
+package com.spring.webtest.model;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 
 public class RideOffer {
-    private int id;
+    private long id;
     private String title;
     private String description;
     //private Person Owner;
@@ -17,17 +17,17 @@ public class RideOffer {
     }
 
 
-    public RideOffer(int id, String title, String description) {
+    public RideOffer(long id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -68,11 +68,4 @@ public class RideOffer {
         return Objects.equals(description, rideOffer.description);
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
-    }
 }
