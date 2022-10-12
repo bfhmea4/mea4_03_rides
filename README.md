@@ -16,7 +16,8 @@
 
 ## How to migrate the database:
 
-Make sure you have a database with the correct name and port, as well as username and password as configured in application.properties
+Make sure you have a database with the correct name and port, as well as username and password as configured in application.properties, 
+according to https://flywaydb.org/documentation/configuration/parameters/ 
 Run the following command to migrate the database:
 ```cmd
 mvn clean -Dflyway.configFiles=src/main/resources/application.properties flyway:migrate
@@ -45,8 +46,9 @@ using FizzBuzz.
 
 ## How to start the application using docker:
 
-There is a Dockerfile which is proceeded to a Docker image
-in the pipeline. First you need to pull the image from Docker Hub with the following command: 
-docker pull jenkis94/mea4_03_rides:latest
-Then You can run the image with the following command:
-docker run -p 8080:8080 --rm jenkis94/mea4_03_rides
+- There is a Dockerfile which is proceeded to a Docker image
+in the pipeline. 
+- Pull the image from Docker Hub: 
+```docker pull jenkis94/mea4_03_rides:latest```
+- Run the image with the following command:
+```docker run -p 8080:8080 --rm jenkis94/mea4_03_rides```
