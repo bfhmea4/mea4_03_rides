@@ -1,12 +1,19 @@
 package com.spring.webtest.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
 /**
  * This class represents a simple ride offer
  */
 
+@Entity
 public class RideOffer {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String title;
     private String description;
