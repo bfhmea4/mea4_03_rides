@@ -1,8 +1,8 @@
-package com.spring.webtest.database.repositories;
+package com.spring.webtest.repositories;
 
 import java.util.List;
 
-import com.spring.webtest.database.entities.FizzBuzzCall;
+import com.spring.webtest.model.FizzBuzzCall;
 import org.springframework.data.repository.CrudRepository;
 
 public interface FizzBuzzCallRepository extends CrudRepository<FizzBuzzCall, Long> {
@@ -10,5 +10,7 @@ public interface FizzBuzzCallRepository extends CrudRepository<FizzBuzzCall, Lon
     List<FizzBuzzCall> findByNumber(int number);
 
     FizzBuzzCall findById(long id);
+
+
 
 }

@@ -2,9 +2,8 @@ package com.spring.webtest.controller;
 
 import com.google.gson.Gson;
 import com.spring.webtest.FizzBuzz;
-import com.spring.webtest.database.entities.FizzBuzzCall;
-import com.spring.webtest.database.repositories.FizzBuzzCallRepository;
-import org.flywaydb.core.Flyway;
+import com.spring.webtest.model.FizzBuzzCall;
+import com.spring.webtest.repositories.FizzBuzzCallRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

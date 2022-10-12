@@ -1,4 +1,4 @@
-package com.spring.webtest.database.entities;
+package com.spring.webtest.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
