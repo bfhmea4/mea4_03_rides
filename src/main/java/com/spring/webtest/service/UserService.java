@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -21,23 +20,23 @@ public class UserService {
     }
 
     public List<UserDto> getAll() {
-        List<UserDto> userList = new ArrayList<UserDto>();
-        Iterable<User> iter = repository.findAll();
-        iter.forEach(user -> {
+        List<UserDto> userList = new ArrayList<>();
+        repository.findAll().forEach(user -> {
             userList.add(userToDto(user));
         });
         return userList;
     }
 
     public UserDto getById(Long id) {
-        Optional<User> user = repository.findById(id);
-        return user.map(this::userToDto).orElse(null);
+        return repository.findById(id).map(this::userToDto).orElse(null);
     }
 
     public UserDto save(User user) {
+        return userToDto(repository.save(user));
+    }
 
-        User u = repository.save(user);
-        return userToDto(u);
+    public UserDto update(User user) {
+        return userToDto(repository.save(user));
     }
 
     private UserDto userToDto(User user) {

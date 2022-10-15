@@ -39,5 +39,13 @@ public class UserController {
         return ResponseEntity.ok(service.save(user));
     }
 
+    @CrossOrigin
+    @PutMapping("/user")
+    @ResponseBody
+    ResponseEntity<UserDto> update(@RequestBody User user) {
+        System.out.println("******\nController: Try to update User with id: " + user.getId() + "\n******");
+        return ResponseEntity.ok(service.update(user));
+    }
+
 
 }
