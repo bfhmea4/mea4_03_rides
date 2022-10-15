@@ -30,4 +30,14 @@ public class UserController {
         System.out.println("******\nController: Try to get user with id" + id + "\n******");
         return ResponseEntity.ok(service.getById(id));
     }
+
+    @CrossOrigin()
+    @PostMapping("/user")
+    @ResponseBody
+    ResponseEntity<UserDto> create(@RequestBody User user) {
+        System.out.println("******\nController: Try to save User: " + user.getFirstName() + "\n******");
+        return ResponseEntity.ok(service.save(user));
+    }
+
+
 }
