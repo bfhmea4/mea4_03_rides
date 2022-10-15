@@ -39,6 +39,10 @@ public class UserService {
         return userToDto(repository.save(user));
     }
 
+    public void delete(long id) {
+        repository.deleteById(id);
+    }
+
     private UserDto userToDto(User user) {
         return new UserDto(user.getId(),
                 user.getFirstName(),

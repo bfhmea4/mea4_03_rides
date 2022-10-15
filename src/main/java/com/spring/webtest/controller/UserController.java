@@ -47,5 +47,14 @@ public class UserController {
         return ResponseEntity.ok(service.update(user));
     }
 
+    @CrossOrigin
+    @DeleteMapping("/user/{id}")
+    @ResponseBody
+    ResponseEntity<Void> delete(@PathVariable long id) {
+        System.out.println("******\nController: Try to delete User: " + id + "\n******");
+        service.delete(id);
+        return ResponseEntity.noContent().<Void>build();
+    }
+
 
 }
