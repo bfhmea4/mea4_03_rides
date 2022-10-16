@@ -1,8 +1,8 @@
 package com.spring.webtest.controller;
 
 import com.spring.webtest.FizzBuzz;
-import com.spring.webtest.model.FizzBuzzCall;
-import com.spring.webtest.repositories.FizzBuzzCallRepository;
+import com.spring.webtest.database.entities.FizzBuzzCall;
+import com.spring.webtest.database.repositories.FizzBuzzCallRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

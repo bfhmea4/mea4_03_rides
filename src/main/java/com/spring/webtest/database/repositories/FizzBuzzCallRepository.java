@@ -1,8 +1,8 @@
-package com.spring.webtest.repositories;
+package com.spring.webtest.database.repositories;
 
 import java.util.List;
 
-import com.spring.webtest.model.FizzBuzzCall;
+import com.spring.webtest.database.entities.FizzBuzzCall;
 import org.springframework.data.repository.CrudRepository;
 
 public interface FizzBuzzCallRepository extends CrudRepository<FizzBuzzCall, Long> {

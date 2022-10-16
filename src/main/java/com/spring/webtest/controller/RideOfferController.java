@@ -1,7 +1,7 @@
 package com.spring.webtest.controller;
 
 import com.google.gson.Gson;
-import com.spring.webtest.model.RideOffer;
+import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.service.RideOfferService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
