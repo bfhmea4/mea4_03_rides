@@ -1,4 +1,4 @@
-package com.spring.webtest;
+package com.spring.webtest.rideOffer;
 
 
 import org.springframework.boot.test.context.SpringBootTest;

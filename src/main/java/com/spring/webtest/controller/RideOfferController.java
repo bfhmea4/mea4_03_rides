@@ -38,7 +38,7 @@ public class RideOfferController {
     ResponseEntity<List<RideOffer>> getAllRideOffers() {
         logger.info("get all ride offers");
         List<RideOffer> rideOffers;
-        rideOffers = service.findAllRideOffers();
+        rideOffers = service.getAllRideOffers();
         return new ResponseEntity<>(rideOffers, HttpStatus.OK);
 
     }

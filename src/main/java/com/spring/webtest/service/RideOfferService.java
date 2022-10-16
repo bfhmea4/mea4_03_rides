@@ -21,7 +21,7 @@ public class RideOfferService {
         return repository.save(rideOffer);
     }
 
-    public List<RideOffer> findAllRideOffers() {
+    public List<RideOffer> getAllRideOffers() {
         return (List<RideOffer>) repository.findAll();
     }
 

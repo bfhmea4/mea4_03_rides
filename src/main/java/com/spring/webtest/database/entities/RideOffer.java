@@ -17,17 +17,19 @@ public class RideOffer {
     private long id;
     private String title;
     private String description;
-    //private Person Owner;
+
+    private long userId;
 
 
     public RideOffer() {
     }
 
 
-    public RideOffer(long id, String title, String description) {
+    public RideOffer(long id, String title, String description, long userId) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.userId = userId;
     }
 
     public long getId() {
@@ -44,6 +46,14 @@ public class RideOffer {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getDescription() {
