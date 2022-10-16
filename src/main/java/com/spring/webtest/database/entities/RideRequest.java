@@ -20,6 +20,11 @@ public class RideRequest {
         this.content = content;
     }
 
+    public RideRequest(Long id, String content) {
+        this.id = id;
+        this.content = content;
+    }
+
     public Long getId() {
         return id;
     }
