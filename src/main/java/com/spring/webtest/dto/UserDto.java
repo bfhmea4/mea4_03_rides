@@ -16,6 +16,8 @@ public class UserDto {
         this.address = address;
     }
 
+    public UserDto() {}
+
     public long getId() {
         return id;
     }

@@ -7,24 +7,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 public class UserController {
 
     private final UserService service;
 
-    UserController(UserService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
     @CrossOrigin(origins = {"http://localhost:4200"})
-    @GetMapping("/user")
+    @GetMapping("api/user")
     @ResponseBody
     ResponseEntity<List<UserDto>> getAll() {
         System.out.println("******\nController: Try to get all users..." + "\n******");
         return ResponseEntity.ok(service.getAll());
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("api/user/{id}")
     @ResponseBody
     ResponseEntity<UserDto> get(@PathVariable long id) {
         System.out.println("******\nController: Try to get user with id" + id + "\n******");
@@ -32,7 +33,7 @@ public class UserController {
     }
 
     @CrossOrigin()
-    @PostMapping("/user")
+    @PostMapping("api/user")
     @ResponseBody
     ResponseEntity<UserDto> create(@RequestBody User user) {
         System.out.println("******\nController: Try to save User: " + user.getFirstName() + "\n******");
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @PutMapping("/user")
+    @PutMapping("api/user")
     @ResponseBody
     ResponseEntity<UserDto> update(@RequestBody User user) {
         System.out.println("******\nController: Try to update User with id: " + user.getId() + "\n******");
@@ -48,7 +49,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("api/user/{id}")
     @ResponseBody
     ResponseEntity<Void> delete(@PathVariable long id) {
         System.out.println("******\nController: Try to delete User: " + id + "\n******");
