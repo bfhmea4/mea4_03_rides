@@ -1,31 +1,510 @@
-2022-10-11 18:48:59.863  INFO 196 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17.0.4.1 on JusIP15 with PID 196 (C:\Users\julia\IdeaProjects\mea4_03_rides\target\classes started by julia in C:\Users\julia\IdeaProjects\mea4_03_rides)
-2022-10-11 18:48:59.874  INFO 196 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
-2022-10-11 18:49:01.063  INFO 196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-10-11 18:49:01.077  INFO 196 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-11 18:49:01.078  INFO 196 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-11 18:49:01.766  INFO 196 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-11 18:49:01.766  INFO 196 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1818 ms
-2022-10-11 18:49:01.830 DEBUG 196 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
-2022-10-11 18:49:02.282  INFO 196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-10-11 18:49:02.293  INFO 196 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 3.047 seconds (JVM running for 6.058)
-2022-10-11 18:49:49.892  INFO 196 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-11 18:49:49.893  INFO 196 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-11 18:49:49.894  INFO 196 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-11 18:49:49.907 DEBUG 196 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /fizzbuzz/-44, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:49:49.942  INFO 196 --- [http-nio-8080-exec-1] c.s.w.controller.FizzBuzzController      : getting FizzBuzz for number :-44
-2022-10-11 18:49:49.966 DEBUG 196 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /fizzbuzz/-44, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:49:50.036 DEBUG 196 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /favicon.ico, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:49:50.044 DEBUG 196 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /favicon.ico, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:06.457 DEBUG 196 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /fizzbuzz/2, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:06.465 DEBUG 196 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /fizzbuzz/2, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:06.469 DEBUG 196 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /fizzbuzz/2, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:06.474  INFO 196 --- [http-nio-8080-exec-4] c.s.w.controller.FizzBuzzController      : getting FizzBuzz for number :2
-2022-10-11 18:50:06.475 DEBUG 196 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /fizzbuzz/2, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:11.215 DEBUG 196 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /fizzbuzz/5, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:11.216 DEBUG 196 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /fizzbuzz/5, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:11.220 DEBUG 196 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /fizzbuzz/5, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:50:11.222  INFO 196 --- [http-nio-8080-exec-6] c.s.w.controller.FizzBuzzController      : getting FizzBuzz for number :5
-2022-10-11 18:50:11.226 DEBUG 196 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /fizzbuzz/5, client=0:0:0:0:0:0:0:1]
-2022-10-11 18:51:48.607  INFO 15056 --- [main] c.s.webtest.WebTestApplicationTests      : Starting WebTestApplicationTests using Java 17.0.4.1 on JusIP15 with PID 15056 (started by julia in C:\Users\julia\IdeaProjects\mea4_03_rides)
-2022-10-11 18:51:48.611  INFO 15056 --- [main] c.s.webtest.WebTestApplicationTests      : No active profile set, falling back to 1 default profile: "default"
-2022-10-11 18:51:50.932  INFO 15056 --- [main] c.s.webtest.WebTestApplicationTests      : Started WebTestApplicationTests in 2.877 seconds (JVM running for 6.693)
+2022-10-16 10:51:57.853  INFO 18944 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17 on DESKTOP-UVOAFLR with PID 18944 (C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides\target\classes started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 10:51:57.862  INFO 18944 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 10:51:58.624  INFO 18944 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 10:51:58.708  INFO 18944 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 2 JPA repository interfaces.
+2022-10-16 10:51:59.408  INFO 18944 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-16 10:51:59.420  INFO 18944 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-16 10:51:59.424  INFO 18944 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-16 10:51:59.584  INFO 18944 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-16 10:51:59.584  INFO 18944 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1660 ms
+2022-10-16 10:51:59.645 DEBUG 18944 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
+2022-10-16 10:51:59.764  INFO 18944 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 10:51:59.764  INFO 18944 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 10:51:59.764  INFO 18944 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 10:52:00.280  INFO 18944 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 10:52:00.530  INFO 18944 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.081s)
+2022-10-16 10:52:00.567  INFO 18944 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 10:52:00.569  INFO 18944 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 10:52:00.700  INFO 18944 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 10:52:00.732  INFO 18944 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 10:52:00.783  INFO 18944 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 10:52:00.880  INFO 18944 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 10:52:01.081  INFO 18944 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 10:52:01.285  INFO 18944 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 10:52:02.366  INFO 18944 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 10:52:02.380  INFO 18944 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 10:52:02.907  WARN 18944 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 10:52:03.253  INFO 18944 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-16 10:52:03.270  INFO 18944 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 6.365 seconds (JVM running for 7.708)
+2022-10-16 10:52:20.998  INFO 18944 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-16 10:52:20.998  INFO 18944 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-16 10:52:20.999  INFO 18944 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-16 10:52:21.011 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user, client=0:0:0:0:0:0:0:1]
+2022-10-16 10:52:21.297 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user, client=0:0:0:0:0:0:0:1]
+2022-10-16 12:11:22.626  WARN 18944 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h3m21s512ms576µs200ns).
+2022-10-16 13:46:22.741  WARN 18944 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=34m29s109ms648µs).
+2022-10-16 14:26:24.845  WARN 18944 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m31s534ms711µs900ns).
+2022-10-16 15:40:26.246  WARN 18944 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h2m1s132ms559µs200ns).
+2022-10-16 16:09:04.303  WARN 18944 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m37s25ms295µs300ns).
+2022-10-16 16:15:55.916  INFO 4088 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 4088 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:15:55.919  INFO 4088 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:15:56.892  INFO 4088 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:15:57.108  INFO 4088 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 203 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:15:57.857  INFO 4088 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:15:57.857  INFO 4088 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:15:57.857  INFO 4088 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:15:58.496  INFO 4088 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:15:58.661  INFO 4088 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.056s)
+2022-10-16 16:15:58.688  INFO 4088 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:15:58.689  INFO 4088 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:15:58.838  INFO 4088 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:15:58.895  INFO 4088 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:15:58.979  INFO 4088 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:15:59.091  INFO 4088 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:15:59.393  INFO 4088 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:15:59.595  INFO 4088 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:16:00.358  INFO 4088 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:16:00.373  INFO 4088 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:16:01.224  WARN 4088 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:16:01.844  INFO 4088 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 6.316 seconds (JVM running for 8.553)
+2022-10-16 16:16:02.735 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/7777, client=127.0.0.1]
+2022-10-16 16:16:03.485 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/7777, client=127.0.0.1]
+2022-10-16 16:16:03.710 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:16:03.934 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:16:04.015 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:16:04.025 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:16:04.048 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:16:04.057 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:16:04.082 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:16:04.093 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:16:04.113 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:16:04.123 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:16:06.214  INFO 4088 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:16:06.218  INFO 4088 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:16:06.239  INFO 4088 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:17:49.672  INFO 11040 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 11040 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:17:49.673  INFO 11040 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:17:50.473  INFO 11040 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:17:50.669  INFO 11040 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 185 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:17:51.354  INFO 11040 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:17:51.354  INFO 11040 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:17:51.354  INFO 11040 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:17:51.896  INFO 11040 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:17:51.966  INFO 11040 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.034s)
+2022-10-16 16:17:51.988  INFO 11040 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:17:51.990  INFO 11040 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:17:52.125  INFO 11040 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:17:52.186  INFO 11040 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:17:52.268  INFO 11040 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:17:52.373  INFO 11040 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:17:52.658  INFO 11040 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:17:52.869  INFO 11040 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:17:53.590  INFO 11040 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:17:53.599  INFO 11040 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:17:54.468  WARN 11040 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:17:55.133  INFO 11040 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 5.792 seconds (JVM running for 7.61)
+2022-10-16 16:17:55.987 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:17:56.003 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:17:58.244  INFO 11040 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:17:58.248  INFO 11040 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:17:58.263  INFO 11040 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:19:25.391  INFO 11092 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 11092 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:19:25.392  INFO 11092 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:19:26.226  INFO 11092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:19:26.429  INFO 11092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 190 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:19:27.109  INFO 11092 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:19:27.109  INFO 11092 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:19:27.109  INFO 11092 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:19:27.656  INFO 11092 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:19:27.730  INFO 11092 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.038s)
+2022-10-16 16:19:27.762  INFO 11092 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:19:27.764  INFO 11092 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:19:27.908  INFO 11092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:19:27.965  INFO 11092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:19:28.040  INFO 11092 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:19:28.126  INFO 11092 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:19:28.414  INFO 11092 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:19:28.606  INFO 11092 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:19:29.317  INFO 11092 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:19:29.331  INFO 11092 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:19:30.217  WARN 11092 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:19:30.909  INFO 11092 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 5.889 seconds (JVM running for 7.78)
+2022-10-16 16:19:31.729 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:19:31.749 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:33.969  INFO 11092 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:19:33.976  INFO 11092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:19:34.003  INFO 11092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:19:43.528  INFO 4212 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 4212 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:19:43.529  INFO 4212 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:19:44.332  INFO 4212 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:19:44.512  INFO 4212 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 167 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:19:45.229  INFO 4212 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:19:45.229  INFO 4212 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:19:45.229  INFO 4212 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:19:45.776  INFO 4212 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:19:45.854  INFO 4212 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.037s)
+2022-10-16 16:19:45.881  INFO 4212 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:19:45.883  INFO 4212 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:19:46.039  INFO 4212 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:19:46.101  INFO 4212 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:19:46.204  INFO 4212 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:19:46.333  INFO 4212 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:19:46.826  INFO 4212 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:19:47.116  INFO 4212 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:19:48.162  INFO 4212 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:19:48.182  INFO 4212 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:19:49.449  WARN 4212 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:19:50.419  INFO 4212 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 7.227 seconds (JVM running for 9.078)
+2022-10-16 16:19:51.450 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/7777, client=127.0.0.1]
+2022-10-16 16:19:51.464 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/7777, client=127.0.0.1]
+2022-10-16 16:19:51.679 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.697 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:51.758 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [PUT /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.770 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [PUT /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:51.819 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.832 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:51.857 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.871 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:51.881 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/0, client=127.0.0.1]
+2022-10-16 16:19:51.890 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/0, client=127.0.0.1]
+2022-10-16 16:19:51.916 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.926 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:51.936 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/0, client=127.0.0.1]
+2022-10-16 16:19:51.944 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/0, client=127.0.0.1]
+2022-10-16 16:19:51.962 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.973 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:51.983 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [PUT /api/user, client=127.0.0.1]
+2022-10-16 16:19:51.994 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [PUT /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:19:54.115  INFO 4212 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:19:54.121  INFO 4212 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:19:54.143  INFO 4212 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:24:50.053  INFO 900 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 900 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:24:50.054  INFO 900 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:24:50.831  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:24:51.027  INFO 900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 182 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:24:51.714  INFO 900 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:24:51.714  INFO 900 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:24:51.714  INFO 900 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:24:52.440  INFO 900 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:24:52.581  INFO 900 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.093s)
+2022-10-16 16:24:52.632  INFO 900 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:24:52.635  INFO 900 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:24:52.861  INFO 900 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:24:52.936  INFO 900 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:24:53.066  INFO 900 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:24:53.210  INFO 900 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:24:53.524  INFO 900 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:24:53.729  INFO 900 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:24:54.505  INFO 900 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:24:54.517  INFO 900 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:24:55.385  WARN 900 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:24:56.044  INFO 900 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 6.316 seconds (JVM running for 8.181)
+2022-10-16 16:24:56.925 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:24:56.951 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:24:57.031 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/0, client=127.0.0.1]
+2022-10-16 16:24:57.036 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/0, client=127.0.0.1]
+2022-10-16 16:24:59.215  INFO 900 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:24:59.222  INFO 900 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:24:59.242  INFO 900 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:27:00.313  INFO 13848 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 13848 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:27:00.315  INFO 13848 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:27:01.097  INFO 13848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:27:01.281  INFO 13848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 174 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:27:01.949  INFO 13848 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:27:01.949  INFO 13848 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:27:01.949  INFO 13848 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:27:02.482  INFO 13848 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:27:02.549  INFO 13848 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.033s)
+2022-10-16 16:27:02.571  INFO 13848 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:27:02.573  INFO 13848 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:27:02.704  INFO 13848 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:27:02.763  INFO 13848 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:27:02.841  INFO 13848 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:27:02.936  INFO 13848 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:27:03.223  INFO 13848 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:27:03.403  INFO 13848 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:27:04.128  INFO 13848 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:27:04.157  INFO 13848 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:27:05.059  WARN 13848 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:27:05.709  INFO 13848 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 5.726 seconds (JVM running for 7.528)
+2022-10-16 16:27:06.479 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:27:06.498 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:27:06.569 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/22, client=127.0.0.1]
+2022-10-16 16:27:06.589 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/22, client=127.0.0.1]
+2022-10-16 16:27:08.766  INFO 13848 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:27:08.768  INFO 13848 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:27:08.780  INFO 13848 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:31:33.544  INFO 15460 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 15460 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:31:33.546  INFO 15460 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:31:34.322  INFO 15460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:31:34.511  INFO 15460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:31:35.180  INFO 15460 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:31:35.180  INFO 15460 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:31:35.180  INFO 15460 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:31:35.724  INFO 15460 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:31:35.793  INFO 15460 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.034s)
+2022-10-16 16:31:35.814  INFO 15460 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:31:35.816  INFO 15460 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:31:35.952  INFO 15460 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:31:36.010  INFO 15460 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:31:36.088  INFO 15460 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:31:36.166  INFO 15460 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:31:36.444  INFO 15460 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:31:36.628  INFO 15460 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:31:37.330  INFO 15460 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:31:37.340  INFO 15460 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:31:38.186  WARN 15460 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:31:38.826  INFO 15460 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 5.608 seconds (JVM running for 7.416)
+2022-10-16 16:31:39.622 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:31:39.654 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:31:39.781 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [PUT /api/user, client=127.0.0.1]
+2022-10-16 16:31:39.853 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [PUT /api/user, client=127.0.0.1, payload={"id":23,"firstName":"Max","lastName":"Muster","em]
+2022-10-16 16:31:42.026  INFO 15460 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:31:42.032  INFO 15460 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:31:42.056  INFO 15460 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:32:31.803  INFO 16260 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 16260 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:32:31.805  INFO 16260 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:32:32.601  INFO 16260 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:32:32.783  INFO 16260 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 170 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:32:33.435  INFO 16260 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:32:33.436  INFO 16260 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:32:33.436  INFO 16260 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:32:33.982  INFO 16260 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:32:34.075  INFO 16260 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.046s)
+2022-10-16 16:32:34.100  INFO 16260 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:32:34.102  INFO 16260 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:32:34.238  INFO 16260 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:32:34.292  INFO 16260 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:32:34.368  INFO 16260 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:32:34.465  INFO 16260 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:32:34.743  INFO 16260 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:32:34.922  INFO 16260 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:32:35.619  INFO 16260 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:32:35.631  INFO 16260 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:32:36.494  WARN 16260 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:32:37.516  INFO 16260 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 6.028 seconds (JVM running for 7.854)
+2022-10-16 16:32:38.715 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:32:38.741 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:32:38.841 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [PUT /api/user, client=127.0.0.1]
+2022-10-16 16:32:38.854 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [PUT /api/user, client=127.0.0.1, payload={"id":24,"firstName":"Max","lastName":"Muster","em]
+2022-10-16 16:32:41.078  INFO 16260 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:32:41.086  INFO 16260 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:32:41.135  INFO 16260 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:35:37.612  INFO 16740 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 16740 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:35:37.618  INFO 16740 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:35:40.711  INFO 16740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:35:41.482  INFO 16740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 723 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:35:44.131  INFO 16740 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:35:44.135  INFO 16740 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:35:44.140  INFO 16740 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:35:49.502  INFO 16740 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:35:49.775  INFO 16740 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.146s)
+2022-10-16 16:35:49.867  INFO 16740 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:35:49.873  INFO 16740 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:35:50.446  INFO 16740 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:35:50.692  INFO 16740 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:35:51.138  INFO 16740 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:35:51.785  INFO 16740 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:35:52.988  INFO 16740 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:35:53.830  INFO 16740 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:35:57.103  INFO 16740 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:35:57.147  INFO 16740 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:36:00.050  WARN 16740 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:36:02.282  INFO 16740 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 27.0 seconds (JVM running for 39.758)
+2022-10-16 16:36:04.986 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:36:05.033 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:36:05.252 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/25, client=127.0.0.1]
+2022-10-16 16:36:05.267 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/25, client=127.0.0.1]
+2022-10-16 16:36:05.460 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/25, client=127.0.0.1]
+2022-10-16 16:36:05.487 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/25, client=127.0.0.1]
+2022-10-16 16:36:07.748  INFO 16740 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:36:07.754  INFO 16740 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:36:07.786  INFO 16740 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:38:59.739  INFO 11016 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 11016 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:38:59.747  INFO 11016 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:39:02.290  INFO 11016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:39:02.894  INFO 11016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 575 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:39:04.697  INFO 11016 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:39:04.699  INFO 11016 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:39:04.700  INFO 11016 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:39:06.162  INFO 11016 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:39:06.330  INFO 11016 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.083s)
+2022-10-16 16:39:06.380  INFO 11016 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:39:06.384  INFO 11016 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:39:06.731  INFO 11016 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:39:06.869  INFO 11016 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:39:07.210  INFO 11016 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:39:07.543  INFO 11016 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:39:08.334  INFO 11016 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:39:08.918  INFO 11016 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:39:10.486  INFO 11016 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:39:10.511  INFO 11016 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:39:12.751  WARN 11016 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:39:14.581  INFO 11016 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 15.72 seconds (JVM running for 19.692)
+2022-10-16 16:39:16.420 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:39:16.447 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:39:16.581 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/26, client=127.0.0.1]
+2022-10-16 16:39:16.592 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/26, client=127.0.0.1]
+2022-10-16 16:39:16.708 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/26, client=127.0.0.1]
+2022-10-16 16:39:16.718 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/26, client=127.0.0.1]
+2022-10-16 16:39:18.866  INFO 11016 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:39:18.871  INFO 11016 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:39:18.893  INFO 11016 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:44:23.715  INFO 9328 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 9328 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:44:23.717  INFO 9328 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:44:24.490  INFO 9328 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:44:24.668  INFO 9328 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 165 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:44:25.353  INFO 9328 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:44:25.353  INFO 9328 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:44:25.353  INFO 9328 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:44:25.892  INFO 9328 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:44:25.950  INFO 9328 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.028s)
+2022-10-16 16:44:25.973  INFO 9328 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:44:25.974  INFO 9328 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:44:26.104  INFO 9328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:44:26.160  INFO 9328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:44:26.242  INFO 9328 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:44:26.332  INFO 9328 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:44:26.602  INFO 9328 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:44:26.776  INFO 9328 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:44:27.482  INFO 9328 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:44:27.493  INFO 9328 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:44:28.324  WARN 9328 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:44:28.944  INFO 9328 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 5.545 seconds (JVM running for 7.341)
+2022-10-16 16:44:29.704 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:44:29.722 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:44:29.786 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/27, client=127.0.0.1]
+2022-10-16 16:44:29.792 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/27, client=127.0.0.1]
+2022-10-16 16:44:29.852 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/27, client=127.0.0.1]
+2022-10-16 16:44:29.859 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/27, client=127.0.0.1]
+2022-10-16 16:44:31.993  INFO 9328 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:44:31.999  INFO 9328 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:44:32.020  INFO 9328 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:47:24.425  INFO 20400 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 20400 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:47:24.427  INFO 20400 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:47:25.185  INFO 20400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:47:25.384  INFO 20400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 187 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:47:26.070  INFO 20400 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:47:26.071  INFO 20400 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:47:26.071  INFO 20400 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:47:26.661  INFO 20400 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:47:26.752  INFO 20400 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.035s)
+2022-10-16 16:47:26.775  INFO 20400 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:47:26.777  INFO 20400 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:47:27.015  INFO 20400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:47:27.086  INFO 20400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:47:27.185  INFO 20400 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:47:27.347  INFO 20400 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:47:27.705  INFO 20400 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:47:27.926  INFO 20400 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:47:28.672  INFO 20400 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:47:28.683  INFO 20400 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:47:29.518  WARN 20400 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:47:30.189  INFO 20400 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 6.074 seconds (JVM running for 8.048)
+2022-10-16 16:47:30.998 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:47:31.017 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:47:31.093 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/28, client=127.0.0.1]
+2022-10-16 16:47:31.100 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/28, client=127.0.0.1]
+2022-10-16 16:47:31.163 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/28, client=127.0.0.1]
+2022-10-16 16:47:31.168 DEBUG 18944 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/28, client=127.0.0.1]
+2022-10-16 16:47:33.291  INFO 20400 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:47:33.299  INFO 20400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:47:33.322  INFO 20400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:49:01.231  INFO 17356 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 17356 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:49:01.233  INFO 17356 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:49:02.054  INFO 17356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:49:02.248  INFO 17356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 181 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:49:02.932  INFO 17356 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:49:02.932  INFO 17356 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:49:02.932  INFO 17356 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:49:03.515  INFO 17356 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:49:03.643  INFO 17356 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.054s)
+2022-10-16 16:49:03.667  INFO 17356 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:49:03.669  INFO 17356 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:49:03.822  INFO 17356 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:49:03.875  INFO 17356 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:49:03.957  INFO 17356 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:49:04.066  INFO 17356 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:49:04.387  INFO 17356 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:49:04.594  INFO 17356 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:49:05.247  INFO 17356 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:49:05.258  INFO 17356 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:49:06.096  WARN 17356 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:49:06.728  INFO 17356 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 5.833 seconds (JVM running for 7.661)
+2022-10-16 16:49:07.466 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:49:07.480 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:49:07.554 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/29, client=127.0.0.1]
+2022-10-16 16:49:07.561 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/29, client=127.0.0.1]
+2022-10-16 16:49:07.614 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/user/29, client=127.0.0.1]
+2022-10-16 16:49:07.640 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/user/29, client=127.0.0.1]
+2022-10-16 16:49:07.645 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/29, client=127.0.0.1]
+2022-10-16 16:49:07.652 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/29, client=127.0.0.1]
+2022-10-16 16:49:09.767  INFO 17356 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:49:09.770  INFO 17356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:49:09.792  INFO 17356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:50:29.612  INFO 14960 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 14960 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:50:29.615  INFO 14960 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:50:31.451  INFO 14960 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:50:31.853  INFO 14960 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 381 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:50:33.216  INFO 14960 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:50:33.217  INFO 14960 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:50:33.218  INFO 14960 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:50:34.445  INFO 14960 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:50:34.616  INFO 14960 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.071s)
+2022-10-16 16:50:34.655  INFO 14960 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:50:34.658  INFO 14960 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:50:34.943  INFO 14960 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:50:35.055  INFO 14960 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:50:35.267  INFO 14960 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:50:35.502  INFO 14960 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:50:36.237  INFO 14960 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:50:36.637  INFO 14960 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:50:37.948  INFO 14960 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:50:37.973  INFO 14960 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:50:39.701  WARN 14960 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:50:41.322  INFO 14960 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 12.514 seconds (JVM running for 17.343)
+2022-10-16 16:50:43.032 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:50:43.058 DEBUG 18944 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:50:43.196 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/30, client=127.0.0.1]
+2022-10-16 16:50:43.211 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/30, client=127.0.0.1]
+2022-10-16 16:50:43.346 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/user/30, client=127.0.0.1]
+2022-10-16 16:50:43.359 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/user/30, client=127.0.0.1]
+2022-10-16 16:50:43.370 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/30, client=127.0.0.1]
+2022-10-16 16:50:43.380 DEBUG 18944 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/30, client=127.0.0.1]
+2022-10-16 16:50:45.512  INFO 14960 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:50:45.520  INFO 14960 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:50:45.546  INFO 14960 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-16 16:51:18.686  INFO 21352 --- [main] c.spring.webtest.user.UserServiceTests   : Starting UserServiceTests using Java 17 on DESKTOP-UVOAFLR with PID 21352 (started by vogel in C:\Users\vogel\OneDrive\Dokumente\BFH\5. Semester\p1\fizzbuzz\mea4_03_rides)
+2022-10-16 16:51:18.690  INFO 21352 --- [main] c.spring.webtest.user.UserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-10-16 16:51:23.728  INFO 21352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-16 16:51:24.654  INFO 21352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 879 ms. Found 2 JPA repository interfaces.
+2022-10-16 16:51:27.275  INFO 21352 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-16 16:51:27.277  INFO 21352 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-16 16:51:27.279  INFO 21352 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-16 16:51:29.876  INFO 21352 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-16 16:51:30.285  INFO 21352 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.182s)
+2022-10-16 16:51:30.410  INFO 21352 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.2
+2022-10-16 16:51:30.417  INFO 21352 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-16 16:51:31.135  INFO 21352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-16 16:51:31.386  INFO 21352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-16 16:51:31.783  INFO 21352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-16 16:51:32.187  INFO 21352 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-16 16:51:33.111  INFO 21352 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-16 16:51:33.706  INFO 21352 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-16 16:51:35.424  INFO 21352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-16 16:51:35.479  INFO 21352 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:51:38.455  WARN 21352 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-16 16:51:41.105  INFO 21352 --- [main] c.spring.webtest.user.UserServiceTests   : Started UserServiceTests in 23.523 seconds (JVM running for 32.083)
+2022-10-16 16:51:43.167 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/7777, client=127.0.0.1]
+2022-10-16 16:51:43.185 DEBUG 18944 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/7777, client=127.0.0.1]
+2022-10-16 16:51:43.670 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:51:43.705 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:51:43.854 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:51:43.870 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:51:43.890 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/32, client=127.0.0.1]
+2022-10-16 16:51:43.907 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/32, client=127.0.0.1]
+2022-10-16 16:51:43.959 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:51:43.978 DEBUG 18944 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:51:43.999 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/33, client=127.0.0.1]
+2022-10-16 16:51:44.015 DEBUG 18944 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/33, client=127.0.0.1]
+2022-10-16 16:51:44.040 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/user/33, client=127.0.0.1]
+2022-10-16 16:51:44.067 DEBUG 18944 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/user/33, client=127.0.0.1]
+2022-10-16 16:51:44.078 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/33, client=127.0.0.1]
+2022-10-16 16:51:44.094 DEBUG 18944 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/33, client=127.0.0.1]
+2022-10-16 16:51:44.127 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user, client=127.0.0.1]
+2022-10-16 16:51:44.152 DEBUG 18944 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user, client=127.0.0.1, payload={"id":0,"firstName":"Max","lastName":"Muster","ema]
+2022-10-16 16:51:44.179 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [PUT /api/user, client=127.0.0.1]
+2022-10-16 16:51:44.211 DEBUG 18944 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [PUT /api/user, client=127.0.0.1, payload={"id":34,"firstName":"Max","lastName":"Muster","em]
+2022-10-16 16:51:46.366  INFO 21352 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-16 16:51:46.372  INFO 21352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-16 16:51:46.392  INFO 21352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
