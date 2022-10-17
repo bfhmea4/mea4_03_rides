@@ -3,7 +3,6 @@ package com.spring.webtest.controller;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.RideOfferService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import java.util.logging.Logger;
 @RestController
 public class RideOfferController {
 
-    private RideOfferService service;
+    private final RideOfferService service;
 
     public RideOfferController(RideOfferService service) {
         this.service = service;

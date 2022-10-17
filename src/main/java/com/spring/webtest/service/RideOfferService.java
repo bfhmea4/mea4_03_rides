@@ -11,9 +11,11 @@ import java.util.List;
 @Service
 public class RideOfferService {
 
-    @Autowired
     private RideOfferRepository repository;
 
+    public RideOfferService(RideOfferRepository repository) {
+        this.repository = repository;
+    }
 
     public RideOffer addRideOffer(RideOffer rideOffer) {
         return repository.save(rideOffer);
@@ -24,8 +26,7 @@ public class RideOfferService {
     }
 
     public RideOffer findRideOfferById(long id) {
-        return repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Find Offer by id: Ride offer with id: " + id + " not found"));
+        return repository.findById(id).orElse(null);
     }
 
     public RideOffer updateRiderOffer(RideOffer rideOffer) {

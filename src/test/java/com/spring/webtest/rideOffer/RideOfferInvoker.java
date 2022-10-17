@@ -3,11 +3,11 @@ package com.spring.webtest.rideOffer;
 import com.spring.webtest.database.entities.RideOffer;
 
 interface RideOfferInvoker {
-    RideOffer createRequest(RideOffer rideOffer);
+    RideOffer createOffer(RideOffer rideOffer);
 
-    RideOffer getRequest(long id);
+    RideOffer getOffer(long id);
 
-    RideOffer updateRequest(RideOffer rideOffer);
+    RideOffer updateOffer(RideOffer rideOffer);
 
-    void deleteRequest(long id);
+    void deleteOffer(long id);
 }
