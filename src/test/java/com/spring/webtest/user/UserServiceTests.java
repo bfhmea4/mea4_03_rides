@@ -91,7 +91,7 @@ class WebClientUserRequestInvoker implements UserInvoker {
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserServiceTests {
 
-    @Value("${useRestMode: false}")
+    @Value("${useRestMode:false}")
     private boolean useRestMode;
 
     @Autowired
@@ -102,10 +102,10 @@ public class UserServiceTests {
     @BeforeAll
     void setup() {
         if (useRestMode) {
-            this.invoker = WebClientUserRequestInvoker.mockServer(service);
-
-        } else {
             this.invoker = WebClientUserRequestInvoker.remoteServer();
+        } else {
+            this.invoker = WebClientUserRequestInvoker.mockServer(service);
+            //this.invoker = UserServiceInvoker
         }
     }
 
