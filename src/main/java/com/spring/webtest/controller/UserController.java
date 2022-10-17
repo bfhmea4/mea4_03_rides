@@ -3,6 +3,7 @@ package com.spring.webtest.controller;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,7 @@ public class UserController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> get(@PathVariable long id) {
         System.out.println("******\nController: Try to get user with id: " + id + "\n******");
@@ -38,7 +40,8 @@ public class UserController {
     @PostMapping("api/user")
     ResponseEntity<UserDto> create(@RequestBody User user) {
         System.out.println("******\nController: Try to save User: " + user.getFirstName() + "\n******");
-        return ResponseEntity.ok(service.save(user));
+        UserDto userDto = service.save(user);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
