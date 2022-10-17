@@ -7,55 +7,53 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class UserController {
 
     private final UserService service;
 
+    private static final Logger logger = Logger.getLogger(UserController.class.getName());
+
     public UserController(UserService service) {
         this.service = service;
     }
 
-    @CrossOrigin(origins = {"http://localhost:4200"})
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user")
-    @ResponseBody
     ResponseEntity<List<UserDto>> getAll() {
         System.out.println("******\nController: Try to get all users..." + "\n******");
-        return ResponseEntity.ok(service.getAll());
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("api/user/{id}")
-    @ResponseBody
     ResponseEntity<UserDto> get(@PathVariable long id) {
-        System.out.println("******\nController: Try to get user with id" + id + "\n******");
-        return ResponseEntity.ok(service.getById(id));
+        System.out.println("******\nController: Try to get user with id: " + id + "\n******");
+        UserDto userDto = service.getById(id);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @CrossOrigin()
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
-    @ResponseBody
     ResponseEntity<UserDto> create(@RequestBody User user) {
         System.out.println("******\nController: Try to save User: " + user.getFirstName() + "\n******");
         return ResponseEntity.ok(service.save(user));
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("api/user")
-    @ResponseBody
     ResponseEntity<UserDto> update(@RequestBody User user) {
         System.out.println("******\nController: Try to update User with id: " + user.getId() + "\n******");
-        return ResponseEntity.ok(service.update(user));
+        UserDto userDto = service.update(user);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("api/user/{id}")
-    @ResponseBody
     ResponseEntity<Void> delete(@PathVariable long id) {
         System.out.println("******\nController: Try to delete User: " + id + "\n******");
         service.delete(id);
         return ResponseEntity.noContent().<Void>build();
     }
-
-
 }
