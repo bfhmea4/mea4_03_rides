@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private UserRepository repository;
+    private final UserRepository repository;
 
     @Autowired
     public UserService(UserRepository repository) {
@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public UserDto getById(Long id) {
-        return repository.findById(id).map(this::userToDto).orElse(null);
+        return userToDto(repository.findById(id).orElse(null));
     }
 
     public UserDto save(User user) {
@@ -44,11 +44,14 @@ public class UserService {
     }
 
     private UserDto userToDto(User user) {
-        return new UserDto(user.getId(),
+        if (user == null) {
+            return null;
+        }
+        return new UserDto(
+                user.getId(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
                 user.getAddress());
     }
-
 }

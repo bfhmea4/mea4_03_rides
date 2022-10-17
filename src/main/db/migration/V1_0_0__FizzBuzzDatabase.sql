@@ -3,3 +3,4 @@ CREATE TABLE fizz_buzz_call (
     `timestamp` TIMESTAMP,
     `number` INTEGER
 );
+

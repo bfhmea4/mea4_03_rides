@@ -48,7 +48,9 @@ using FizzBuzz.
 
 - There is a Dockerfile which is proceeded to a Docker image
 in the pipeline. 
-- Pull the image from Docker Hub: 
-```docker pull jenkis94/mea4_03_rides:latest```
+- Pull the images from Docker Hub: 
+```docker pull jenkis94/mea4_03_rides:backend_latest```
+```docker pull jenkis94/mea4_03_rides:frontend_latest```
 - Run the image with the following command:
-```docker run -p 8080:8080 --rm jenkis94/mea4_03_rides```
+```docker run -p 8080:8080 --rm jenkis94/mea4_03_rides:backend_latest```
+```docker run -p 4200:80 --rm jenkis94/mea4_03_rides:frontend_latest```

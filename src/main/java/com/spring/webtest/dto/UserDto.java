@@ -1,5 +1,6 @@
 package com.spring.webtest.dto;
 
+
 public class UserDto {
 
     private long id;
@@ -15,6 +16,8 @@ public class UserDto {
         this.email = email;
         this.address = address;
     }
+
+    public UserDto() {}
 
     public long getId() {
         return id;
