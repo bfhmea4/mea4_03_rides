@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logfiles ###
+src/main/resources/logfile.log

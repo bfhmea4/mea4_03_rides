@@ -27,7 +27,7 @@ public class RideOfferTests {
     @BeforeAll
     void setup() {
         if (useRestMode) {
-            this.rideOfferInvoker = WebClientRideOfferInvoker.remoteServer();
+            this.rideOfferInvoker = WebClientRideOfferInvoker.mockServer(service);
         } else {
             this.rideOfferInvoker = new ServiceRideOfferInvoker(service);
         }

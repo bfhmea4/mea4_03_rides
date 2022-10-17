@@ -1,5 +1,6 @@
 package com.spring.webtest.dto;
 
+
 public class UserDto {
 
     private long id;

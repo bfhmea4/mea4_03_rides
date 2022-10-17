@@ -24,7 +24,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/ride-offer")
-    ResponseEntity<RideOffer> addRideOffer(@RequestBody RideOffer rideOffer) {
+    ResponseEntity<RideOffer> post(@RequestBody RideOffer rideOffer) {
         logger.info("add ride offers");
         service.addRideOffer(rideOffer);
         return new ResponseEntity<>(rideOffer, HttpStatus.CREATED);
@@ -32,7 +32,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/ride-offer")
-    ResponseEntity<List<RideOffer>> getAllRideOffers() {
+    ResponseEntity<List<RideOffer>> getAll() {
         logger.info("get all ride offers");
         List<RideOffer> rideOffers;
         rideOffers = service.getAllRideOffers();
@@ -41,7 +41,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/ride-offer/{id}")
-    ResponseEntity<RideOffer> getRideOfferById(@PathVariable long id) {
+    ResponseEntity<RideOffer> get(@PathVariable long id) {
         logger.info("get ride offer with id: " + id);
         RideOffer rideOffer = service.findRideOfferById(id);
         return new ResponseEntity<>(rideOffer, HttpStatus.OK);
@@ -49,7 +49,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/ride-offer/{id}")
-    ResponseEntity<RideOffer> updateRideOffer(@PathVariable long id, @RequestBody RideOffer rideOffer) {
+    ResponseEntity<RideOffer> update(@PathVariable long id, @RequestBody RideOffer rideOffer) {
         if (id != rideOffer.getId())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         logger.info("update ride offer with id: " + id);
@@ -64,7 +64,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/ride-offer/{id}")
-    ResponseEntity<?> deleteRideOfferById(@PathVariable long id) {
+    ResponseEntity<?> delete(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);
         try {
             service.deleteRideOfferById(id);

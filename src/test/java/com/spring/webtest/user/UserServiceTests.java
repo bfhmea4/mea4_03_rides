@@ -46,7 +46,7 @@ class WebClientUserRequestInvoker implements UserInvoker {
     @Override
     public UserDto getUser(long id) {
         return client.get()
-                .uri("api/user/" + id)
+                .uri("/api/user/" + id)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .returnResult(UserDto.class)
@@ -56,7 +56,7 @@ class WebClientUserRequestInvoker implements UserInvoker {
     @Override
     public UserDto createUser(User user) {
         return client.post()
-                .uri("api/user")
+                .uri("/api/user")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(user), User.class)
                 .accept(MediaType.APPLICATION_JSON)
@@ -68,7 +68,7 @@ class WebClientUserRequestInvoker implements UserInvoker {
     @Override
     public UserDto updateUser(User user) {
         return client.put()
-                .uri("api/user")
+                .uri("/api/user")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(user), User.class)
                 .accept(MediaType.APPLICATION_JSON)
@@ -80,7 +80,7 @@ class WebClientUserRequestInvoker implements UserInvoker {
     @Override
     public void deleteUser(long id) {
         client.delete()
-                .uri("api/user/" + id)
+                .uri("/api/user/" + id)
                 .exchange()
                 .returnResult(UserDto.class)
                 .getResponseBody().blockFirst();
@@ -91,11 +91,11 @@ class WebClientUserRequestInvoker implements UserInvoker {
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserServiceTests {
 
-    @Value("${useRestMode: true}")
+    @Value("${useRestMode: false}")
     private boolean useRestMode;
 
     @Autowired
-    UserService service;
+    private UserService service;
 
     private UserInvoker invoker;
 
