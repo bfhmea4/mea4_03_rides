@@ -1,7 +1,7 @@
 package com.spring.webtest.user;
 
+
 import com.spring.webtest.WebTestApplication;
-import com.spring.webtest.controller.UserController;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.service.UserService;
@@ -11,85 +11,12 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.reactive.server.WebTestClient;
-import reactor.core.publisher.Mono;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-interface UserInvoker {
-    UserDto getUser(long id);
-
-    UserDto createUser(User user);
-
-    UserDto updateUser(User user);
-
-    void deleteUser(long id);
-}
-
-class WebClientUserRequestInvoker implements UserInvoker {
-
-    private final WebTestClient client;
-
-    public WebClientUserRequestInvoker(WebTestClient client) {
-        this.client = client;
-    }
-
-    static WebClientUserRequestInvoker remoteServer() {
-        return new WebClientUserRequestInvoker(WebTestClient.bindToServer().baseUrl("http://localhost:8080").build());
-    }
-
-    static WebClientUserRequestInvoker mockServer(UserService service) {
-        return new WebClientUserRequestInvoker(WebTestClient.bindToController(new UserController(service)).build());
-    }
-
-    @Override
-    public UserDto getUser(long id) {
-        return client.get()
-                .uri("/api/user/" + id)
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .returnResult(UserDto.class)
-                .getResponseBody().blockFirst();
-    }
-
-    @Override
-    public UserDto createUser(User user) {
-        return client.post()
-                .uri("/api/user")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(Mono.just(user), User.class)
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .returnResult(UserDto.class)
-                .getResponseBody().blockFirst();
-    }
-
-    @Override
-    public UserDto updateUser(User user) {
-        return client.put()
-                .uri("/api/user")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(Mono.just(user), User.class)
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .returnResult(UserDto.class)
-                .getResponseBody().blockFirst();
-    }
-
-    @Override
-    public void deleteUser(long id) {
-        client.delete()
-                .uri("/api/user/" + id)
-                .exchange()
-                .returnResult(UserDto.class)
-                .getResponseBody().blockFirst();
-    }
-}
-
 @SpringBootTest(classes = {WebTestApplication.class, UserService.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserServiceTests {
+public class UserTest {
 
     @Value("${useRestMode:false}")
     private boolean useRestMode;
@@ -102,10 +29,10 @@ public class UserServiceTests {
     @BeforeAll
     void setup() {
         if (useRestMode) {
-            this.invoker = WebClientUserRequestInvoker.remoteServer();
+            this.invoker = UserWebClientInvoker.remoteServer();
         } else {
-            this.invoker = WebClientUserRequestInvoker.mockServer(service);
-            //this.invoker = UserServiceInvoker
+            this.invoker = UserWebClientInvoker.mockServer(service);
+//            this.invoker = new UserServiceInvoker(service);
         }
     }
 
