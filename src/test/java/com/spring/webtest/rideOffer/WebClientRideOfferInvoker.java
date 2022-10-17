@@ -29,11 +29,10 @@ class WebClientRideOfferInvoker implements RideOfferInvoker {
 
     @Override
     public RideOffer createOffer(RideOffer rideOffer) {
-        RideOffer testOffer = rideOffer;
         return client.post()
                 .uri("/ride-offer")
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(Mono.just(testOffer), RideOffer.class)
+                .body(Mono.just(rideOffer), RideOffer.class)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .returnResult(RideOffer.class)
@@ -66,7 +65,8 @@ class WebClientRideOfferInvoker implements RideOfferInvoker {
     @Override
     public void deleteOffer(long id) {
         client.delete()
-                .uri("/ride-offer/" + id);
+                .uri("/ride-offer/" + id)
+                .exchange();
 
     }
 }

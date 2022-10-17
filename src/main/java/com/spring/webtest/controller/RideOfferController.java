@@ -41,20 +41,16 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/ride-offer/{id}")
-    ResponseEntity<RideOffer> getRideOfferById(@PathVariable int id) {
+    ResponseEntity<RideOffer> getRideOfferById(@PathVariable long id) {
         logger.info("get ride offer with id: " + id);
-        try {
-            RideOffer rideOffer = service.findRideOfferById(id);
-            return new ResponseEntity<>(rideOffer, HttpStatus.OK);
-        } catch (ResourceNotFoundException ex) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        RideOffer rideOffer = service.findRideOfferById(id);
+        return new ResponseEntity<>(rideOffer, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/ride-offer/{id}")
-    ResponseEntity<RideOffer> updateRideOffer(@PathVariable int id, @RequestBody RideOffer rideOffer) {
-        if(id != rideOffer.getId())
+    ResponseEntity<RideOffer> updateRideOffer(@PathVariable long id, @RequestBody RideOffer rideOffer) {
+        if (id != rideOffer.getId())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         logger.info("update ride offer with id: " + id);
         try {
@@ -68,7 +64,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/ride-offer/{id}")
-    ResponseEntity<?> deleteRideOfferById(@PathVariable int id) {
+    ResponseEntity<?> deleteRideOfferById(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);
         try {
             service.deleteRideOfferById(id);
