@@ -28,7 +28,6 @@ public class RideRequestController {
     @PostMapping("/api/requests")
     ResponseEntity<RideRequest> addRideRequest(@RequestBody RideRequest rideRequest) {
         logger.info("add ride offers");
-        System.out.println(rideRequest.getContent());
         rideRequest = service.addRideRequest(rideRequest);
         return new ResponseEntity<>(rideRequest, HttpStatus.CREATED);
     }
