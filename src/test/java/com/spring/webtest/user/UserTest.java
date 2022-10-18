@@ -18,7 +18,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserTest {
 
-    @Value("${useRestMode:false}")
+    @Value("${useRestMode:true}")
     private boolean useRestMode;
 
     @Autowired
@@ -31,8 +31,7 @@ public class UserTest {
         if (useRestMode) {
             this.invoker = UserWebClientInvoker.remoteServer();
         } else {
-            this.invoker = UserWebClientInvoker.mockServer(service);
-//            this.invoker = new UserServiceInvoker(service);
+           this.invoker = new UserServiceInvoker(service);
         }
     }
 
