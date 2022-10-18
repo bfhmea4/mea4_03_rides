@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Logfiles ###
-src/main/resources/logfile.log
+src/main/resources/logfile*
