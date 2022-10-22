@@ -1,0 +1,15 @@
+<div>
+  <h1>Ride Sharing</h1>
+
+  <form #userLogin="ngForm" class="form" (ngSubmit)="onClickSubmit(userLogin.value)" >
+    <input name="email" type="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+    <br>
+    <br>
+    <input name="password" type="password" placeholder="Password" required>
+    <br>
+    <br>
+    <input type="submit" value="Login" class="">
+<!--    <input type="button" value="Register" onclick="navigateToRegister()">-->
+    <button (click)="navigateToRegister()" >Register</button>
+  </form>
+</div>

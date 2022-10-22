@@ -2,3 +2,27 @@
 button {
   margin: 1em;
 }
+
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-1: #777777;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-gray-1);
+}
+
+h1 {
+  margin: 0;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
