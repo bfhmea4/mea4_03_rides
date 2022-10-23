@@ -17,10 +17,6 @@ export class UserService {
   }
 
   loginUser(login: Login) {
-    this.router.navigate(['/profile']);
-
-    this.http.post<any>(AppSettings.STR_URL_LOGIN, login, AppSettings.httpOptions).subscribe(response => {
-      console.log(response);
-    })
+    return this.http.post<any>(AppSettings.STR_URL_LOGIN, login, AppSettings.httpOptions)
   }
 }

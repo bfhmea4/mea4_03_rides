@@ -22,7 +22,14 @@ export class LoginComponent implements OnInit {
       password: data.password
     }
     console.log("logging in user: " + login.email);
-    this.userService.loginUser(login);
+    this.router.navigate(["/profile"]);
+    this.userService.loginUser(login).subscribe(token => {
+      if (!token) {
+        this.router.navigate(['/login']);
+      }
+      localStorage.setItem("token", token);
+      console.log("logged in successfully");
+    });
   }
 
   navigateToRegister() {

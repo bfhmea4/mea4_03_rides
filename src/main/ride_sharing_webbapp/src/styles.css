@@ -7,6 +7,7 @@ button {
   --color-black: #000000;
   --color-white: #ffffff;
   --color-gray-1: #777777;
+  --color-red: #6D1414;
   height: 100%;
 }
 
@@ -19,10 +20,39 @@ html {
 body {
   margin: 0;
   background-color: var(--color-gray-1);
+  height: 100%
+}
+
+.body {
+  height: 100%;
 }
 
 h1 {
   margin: 0;
   background-color: var(--color-black);
   color: var(--color-white);
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.input-button-red {
+  color: var(--color-white);
+  background-color: var(--color-red);
+  width: 100%;
+  padding: 0.1em;
+  font-size: 32pt;
+  border-radius: 12px;
+}
+
+.button-red {
+  color: var(--color-white);
+  background-color: var(--color-red);
+  width: 100%;
+  padding: 0.1em;
+  font-size: 32pt;
+  margin: 0;
+  border-radius: 12px;
 }
