@@ -12,6 +12,10 @@ export class UserService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
+  getUser(id: string | null) {
+    return this.http.get(AppSettings.STR_URL_GET_USER_BY_ID + id, AppSettings.httpOptions);
+  }
+
   loginUser(login: Login) {
     this.router.navigate(['/profile']);
 
