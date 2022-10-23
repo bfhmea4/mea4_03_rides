@@ -10,6 +10,7 @@ import {FizzbuzzService} from "../service/fizzbuzz.service";
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { OverviewComponent } from './OffersRequestsOverview/overview.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegisterComponent } from './register/register.component';
     FizzbuzzComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

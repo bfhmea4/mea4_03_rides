@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     }
     console.log("logging in user: " + login.email);
     this.router.navigate(["/profile"]);
+    // this.router.navigate(["/overview"]);
     this.userService.loginUser(login).subscribe(token => {
       if (!token) {
         this.router.navigate(['/login']);

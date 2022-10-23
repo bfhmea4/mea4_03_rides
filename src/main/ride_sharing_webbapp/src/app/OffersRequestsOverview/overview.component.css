@@ -1,0 +1,14 @@
+ul.clean {
+  list-style: none;
+  align-self: center;
+}
+li.item {
+  border-radius: 25px;
+  border: 1px solid #000;
+  background-color: #F0FFFF;
+  text-align: center;
+  margin: 5px;
+}
+button.clicked {
+
+}

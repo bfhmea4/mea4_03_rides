@@ -3,7 +3,6 @@ package com.spring.webtest.service;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.database.repositories.RideOfferRepository;
 import com.spring.webtest.exception.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
