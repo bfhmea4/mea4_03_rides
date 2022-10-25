@@ -1,1 +1,34 @@
-<p>profile works!</p>
+<div class="content">
+  <h2>My Profile</h2>
+
+  <div class="centered-content">
+    <div class="card-content rounded-content bordered-content profile-content">
+      <div>
+        <label class="profile-item-label">Firstname</label><br/>
+        <span #profileFirstname class="profile-item-value" contenteditable="false">{{user.firstName}}</span>
+      </div>
+      <div>
+        <label class="profile-item-label">Lastname</label><br/>
+        <span #profileLastname class="profile-item-value" contenteditable="false">{{user.lastName}}</span>
+      </div>
+      <div>
+        <label class="profile-item-label">Username</label><br/>
+        <span #profileUsername class="profile-item-value" contenteditable="false">Maxi12</span>
+      </div>
+      <div>
+        <label class="profile-item-label">Email</label><br/>
+        <span #profileEmail class="profile-item-value" contenteditable="false">{{user.email}}</span>
+      </div>
+      <div>
+        <label class="profile-item-label">Address</label><br/>
+        <span #profileAddress class="profile-item-value" contenteditable="false">{{user.address}}</span>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button id="profile-button-edit" class="button-row-button" (click)="edit()" [class.invisible]="editing == true">Edit</button>
+      <button id="profile-button-cancel" class="button-row-button" [class.invisible]="editing == false" (click)="cancel()">Cancel</button>
+      <button id="profile-button-save" class="button-row-button" (click)="save()" [class.invisible]="editing == false">Save</button>
+    </div>
+  </div>
+</div>

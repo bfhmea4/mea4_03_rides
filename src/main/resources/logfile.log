@@ -1,71 +1,28 @@
-2022-10-25 19:06:39.212  INFO 9940 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17.0.4.1 on JusIP15 with PID 9940 (C:\Users\julia\IdeaProjects\mea4_03_rides\target\classes started by julia in C:\Users\julia\IdeaProjects\mea4_03_rides)
-2022-10-25 19:06:39.219  INFO 9940 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
-2022-10-25 19:06:39.925  INFO 9940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-10-25 19:06:40.004  INFO 9940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 4 JPA repository interfaces.
-2022-10-25 19:06:40.596  INFO 9940 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-10-25 19:06:40.607  INFO 9940 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-25 19:06:40.608  INFO 9940 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-25 19:06:40.741  INFO 9940 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-25 19:06:40.741  INFO 9940 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1472 ms
-2022-10-25 19:06:40.798 DEBUG 9940 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
-2022-10-25 19:06:40.943  INFO 9940 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
-2022-10-25 19:06:40.944  INFO 9940 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
-2022-10-25 19:06:40.944  INFO 9940 --- [main] o.f.c.internal.license.VersionPrinter    : 
-2022-10-25 19:06:41.400  INFO 9940 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
-2022-10-25 19:06:41.487  INFO 9940 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.043s)
-2022-10-25 19:06:41.510  INFO 9940 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.3
-2022-10-25 19:06:41.511  INFO 9940 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
-2022-10-25 19:06:41.614  INFO 9940 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-10-25 19:06:41.674  INFO 9940 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-10-25 19:06:41.741  INFO 9940 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-10-25 19:06:41.833  INFO 9940 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
-2022-10-25 19:06:42.098  INFO 9940 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-10-25 19:06:42.248  INFO 9940 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-10-25 19:06:42.867  INFO 9940 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-10-25 19:06:42.875  INFO 9940 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-10-25 19:06:43.327  WARN 9940 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-10-25 19:06:43.703  INFO 9940 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-10-25 19:06:43.713  INFO 9940 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 5.025 seconds (JVM running for 5.972)
-2022-10-25 19:08:13.737  INFO 9940 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-25 19:08:13.738  INFO 9940 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-25 19:08:13.738  INFO 9940 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-25 19:08:13.748 DEBUG 9940 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:08:13.775 DEBUG 9940 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:08:13.780 DEBUG 9940 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:08:13.791  INFO 9940 --- [http-nio-8080-exec-4] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:08:13.992 DEBUG 9940 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:09:00.645 DEBUG 9940 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:09:00.647  INFO 9940 --- [http-nio-8080-exec-6] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:09:00.658 DEBUG 9940 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:09:53.418 DEBUG 9940 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:09:53.422  INFO 9940 --- [http-nio-8080-exec-2] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:09:53.442 DEBUG 9940 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:11.027 DEBUG 9940 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:11.031 DEBUG 9940 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:11.038 DEBUG 9940 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:11.042  INFO 9940 --- [http-nio-8080-exec-7] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:11:11.082 DEBUG 9940 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:12.175 DEBUG 9940 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:12.178  INFO 9940 --- [http-nio-8080-exec-8] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:11:12.194 DEBUG 9940 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:12.905 DEBUG 9940 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:11:12.907  INFO 9940 --- [http-nio-8080-exec-9] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:11:12.918 DEBUG 9940 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:12:38.225 DEBUG 9940 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:12:38.228  INFO 9940 --- [http-nio-8080-exec-1] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:12:38.246 DEBUG 9940 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:12:39.704 DEBUG 9940 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:12:39.709  INFO 9940 --- [http-nio-8080-exec-4] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:12:39.724 DEBUG 9940 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:12:40.504 DEBUG 9940 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:12:40.505  INFO 9940 --- [http-nio-8080-exec-6] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:12:40.514 DEBUG 9940 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:13:38.410 DEBUG 9940 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:13:38.411  INFO 9940 --- [http-nio-8080-exec-2] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:13:38.421 DEBUG 9940 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:15:10.637 DEBUG 9940 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:15:10.645  INFO 9940 --- [http-nio-8080-exec-3] c.s.w.controller.FizzBuzzController      : get all ride offers
-2022-10-25 19:15:10.662 DEBUG 9940 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
-2022-10-25 19:15:25.380  INFO 9940 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-10-25 19:15:25.382  INFO 9940 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-10-25 19:15:25.394  INFO 9940 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-25 18:52:44.120  INFO 21188 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17.0.5 on DESKTOP-KG7VN8U with PID 21188 (D:\dev\code\mea4_03_rides\target\classes started by Lukas in D:\dev\code\mea4_03_rides)
+2022-10-25 18:52:44.125  INFO 21188 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-10-25 18:52:44.616  INFO 21188 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-25 18:52:44.658  INFO 21188 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 4 JPA repository interfaces.
+2022-10-25 18:52:45.031  INFO 21188 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-25 18:52:45.038  INFO 21188 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-25 18:52:45.038  INFO 21188 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-25 18:52:45.128  INFO 21188 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-25 18:52:45.128  INFO 21188 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 962 ms
+2022-10-25 18:52:45.162 DEBUG 21188 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
+2022-10-25 18:52:45.241  INFO 21188 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-25 18:52:45.241  INFO 21188 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-25 18:52:45.241  INFO 21188 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-25 18:52:45.531  INFO 21188 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-10-25 18:52:45.590  INFO 21188 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.034s)
+2022-10-25 18:52:45.602  INFO 21188 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.3
+2022-10-25 18:52:45.635  INFO 21188 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-10-25 18:52:45.729  INFO 21188 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-25 18:52:45.750  INFO 21188 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-25 18:52:45.786  INFO 21188 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-25 18:52:45.831  INFO 21188 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-25 18:52:45.979  INFO 21188 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-25 18:52:46.071  INFO 21188 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-10-25 18:52:46.441  INFO 21188 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-25 18:52:46.447  INFO 21188 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-25 18:52:46.734  WARN 21188 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-25 18:52:47.002  INFO 21188 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-25 18:52:47.009  INFO 21188 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 3.172 seconds (JVM running for 3.682)

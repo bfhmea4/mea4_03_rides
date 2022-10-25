@@ -23,7 +23,7 @@ public class RideOfferController {
 
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @PostMapping("/ride-offer")
+    @PostMapping("/api/offer")
     ResponseEntity<RideOffer> post(@RequestBody RideOffer rideOffer) {
         logger.info("add ride offers");
         service.addRideOffer(rideOffer);
@@ -31,7 +31,7 @@ public class RideOfferController {
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @GetMapping("/ride-offer")
+    @GetMapping("/api/offers")
     ResponseEntity<List<RideOffer>> getAll() {
         logger.info("get all ride offers");
         List<RideOffer> rideOffers;
@@ -40,7 +40,7 @@ public class RideOfferController {
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @GetMapping("/ride-offer/{id}")
+    @GetMapping("/api/offer/{id}")
     ResponseEntity<RideOffer> get(@PathVariable long id) {
         logger.info("get ride offer with id: " + id);
         RideOffer rideOffer = service.findRideOfferById(id);
@@ -48,7 +48,7 @@ public class RideOfferController {
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @PutMapping("/ride-offer/{id}")
+    @PutMapping("/api/offer/{id}")
     ResponseEntity<RideOffer> update(@PathVariable long id, @RequestBody RideOffer rideOffer) {
         if (id != rideOffer.getId())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -63,7 +63,7 @@ public class RideOfferController {
 
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @DeleteMapping("/ride-offer/{id}")
+    @DeleteMapping("/api/offer/{id}")
     ResponseEntity<?> delete(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);
         try {

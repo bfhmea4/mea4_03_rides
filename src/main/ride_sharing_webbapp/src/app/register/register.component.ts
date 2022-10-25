@@ -20,19 +20,22 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(["/profile"]);
     //TODO: Check if the 2 Passwords are the same
     let user: User = {
-      id: 1,
-      firstname: data.firstname,
-      lastname: data.lastname,
-      username: data.username,
+      id: 0,
+      firstName: data.firstName,
+      lastName: data.lastName,
       email: data.email,
+      address: data.address,
       password: data.password
     }
-    this.userService.registerUser(user).subscribe(token => {
-      if (!token) {
+    console.log("try to post user: " + data);
+    this.userService.registerUser(user).subscribe(user => {
+      if (!user) {
         console.error("could not register, something went wrong");
+        localStorage.setItem("id", user.id);
+        console.log("returned user with id: " + user.id);
+        // localStorage.setItem("token", token);
+        this.router.navigate(["/profile"]);
       }
-      localStorage.setItem("token", token);
-      this.router.navigate(["/profile"]);
     })
   }
 
