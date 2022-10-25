@@ -18,6 +18,7 @@
   font-size: 24pt;
   margin-bottom: 0.3em;
   margin-top: 0;
+  box-sizing: border-box;
 }
 
 .button-red {
