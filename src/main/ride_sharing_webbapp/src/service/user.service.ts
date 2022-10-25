@@ -15,12 +15,17 @@ export class UserService {
 
 
 
-  getUser(id: string | null) {
+  getUser(id: string) {
     return this.http.get(AppSettings.STR_URL_GET_USER_BY_ID + id, AppSettings.httpOptions);
   }
 
   registerUser(user: User) {
     return this.http.post<any>(AppSettings.STR_URL_POST_USER, AppSettings.httpOptions);
+  }
+
+  updateUser(user: User) {
+    console.log(user)
+    return this.http.put<any>(AppSettings.STR_URL_PUT_USER, user, AppSettings.httpOptions)
   }
 
   loginUser(login: Login) {

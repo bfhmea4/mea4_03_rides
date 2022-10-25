@@ -7,6 +7,7 @@ import {OverviewComponent} from "./OffersRequestsOverview/overview.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'overview', component: OverviewComponent}

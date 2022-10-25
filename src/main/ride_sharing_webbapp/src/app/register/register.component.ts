@@ -21,10 +21,11 @@ export class RegisterComponent implements OnInit {
     //TODO: Check if the 2 Passwords are the same
     let user: User = {
       id: 1,
-      firstname: data.firstname,
-      lastname: data.lastname,
-      username: data.username,
+      firstName: data.firstname,
+      lastName: data.lastname,
+      userName: data.username,
       email: data.email,
+      address: data.address,
       password: data.password
     }
     this.userService.registerUser(user).subscribe(token => {
