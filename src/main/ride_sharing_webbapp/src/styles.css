@@ -8,11 +8,12 @@ button {
   --color-white: #ffffff;
   --color-gray-1: #777777;
   --color-red: #6D1414;
-  height: 100%;
 
   --foreground-color: #DDDDDD;
   --border-color: #000000;
   --content-text-color: #000000;
+  --nav-color: #000000;
+  --nav-text-color: #ffffff;
   --button-color: #6D1414;
   --button-text-color: #ffffff;
 }

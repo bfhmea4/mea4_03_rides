@@ -1,0 +1,13 @@
+<nav class="topnav">
+  <a href="/overview">Ride Sharing</a>
+  <!-- Navigation links (hidden by default) -->
+  <div id="nav-links" [style.display]="navShown ? 'block' : 'none'">
+    <a href="/overview">Offers & Requests</a>
+    <a href="/profile">Profile</a>
+    <a (click)="logout()">Logout</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" (click)="toggleNav()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </a>
+</nav>
