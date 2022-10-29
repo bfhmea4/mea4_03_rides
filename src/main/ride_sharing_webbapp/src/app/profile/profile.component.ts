@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 export class ProfileComponent implements OnInit {
   @ViewChild('profileFirstname', { static: true }) profileFirstname!: ElementRef;
   @ViewChild('profileLastname', { static: true }) profileLastname!: ElementRef;
-  @ViewChild('profileUsername', { static: true }) profileUsername!: ElementRef;
   @ViewChild('profileEmail', { static: true }) profileEmail!: ElementRef;
   @ViewChild('profileAddress', { static: true }) profileAddress!: ElementRef;
 
@@ -41,7 +40,6 @@ export class ProfileComponent implements OnInit {
   edit(): void {
     this.profileFirstname.nativeElement.contentEditable = true;
     this.profileLastname.nativeElement.contentEditable = true;
-    this.profileUsername.nativeElement.contentEditable = true;
     this.profileEmail.nativeElement.contentEditable = true;
     this.profileAddress.nativeElement.contentEditable = true;
 
@@ -51,7 +49,6 @@ export class ProfileComponent implements OnInit {
   cancel(): void {
     this.profileFirstname.nativeElement.contentEditable = false;
     this.profileLastname.nativeElement.contentEditable = false;
-    this.profileUsername.nativeElement.contentEditable = false;
     this.profileEmail.nativeElement.contentEditable = false;
     this.profileAddress.nativeElement.contentEditable = false;
 
@@ -62,11 +59,10 @@ export class ProfileComponent implements OnInit {
     let user = {
       id: this.user.id,
       password: this.user.password,
-      firstName: this.profileFirstname.nativeElement.innerHTML,
-      lastName: this.profileLastname.nativeElement.innerHTML,
-      userName: this.profileUsername.nativeElement.innerHTML,
-      email: this.profileEmail.nativeElement.innerHTML,
-      address: this.profileAddress.nativeElement.innerHTML
+      firstName: this.profileFirstname.nativeElement.value,
+      lastName: this.profileLastname.nativeElement.value,
+      email: this.profileEmail.nativeElement.value,
+      address: this.profileAddress.nativeElement.value
     } as User
 
     console.log("Updating profile of user: " + this.user.email);

@@ -34,6 +34,9 @@
   font-family: Arial, sans-serif;
   font-weight: bold;
   min-height: 20px;
+  background: none;
+  border: none;
+  font-size: inherit;
 }
 
 .button-row {
