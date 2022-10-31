@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../../service/user.service";
-import {User} from "../../model/User";
 import {Router} from "@angular/router";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-profile',
