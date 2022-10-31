@@ -1,7 +1,7 @@
 <div *ngIf="rideOfferFromStorage" class="content">
   <h2>Edit Ride Offer</h2>
   <form class="form" #UpdateRideOffer="ngForm" (ngSubmit)="onClickSubmitUpdate(UpdateRideOffer.value)">
-    <input name="id" hidden="true" [(ngModel)]="rideOfferFromStorage.id">
+    <input name="id" hidden [(ngModel)]="rideOfferFromStorage.id">
     <label>Title</label><br>
     <input class="text-input" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title" placeholder="enter title"><br>
     <label>Description</label><br>
