@@ -5,10 +5,33 @@ ul.clean {
 li.item {
   border-radius: 25px;
   border: 1px solid #000;
-  background-color: #F0FFFF;
+  background-color: white;
   text-align: center;
   margin: 5px;
+  width: 96%;
 }
-button.clicked {
 
+ul.hidden {
+  display: none;
+}
+
+button.selector {
+  alignment: center;
+  width: 48%;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+button.clicked {
+  background-color: white;
+
+}
+
+button.unClicked {
+  background-color: gray;
 }

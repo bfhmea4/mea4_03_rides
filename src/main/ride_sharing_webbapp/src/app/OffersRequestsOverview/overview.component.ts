@@ -14,6 +14,10 @@ export class OverviewComponent implements OnInit {
 
   rideOffers: RideOffer[] = [];
   rideRequests: RideRequest[] = [];
+  rideRequestsLoaded: boolean = false;
+  rideOffersLoaded: boolean = false;
+  rideRequestsBtnClicked: boolean = false;
+  rideOffersBtnClicked: boolean = true;
 
 
   constructor(private rideOfferService: rideOfferService,
@@ -29,41 +33,36 @@ export class OverviewComponent implements OnInit {
   }
 
 
-
   offersBtnClicked() {
-    this.changeColorOffersBtnClicked();
-    // @ts-ignore
-    document.getElementById("requestsList").hidden = true;
-    // @ts-ignore
-    document.getElementById("offersList").hidden = false;
     this.getAllOffers();
+    this.rideOffersBtnClicked = true;
+    this.rideRequestsBtnClicked = false;
   }
 
   requestsBtnClicked() {
-    this.changeColorRequestsBtnClicked();
-    // @ts-ignore
-    document.getElementById("offersList").hidden = true;
-    // @ts-ignore
-    document.getElementById("requestsList").hidden = false;
     this.getAllRequests();
+    this.rideRequestsBtnClicked = true;
+    this.rideOffersBtnClicked = false;
   }
 
-  getAllOffers(): any {
+  getAllOffers() {
     //TODO check localStorage for list
 
-    // let list = document.getElementById("offers-list");
-    // if (list) {
-    //   list.innerHTML
+    // if(!localStorage.getItem("token")) {
+    //   this.router.navigate(['/login']);
     // }
+    // if (!this.rideOffersLoaded) {
+    //   this.rideOffers = localStorage.getItem("rideOffers")
+    // } else {
     console.log("sending GET ALL OFFERS request...");
     this.rideOffers = [];
     this.rideOfferService.getAllOffers().subscribe(offers => {
-      // if(!localStorage.getItem("token")) {
-      //   this.router.navigate(['/login']);
-      // }
+      // localStorage.setItem("rideOffers", offers)
+      //
       this.rideOffers = <RideOffer[]>offers;
+      // this.rideOffersLoaded = true;
     })
-
+    // }
   }
 
   getAllRequests() {
@@ -78,19 +77,5 @@ export class OverviewComponent implements OnInit {
       this.rideRequests = <RideRequest[]>requests;
     })
 
-  }
-
-  changeColorOffersBtnClicked() {
-    // @ts-ignore
-    document.getElementById("offersBtn").style.backgroundColor = 'white'
-    // @ts-ignore
-    document.getElementById("requestsBtn").style.backgroundColor = 'grey';
-  }
-
-  changeColorRequestsBtnClicked() {
-    // @ts-ignore
-    document.getElementById("offersBtn").style.backgroundColor = 'grey'
-    // @ts-ignore
-    document.getElementById("requestsBtn").style.backgroundColor = 'white';
   }
 }
