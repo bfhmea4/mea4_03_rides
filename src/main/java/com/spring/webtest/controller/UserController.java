@@ -41,6 +41,7 @@ public class UserController {
     ResponseEntity<UserDto> create(@RequestBody User user) {
         System.out.println("******\nController: Try to save User: " + user.getFirstName() + "\n******");
         UserDto userDto = service.save(user);
+        System.out.println(userDto.getEmail());
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
