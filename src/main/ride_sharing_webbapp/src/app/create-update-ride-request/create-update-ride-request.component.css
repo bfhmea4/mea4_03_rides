@@ -1,0 +1,19 @@
+.text-input {
+  width: 90%;
+  align-self: center;
+  border-radius: 5px;
+  padding: 0.4em;
+  font-size: 24pt;
+  margin-bottom: 0.3em;
+  margin-top: 0;
+}
+
+.button-red {
+  color: var(--color-white);
+  background-color: var(--color-red);
+  width: 90%;
+  padding: 0.1em;
+  font-size: 32pt;
+  margin: 10px;
+  border-radius: 12px;
+}

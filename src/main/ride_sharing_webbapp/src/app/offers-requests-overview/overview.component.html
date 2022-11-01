@@ -1,0 +1,29 @@
+<div class="content">
+  <button class="selector" [ngClass]="rideOffersBtnClicked ? 'clicked' : 'unClicked'" (click)="offersBtnClicked()">
+    Offers
+  </button>
+  <button class="selector" [ngClass]="rideRequestsBtnClicked ? 'clicked' : 'unClicked'" (click)="requestsBtnClicked()">
+    Requests
+  </button>
+  <button class="add" (click)="navigateToNewOfferView()">+</button>
+  <br>
+  <ul id="offersList" class="clean" *ngIf="rideOffersBtnClicked">
+    <li class="item" *ngFor="let rideOffer of rideOffers">
+      <div (click)="onClickOfferItem(rideOffer)">
+        <span hidden="true">{{rideOffer.id}}</span><br>
+        <h2>{{rideOffer.title}}</h2><br>
+        <p>{{rideOffer.description}}</p>
+      </div>
+    </li>
+  </ul>
+  <ul id="requestsList" class="clean" *ngIf="rideRequestsBtnClicked">
+    <li class="item" *ngFor="let rideRequest of rideRequests">
+      <div (click)="onClickRequestItem(rideRequest)">
+        <span hidden="true">{{rideRequest.id}}</span><br>
+        <!--      <h2>{{rideRequest.title}}</h2><br>-->
+        <p>{{rideRequest.content}}</p>
+      </div>
+
+    </li>
+  </ul>
+</div>

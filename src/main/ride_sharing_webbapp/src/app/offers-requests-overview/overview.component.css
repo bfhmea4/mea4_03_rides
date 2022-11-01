@@ -1,0 +1,59 @@
+ul.clean {
+  list-style: none;
+  align-self: center;
+}
+li.item {
+  border-radius: 25px;
+  border: 1px solid #000;
+  background-color: white;
+  text-align: center;
+  margin: 5px;
+  width: 96.5%;
+}
+
+li:hover {
+  background-color: var(--color-gray-1);
+}
+
+ul.hidden {
+  display: none;
+}
+button {
+  alignment: center;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+button.selector {
+  width: 48%;
+  color: var(--color-black);
+}
+
+button.selector:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+button.add {
+  width: 97.6%;
+  padding: 25px 25px;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+}
+
+button.add:hover {
+  background-color: lightcoral;
+}
+
+button.clicked {
+  background-color: var(--color-white);
+
+}
+
+button.unClicked {
+  background-color: gray;
+}

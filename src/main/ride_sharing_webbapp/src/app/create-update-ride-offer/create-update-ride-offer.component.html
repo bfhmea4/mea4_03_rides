@@ -1,0 +1,25 @@
+<div *ngIf="rideOfferFromStorage" class="content">
+  <h2>Edit Ride Offer</h2>
+  <form class="form" #UpdateRideOffer="ngForm" (ngSubmit)="onClickSubmitUpdate(UpdateRideOffer.value)">
+    <input name="id" hidden [(ngModel)]="rideOfferFromStorage.id">
+    <label>Title</label><br>
+    <input class="text-input" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title" placeholder="enter title"><br>
+    <label>Description</label><br>
+    <input class="text-input" name="description" type=text [(ngModel)]="rideOfferFromStorage.description" placeholder="enter description">
+    <button class="input-button-red" type="submit">Save</button>
+    <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
+    <button class="input-button-red" type="button" (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete</button>
+  </form>
+</div>
+
+<div *ngIf="!rideOfferFromStorage" class="content">
+  <h2>Create Ride Offer</h2>
+  <form class="form" #CreateRideOffer="ngForm" (ngSubmit)="onClickSubmitCreate(CreateRideOffer.value)">
+    <label>Title</label><br>
+    <input class="text-input" name="newTitle" type="text" placeholder="enter title" ngModel><br>
+    <label>Description</label><br>
+    <input class="text-input" name="newDescription" type=text placeholder="enter description" ngModel>
+    <button class="input-button-red" type="submit">Save</button>
+    <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
+  </form>
+</div>
