@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../service/user.service";
-import {User} from "../../model/User";
-import {Router} from "@angular/router";
+import { UserService } from "../../service/user.service";
+import { Router } from "@angular/router";
+import { User } from "../../model/User";
 
 @Component({
   selector: 'app-register',
@@ -17,22 +17,25 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickSubmit(data: any) {
-      this.router.navigate(["/profile"]);
+      // this.router.navigate(["/profile"]);
     //TODO: Check if the 2 Passwords are the same
-    let user: User = {
-      id: 1,
-      firstName: data.firstname,
-      lastName: data.lastname,
-      email: data.email,
-      address: data.address,
-      password: data.password
-    }
-    this.userService.registerUser(user).subscribe(token => {
-      if (!token) {
+    console.log(data.firstName);
+      let user: any = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        address: data.address,
+        password: data.password
+    } as User;
+    this.userService.registerUser(user).subscribe(user => {
+      if (user) {
+        localStorage.setItem("id", String(user.id));
+        console.log("returned user with id: " + user.id);
+        // localStorage.setItem("token", token);
+        this.router.navigate(["/profile"]);
+      } else {
         console.error("could not register, something went wrong");
       }
-      localStorage.setItem("token", token);
-      this.router.navigate(["/profile"]);
     })
   }
 

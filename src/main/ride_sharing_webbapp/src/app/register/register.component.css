@@ -1,0 +1,15 @@
+.content {
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.text-input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.4em;
+  font-size: 24pt;
+  margin-bottom: 0.3em;
+  margin-top: 0;
+  box-sizing: border-box;
+}
