@@ -1,13 +1,13 @@
 <div class="content">
   <h2>Register now</h2>
 
-  <form class="form" #userRegister="ngForm" (ngSubmit)="onClickSubmit(userRegister.value)" >
-    <input class="text-input" name="firstname" type="text" placeholder="Firstname" required>
-    <input class="text-input" name="lastname" type="text" placeholder="Lastname" required>
-    <input class="text-input" name="email" type="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
-    <input class="text-input" name="address" type="text" placeholder="Address" required>
-    <input class="text-input" name="password" type="password" placeholder="Password" required>
-    <input class="text-input" name="passwordRepeat" type="password" placeholder="Password repeated" required>
-    <input class="input-button-red" type="submit" value="Register">
+  <form class="form" #userRegistration="ngForm" (ngSubmit)="onClickSubmit(userRegistration.value)" >
+    <input class="text-input" name="firstName" type="text" placeholder="Firstname" required ngModel>
+    <input class="text-input" name="lastName" type="text" placeholder="Lastname" required ngModel>
+    <input class="text-input" name="email" type="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required ngModel>
+    <input class="text-input" name="address" type="text" placeholder="Address" required ngModel>
+    <input class="text-input" name="password" type="password" placeholder="Password" required ngModel>
+    <input class="text-input" name="passwordRepeat" type="password" placeholder="Password repeated" required ngModel>
+    <input class="input-button-red" type="submit" value="Register">d
   </form>
 </div>
