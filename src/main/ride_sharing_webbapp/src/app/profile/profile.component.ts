@@ -22,12 +22,11 @@ export class ProfileComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    let userId = localStorage.getItem("userId")
+    let userId = localStorage.getItem("userId");
     if (!userId) {
       this.router.navigate(['/login']);
       return
     }
-
     this.userService.getUser(userId).subscribe(user => {
       if (!user) {
         this.router.navigate(['/login']);

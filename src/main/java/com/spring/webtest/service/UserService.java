@@ -2,6 +2,7 @@ package com.spring.webtest.service;
 
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
+import com.spring.webtest.dto.LoginDto;
 import com.spring.webtest.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,10 @@ public class UserService {
         return userToDto(repository.findById(id).orElse(null));
     }
 
+    public UserDto getByEmail(String email) {
+        return userToDto(repository.findByEmail(email));
+    }
+
     public UserDto save(User user) {
         return userToDto(repository.save(user));
     }
@@ -41,6 +46,14 @@ public class UserService {
 
     public void delete(long id) {
         repository.deleteById(id);
+    }
+
+    public UserDto compareCredentials(LoginDto loginDto) {
+        User user = repository.findByEmail(loginDto.getEmail());
+        if (user.getPassword().equals(loginDto.getPassword())){
+            return userToDto(user);
+        }
+        return null;
     }
 
     private UserDto userToDto(User user) {
@@ -54,4 +67,5 @@ public class UserService {
                 user.getEmail(),
                 user.getAddress());
     }
+
 }
