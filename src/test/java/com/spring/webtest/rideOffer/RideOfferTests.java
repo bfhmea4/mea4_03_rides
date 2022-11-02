@@ -2,6 +2,8 @@ package com.spring.webtest.rideOffer;
 
 import com.spring.webtest.WebTestApplication;
 import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.database.entities.User;
+import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.service.RideOfferService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -40,31 +42,35 @@ public class RideOfferTests {
 
     @Test
     public void createRideOfferTest() {
-        RideOffer rideOffer = new RideOffer("Create Test", "I'm new!");
-        RideOffer created = rideOfferInvoker.createOffer(rideOffer);
-        RideOffer getCreated = rideOfferInvoker.getOffer(created.getId());
+        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
+        RideOffer rideOffer = new RideOffer("Create Test", "I'm new!", user);
+        RideOfferDto created = rideOfferInvoker.createOffer(rideOffer);
+        RideOfferDto getCreated = rideOfferInvoker.getOffer(created.getId());
         assertEquals(created.getTitle(), getCreated.getTitle());
     }
 
     @Test
     public void updateRideOfferTest() {
-        RideOffer rideOffer = new RideOffer("OfferToUpdate", "Need Update");
-        RideOffer created = rideOfferInvoker.createOffer(rideOffer);
-        RideOffer newRideOffer = new RideOffer(created.getId(), "UpdatedOffer", "Updated!");
-        rideOfferInvoker.updateOffer(newRideOffer);
-        RideOffer updated = rideOfferInvoker.getOffer(newRideOffer.getId());
-        assertEquals(updated.getId(), newRideOffer.getId());
-        assertEquals("UpdatedOffer", updated.getTitle());
-        assertEquals("Updated!",updated.getDescription());
+        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
+        RideOffer rideOffer = new RideOffer("OfferToUpdate", "Need Update", user);
+        RideOfferDto created = rideOfferInvoker.createOffer(rideOffer);
+        System.out.println(created.toString());
+        RideOffer rideOfferToUpdate = new RideOffer(created.getId(), "UpdatedOffer", "Updated!", user);
+        RideOfferDto updatedRideOffer = rideOfferInvoker.updateOffer(rideOfferToUpdate);
+        RideOfferDto getUpdatedRideOffer = rideOfferInvoker.getOffer(updatedRideOffer.getId());
+        assertEquals(getUpdatedRideOffer.getId(), updatedRideOffer.getId());
+        assertEquals("UpdatedOffer", getUpdatedRideOffer.getTitle());
+        assertEquals("Updated!",getUpdatedRideOffer.getDescription());
     }
 
     @Test
     public void deleteRideOfferTest() {
-        RideOffer created = rideOfferInvoker.createOffer(new RideOffer("OfferToDelete", "Delete Me!"));
-        RideOffer getCreated = rideOfferInvoker.getOffer(created.getId());
+        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
+        RideOfferDto created = rideOfferInvoker.createOffer(new RideOffer("OfferToDelete", "Delete Me!", user));
+        RideOfferDto getCreated = rideOfferInvoker.getOffer(created.getId());
         assertEquals(created.getId(), getCreated.getId());
         rideOfferInvoker.deleteOffer(created.getId());
-        RideOffer deleted = rideOfferInvoker.getOffer(created.getId());
+        RideOfferDto deleted = rideOfferInvoker.getOffer(created.getId());
         assertEquals(null, deleted);
     }
 }
