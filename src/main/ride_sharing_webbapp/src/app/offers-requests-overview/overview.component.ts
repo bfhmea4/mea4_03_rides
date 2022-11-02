@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {RideOffer} from "../../model/RideOffer";
 import {rideRequestService} from "../../service/rideRequest.service";
 import {RideRequest} from "../../model/RideRequest";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-ride-offer',
@@ -16,6 +17,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   rideRequests: RideRequest[] = [];
   rideRequestsBtnClicked: boolean = false;
   rideOffersBtnClicked: boolean = true;
+  isLoggedIn: boolean = false;
+  userString: string|null = localStorage.getItem("user");
+  user?: User;
 
 
   constructor(private rideOfferService: rideOfferService,
@@ -30,13 +34,17 @@ export class OverviewComponent implements OnInit, OnDestroy {
     } else {
       this.offersBtnClicked()
     }
-    localStorage.setItem("selected-ride-request", "")
-    localStorage.setItem("selected-ride-offer", "")
+    localStorage.removeItem("selected-ride-request")
+    localStorage.removeItem("selected-ride-offer")
+    if(this.userString) {
+      this.user = JSON.parse(this.userString);
+      this.isLoggedIn = true;
+    }
   }
 
   ngOnDestroy(): void {
-    localStorage.setItem("ride-offers", "");
-    localStorage.setItem("ride-requests", "");
+    localStorage.removeItem("ride-offers");
+    localStorage.removeItem("ride-requests");
   }
 
 
@@ -102,12 +110,12 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   navigateToNewOfferView() {
     if (this.rideOffersBtnClicked) {
-      localStorage.setItem("selected-ride-offer", "");
+      localStorage.removeItem("selected-ride-offer");
       this.router.navigate(['/ride-offer']);
 
     }
     if (this.rideRequestsBtnClicked) {
-      localStorage.setItem("selected-ride-request", "");
+      localStorage.removeItem("selected-ride-request");
       this.router.navigate(['/ride-request']);
     }
   }

@@ -8645,3 +8645,443 @@ Original Stack Trace:
 2022-11-02 12:20:18.825  INFO 14460 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-11-02 12:20:18.828  INFO 14460 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-11-02 12:20:18.840  INFO 14460 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-02 17:20:23.536  INFO 14764 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17.0.4.1 on JusIP15 with PID 14764 (C:\Users\julia\IdeaProjects\mea4_03_rides\target\classes started by julia in C:\Users\julia\IdeaProjects\mea4_03_rides)
+2022-11-02 17:20:23.543  INFO 14764 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-11-02 17:20:24.442  INFO 14764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-02 17:20:24.538  INFO 14764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 4 JPA repository interfaces.
+2022-11-02 17:20:25.237  INFO 14764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-02 17:20:25.252  INFO 14764 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-02 17:20:25.252  INFO 14764 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-02 17:20:25.417  INFO 14764 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-02 17:20:25.417  INFO 14764 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1808 ms
+2022-11-02 17:20:25.495 DEBUG 14764 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
+2022-11-02 17:20:25.647  INFO 14764 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-11-02 17:20:25.647  INFO 14764 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-11-02 17:20:25.647  INFO 14764 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-11-02 17:20:26.188  INFO 14764 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-11-02 17:20:26.322  INFO 14764 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.065s)
+2022-11-02 17:20:26.354  INFO 14764 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.3
+2022-11-02 17:20:26.357  INFO 14764 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-11-02 17:20:26.480  INFO 14764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-02 17:20:26.525  INFO 14764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-02 17:20:26.591  INFO 14764 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-02 17:20:26.712  INFO 14764 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-11-02 17:20:27.013  INFO 14764 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-02 17:20:27.190  INFO 14764 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-11-02 17:20:27.894  INFO 14764 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-02 17:20:27.909  INFO 14764 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-02 17:20:28.398  WARN 14764 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-02 17:20:28.842  INFO 14764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-02 17:20:28.852  INFO 14764 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 6.021 seconds (JVM running for 7.11)
+2022-11-02 17:24:40.397  INFO 14764 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-02 17:24:40.398  INFO 14764 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-02 17:24:40.399  INFO 14764 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-02 17:24:40.416 DEBUG 14764 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:40.448 DEBUG 14764 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:40.455 DEBUG 14764 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:40.744 DEBUG 14764 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:24:40.787 DEBUG 14764 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:40.792 DEBUG 14764 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:40.797 DEBUG 14764 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:40.845 DEBUG 14764 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:57.460 DEBUG 14764 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:57.472 DEBUG 14764 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:24:57.496 DEBUG 14764 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:24:57.505 DEBUG 14764 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:27:08.912 DEBUG 14764 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:27:08.919 DEBUG 14764 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:27:08.944 DEBUG 14764 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:27:08.956 DEBUG 14764 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/user/4, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:29:07.380  INFO 14764 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-02 17:29:07.382  INFO 14764 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-02 17:29:07.393  INFO 14764 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-02 17:30:25.262  INFO 824 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17.0.4.1 on JusIP15 with PID 824 (C:\Users\julia\IdeaProjects\mea4_03_rides\target\classes started by julia in C:\Users\julia\IdeaProjects\mea4_03_rides)
+2022-11-02 17:30:25.266  INFO 824 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-11-02 17:30:26.118  INFO 824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-02 17:30:26.185  INFO 824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 4 JPA repository interfaces.
+2022-11-02 17:30:26.769  INFO 824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-02 17:30:26.779  INFO 824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-02 17:30:26.779  INFO 824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-02 17:30:26.921  INFO 824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-02 17:30:26.921  INFO 824 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1595 ms
+2022-11-02 17:30:26.988 DEBUG 824 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
+2022-11-02 17:30:27.266  INFO 824 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-11-02 17:30:27.266  INFO 824 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-11-02 17:30:27.266  INFO 824 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-11-02 17:30:27.601  INFO 824 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-11-02 17:30:27.665  INFO 824 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.032s)
+2022-11-02 17:30:27.687  INFO 824 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.3
+2022-11-02 17:30:27.688  INFO 824 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-11-02 17:30:27.761  INFO 824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-02 17:30:27.804  INFO 824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-02 17:30:27.859  INFO 824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-02 17:30:27.908  INFO 824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-11-02 17:30:28.115  INFO 824 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-02 17:30:28.262  INFO 824 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-11-02 17:30:28.860  INFO 824 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-02 17:30:28.868  INFO 824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-02 17:30:29.268  WARN 824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-02 17:30:29.620  INFO 824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-02 17:30:29.631  INFO 824 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 4.897 seconds (JVM running for 6.051)
+2022-11-02 17:30:58.059  INFO 824 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-02 17:30:58.059  INFO 824 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-02 17:30:58.061  INFO 824 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-11-02 17:30:58.073 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:30:58.352 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:31:10.735 DEBUG 824 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:10.743 DEBUG 824 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:10.763 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:10.770  INFO 824 --- [http-nio-8080-exec-3] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:31:10.842 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:15.062 DEBUG 824 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:15.064 DEBUG 824 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:15.067 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:31:15.069  INFO 824 --- [http-nio-8080-exec-5] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:31:15.084 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:38:00.161 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:38:00.170 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:38:06.477 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:38:06.481  INFO 824 --- [http-nio-8080-exec-7] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:38:06.504 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:47:46.961 DEBUG 824 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:47:46.973 DEBUG 824 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:48:03.781 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:48:03.785  INFO 824 --- [http-nio-8080-exec-1] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:48:03.802 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:52:44.169 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:52:44.176 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"first@user.com","password":"1234"}]
+2022-11-02 17:52:50.570 DEBUG 824 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:52:50.574  INFO 824 --- [http-nio-8080-exec-4] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:52:50.596 DEBUG 824 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:52:58.568 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:52:58.571  INFO 824 --- [http-nio-8080-exec-5] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:52:58.582 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:54:45.982 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:54:45.984  INFO 824 --- [http-nio-8080-exec-8] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:54:45.995 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:54:58.242 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:54:58.244  INFO 824 --- [http-nio-8080-exec-7] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:54:58.257 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:55:38.340 DEBUG 824 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/offer/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:55:38.341 DEBUG 824 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/offer/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:55:38.343 DEBUG 824 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/offer/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:55:38.353  INFO 824 --- [http-nio-8080-exec-10] c.s.w.controller.FizzBuzzController      : add ride offers
+2022-11-02 17:55:38.394 DEBUG 824 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/offer/, client=0:0:0:0:0:0:0:1, payload={"id":0,"title":"fawfawf","description":"fawafd","]
+2022-11-02 17:55:38.411 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:55:38.414  INFO 824 --- [http-nio-8080-exec-1] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:55:38.426 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:57:38.509 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:57:38.512  INFO 824 --- [http-nio-8080-exec-3] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:57:38.535 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:18.815 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/user/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:18.817 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/user/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:18.820 DEBUG 824 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:18.833 DEBUG 824 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user/, client=0:0:0:0:0:0:0:1, payload={"firstName":"second","lastName":"user","email":"s]
+2022-11-02 17:59:28.177 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:28.181  INFO 824 --- [http-nio-8080-exec-8] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:59:28.196 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:45.769 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 17:59:45.770  INFO 824 --- [http-nio-8080-exec-7] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 17:59:45.779 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:00:31.809 DEBUG 824 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:00:31.811  INFO 824 --- [http-nio-8080-exec-9] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:00:31.830 DEBUG 824 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:31.021 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:31.024 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:31.028 DEBUG 824 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:31.037 DEBUG 824 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"second@user.com","password":"1234"}]
+2022-11-02 18:06:42.351 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:42.354 DEBUG 824 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:42.362 DEBUG 824 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:42.365  INFO 824 --- [http-nio-8080-exec-4] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:06:42.382 DEBUG 824 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:45.736 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:45.738  INFO 824 --- [http-nio-8080-exec-5] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:06:45.749 DEBUG 824 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:47.168 DEBUG 824 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:47.170  INFO 824 --- [http-nio-8080-exec-6] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:06:47.181 DEBUG 824 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:51.860 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/offer/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:51.860  INFO 824 --- [http-nio-8080-exec-8] c.s.w.controller.FizzBuzzController      : add ride offers
+2022-11-02 18:06:51.867 DEBUG 824 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/offer/, client=0:0:0:0:0:0:0:1, payload={"id":0,"title":"gfqgae","description":"agwaa","us]
+2022-11-02 18:06:51.880 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:06:51.882  INFO 824 --- [http-nio-8080-exec-7] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:06:51.896 DEBUG 824 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:04.800 DEBUG 824 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:04.801 DEBUG 824 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:04.803 DEBUG 824 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:04.809  INFO 824 --- [http-nio-8080-exec-10] c.s.w.controller.FizzBuzzController      : delete ride offer with id: 3
+2022-11-02 18:07:04.820 DEBUG 824 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:04.827 ERROR 824 --- [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.spring.webtest.exception.ResourceNotFoundException: Update Request: Ride Request with id: 3 not found] with root cause
+
+com.spring.webtest.exception.ResourceNotFoundException: Update Request: Ride Request with id: 3 not found
+	at com.spring.webtest.service.RideRequestService.lambda$deleteRideRequestById$2(RideRequestService.java:50) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.spring.webtest.service.RideRequestService.deleteRideRequestById(RideRequestService.java:49) ~[classes/:na]
+	at com.spring.webtest.controller.RideRequestController.deleteRideRequestById(RideRequestController.java:69) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:289) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-11-02 18:07:38.584 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:38.589  INFO 824 --- [http-nio-8080-exec-1] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:07:38.608 DEBUG 824 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:41.138 DEBUG 824 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:41.139  INFO 824 --- [http-nio-8080-exec-2] c.s.w.controller.FizzBuzzController      : delete ride offer with id: 3
+2022-11-02 18:07:41.144 DEBUG 824 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:07:41.144 ERROR 824 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.spring.webtest.exception.ResourceNotFoundException: Update Request: Ride Request with id: 3 not found] with root cause
+
+com.spring.webtest.exception.ResourceNotFoundException: Update Request: Ride Request with id: 3 not found
+	at com.spring.webtest.service.RideRequestService.lambda$deleteRideRequestById$2(RideRequestService.java:50) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.spring.webtest.service.RideRequestService.deleteRideRequestById(RideRequestService.java:49) ~[classes/:na]
+	at com.spring.webtest.controller.RideRequestController.deleteRideRequestById(RideRequestController.java:69) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:289) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-11-02 18:14:45.160  INFO 1304 --- [main] com.spring.webtest.WebTestApplication    : Starting WebTestApplication using Java 17.0.4.1 on JusIP15 with PID 1304 (C:\Users\julia\IdeaProjects\mea4_03_rides\target\classes started by julia in C:\Users\julia\IdeaProjects\mea4_03_rides)
+2022-11-02 18:14:45.165  INFO 1304 --- [main] com.spring.webtest.WebTestApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-11-02 18:14:46.120  INFO 1304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-02 18:14:46.227  INFO 1304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+2022-11-02 18:14:47.086  INFO 1304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-02 18:14:47.102  INFO 1304 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-02 18:14:47.103  INFO 1304 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-02 18:14:47.283  INFO 1304 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-02 18:14:47.284  INFO 1304 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2049 ms
+2022-11-02 18:14:47.386 DEBUG 1304 --- [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
+2022-11-02 18:14:47.566  INFO 1304 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-11-02 18:14:47.567  INFO 1304 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-11-02 18:14:47.568  INFO 1304 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-11-02 18:14:48.117  INFO 1304 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/fizzbuzz (MySQL 8.0)
+2022-11-02 18:14:48.223  INFO 1304 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.056s)
+2022-11-02 18:14:48.248  INFO 1304 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fizzbuzz`: 1.0.3
+2022-11-02 18:14:48.252  INFO 1304 --- [main] o.f.core.internal.command.DbMigrate      : Schema `fizzbuzz` is up to date. No migration necessary.
+2022-11-02 18:14:48.404  INFO 1304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-02 18:14:48.462  INFO 1304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-02 18:14:48.527  INFO 1304 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-02 18:14:48.668  INFO 1304 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-11-02 18:14:49.003  INFO 1304 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-02 18:14:49.236  INFO 1304 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-11-02 18:14:50.062  INFO 1304 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-02 18:14:50.081  INFO 1304 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-02 18:14:50.775  WARN 1304 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-02 18:14:51.313  INFO 1304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-02 18:14:51.324  INFO 1304 --- [main] com.spring.webtest.WebTestApplication    : Started WebTestApplication in 6.872 seconds (JVM running for 8.167)
+2022-11-02 18:15:25.301  INFO 1304 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-02 18:15:25.302  INFO 1304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-02 18:15:25.304  INFO 1304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-02 18:15:25.328 DEBUG 1304 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:25.393 DEBUG 1304 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:25.405 DEBUG 1304 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:25.846 DEBUG 1304 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"second@user.com","password":"1234"}]
+2022-11-02 18:15:37.590 DEBUG 1304 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:37.596 DEBUG 1304 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:37.608 DEBUG 1304 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:37.615  INFO 1304 --- [http-nio-8080-exec-3] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:15:37.720 DEBUG 1304 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:44.466 DEBUG 1304 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:44.469 DEBUG 1304 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:44.471 DEBUG 1304 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:44.475  INFO 1304 --- [http-nio-8080-exec-6] c.s.w.controller.FizzBuzzController      : delete ride offer with id: 3
+2022-11-02 18:15:44.502 DEBUG 1304 --- [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/requests/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:15:44.508 ERROR 1304 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.spring.webtest.exception.ResourceNotFoundException: Update Request: Ride Request with id: 3 not found] with root cause
+
+com.spring.webtest.exception.ResourceNotFoundException: Update Request: Ride Request with id: 3 not found
+	at com.spring.webtest.service.RideRequestService.lambda$deleteRideRequestById$2(RideRequestService.java:50) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.spring.webtest.service.RideRequestService.deleteRideRequestById(RideRequestService.java:49) ~[classes/:na]
+	at com.spring.webtest.controller.RideRequestController.deleteRideRequestById(RideRequestController.java:69) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:289) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-11-02 18:16:14.191 DEBUG 1304 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:16:14.196  INFO 1304 --- [http-nio-8080-exec-2] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:16:14.235 DEBUG 1304 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:16:36.399 DEBUG 1304 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:16:36.401 DEBUG 1304 --- [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:16:36.404 DEBUG 1304 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:16:36.406  INFO 1304 --- [http-nio-8080-exec-9] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:16:36.423 DEBUG 1304 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:42.136 DEBUG 1304 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/offer/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:42.138 DEBUG 1304 --- [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/offer/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:42.140 DEBUG 1304 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/offer/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:42.143  INFO 1304 --- [http-nio-8080-exec-7] c.s.w.controller.FizzBuzzController      : delete ride offer with id: 3
+2022-11-02 18:17:42.184 DEBUG 1304 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/offer/3, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:42.200 DEBUG 1304 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:42.205  INFO 1304 --- [http-nio-8080-exec-4] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:17:42.220 DEBUG 1304 --- [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:45.270 DEBUG 1304 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:17:45.273  INFO 1304 --- [http-nio-8080-exec-3] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:17:45.293 DEBUG 1304 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:18:06.709 DEBUG 1304 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:18:06.710  INFO 1304 --- [http-nio-8080-exec-5] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:18:06.730 DEBUG 1304 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/requests/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:19:47.659 DEBUG 1304 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:19:47.670 DEBUG 1304 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"second@user.com","password":"1234"}]
+2022-11-02 18:21:36.810 DEBUG 1304 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/user/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:21:36.812 DEBUG 1304 --- [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [OPTIONS /api/user/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:21:36.815 DEBUG 1304 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/user/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:21:36.870 DEBUG 1304 --- [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/user/, client=0:0:0:0:0:0:0:1, payload={"firstName":"third","lastName":"user","email":"th]
+2022-11-02 18:23:46.163 DEBUG 1304 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/login, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:23:46.177 DEBUG 1304 --- [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/login, client=0:0:0:0:0:0:0:1, payload={"email":"second@user.com","password":"1234"}]
+2022-11-02 18:27:31.295 DEBUG 1304 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:27:31.300  INFO 1304 --- [http-nio-8080-exec-3] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:27:31.321 DEBUG 1304 --- [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:27:36.711 DEBUG 1304 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/offers/, client=0:0:0:0:0:0:0:1]
+2022-11-02 18:27:36.715  INFO 1304 --- [http-nio-8080-exec-5] c.s.w.controller.FizzBuzzController      : get all ride offers
+2022-11-02 18:27:36.726 DEBUG 1304 --- [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/offers/, client=0:0:0:0:0:0:0:1]

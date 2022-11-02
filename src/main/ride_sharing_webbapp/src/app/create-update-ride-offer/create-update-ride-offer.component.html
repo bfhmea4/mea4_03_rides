@@ -6,9 +6,9 @@
     <input class="text-input" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title" placeholder="enter title"><br>
     <label>Description</label><br>
     <input class="text-input" name="description" type=text [(ngModel)]="rideOfferFromStorage.description" placeholder="enter description">
-    <button class="input-button-red" type="submit">Save</button>
+    <button *ngIf="isOwner" class="input-button-red" type="submit">Save</button>
     <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
-    <button class="input-button-red" type="button" (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete</button>
+    <button *ngIf="isOwner" class="input-button-red" type="button" (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete</button>
   </form>
 </div>
 
@@ -19,7 +19,7 @@
     <input class="text-input" name="newTitle" type="text" placeholder="enter title" ngModel><br>
     <label>Description</label><br>
     <input class="text-input" name="newDescription" type=text placeholder="enter description" ngModel>
-    <button class="input-button-red" type="submit">Save</button>
+    <button *ngIf="isLoggedIn" class="input-button-red" type="submit">Save</button>
     <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
   </form>
 </div>
