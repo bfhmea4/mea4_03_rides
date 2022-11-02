@@ -27,21 +27,12 @@ export class LoginComponent implements OnInit {
       if (user) {
         console.log("logged in User with id " + user.id + "and email:" + user.email);
         localStorage.setItem("userId", user.id);
+        localStorage.setItem("user", JSON.stringify(user));
         this.router.navigate(["/profile"]);
       } else {
         console.error("could not login user!!")
       }
     })
-    // localStorage.setItem("userId", "4")
-    // this.router.navigate(["/profile"]);
-    // // this.router.navigate(["/overview"]);
-    // this.userService.loginUser(login).subscribe(token => {
-    //   if (!token) {
-    //     this.router.navigate(['/login']);
-    //   }
-    //   localStorage.setItem("token", token);
-    //   console.log("logged in successfully");
-    // });
   }
 
   navigateToRegister() {
