@@ -5,7 +5,9 @@
     <label>Title</label><br>
     <input class="text-input" name="title" type="text" [(ngModel)]="rideRequestFromStorage.title" placeholder="enter title"><br>
     <label>Content</label><br>
-    <input class="text-input" name="description" type=text [(ngModel)]="rideRequestFromStorage.description" placeholder="enter description">
+    <input class="text-input" name="description" type=text [(ngModel)]="rideRequestFromStorage.description" placeholder="enter description"><br>
+    <label>Contact</label><br>
+    <input class="text-input" name="mail" type=text [(ngModel)]="rideRequestFromStorage.user.email" readonly>
     <button *ngIf="isOwner" class="input-button-red" type="submit">Save</button>
     <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
     <button *ngIf="isOwner" class="input-button-red" type="button" (click)="clickOnDeleteButton(rideRequestFromStorage.id)">Delete</button>
