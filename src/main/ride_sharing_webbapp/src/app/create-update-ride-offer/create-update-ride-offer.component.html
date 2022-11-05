@@ -1,11 +1,14 @@
 <div *ngIf="rideOfferFromStorage" class="content">
-  <h2>Edit Ride Offer</h2>
+  <h2 *ngIf="isOwner">Edit Ride Offer</h2>
+  <h2 *ngIf="!isOwner">View Ride Offer</h2>
   <form class="form" #UpdateRideOffer="ngForm" (ngSubmit)="onClickSubmitUpdate(UpdateRideOffer.value)">
     <input name="id" hidden [(ngModel)]="rideOfferFromStorage.id">
     <label>Title</label><br>
-    <input class="text-input" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title" placeholder="enter title"><br>
+    <input class="text-input" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title" [readOnly]="!isOwner" placeholder="enter title"><br>
     <label>Description</label><br>
-    <input class="text-input" name="description" type=text [(ngModel)]="rideOfferFromStorage.description" placeholder="enter description">
+    <input class="text-input" name="description" type=text [(ngModel)]="rideOfferFromStorage.description" [readOnly]="!isOwner" placeholder="enter description"><br>
+    <label>Contact</label><br>
+    <input class="text-input" name="mail" type=text [(ngModel)]="rideOfferFromStorage.user.email" readonly>
     <button *ngIf="isOwner" class="input-button-red" type="submit">Save</button>
     <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
     <button *ngIf="isOwner" class="input-button-red" type="button" (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete</button>
