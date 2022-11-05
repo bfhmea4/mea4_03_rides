@@ -24,7 +24,7 @@ class RideRequestTest {
 
     private RideRequestInvoker rideRequestInvoker;
 
-    @Value("${useRestMode}")
+    @Value("${useRestMode:false}")
     private boolean useRestMode;
 
     @BeforeAll

@@ -1,30 +1,28 @@
-<div class="content">
-  <h2>My Profile</h2>
+<h2>My Profile</h2>
 
-  <form class="centered-content">
-    <div class="card-content rounded-content bordered-content profile-content">
-      <div>
-        <label class="profile-item-label">Firstname</label><br/>
-        <input type="text" #profileFirstname class="profile-item-value" contenteditable="false" value="{{user.firstName}}" [readOnly]="editing==false"/>
-      </div>
-      <div>
-        <label class="profile-item-label">Lastname</label><br/>
-        <input type="text" #profileLastname class="profile-item-value" contenteditable="false" value="{{user.lastName}}" [readOnly]="editing==false"/>
-      </div>
-      <div>
-        <label class="profile-item-label">Email</label><br/>
-        <input type="text" #profileEmail class="profile-item-value" contenteditable="false" value="{{user.email}}" [readOnly]="editing==false"/>
-      </div>
-      <div>
-        <label class="profile-item-label">Address</label><br/>
-        <input type="text" #profileAddress class="profile-item-value" contenteditable="false" value="{{user.address}}" [readOnly]="editing==false"/>
-      </div>
+<form class="centered-content">
+  <div class="card-content profile-content">
+    <div>
+      <label class="profile-item-label">Firstname</label><br/>
+      <input type="text" #profileFirstname class="profile-item-value" contenteditable="false" value="{{user.firstName}}" [readOnly]="editing==false"/>
     </div>
+    <div>
+      <label class="profile-item-label">Lastname</label><br/>
+      <input type="text" #profileLastname class="profile-item-value" contenteditable="false" value="{{user.lastName}}" [readOnly]="editing==false"/>
+    </div>
+    <div>
+      <label class="profile-item-label">Email</label><br/>
+      <input type="text" #profileEmail class="profile-item-value" contenteditable="false" value="{{user.email}}" [readOnly]="editing==false"/>
+    </div>
+    <div>
+      <label class="profile-item-label">Address</label><br/>
+      <input type="text" #profileAddress class="profile-item-value" contenteditable="false" value="{{user.address}}" [readOnly]="editing==false"/>
+    </div>
+  </div>
 
-    <div class="button-row">
-      <button id="profile-button-edit" class="button-row-button" (click)="edit()" [class.invisible]="editing == true">Edit</button>
-      <button id="profile-button-cancel" class="button-row-button" [class.invisible]="editing == false" (click)="cancel()">Cancel</button>
-      <input type="submit" value="Save" id="profile-button-save" class="button-row-button" (click)="save()" [class.invisible]="editing == false"/>
-    </div>
-  </form>
-</div>
+  <div class="button-row">
+    <button id="profile-button-edit" class="button button-row-button" (click)="edit()" [class.invisible]="editing == true">Edit</button>
+    <button id="profile-button-cancel" class="button button-row-button" [class.invisible]="editing == false" (click)="cancel()">Cancel</button>
+    <input type="submit" value="Save" id="profile-button-save" class="button button-row-button" (click)="save()" [class.invisible]="editing == false"/>
+  </div>
+</form>

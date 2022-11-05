@@ -1,37 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
-button {
-  margin: 1em;
-}
-
 :root {
   --color-black: #000000;
   --color-white: #ffffff;
   --color-gray-1: #777777;
   --color-red: #6D1414;
 
-  --foreground-color: #DDDDDD;
+  --behind-background-color: #888888;
+  --background-color: #CBCBCB;
+  --foreground-color: #F8F8F8;
+
   --border-color: #000000;
   --content-text-color: #000000;
+
   --nav-color: #000000;
+  --nav-hover-color: #222222;
   --nav-text-color: #ffffff;
-  --button-color: #6D1414;
+  --nav-hover-text-color: #FFFFFF;
+
+  --button-color: #A91818;
   --button-text-color: #ffffff;
+  --button-border-color: #890909;
+
+  --header-height: 48px;
 }
 
 html {
   height: 100%;
   width: 100%;
   margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 body {
   margin: 0;
-  background-color: var(--color-gray-1);
+  background-color: var(--background-color);
   height: 100%
+}
+
+.content {
+  position: absolute;
+  top: var(--header-height);
+  width: 100%;
 }
 
 .body {
   height: 100%;
+  position: sticky;
 }
 
 h1 {
@@ -45,21 +59,71 @@ h2 {
   text-align: center;
 }
 
-.input-button-red {
-  color: var(--color-white);
-  background-color: var(--color-red);
-  width: 100%;
-  padding: 0.1em;
-  font-size: 32pt;
-  border-radius: 12px;
+.card-content {
+  /*border-radius: 3px;*/
+  background-color: var(--foreground-color);
+  padding: 10px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 8px #888888;
 }
 
-.button-red {
-  color: var(--color-white);
-  background-color: var(--color-red);
-  width: 100%;
-  padding: 0.1em;
-  font-size: 32pt;
-  margin: 0;
-  border-radius: 12px;
+.centered-content {
+  margin: auto;
+  width: 80%;
 }
+
+.profile-content {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.profile-item-label {
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+}
+
+.profile-item-value {
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  min-height: 20px;
+  background: none;
+  border: none;
+  font-size: inherit;
+}
+
+.button {
+  font-family: Arial, sans-serif;
+  border: none;
+  border-bottom: 5px solid var(--button-border-color);
+  max-width: max-content;
+  min-width: 100px;
+  box-shadow: 4px 4px 8px #888888;
+  color: var(--button-text-color);
+  background-color: var(--button-color);
+}
+
+.button:hover {
+  border-bottom-width: 4px;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.button-row-button {
+  margin: 0 0 0 10px;
+  float: right;
+  flex: 1;
+}
+
+.invisible {
+  display: none;
+}
+

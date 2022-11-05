@@ -71,6 +71,7 @@ export class ProfileComponent implements OnInit {
         this.user = user;
       }
       console.log("Updated successfully");
+      this.cancel()
     });
   }
 
