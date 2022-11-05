@@ -29,10 +29,8 @@ export class RegisterComponent implements OnInit {
     } as User;
     this.userService.registerUser(user).subscribe(user => {
       if (user) {
-        localStorage.setItem("id", String(user.id));
-        console.log("returned user with id: " + user.id);
-        // localStorage.setItem("token", token);
-        this.router.navigate(["/profile"]);
+        localStorage.setItem("user", JSON.stringify(user));
+        this.router.navigate(['/profile']);
       } else {
         console.error("could not register, something went wrong");
       }

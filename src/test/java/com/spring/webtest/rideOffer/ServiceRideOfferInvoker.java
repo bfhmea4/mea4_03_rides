@@ -1,6 +1,7 @@
 package com.spring.webtest.rideOffer;
 
 import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.service.RideOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,17 +20,17 @@ public class ServiceRideOfferInvoker implements RideOfferInvoker {
 
 
     @Override
-    public RideOffer createOffer(RideOffer rideOffer) {
+    public RideOfferDto createOffer(RideOffer rideOffer) {
         return service.addRideOffer(rideOffer);
     }
 
     @Override
-    public RideOffer getOffer(long id) {
+    public RideOfferDto getOffer(long id) {
         return service.findRideOfferById(id);
     }
 
     @Override
-    public RideOffer updateOffer(RideOffer rideOffer) {
+    public RideOfferDto updateOffer(RideOffer rideOffer) {
         return service.updateRiderOffer(rideOffer);
     }
 

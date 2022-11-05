@@ -5,12 +5,13 @@
   <button class="selector" [ngClass]="rideRequestsBtnClicked ? 'clicked' : 'unClicked'" (click)="requestsBtnClicked()">
     Requests
   </button>
-  <button class="add" (click)="navigateToNewOfferView()">+</button>
+  <button *ngIf="isLoggedIn" class="add" (click)="navigateToNewOfferView()">+</button>
   <br>
   <ul id="offersList" class="clean" *ngIf="rideOffersBtnClicked">
     <li class="item" *ngFor="let rideOffer of rideOffers">
       <div (click)="onClickOfferItem(rideOffer)">
         <span hidden="true">{{rideOffer.id}}</span><br>
+        <span>{{rideOffer.user.email}}, {{rideOffer.user.firstName}} {{rideOffer.user.lastName}}</span>
         <h2>{{rideOffer.title}}</h2><br>
         <p>{{rideOffer.description}}</p>
       </div>
@@ -20,8 +21,9 @@
     <li class="item" *ngFor="let rideRequest of rideRequests">
       <div (click)="onClickRequestItem(rideRequest)">
         <span hidden="true">{{rideRequest.id}}</span><br>
-        <!--      <h2>{{rideRequest.title}}</h2><br>-->
-        <p>{{rideRequest.content}}</p>
+        <span>{{rideRequest.user.email}}, {{rideRequest.user.firstName}} {{rideRequest.user.lastName}}</span>
+        <h2>{{rideRequest.title}}</h2><br>
+        <p>{{rideRequest.description}}</p>
       </div>
 
     </li>

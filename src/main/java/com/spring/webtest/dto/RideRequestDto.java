@@ -1,23 +1,20 @@
 package com.spring.webtest.dto;
 
-
-public class RideOfferDto {
-
+public class RideRequestDto {
     private long id;
     private String title;
     private String description;
 
     private UserDto user;
 
-
-    public RideOfferDto(long id, String title, String description, UserDto user) {
+    public RideRequestDto(long id, String title, String description, UserDto user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.user = user;
     }
 
-    public RideOfferDto() { }
+    public RideRequestDto() {}
 
     public long getId() {
         return id;

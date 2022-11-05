@@ -2,24 +2,24 @@
   <h2>Edit Ride Request</h2>
   <form class="form" #UpdateRideRequest="ngForm" (ngSubmit)="onClickSubmitUpdate(UpdateRideRequest.value)">
     <input name="id" hidden [(ngModel)]="rideRequestFromStorage.id">
-<!--    <label>Title</label><br>-->
-<!--    <input class="text-input" name="title" type="text" [(ngModel)]="rideRequestFromStorage.title" placeholder="enter title"><br>-->
+    <label>Title</label><br>
+    <input class="text-input" name="title" type="text" [(ngModel)]="rideRequestFromStorage.title" placeholder="enter title"><br>
     <label>Content</label><br>
-    <input class="text-input" name="content" type=text [(ngModel)]="rideRequestFromStorage.content" placeholder="enter description">
-    <button class="input-button-red" type="submit">Save</button>
+    <input class="text-input" name="description" type=text [(ngModel)]="rideRequestFromStorage.description" placeholder="enter description">
+    <button *ngIf="isOwner" class="input-button-red" type="submit">Save</button>
     <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
-    <button class="input-button-red" type="button" (click)="clickOnDeleteButton(rideRequestFromStorage.id)">Delete</button>
+    <button *ngIf="isOwner" class="input-button-red" type="button" (click)="clickOnDeleteButton(rideRequestFromStorage.id)">Delete</button>
   </form>
 </div>
 
 <div *ngIf="!rideRequestFromStorage" class="content">
   <h2>Create Ride Request</h2>
   <form class="form" #CreateRideRequest="ngForm" (ngSubmit)="onClickSubmitCreate(CreateRideRequest.value)">
-<!--    <label>Title</label><br>-->
-<!--    <input class="text-input" name="newTitle" type="text" placeholder="enter title" ngModel><br>-->
+    <label>Title</label><br>
+    <input class="text-input" name="title" type="text" placeholder="enter title" ngModel><br>
     <label>Content</label><br>
-    <input class="text-input" name="content" type=text placeholder="enter description" ngModel>
-    <button class="input-button-red" type="submit">Save</button>
+    <input class="text-input" name="description" type=text placeholder="enter description" ngModel>
+    <button *ngIf="isLoggedIn" class="input-button-red" type="submit">Save</button>
     <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
   </form>
 </div>

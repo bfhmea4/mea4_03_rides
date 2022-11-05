@@ -3,6 +3,7 @@ package com.spring.webtest.rideOffer;
 
 import com.spring.webtest.controller.RideOfferController;
 import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.service.RideOfferService;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -28,44 +29,44 @@ class WebClientRideOfferInvoker implements RideOfferInvoker {
 
 
     @Override
-    public RideOffer createOffer(RideOffer rideOffer) {
+    public RideOfferDto createOffer(RideOffer rideOffer) {
         return client.post()
-                .uri("/ride-offer")
+                .uri("/api/offer")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(rideOffer), RideOffer.class)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .returnResult(RideOffer.class)
+                .returnResult(RideOfferDto.class)
                 .getResponseBody().blockFirst();
     }
 
     @Override
-    public RideOffer getOffer(long id) {
+    public RideOfferDto getOffer(long id) {
         return client.get()
-                .uri("/ride-offer/" + id)
+                .uri("/api/offer/" + id)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .returnResult(RideOffer.class)
+                .returnResult(RideOfferDto.class)
                 .getResponseBody().blockFirst();
     }
 
     @Override
-    public RideOffer updateOffer(RideOffer rideOffer) {
+    public RideOfferDto updateOffer(RideOffer rideOffer) {
 
         return client.put()
-                .uri("/ride-offer/" + rideOffer.getId())
+                .uri("/api/offer/" + rideOffer.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(rideOffer), RideOffer.class)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .returnResult(RideOffer.class)
+                .returnResult(RideOfferDto.class)
                 .getResponseBody().blockFirst();
     }
 
     @Override
     public void deleteOffer(long id) {
         client.delete()
-                .uri("/ride-offer/" + id)
+                .uri("/api/offer/" + id)
                 .exchange();
 
     }
