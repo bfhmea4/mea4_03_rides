@@ -111,11 +111,13 @@ export class OverviewComponent implements OnInit, OnDestroy {
   navigateToNewOfferView() {
     if (this.rideOffersBtnClicked) {
       localStorage.removeItem("selected-ride-offer");
+      localStorage.removeItem("selected-ride-request");
       this.router.navigate(['/ride-offer']);
 
     }
     if (this.rideRequestsBtnClicked) {
       localStorage.removeItem("selected-ride-request");
+      localStorage.removeItem("selected-ride-offer");
       this.router.navigate(['/ride-request']);
     }
   }

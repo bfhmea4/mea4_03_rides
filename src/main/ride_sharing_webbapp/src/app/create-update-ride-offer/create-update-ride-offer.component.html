@@ -1,28 +1,39 @@
-<div *ngIf="rideOfferFromStorage" class="content">
-  <h2 *ngIf="isOwner">Edit Ride Offer</h2>
-  <h2 *ngIf="!isOwner">View Ride Offer</h2>
-  <form class="form" #UpdateRideOffer="ngForm" (ngSubmit)="onClickSubmitUpdate(UpdateRideOffer.value)">
+<h2 *ngIf="isOwner">Edit Ride Offer</h2>
+<h2 *ngIf="!isOwner && rideOfferFromStorage">View Ride Offer</h2>
+<form *ngIf="rideOfferFromStorage" class="centered-content" #UpdateRideOffer="ngForm"
+      (ngSubmit)="onClickSubmitUpdate(UpdateRideOffer.value)">
+  <div class="card-content profile-content">
     <input name="id" hidden [(ngModel)]="rideOfferFromStorage.id">
-    <label>Title</label><br>
-    <input class="text-input" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title" [readOnly]="!isOwner" placeholder="enter title"><br>
-    <label>Description</label><br>
-    <input class="text-input" name="description" type=text [(ngModel)]="rideOfferFromStorage.description" [readOnly]="!isOwner" placeholder="enter description"><br>
-    <label>Contact</label><br>
-    <input class="text-input" name="mail" type=text [(ngModel)]="rideOfferFromStorage.user.email" readonly>
-    <button *ngIf="isOwner" class="input-button-red" type="submit">Save</button>
-    <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
-    <button *ngIf="isOwner" class="input-button-red" type="button" (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete</button>
-  </form>
-</div>
+    <label class="profile-item-label">Title</label>
+    <input class="profile-item-value" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title"
+           [readOnly]="!isOwner" placeholder="enter title">
+    <label class="profile-item-label">Description</label>
+    <input class="profile-item-value" name="description" type=text [(ngModel)]="rideOfferFromStorage.description"
+           [readOnly]="!isOwner" placeholder="enter description">
+    <label class="profile-item-label">Contact</label>
+    <input class="profile-item-value" name="mail" type=text [(ngModel)]="rideOfferFromStorage.user.email" readonly>
+  </div>
+  <div class="button-row">
+    <button *ngIf="isOwner" class="button button-row-button" type="submit">Save</button>
+    <button *ngIf="isOwner" class="button button-row-button" type="button"
+            (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete
+    </button>
+    <button class="button button-row-button" type="button" (click)="clickOnCancelButton()">Cancel</button>
+  </div>
+</form>
 
-<div *ngIf="!rideOfferFromStorage" class="content">
-  <h2>Create Ride Offer</h2>
-  <form class="form" #CreateRideOffer="ngForm" (ngSubmit)="onClickSubmitCreate(CreateRideOffer.value)">
-    <label>Title</label><br>
-    <input class="text-input" name="newTitle" type="text" placeholder="enter title" ngModel><br>
-    <label>Description</label><br>
-    <input class="text-input" name="newDescription" type=text placeholder="enter description" ngModel>
-    <button *ngIf="isLoggedIn" class="input-button-red" type="submit">Save</button>
-    <button class="input-button-red" type="button" (click)="clickOnCancelButton()">Cancel</button>
-  </form>
-</div>
+
+<h2 *ngIf="!rideOfferFromStorage">Create Ride Offer</h2>
+<form *ngIf="!rideOfferFromStorage" class="centered-content" #CreateRideOffer="ngForm" (ngSubmit)="onClickSubmitCreate(CreateRideOffer.value)">
+  <div  class="card-content profile-content">
+    <label class="profile-item-label">Title</label>
+    <input class="profile-item-value" name="newTitle" type="text" placeholder="enter title" ngModel>
+    <label class="profile-item-label">Description</label>
+    <input class="profile-item-value" name="newDescription" type=text placeholder="enter description" ngModel>
+  </div>
+  <div class="button-row">
+    <button *ngIf="isLoggedIn" class="button button-row-button" type="submit">Save</button>
+    <button class="button button-row-button" type="button" (click)="clickOnCancelButton()">Cancel</button>
+  </div>
+
+</form>
