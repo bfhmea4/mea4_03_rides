@@ -2,10 +2,10 @@
   <h2>Sign in or Sing up</h2>
 
   <form class="form" #userLogin="ngForm" (ngSubmit)="onClickSubmit(userLogin.value)" >
-    <input class="text-input" name="email" type="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
-    <input class="text-input" name="password" type="password" placeholder="Password" required>
-    <input class="button" type="submit" value="Login">
+    <input ngModel class="text-input" name="email" type="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+    <input ngModel class="text-input" name="password" type="password" placeholder="Password" required>
+    <input class="input-button-red" type="submit" value="Login">
 <!--    <input type="button" value="Register" onclick="navigateToRegister()">-->
-    <button class="button button-register" (click)="navigateToRegister()" >Register</button>
+    <button class="button-red" (click)="navigateToRegister()" >Register</button>
   </form>
 </div>

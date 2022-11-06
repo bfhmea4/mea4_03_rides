@@ -1,9 +1,8 @@
 package com.spring.webtest.database.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.spring.webtest.dto.UserDto;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -18,21 +17,28 @@ public class RideOffer {
     private String title;
     private String description;
 
+    @ManyToOne(targetEntity = User.class)
+    private User user;
+
 
     public RideOffer() {
     }
 
-    public RideOffer(String title, String description) {
+    public RideOffer(String title, String description, User user) {
         this.title = title;
         this.description = description;
+        this.user = user;
     }
 
 
-    public RideOffer(long id, String title, String description) {
+    public RideOffer(long id, String title, String description, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.user = user;
     }
+
+
 
     public long getId() {
         return id;
@@ -50,7 +56,15 @@ public class RideOffer {
         this.title = title;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getDescription() {
         return description;
@@ -62,6 +76,7 @@ public class RideOffer {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", user=" + user.toString() +
                 '}';
     }
 
@@ -80,5 +95,6 @@ public class RideOffer {
         if (!Objects.equals(title, rideOffer.title)) return false;
         return Objects.equals(description, rideOffer.description);
     }
+
 
 }

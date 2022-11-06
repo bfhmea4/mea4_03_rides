@@ -32,6 +32,10 @@ public class UserService {
         return userToDto(repository.findById(id).orElse(null));
     }
 
+    public UserDto getByEmail(String email) {
+        return userToDto(repository.findByEmail(email));
+    }
+
     public UserDto save(User user) {
         return userToDto(repository.save(user));
     }
@@ -45,7 +49,6 @@ public class UserService {
     }
 
     public UserDto compareCredentials(LoginDto loginDto) {
-//        loginDto.setPassword(hashService.hash(loginDto.getPassword()));
         User user = repository.findByEmail(loginDto.getEmail());
         if (user.getPassword().equals(loginDto.getPassword())){
             return userToDto(user);
@@ -64,4 +67,5 @@ public class UserService {
                 user.getEmail(),
                 user.getAddress());
     }
+
 }

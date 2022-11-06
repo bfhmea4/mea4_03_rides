@@ -1,20 +1,23 @@
 package com.spring.webtest.dto;
 
 
-import java.util.Objects;
-
 public class RideOfferDto {
 
     private long id;
     private String title;
     private String description;
 
+    private UserDto user;
 
-    public RideOfferDto(long id, String title, String description) {
+
+    public RideOfferDto(long id, String title, String description, UserDto user) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.user = user;
     }
+
+    public RideOfferDto() { }
 
     public long getId() {
         return id;
@@ -36,5 +39,15 @@ public class RideOfferDto {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
+    }
 }

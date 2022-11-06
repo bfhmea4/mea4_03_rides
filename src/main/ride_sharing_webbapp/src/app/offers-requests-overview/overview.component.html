@@ -1,36 +1,31 @@
-<div class="centered-content">
-  <div class="tab-button-row">
-    <button class="tab-button" [class.selected]="rideOffersBtnClicked" (click)="offersBtnClicked()">
-      Offers
-    </button>
-    <button class="tab-button" [class.selected]="rideRequestsBtnClicked" (click)="requestsBtnClicked()">
-      Requests
-    </button>
-  </div>
-  <div class="card-content" style="margin-top: 0">
-    <br>
-    <ul id="offersList" class="clean" *ngIf="rideOffersBtnClicked">
-      <li class="item" *ngFor="let rideOffer of rideOffers">
-        <div (click)="onClickOfferItem(rideOffer)">
-          <span hidden="true">{{rideOffer.id}}</span><br>
-          <h2>{{rideOffer.title}}</h2><br>
-          <p>{{rideOffer.description}}</p>
-        </div>
-      </li>
-    </ul>
-    <ul id="requestsList" class="clean" *ngIf="rideRequestsBtnClicked">
-      <li class="item" *ngFor="let rideRequest of rideRequests">
-        <div (click)="onClickRequestItem(rideRequest)">
-          <span hidden="true">{{rideRequest.id}}</span><br>
-          <!--      <h2>{{rideRequest.title}}</h2><br>-->
-          <p>{{rideRequest.content}}</p>
-        </div>
+<div class="content">
+  <button class="selector" [ngClass]="rideOffersBtnClicked ? 'clicked' : 'unClicked'" (click)="offersBtnClicked()">
+    Offers
+  </button>
+  <button class="selector" [ngClass]="rideRequestsBtnClicked ? 'clicked' : 'unClicked'" (click)="requestsBtnClicked()">
+    Requests
+  </button>
+  <button *ngIf="isLoggedIn" class="add" (click)="navigateToNewOfferView()">+</button>
+  <br>
+  <ul id="offersList" class="clean" *ngIf="rideOffersBtnClicked">
+    <li class="item" *ngFor="let rideOffer of rideOffers">
+      <div (click)="onClickOfferItem(rideOffer)">
+        <span hidden="true">{{rideOffer.id}}</span><br>
+        <span>{{rideOffer.user.email}}, {{rideOffer.user.firstName}} {{rideOffer.user.lastName}}</span>
+        <h2>{{rideOffer.title}}</h2><br>
+        <p>{{rideOffer.description}}</p>
+      </div>
+    </li>
+  </ul>
+  <ul id="requestsList" class="clean" *ngIf="rideRequestsBtnClicked">
+    <li class="item" *ngFor="let rideRequest of rideRequests">
+      <div (click)="onClickRequestItem(rideRequest)">
+        <span hidden="true">{{rideRequest.id}}</span><br>
+        <span>{{rideRequest.user.email}}, {{rideRequest.user.firstName}} {{rideRequest.user.lastName}}</span>
+        <h2>{{rideRequest.title}}</h2><br>
+        <p>{{rideRequest.description}}</p>
+      </div>
 
-      </li>
-    </ul>
-  </div>
-
-  <div class="button-row">
-    <button class="button button-row-button" (click)="navigateToNewOfferView()">+</button>
-  </div>
+    </li>
+  </ul>
 </div>

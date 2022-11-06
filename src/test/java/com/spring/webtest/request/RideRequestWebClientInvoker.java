@@ -2,6 +2,8 @@ package com.spring.webtest.request;
 
 import com.spring.webtest.controller.RideRequestController;
 import com.spring.webtest.database.entities.RideRequest;
+import com.spring.webtest.database.entities.User;
+import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.service.RideRequestService;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -24,38 +26,36 @@ class RideRequestWebClientInvoker implements RideRequestInvoker {
     }
 
     @Override
-    public RideRequest createRequest(String text) {
-        RideRequest rideRequest = new RideRequest(text);
+    public RideRequestDto createRequest(RideRequest rideRequest) {
         return client.post()
                 .uri("/api/requests")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(rideRequest), RideRequest.class)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .returnResult(RideRequest.class)
+                .returnResult(RideRequestDto.class)
                 .getResponseBody().blockFirst();
     }
 
     @Override
-    public RideRequest getRequest(long id) {
+    public RideRequestDto getRequest(long id) {
         return client.get()
                 .uri("/api/requests/" + id)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .returnResult(RideRequest.class)
+                .returnResult(RideRequestDto.class)
                 .getResponseBody().blockFirst();
     }
 
     @Override
-    public RideRequest updateRequest(long id, String text) {
-        RideRequest rideRequest = new RideRequest(id, text);
+    public RideRequestDto updateRequest(RideRequest rideRequest) {
         return client.put()
-                .uri("/api/requests/" + id)
+                .uri("/api/requests/" + rideRequest.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(rideRequest), RideRequest.class)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .returnResult(RideRequest.class)
+                .returnResult(RideRequestDto.class)
                 .getResponseBody().blockFirst();
     }
 
