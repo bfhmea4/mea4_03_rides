@@ -14,10 +14,12 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository repository;
+    private final HashService hashService;
 
     @Autowired
-    public UserService(UserRepository repository) {
+    public UserService(UserRepository repository, HashService hashService) {
         this.repository = repository;
+        this.hashService = hashService;
     }
 
     public List<UserDto> getAll() {
@@ -37,10 +39,12 @@ public class UserService {
     }
 
     public UserDto save(User user) {
+        user.setPassword(hashService.hash(user.getPassword()));
         return userToDto(repository.save(user));
     }
 
     public UserDto update(User user) {
+        user.setPassword(hashService.hash(user.getPassword()));
         return userToDto(repository.save(user));
     }
 
@@ -49,6 +53,7 @@ public class UserService {
     }
 
     public UserDto compareCredentials(LoginDto loginDto) {
+        loginDto.setPassword(hashService.hash(loginDto.getPassword()));
         User user = repository.findByEmail(loginDto.getEmail());
         if (user.getPassword().equals(loginDto.getPassword())){
             return userToDto(user);

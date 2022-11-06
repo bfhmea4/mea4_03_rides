@@ -49,7 +49,7 @@ export class CreateUpdateRideRequestComponent implements OnInit {
     console.log(rideRequestToCreate);
     this.rideRequestService.createRequest(rideRequestToCreate).subscribe(() => {
       console.log(`Create ride request successfull`)
-      localStorage.setItem("selected-ride-request", JSON.stringify(rideRequestToCreate))
+      Item("selected-ride-request", JSON.stringify(rideRequestToCreate))
       this.router.navigate(['/overview'])
     })
   }
