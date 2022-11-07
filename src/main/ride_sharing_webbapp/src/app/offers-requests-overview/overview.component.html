@@ -7,28 +7,20 @@
       Requests
     </button>
   </div>
-  <div class="card-content" style="margin-top: 0">
-    <br>
-    <ul id="offersList" class="clean" *ngIf="rideOffersBtnClicked">
-      <li class="item" *ngFor="let rideOffer of rideOffers">
-        <div (click)="onClickOfferItem(rideOffer)">
-          <span hidden="true">{{rideOffer.id}}</span><br>
-          <h2>{{rideOffer.title}}</h2><br>
-          <p>{{rideOffer.description}}</p>
-        </div>
-      </li>
-    </ul>
-    <ul id="requestsList" class="clean" *ngIf="rideRequestsBtnClicked">
-      <li class="item" *ngFor="let rideRequest of rideRequests">
-        <div (click)="onClickRequestItem(rideRequest)">
-          <span hidden="true">{{rideRequest.id}}</span><br>
-          <h2>{{rideRequest.title}}</h2><br>
-          <p>{{rideRequest.description}}</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
+    <div id="offersList" *ngIf="rideOffersBtnClicked">
+      <div class="offer-request card-content" (click)="onClickOfferItem(rideOffer)" *ngFor="let rideOffer of rideOffers">
+        <span hidden="true">{{rideOffer.id}}</span><br>
+        <h2>{{rideOffer.title}}</h2><br>
+        <p>{{rideOffer.description}}</p>
+      </div>
+    </div>
+    <div id="requestsList" *ngIf="rideRequestsBtnClicked">
+      <div class="offer-request card-content" (click)="onClickOfferItem(rideRequest)" *ngFor="let rideRequest of rideRequests">
+        <span hidden="true">{{rideRequest.id}}</span><br>
+        <h2>{{rideRequest.title}}</h2><br>
+        <p>{{rideRequest.description}}</p>
+      </div>
+    </div>
   <div class="button-row">
     <button class="button button-row-button" (click)="navigateToNewOfferView()">+</button>
   </div>
