@@ -1,13 +1,14 @@
 package com.spring.webtest.rideOffer;
 
 import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.dto.RideOfferDto;
 
 interface RideOfferInvoker {
-    RideOffer createOffer(RideOffer rideOffer);
+    RideOfferDto createOffer(RideOffer rideOffer);
 
-    RideOffer getOffer(long id);
+    RideOfferDto getOffer(long id);
 
-    RideOffer updateOffer(RideOffer rideOffer);
+    RideOfferDto updateOffer(RideOffer rideOffer);
 
     void deleteOffer(long id);
 }

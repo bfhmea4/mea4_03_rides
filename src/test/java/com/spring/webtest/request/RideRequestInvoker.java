@@ -1,10 +1,11 @@
 package com.spring.webtest.request;
 
 import com.spring.webtest.database.entities.RideRequest;
+import com.spring.webtest.dto.RideRequestDto;
 
 interface RideRequestInvoker {
-    RideRequest createRequest(String text);
-    RideRequest getRequest(long id);
-    RideRequest updateRequest(long id, String text);
+    RideRequestDto createRequest(RideRequest rideRequest);
+    RideRequestDto getRequest(long id);
+    RideRequestDto updateRequest(RideRequest rideRequest);
     void deleteRequest(long id);
 }
