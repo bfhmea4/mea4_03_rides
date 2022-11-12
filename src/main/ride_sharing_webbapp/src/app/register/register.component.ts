@@ -17,8 +17,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickSubmit(data: any) {
-      // this.router.navigate(["/profile"]);
     //TODO: Check if the 2 Passwords are the same
+    if (!data.email || !data.email.match(/^\w+([\.+-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+      alert("Email not correct!");
+      return;
+    }
+    if (data.password.length < 9 || data.password != data.passwordRepeat) {
+      alert("Password not allowed!");
+      return;
+    }
     console.log(data.firstName);
       let user: any = {
         firstName: data.firstName,
