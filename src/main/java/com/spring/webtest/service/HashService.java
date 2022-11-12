@@ -1,20 +1,26 @@
 package com.spring.webtest.service;
 
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Service
 public class HashService {
 
-    private final String PEPPER = "Pepper and Cheese go Hand in Hand";
-    private final int ITERATIONS = 20000;
-    private final int WIDTH_IN_BITS = 128;
+    private final String PEPPER = "Pepper and Salt go Hand in Hand";
 
     public String hash(String pw) {
-        Pbkdf2PasswordEncoder encoder = new Pbkdf2PasswordEncoder(PEPPER, ITERATIONS, WIDTH_IN_BITS);
-        encoder.setEncodeHashAsBase64(true);
-        System.out.println(pw + " is encoded: " + encoder.encode(pw));
-        return encoder.encode(pw);
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Could not get algorithm");
+            throw new RuntimeException(e);
+        }
+        pw = pw.concat(PEPPER);
+        return new String(digest.digest(pw.getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
     }
 
 }
