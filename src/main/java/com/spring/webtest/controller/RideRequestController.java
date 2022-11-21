@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.RideRequestDto;
+import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.RideRequestService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,8 +58,14 @@ public class RideRequestController {
     @PutMapping("/api/requests/{id}")
     ResponseEntity<RideRequestDto> updateRideRequest(@RequestBody RideRequest rideRequest) {
         logger.info("update ride offer with id: " + rideRequest.getId());
-        RideRequestDto rideRequestDto = service.updateRideRequest(rideRequest);
-        return new ResponseEntity<>(rideRequestDto, HttpStatus.OK);
+        try {
+            RideRequestDto rideRequestDto = service.updateRideRequest(rideRequest);
+            return new ResponseEntity<>(rideRequestDto, HttpStatus.OK);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
 

@@ -39,9 +39,12 @@ public class RideRequestService {
         return rideRequestDto(repository.findById(id).orElse(null));
     }
 
-    public RideRequestDto updateRideRequest(RideRequest rideRequest) {
-        repository.findById(rideRequest.getId()).orElseThrow(() ->
+    public RideRequestDto updateRideRequest(RideRequest rideRequest) throws IllegalAccessException {
+        RideRequest saved = repository.findById(rideRequest.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Update Request: Ride Request with id: " + rideRequest.getId() + " not found"));
+        if (saved.getUser().getId() != rideRequest.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         return rideRequestDto(repository.save(rideRequest));
     }
 
