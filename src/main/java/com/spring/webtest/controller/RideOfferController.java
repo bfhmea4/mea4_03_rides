@@ -59,6 +59,8 @@ public class RideOfferController {
             return new ResponseEntity<>(rideOfferDto, HttpStatus.OK);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
