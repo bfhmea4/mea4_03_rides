@@ -16,7 +16,7 @@
   <div class="button-row">
     <button *ngIf="isOwner" class="button button-row-button" type="submit">Save</button>
     <button *ngIf="isOwner" class="button button-row-button" type="button"
-            (click)="clickOnDeleteButton(rideOfferFromStorage.id)">Delete
+            (click)="clickOnDeleteButton(rideOfferFromStorage)">Delete
     </button>
     <button class="button button-row-button" type="button" (click)="clickOnCancelButton()">Cancel</button>
   </div>

@@ -36,7 +36,7 @@ public class ServiceRideOfferInvoker implements RideOfferInvoker {
 
     @Override
     public void deleteOffer(long id) {
-        service.deleteRideOfferById(id);
+        service.deleteRideOffer(id);
 
     }
 }

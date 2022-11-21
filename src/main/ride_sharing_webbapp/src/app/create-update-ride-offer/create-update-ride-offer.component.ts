@@ -82,9 +82,9 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
     }
   }
 
-  clickOnDeleteButton(id: number) {
-    this.rideOfferService.deleteOffer(id).subscribe(() => {
-      console.log(`ride offer with id ${id} deleted succesfully`)
+  clickOnDeleteButton(rideOffer: RideOffer) {
+    this.rideOfferService.deleteOffer(rideOffer).subscribe(() => {
+      console.log(`ride offer with id ${rideOffer.id} deleted succesfully`)
       this.router.navigate(['/overview'])
     })
 

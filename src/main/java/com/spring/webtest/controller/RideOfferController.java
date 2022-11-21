@@ -67,13 +67,15 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/offer/{id}")
-    ResponseEntity<?> delete(@PathVariable long id) {
-        logger.info("delete ride offer with id: " + id);
+    ResponseEntity<?> delete(@RequestBody RideOffer rideOffer) {
+        logger.info("delete ride offer with id: " + rideOffer.getId());
         try {
-            service.deleteRideOfferById(id);
+            service.deleteRideOffer(rideOffer);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 }

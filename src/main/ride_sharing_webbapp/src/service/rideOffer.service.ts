@@ -27,8 +27,8 @@ export class rideOfferService {
     return this.http.post<any>(AppSettings.STR_URL_POST_OFFER, rideOfferToCreate, AppSettings.httpOptions);
   }
 
-  deleteOffer(id: number) {
-    return this.http.delete(AppSettings.STR_URL_DELETE_OFFER + id, AppSettings.httpOptions)
+  deleteOffer(rideOfferToDelete: RideOffer) {
+    return this.http.delete(AppSettings.STR_URL_DELETE_OFFER + rideOfferToDelete.id, AppSettings.httpOptions)
   }
 }
 

@@ -45,10 +45,13 @@ public class RideOfferService {
         return rideOfferToDto(repository.save(rideOffer));
     }
 
-    public void deleteRideOfferById(long id) {
-        repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Delete offer by id: Ride offer with id: " + id + " not found"));
-        repository.deleteById(id);
+    public void deleteRideOffer(RideOffer rideOffer) throws IllegalAccessException {
+        RideOffer saved = repository.findById(rideOffer.getId()).orElseThrow(() ->
+                new ResourceNotFoundException("Delete offer by id: Ride offer with id: " + rideOffer.getId() + " not found"));
+        if (saved.getUser().getId() != rideOffer.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
+        repository.deleteById(rideOffer.getId());
     }
 
     private RideOfferDto rideOfferToDto(RideOffer offer) {
