@@ -39,6 +39,17 @@ export class ProfileComponent implements OnInit {
     this.editing = true;
   }
 
+  delete(): void {
+    if (!confirm("Are you sure you want to delete your profile? This action can not be undone."))
+      return
+    this.userService.deleteUser(this.user.id).subscribe(() => {
+      localStorage.removeItem("user")
+      localStorage.removeItem("token")
+      this.router.navigate(['/login'])
+      return
+    });
+  }
+
   cancel(): void {
     this.profileFirstname.nativeElement.contentEditable = false;
     this.profileLastname.nativeElement.contentEditable = false;

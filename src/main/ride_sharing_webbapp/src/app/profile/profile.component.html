@@ -24,5 +24,6 @@
     <button id="profile-button-edit" class="button button-row-button" (click)="edit()" [class.invisible]="editing == true">Edit</button>
     <button id="profile-button-cancel" class="button button-row-button" [class.invisible]="editing == false" (click)="cancel()">Cancel</button>
     <input type="submit" value="Save" id="profile-button-save" class="button button-row-button" (click)="save()" [class.invisible]="editing == false"/>
+    <button id="profile-button-delete" class="button button-row-button" [class.invisible]="editing == false" (click)="delete()">Delete</button>
   </div>
 </form>
