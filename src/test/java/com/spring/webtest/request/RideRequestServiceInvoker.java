@@ -29,7 +29,7 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
 
     @Override
     public void deleteRequest(long id) {
-        service.deleteRideRequestById(id);
+        service.deleteRideRequest(id);
 
     }
 }

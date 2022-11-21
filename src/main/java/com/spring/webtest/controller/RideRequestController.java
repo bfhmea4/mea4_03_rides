@@ -2,7 +2,6 @@ package com.spring.webtest.controller;
 
 import com.google.gson.Gson;
 import com.spring.webtest.database.entities.RideRequest;
-import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.RideRequestService;
@@ -71,9 +70,15 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/requests/{id}")
-    ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
-        logger.info("delete ride offer with id: " + id);
-        service.deleteRideRequestById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    ResponseEntity<?> deleteRideRequestById(@RequestBody RideRequest rideRequest) {
+        logger.info("delete ride offer with id: " + rideRequest.getId());
+        try {
+            service.deleteRideRequest(rideRequest);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }

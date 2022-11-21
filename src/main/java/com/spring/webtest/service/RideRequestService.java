@@ -1,9 +1,7 @@
 package com.spring.webtest.service;
 
-import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.database.repositories.RideRequestRepository;
-import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
@@ -48,10 +46,13 @@ public class RideRequestService {
         return rideRequestDto(repository.save(rideRequest));
     }
 
-    public void deleteRideRequestById(long id) {
-        repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Update Request: Ride Request with id: " + id + " not found"));
-        repository.deleteById(id);
+    public void deleteRideRequest(RideRequest rideRequest) throws IllegalAccessException {
+        RideRequest saved = repository.findById(rideRequest.getId()).orElseThrow(() ->
+                new ResourceNotFoundException("Update Request: Ride Request with id: " + rideRequest.getId() + " not found"));
+        if (saved.getUser().getId() != rideRequest.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
+        repository.deleteById(rideRequest.getId());
     }
 
     private RideRequestDto rideRequestDto(RideRequest request) {
