@@ -6,5 +6,3 @@ CREATE TABLE ride_offer
     `user_id`     INTEGER REFERENCES user (id)
 
 );
-
-INSERT INTO ride_offer VALUES (1, 'first offer', 'this is the first offer', 1);

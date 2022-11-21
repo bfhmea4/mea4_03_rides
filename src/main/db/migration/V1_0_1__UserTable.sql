@@ -6,5 +6,3 @@ CREATE TABLE user (
     `address`       VARCHAR (128),
     `password`      VARCHAR (32)
 );
-
-INSERT INTO user VALUES (1, 'first', 'user','first@user.com', 'Musterweg 28, 3084 Wabern', '1234');

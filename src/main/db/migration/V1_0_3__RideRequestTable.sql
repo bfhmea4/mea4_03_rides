@@ -5,5 +5,3 @@ CREATE TABLE ride_request (
     `user_id` INTEGER REFERENCES user(id)
 
 );
-
-INSERT INTO ride_request VALUES (1, 'first request', 'this is the first request', 1);
