@@ -8,9 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
-class UserWebClientInvoker implements UserInvoker {
+public class UserWebClientInvoker implements UserInvoker {
 
     private final WebTestClient client;
 
@@ -22,7 +20,7 @@ class UserWebClientInvoker implements UserInvoker {
         return new UserWebClientInvoker(WebTestClient.bindToServer().baseUrl("http://localhost:8080").build());
     }
 
-    static UserWebClientInvoker mockServer(UserService service) {
+    public static UserWebClientInvoker mockServer(UserService service) {
         return new UserWebClientInvoker(WebTestClient.bindToController(new UserController(service)).build());
     }
 

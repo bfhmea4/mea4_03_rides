@@ -24,9 +24,7 @@ public class UserService {
 
     public List<UserDto> getAll() {
         List<UserDto> userList = new ArrayList<>();
-        repository.findAll().forEach(user -> {
-            userList.add(userToDto(user));
-        });
+        repository.findAll().forEach(user -> userList.add(userToDto(user)));
         return userList;
     }
 
@@ -61,7 +59,7 @@ public class UserService {
         return null;
     }
 
-    private UserDto userToDto(User user) {
+    public UserDto userToDto(User user) {
         if (user == null) {
             return null;
         }

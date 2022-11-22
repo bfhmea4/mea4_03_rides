@@ -58,4 +58,20 @@ public class UserDto {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserDto userDto = (UserDto) o;
+        if (id != userDto.id) return false;
+        if (!firstName.equals(userDto.firstName)) return false;
+        if (!lastName.equals(userDto.lastName)) return false;
+        return (email.equals(userDto.email));
+        //TODO Add address to equals method after it is correctly saved in DB
+//        return (address.equals(userDto.address));
+    }
+
+
 }
