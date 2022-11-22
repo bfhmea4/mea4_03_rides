@@ -26,9 +26,12 @@ public class RideOfferController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOffer rideOffer) {
-        logger.info("add ride offers");
-        RideOfferDto rideOfferDto = service.addRideOffer(rideOffer);
-        return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
+            logger.info("add ride offers");
+            RideOfferDto rideOfferDto = service.addRideOffer(rideOffer);
+            if(rideOfferDto != null) {
+            return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
