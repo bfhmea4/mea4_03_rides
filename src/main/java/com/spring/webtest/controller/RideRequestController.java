@@ -1,6 +1,5 @@
 package com.spring.webtest.controller;
 
-import com.google.gson.Gson;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
@@ -17,9 +16,8 @@ public class RideRequestController {
 
     private static final Logger logger = Logger.getLogger(FizzBuzzController.class.getName());
 
-    private static final Gson gson = new Gson();
-
     private final RideRequestService service;
+
 
 
     public RideRequestController(RideRequestService service) {
@@ -31,7 +29,10 @@ public class RideRequestController {
     ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequest rideRequest) {
         logger.info("add ride offers");
         RideRequestDto rideRequestDto = service.addRideRequest(rideRequest);
-        return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+        if (rideRequestDto != null) {
+            return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})

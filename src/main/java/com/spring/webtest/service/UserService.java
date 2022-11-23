@@ -24,9 +24,7 @@ public class UserService {
 
     public List<UserDto> getAll() {
         List<UserDto> userList = new ArrayList<>();
-        repository.findAll().forEach(user -> {
-            userList.add(userToDto(user));
-        });
+        repository.findAll().forEach(user -> userList.add(userToDto(user)));
         return userList;
     }
 
@@ -55,13 +53,13 @@ public class UserService {
     public UserDto compareCredentials(LoginDto loginDto) {
         loginDto.setPassword(hashService.hash(loginDto.getPassword()));
         User user = repository.findByEmail(loginDto.getEmail());
-        if (user.getPassword().equals(loginDto.getPassword())){
+        if (user != null && user.getPassword().equals(loginDto.getPassword())){
             return userToDto(user);
         }
         return null;
     }
 
-    private UserDto userToDto(User user) {
+    public UserDto userToDto(User user) {
         if (user == null) {
             return null;
         }

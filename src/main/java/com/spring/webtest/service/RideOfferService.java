@@ -13,22 +13,27 @@ import java.util.List;
 @Service
 public class RideOfferService {
 
-    private RideOfferRepository repository;
+    private final RideOfferRepository repository;
+
+    private final UserService userService;
 
 
-    public RideOfferService(RideOfferRepository repository) {
+    public RideOfferService(RideOfferRepository repository, UserService userService) {
         this.repository = repository;
+        this.userService = userService;
     }
 
     public RideOfferDto addRideOffer(RideOffer rideOffer) {
-        return rideOfferToDto(repository.save(rideOffer));
+        UserDto userDto = userService.getById(rideOffer.getUser().getId());
+        if (rideOffer.getUser() != null && userDto != null && userService.userToDto(rideOffer.getUser()).equals(userDto)) {
+            return rideOfferToDto(repository.save(rideOffer));
+        }
+        return null;
     }
 
     public List<RideOfferDto> getAllRideOffers() {
         List<RideOfferDto> offersList = new ArrayList<>();
-        repository.findAll().forEach(rideOffer -> {
-            offersList.add(rideOfferToDto(rideOffer));
-        });
+        repository.findAll().forEach(rideOffer -> offersList.add(rideOfferToDto(rideOffer)));
         return offersList;
     }
 
@@ -54,7 +59,7 @@ public class RideOfferService {
         repository.deleteById(rideOffer.getId());
     }
 
-    private RideOfferDto rideOfferToDto(RideOffer offer) {
+    public RideOfferDto rideOfferToDto(RideOffer offer) {
         if (offer == null) {
             return null;
         }

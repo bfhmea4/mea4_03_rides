@@ -5,6 +5,10 @@ import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.service.RideRequestService;
+import com.spring.webtest.service.UserService;
+import com.spring.webtest.user.UserInvoker;
+import com.spring.webtest.user.UserServiceInvoker;
+import com.spring.webtest.user.UserWebClientInvoker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -24,18 +28,28 @@ class RideRequestTest {
     @Autowired
     private RideRequestService service;
 
+    @Autowired
+    private UserService userService;
+
     private RideRequestInvoker rideRequestInvoker;
 
     @Value("${useRestMode:false}")
     private boolean useRestMode;
 
+    private User testUser;
+
     @BeforeAll
     void setup() {
+        UserInvoker userInvoker;
         if (useRestMode) {
-            this.rideRequestInvoker = RideRequestWebClientInvoker.remoteServer();
+            this.rideRequestInvoker = WebClientRideRequestInvoker.mockServer(service);
+            userInvoker = UserWebClientInvoker.mockServer(userService);
         } else {
             this.rideRequestInvoker = new RideRequestServiceInvoker(service);
+            userInvoker = new UserServiceInvoker(userService);
         }
+        testUser = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "thisIsAStrongPassword13.");
+        userInvoker.createUser(testUser);
     }
 
     @Test
@@ -45,8 +59,7 @@ class RideRequestTest {
 
     @Test
     void creating_a_request_returns_the_new_request() {
-        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
-        RideRequest rideRequest = new RideRequest("created", "Test", user);
+        RideRequest rideRequest = new RideRequest("created", "Test", testUser);
         RideRequestDto rideRequestDto = rideRequestInvoker.createRequest(rideRequest);
         assertThat(rideRequestDto).isNotNull();
         assertThat(rideRequestDto.getDescription()).isEqualTo("Test");
@@ -54,8 +67,7 @@ class RideRequestTest {
 
     @Test
     void getting_a_request_by_id_returns_the_request() {
-        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
-        RideRequest rideRequest = new RideRequest("created", "Test", user);
+        RideRequest rideRequest = new RideRequest("created", "Test", testUser);
         RideRequestDto rideRequestDto = rideRequestInvoker.createRequest(rideRequest);
         RideRequestDto rideRequestDto1 = rideRequestInvoker.getRequest(rideRequestDto.getId());
         assertThat(rideRequestDto1).isNotNull();
@@ -65,10 +77,9 @@ class RideRequestTest {
 
     @Test
     void updating_a_request_returns_the_updated_request() {
-        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
-        RideRequest rideRequestCreated = new RideRequest("created", "Test", user);
+        RideRequest rideRequestCreated = new RideRequest("created", "Test", testUser);
         RideRequestDto rideRequest = rideRequestInvoker.createRequest(rideRequestCreated);
-        RideRequest rideRequestUpdated = new RideRequest(rideRequest.getId(), "created", "Another Test", user);
+        RideRequest rideRequestUpdated = new RideRequest(rideRequest.getId(), "created", "Another Test", testUser);
         RideRequestDto rideRequest1 = rideRequestInvoker.updateRequest(rideRequestUpdated);
         assertThat(rideRequest1).isNotNull();
         assertThat(rideRequest1.getId()).isEqualTo(rideRequest.getId());
@@ -77,10 +88,9 @@ class RideRequestTest {
 
     @Test
     void getting_an_updated_request_returns_the_updated_request() {
-        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
-        RideRequest rideRequestCreated = new RideRequest("created", "Test", user);
+        RideRequest rideRequestCreated = new RideRequest("created", "Test", testUser);
         RideRequestDto rideRequestDto = rideRequestInvoker.createRequest(rideRequestCreated);
-        RideRequest rideRequestUpdated = new RideRequest(rideRequestDto.getId(), "updated", "Another Test", user);
+        RideRequest rideRequestUpdated = new RideRequest(rideRequestDto.getId(), "updated", "Another Test", testUser);
         RideRequestDto rideRequest1 = rideRequestInvoker.updateRequest(rideRequestUpdated);
         RideRequestDto rideRequest2 = rideRequestInvoker.getRequest(rideRequest1.getId());
         assertThat(rideRequest2).isNotNull();
@@ -91,8 +101,7 @@ class RideRequestTest {
 
     @Test
     void deleting_a_request_removes_the_request() {
-        User user = new User(1,"J.", "Lanz", "j.lanz@gmail.com", "Musteradresse", "1234");
-        RideRequest rideRequestCreated = new RideRequest("created", "Test", user);
+        RideRequest rideRequestCreated = new RideRequest("created", "Test", testUser);
         RideRequestDto rideRequest = rideRequestInvoker.createRequest(rideRequestCreated);
         rideRequestInvoker.deleteRequest(rideRequest.getId());
         RideRequestDto rideRequest1 = rideRequestInvoker.getRequest(rideRequest.getId());
