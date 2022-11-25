@@ -31,12 +31,13 @@ public class ServiceRideOfferInvoker implements RideOfferInvoker {
 
     @Override
     public RideOfferDto updateOffer(RideOffer rideOffer) {
-        return service.updateRiderOffer(rideOffer);
+//        return service.updateRiderOffer(rideOffer);
+        return new RideOfferDto();
     }
 
     @Override
     public void deleteOffer(long id) {
-        service.deleteRideOffer(id);
+//        service.deleteRideOffer(id);
 
     }
 }

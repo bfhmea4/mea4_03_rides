@@ -24,12 +24,13 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
 
     @Override
     public RideRequestDto updateRequest(RideRequest rideRequest) {
-        return service.updateRideRequest(rideRequest);
+//        return service.updateRideRequest(rideRequest);
+        return new RideRequestDto();
     }
 
     @Override
     public void deleteRequest(long id) {
-        service.deleteRideRequest(id);
+//        service.deleteRideRequest(id);
 
     }
 }
