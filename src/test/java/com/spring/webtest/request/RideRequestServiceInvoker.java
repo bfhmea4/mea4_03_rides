@@ -1,5 +1,6 @@
 package com.spring.webtest.request;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.service.RideRequestService;
@@ -13,7 +14,7 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
     }
 
     @Override
-    public RideRequestDto createRequest(RideRequest rideRequest) {
+    public RideRequestDto createRequest(RideRequest rideRequest) throws OperationNotSupportedException, IllegalAccessException {
         return service.addRideRequest(rideRequest);
     }
 
@@ -23,12 +24,12 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
     }
 
     @Override
-    public RideRequestDto updateRequest(RideRequest rideRequest) {
+    public RideRequestDto updateRequest(RideRequest rideRequest) throws IllegalAccessException {
         return service.updateRideRequest(rideRequest);
     }
 
     @Override
-    public void deleteRequest(long id) {
+    public void deleteRequest(long id) throws IllegalAccessException {
         service.deleteRideRequest(id);
 
     }

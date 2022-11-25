@@ -1,5 +1,6 @@
 package com.spring.webtest.controller;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
@@ -26,12 +27,15 @@ public class RideOfferController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOffer rideOffer) {
+        try {
             logger.info("add ride offers");
             RideOfferDto rideOfferDto = service.addRideOffer(rideOffer);
-            if(rideOfferDto != null) {
             return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } catch (OperationNotSupportedException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -70,10 +74,10 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/offer/{id}")
-    ResponseEntity<?> delete(@RequestBody RideOffer rideOffer) {
-        logger.info("delete ride offer with id: " + rideOffer.getId());
+    ResponseEntity<?> delete(@PathVariable long id) {
+        logger.info("delete ride offer with id: " + id);
         try {
-            service.deleteRideOffer(rideOffer);
+            service.deleteRideOffer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
