@@ -62,7 +62,7 @@ public class RideOfferService {
 //        if (rideOffer.getUser() == null || saved.getUser().getId() != rideOffer.getUser().getId()) {
 //            throw new IllegalAccessException();
 //        }
-        repository.deleteById(id);
+        repository.deleteById(saved.getId());
     }
 
     public RideOfferDto rideOfferToDto(RideOffer offer) {

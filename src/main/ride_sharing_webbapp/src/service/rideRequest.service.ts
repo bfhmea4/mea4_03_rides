@@ -29,6 +29,6 @@ export class rideRequestService {
   }
 
   deleteRequest(rideRequestToDelete: RideRequest) {
-    return this.http.delete(AppSettings.STR_URL_DELETE_REQUEST + rideRequestToDelete, AppSettings.httpOptions)
+    return this.http.delete(AppSettings.STR_URL_DELETE_REQUEST + rideRequestToDelete.id, AppSettings.httpOptions)
   }
 }
