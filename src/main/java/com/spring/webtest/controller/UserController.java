@@ -53,7 +53,7 @@ public class UserController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> getById(@PathVariable long id) {
-        System.out.println("******\nController: Try to get user with id: " + id + "\n******");
+        logger.info("******\nController: Try to get user with id: " + id + "\n******");
         try {
             UserDto userDto = service.getById(id);
             return new ResponseEntity<>(userDto, HttpStatus.OK);
@@ -63,14 +63,14 @@ public class UserController {
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @GetMapping("api/user/")
+    @GetMapping("api/user/byToken")
     ResponseEntity<UserDto> getByToken() {
         logger.info("Getting user by token");
         try {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             UserDto userDto = service.getByToken(token);
             return new ResponseEntity<>(userDto, HttpStatus.OK);
-        } catch (ResourceNotFoundException | MalformedClaimException e) {
+        } catch (ResourceNotFoundException | MalformedClaimException | IllegalAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

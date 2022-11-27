@@ -1,5 +1,6 @@
 package com.spring.webtest.service;
 
+import com.spring.webtest.controller.UserController;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.LoginDto;
 import org.jose4j.jwa.AlgorithmConstraints;
@@ -16,11 +17,13 @@ import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.lang.JoseException;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Logger;
+
 @Service
 public class AuthService {
 
     //            Tutorial from https://bitbucket.org/b_c/jose4j/wiki/JWT%20Examples
-
+    private static final Logger logger = Logger.getLogger(AuthService.class.getName());
     RsaJsonWebKey rsaJsonWebKey;
     HashService hashService;
 
@@ -35,9 +38,12 @@ public class AuthService {
         return loginDto.getPassword().equals(user.getPassword());
     }
 
-    public Long getIdFromToken(String token) throws MalformedClaimException {
+    public Long getIdFromToken(String token) throws MalformedClaimException, IllegalAccessException {
         JwtClaims claims = getClaimsFromToken(token);
-        return (Long) claims.getClaimValue("userId");
+        if (claims != null) {
+            return (Long) claims.getClaimValue("userId");
+        }
+        throw new IllegalAccessException("Could not get Info out of the Token");
     }
 
     public boolean tokenIsValid(String jwt) throws MalformedClaimException {
@@ -64,9 +70,7 @@ public class AuthService {
         jws.setAlgorithmHeaderValue(AlgorithmIdentifiers.RSA_USING_SHA256);
 
         String jwt = jws.getCompactSerialization();
-        System.out.println("JWT: " + jwt);
-        System.out.println("Private Key: " + rsaJsonWebKey.getPrivateKey());
-
+        logger.info("Successfully created token");
         return jwt;
     }
 

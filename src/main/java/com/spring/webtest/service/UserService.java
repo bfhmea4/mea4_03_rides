@@ -46,7 +46,7 @@ public class UserService {
         return user;
     }
 
-    public UserDto getByToken(String token) throws MalformedClaimException {
+    public UserDto getByToken(String token) throws MalformedClaimException, IllegalAccessException {
         Long id = this.authService.getIdFromToken(token);
         return getById(id);
     }
