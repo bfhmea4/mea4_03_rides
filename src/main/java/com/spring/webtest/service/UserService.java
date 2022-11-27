@@ -61,13 +61,20 @@ public class UserService {
             if (user.getPassword() != null) {
                 user.setPassword(hashService.hash(user.getPassword()));
             }
+            user.setPassword(repository.findById(user.getId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Could not find user with id: " + user.getId()))
+                    .getPassword());
             return userToDto(repository.save(user));
         }
         throw new IllegalAccessException("Token is not valid");
     }
 
-    public void delete(long id) {
-        repository.deleteById(id);
+    public void delete(long id, String token) throws IllegalAccessException, MalformedClaimException {
+        if (authService.tokenIsValid(token) && id == getByToken(token).getId()) {
+            repository.deleteById(id);
+            return;
+        }
+        throw new IllegalAccessException("Token is not valid");
     }
 
     public UserDto userToDto(User user) {

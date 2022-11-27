@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -70,7 +69,7 @@ public class UserController {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             UserDto userDto = service.getByToken(token);
             return new ResponseEntity<>(userDto, HttpStatus.OK);
-        } catch (ResourceNotFoundException | MalformedClaimException | IllegalAccessException e) {
+        } catch (ResourceNotFoundException | MalformedClaimException | IllegalAccessException | NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -88,11 +87,11 @@ public class UserController {
     @PutMapping("api/user")
     ResponseEntity<UserDto> update(@RequestBody User user) {
         logger.info("******\nController: Try to update User with id: " + user.getId() + "\n******");
-        String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
         UserDto userDto = null;
         try {
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             userDto = service.update(user, token);
-        } catch (MalformedClaimException | IllegalAccessException e) {
+        } catch (MalformedClaimException | IllegalAccessException | NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(userDto, HttpStatus.OK);
@@ -102,7 +101,13 @@ public class UserController {
     @DeleteMapping("api/user/{id}")
     ResponseEntity<Void> delete(@PathVariable long id) {
         logger.info("******\nController: Try to delete User: " + id + "\n******");
-        service.delete(id);
-        return ResponseEntity.noContent().<Void>build();
+        try {
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            service.delete(id, token);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (NullPointerException | IllegalAccessException | MalformedClaimException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }

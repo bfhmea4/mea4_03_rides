@@ -89,9 +89,6 @@ public class AuthService {
                         AlgorithmIdentifiers.RSA_USING_SHA256)
                 .build();
 
-
-        System.out.println("Public Key: " + rsaJsonWebKey.getPublicKey());
-
         try {
             JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);
             System.out.println("JWT validation succeeded! " + jwtClaims);
