@@ -51,17 +51,17 @@ public class AddressController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-    @GetMapping("api/address/{id}")
-    ResponseEntity<?> delete(@PathVariable long id) {
-        logger.info("delete address with id: " + id);
-        try {
-            service.deleteAddress(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ResourceNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @DeleteMapping Mapping("api/address/{id}")
+//    ResponseEntity<?> delete(@PathVariable long id) {
+//        logger.info("delete address with id: " + id);
+//        try {
+//            service.deleteAddress(id);
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } catch (ResourceNotFoundException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
 
 
