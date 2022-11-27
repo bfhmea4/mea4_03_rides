@@ -22,31 +22,29 @@ public class AuthService {
     //            Tutorial from https://bitbucket.org/b_c/jose4j/wiki/JWT%20Examples
 
     RsaJsonWebKey rsaJsonWebKey;
-
-    UserService userService;
     HashService hashService;
 
-    public AuthService(UserService userService, HashService hashService) throws JoseException {
+    public AuthService(HashService hashService) throws JoseException {
         rsaJsonWebKey = RsaJwkGenerator.generateJwk(2048);
         rsaJsonWebKey.setKeyId("k1");
-        this.userService = userService;
         this.hashService = hashService;
     }
 
-    public String loginUser(LoginDto loginDto) throws IllegalAccessException, JoseException {
-        if (!credentialsAreValid(loginDto)) {
-            throw new IllegalAccessException();
-        }
-        return generateJwt(loginDto);
-    }
-
-    public boolean credentialsAreValid(LoginDto loginDto) {
+    public boolean credentialsAreValid(LoginDto loginDto, User user) {
         loginDto.setPassword(hashService.hash(loginDto.getPassword()));
-        User user = userService.getByEmail(loginDto.getEmail());
-        return user.getPassword().equals(loginDto.getPassword());
+        return loginDto.getPassword().equals(user.getPassword());
     }
 
-    public String generateJwt(LoginDto loginDto) throws JoseException {
+    public Long getIdFromToken(String token) throws MalformedClaimException {
+        JwtClaims claims = getClaimsFromToken(token);
+        return (Long) claims.getClaimValue("userId");
+    }
+
+    public boolean tokenIsValid(String jwt) throws MalformedClaimException {
+        return getClaimsFromToken(jwt) != null;
+    }
+
+    public String generateJwt(User user) throws JoseException {
 
         JwtClaims claims = new JwtClaims();
         claims.setIssuer("Service Provider");
@@ -56,7 +54,8 @@ public class AuthService {
         claims.setIssuedAtToNow();
         claims.setNotBeforeMinutesInThePast(2);
         claims.setSubject("AuthToken");
-        claims.setClaim("email", loginDto.getEmail());
+        claims.setClaim("userId", user.getId());
+        claims.setClaim("email", user.getEmail());
 
         JsonWebSignature jws = new JsonWebSignature();
         jws.setPayload(claims.toJson());
@@ -71,7 +70,7 @@ public class AuthService {
         return jwt;
     }
 
-    public boolean tokenIsValid(String jwt) throws MalformedClaimException {
+    public JwtClaims getClaimsFromToken(String jwt) throws MalformedClaimException {
         // Remove the substring "Bearer"
         jwt = jwt.substring(7);
 
@@ -92,7 +91,7 @@ public class AuthService {
         try {
             JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);
             System.out.println("JWT validation succeeded! " + jwtClaims);
-            return true;
+            return jwtClaims;
         } catch (InvalidJwtException e) {
 //                Failed Processing or validating
             System.out.println("Invalid JWT! " + e);
@@ -104,17 +103,17 @@ public class AuthService {
             if (e.hasExpired())
             {
                 System.out.println("JWT expired at " + e.getJwtContext().getJwtClaims().getExpirationTime());
-                return false;
+                return null;
             }
 
             // Or maybe the audience was invalid
             if (e.hasErrorCode(ErrorCodes.AUDIENCE_INVALID))
             {
                 System.out.println("JWT had wrong audience: " + e.getJwtContext().getJwtClaims().getAudience());
-                return false;
+                return null;
             }
         }
-        return false;
+        return null;
     }
 
 }

@@ -2,8 +2,11 @@ package com.spring.webtest.service;
 
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
+import com.spring.webtest.dto.LoginDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
+import org.jose4j.jwt.MalformedClaimException;
+import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +18,13 @@ public class UserService {
 
     private final UserRepository repository;
     private final HashService hashService;
+    private final AuthService authService;
 
     @Autowired
-    public UserService(UserRepository repository, HashService hashService) {
+    public UserService(UserRepository repository, HashService hashService, AuthService authService) {
         this.repository = repository;
         this.hashService = hashService;
+        this.authService = authService;
     }
 
     public List<UserDto> getAll() {
@@ -39,6 +44,11 @@ public class UserService {
             throw new ResourceNotFoundException("Could not find user with email: " + email);
         }
         return user;
+    }
+
+    public UserDto getByToken(String token) throws MalformedClaimException {
+        Long id = this.authService.getIdFromToken(token);
+        return getById(id);
     }
 
     public UserDto save(User user) {
@@ -67,4 +77,11 @@ public class UserService {
                 user.getAddress());
     }
 
+    public String loginUser(LoginDto loginDto) throws JoseException, IllegalAccessException {
+        User user = this.getByEmail(loginDto.getEmail());
+        if (authService.credentialsAreValid(loginDto, user)) {
+            return this.authService.generateJwt(user);
+        }
+        throw new IllegalAccessException("Credentials are not valid");
+    }
 }
