@@ -33,7 +33,7 @@ public class AddressService {
     }
 
     public AddressDto updateAddress(Address address) {
-        Address saved = repository.findById(address.getId()).orElseThrow(() ->
+        repository.findById(address.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Update address: Address " + address + " not found"));
         return addressToDto(repository.save(address));
     }
