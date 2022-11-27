@@ -2,7 +2,6 @@ package com.spring.webtest.request;
 
 import com.spring.webtest.controller.RideRequestController;
 import com.spring.webtest.database.entities.RideRequest;
-import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.service.RideRequestService;
 import org.springframework.http.MediaType;

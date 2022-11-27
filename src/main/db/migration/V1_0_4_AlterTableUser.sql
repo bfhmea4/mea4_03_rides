@@ -1,3 +1,0 @@
-ALTER TABLE user
-    ADD UNIQUE (email),
-    MODIFY COLUMN password VARCHAR(255);

@@ -25,7 +25,7 @@ public class RideRequest {
         this.user = user;
     }
 
-    public RideRequest(Long id, String title, String description,User user) {
+    public RideRequest(Long id, String title, String description, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
