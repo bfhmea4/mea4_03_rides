@@ -56,9 +56,14 @@ public class UserService {
         return userToDto(repository.save(user));
     }
 
-    public UserDto update(User user) {
-        user.setPassword(hashService.hash(user.getPassword()));
-        return userToDto(repository.save(user));
+    public UserDto update(User user, String token) throws MalformedClaimException, IllegalAccessException {
+        if (authService.tokenIsValid(token) && user.getId() == getByToken(token).getId()) {
+            if (user.getPassword() != null) {
+                user.setPassword(hashService.hash(user.getPassword()));
+            }
+            return userToDto(repository.save(user));
+        }
+        throw new IllegalAccessException("Token is not valid");
     }
 
     public void delete(long id) {

@@ -75,12 +75,10 @@ public class UserController {
         }
     }
 
-
-
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
     ResponseEntity<UserDto> create(@RequestBody User user) {
-        System.out.println("******\nController: Try to save User: " + user.getFirstName() + "\n******");
+        logger.info("******\nController: Try to save User: " + user.getFirstName() + "\n******");
         UserDto userDto = service.save(user);
         System.out.println(userDto.getEmail());
         return new ResponseEntity<>(userDto, HttpStatus.OK);
@@ -89,15 +87,21 @@ public class UserController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("api/user")
     ResponseEntity<UserDto> update(@RequestBody User user) {
-        System.out.println("******\nController: Try to update User with id: " + user.getId() + "\n******");
-        UserDto userDto = service.update(user);
+        logger.info("******\nController: Try to update User with id: " + user.getId() + "\n******");
+        String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+        UserDto userDto = null;
+        try {
+            userDto = service.update(user, token);
+        } catch (MalformedClaimException | IllegalAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("api/user/{id}")
     ResponseEntity<Void> delete(@PathVariable long id) {
-        System.out.println("******\nController: Try to delete User: " + id + "\n******");
+        logger.info("******\nController: Try to delete User: " + id + "\n******");
         service.delete(id);
         return ResponseEntity.noContent().<Void>build();
     }
