@@ -16,21 +16,33 @@ public class RideRequest {
     @ManyToOne(targetEntity = User.class)
     private User user;
 
+    @OneToOne(targetEntity = Address.class, cascade = {CascadeType.REMOVE})
+    private Address fromAddress;
+
+    @OneToOne(targetEntity = Address.class, cascade = {CascadeType.REMOVE})
+    private Address toAddress;
+
     protected RideRequest() {
     }
 
-    public RideRequest(String title, String description, User user) {
-        this.title = title;
-        this.description = description;
-        this.user = user;
-    }
-
-    public RideRequest(Long id, String title, String description,User user) {
+    public RideRequest(Long id, String title, String description, User user, Address fromAddress, Address toAddress) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.user = user;
+        this.fromAddress = fromAddress;
+        this.toAddress = toAddress;
     }
+
+    public RideRequest(String title, String description, User user, Address fromAddress, Address toAddress) {
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.fromAddress = fromAddress;
+        this.toAddress = toAddress;
+    }
+
+
 
 
 
@@ -68,13 +80,36 @@ public class RideRequest {
         this.user = user;
     }
 
+    @OneToOne
+    @JoinColumn(name = "from_address_id", nullable = false)
+    public Address getFromAddress() {
+        return fromAddress;
+    }
+
+
+    public void setFromAddress(Address fromAddress) {
+        this.fromAddress = fromAddress;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "to_address_id", nullable = false)
+    public Address getToAddress() {
+        return toAddress;
+    }
+
+    public void setToAddress(Address toAddress) {
+        this.toAddress = toAddress;
+    }
+
     @Override
     public String toString() {
         return "RideRequest{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", user=" + user.toString() +
+                ", user=" + user +
+                ", fromAddress=" + fromAddress +
+                ", toAddress=" + toAddress +
                 '}';
     }
 }

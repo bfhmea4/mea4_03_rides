@@ -3,6 +3,7 @@ package com.spring.webtest.service;
 import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.database.repositories.RideRequestRepository;
+import com.spring.webtest.dto.AddressDto;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
@@ -17,17 +18,23 @@ public class RideRequestService {
     private final RideRequestRepository repository;
     private final UserService userService;
 
+    private final AddressService addressService;
+
+
 
     @Autowired
-    public RideRequestService(RideRequestRepository repository, UserService userService) {
+    public RideRequestService(RideRequestRepository repository, UserService userService, AddressService addressService) {
         this.repository = repository;
         this.userService = userService;
+        this.addressService = addressService;
     }
 
     public RideRequestDto addRideRequest(RideRequest rideRequest) throws IllegalAccessException, OperationNotSupportedException {
         try {
             UserDto userDto = userService.getById(rideRequest.getUser().getId());
             if (userService.userToDto(rideRequest.getUser()).equals(userDto)) {
+                addressService.addAddress(rideRequest.getFromAddress());
+                addressService.addAddress(rideRequest.getToAddress());
                 return rideRequestToDto(repository.save(rideRequest));
             }
             throw new IllegalAccessException();
@@ -52,6 +59,8 @@ public class RideRequestService {
         if (rideRequest.getUser() == null || saved.getUser().getId() != rideRequest.getUser().getId()) {
             throw new IllegalAccessException();
         }
+        addressService.updateAddress(rideRequest.getFromAddress());
+        addressService.updateAddress(rideRequest.getToAddress());
         return rideRequestToDto(repository.save(rideRequest));
     }
 
@@ -79,6 +88,16 @@ public class RideRequestService {
                         request.getUser().getFirstName(),
                         request.getUser().getLastName(),
                         request.getUser().getEmail(),
-                        request.getUser().getAddress()));
+                        request.getUser().getAddress()),
+                new AddressDto(request.getFromAddress().getId(),
+                        request.getFromAddress().getStreet(),
+                        request.getFromAddress().getHouseNumber(),
+                        request.getFromAddress().getPostalCode(),
+                        request.getFromAddress().getLocation()),
+                new AddressDto(request.getToAddress().getId(),
+                        request.getToAddress().getStreet(),
+                        request.getToAddress().getHouseNumber(),
+                        request.getToAddress().getPostalCode(),
+                        request.getToAddress().getLocation()));
     }
 }
