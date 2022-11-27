@@ -1,5 +1,6 @@
 package com.spring.webtest.service;
 
+import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.LoginDto;
 import org.jose4j.jwa.AlgorithmConstraints;
 import org.jose4j.jwk.RsaJsonWebKey;
@@ -13,26 +14,48 @@ import org.jose4j.jwt.consumer.InvalidJwtException;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.lang.JoseException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthService {
 
     //            Tutorial from https://bitbucket.org/b_c/jose4j/wiki/JWT%20Examples
 
     RsaJsonWebKey rsaJsonWebKey;
 
-    public String generateJwt(LoginDto loginDto) throws JoseException {
+    UserService userService;
+    HashService hashService;
 
+    public AuthService(UserService userService, HashService hashService) throws JoseException {
         rsaJsonWebKey = RsaJwkGenerator.generateJwk(2048);
         rsaJsonWebKey.setKeyId("k1");
+        this.userService = userService;
+        this.hashService = hashService;
+    }
+
+    public String loginUser(LoginDto loginDto) throws IllegalAccessException, JoseException {
+        if (!credentialsAreValid(loginDto)) {
+            throw new IllegalAccessException();
+        }
+        return generateJwt(loginDto);
+    }
+
+    public boolean credentialsAreValid(LoginDto loginDto) {
+        loginDto.setPassword(hashService.hash(loginDto.getPassword()));
+        User user = userService.getByEmail(loginDto.getEmail());
+        return user.getPassword().equals(loginDto.getPassword());
+    }
+
+    public String generateJwt(LoginDto loginDto) throws JoseException {
 
         JwtClaims claims = new JwtClaims();
         claims.setIssuer("Service Provider");
-        claims.setAudience(loginDto.getEmail());
+        claims.setAudience("Audience");
         claims.setExpirationTimeMinutesInTheFuture(20);
         claims.setGeneratedJwtId();
         claims.setIssuedAtToNow();
         claims.setNotBeforeMinutesInThePast(2);
-        claims.setSubject(loginDto.getEmail());
+        claims.setSubject("AuthToken");
         claims.setClaim("email", loginDto.getEmail());
 
         JsonWebSignature jws = new JsonWebSignature();
@@ -43,25 +66,28 @@ public class AuthService {
 
         String jwt = jws.getCompactSerialization();
         System.out.println("JWT: " + jwt);
+        System.out.println("Private Key: " + rsaJsonWebKey.getPrivateKey());
 
         return jwt;
     }
 
-    public boolean jwtIsValid(String jwt) throws JoseException, MalformedClaimException {
-
-        rsaJsonWebKey = RsaJwkGenerator.generateJwk(2048);
-        rsaJsonWebKey.setKeyId("k1");
+    public boolean tokenIsValid(String jwt) throws MalformedClaimException {
+        // Remove the substring "Bearer"
+        jwt = jwt.substring(7);
 
         JwtConsumer jwtConsumer = new JwtConsumerBuilder()
                 .setRequireExpirationTime()
                 .setAllowedClockSkewInSeconds(30)
                 .setRequireSubject()
                 .setExpectedIssuer("Service Provider")
-                .setExpectedAudience("email")
-                .setVerificationKey(rsaJsonWebKey.getKey())
+                .setExpectedAudience("Audience")
+                .setVerificationKey(rsaJsonWebKey.getPublicKey())
                 .setJweAlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT,
                         AlgorithmIdentifiers.RSA_USING_SHA256)
                 .build();
+
+
+        System.out.println("Public Key: " + rsaJsonWebKey.getPublicKey());
 
         try {
             JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);

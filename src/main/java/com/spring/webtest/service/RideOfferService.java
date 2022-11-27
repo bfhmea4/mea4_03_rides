@@ -5,6 +5,8 @@ import com.spring.webtest.database.repositories.RideOfferRepository;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
+import org.jose4j.jwt.MalformedClaimException;
+import org.jose4j.lang.JoseException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,14 +18,22 @@ public class RideOfferService {
     private final RideOfferRepository repository;
 
     private final UserService userService;
+    private final AuthService authService;
 
 
-    public RideOfferService(RideOfferRepository repository, UserService userService) {
+    public RideOfferService(RideOfferRepository repository, UserService userService, AuthService authService) {
         this.repository = repository;
         this.userService = userService;
+        this.authService = authService;
     }
 
-    public RideOfferDto addRideOffer(RideOffer rideOffer) {
+    public RideOfferDto addRideOffer(RideOffer rideOffer, String token) throws MalformedClaimException, JoseException, IllegalAccessException {
+
+        boolean tokenIsValid = authService.tokenIsValid(token);
+        if (!tokenIsValid) {
+            throw new IllegalAccessException("Could not validate Token");
+        }
+
         UserDto userDto = userService.getById(rideOffer.getUser().getId());
         if (rideOffer.getUser() != null && userDto != null && userService.userToDto(rideOffer.getUser()).equals(userDto)) {
             return rideOfferToDto(repository.save(rideOffer));

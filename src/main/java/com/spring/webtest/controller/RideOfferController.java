@@ -4,11 +4,16 @@ import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.RideOfferService;
+import org.jose4j.jwt.MalformedClaimException;
+import org.jose4j.lang.JoseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 @RestController
@@ -26,9 +31,19 @@ public class RideOfferController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOffer rideOffer) {
-            logger.info("add ride offers");
-            RideOfferDto rideOfferDto = service.addRideOffer(rideOffer);
-            if(rideOfferDto != null) {
+        logger.info("add ride offers");
+
+
+        RideOfferDto rideOfferDto = null;
+        try {
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            logger.info("received token: " + token);
+            rideOfferDto = service.addRideOffer(rideOffer, token);
+        } catch (MalformedClaimException | JoseException | NullPointerException | IllegalAccessException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (rideOfferDto != null) {
             return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

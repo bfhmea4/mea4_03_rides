@@ -2,6 +2,7 @@ package com.spring.webtest.controller;
 
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.UserDto;
+import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +33,12 @@ public class UserController {
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> get(@PathVariable long id) {
         System.out.println("******\nController: Try to get user with id: " + id + "\n******");
-        UserDto userDto = service.getById(id);
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        try {
+            UserDto userDto = service.getById(id);
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
