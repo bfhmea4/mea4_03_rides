@@ -38,11 +38,11 @@ public class AddressService {
         return addressToDto(repository.save(address));
     }
 
-    public void deleteAddress(long id) {
-        Address saved = repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Delete address: Address with id " + id + " not found"));
-        repository.deleteById(id);
-    }
+//    public void deleteAddress(long id) {
+//        Address saved = repository.findById(id).orElseThrow(() ->
+//                new ResourceNotFoundException("Delete address: Address with id " + id + " not found"));
+//        repository.deleteById(id);
+//    }
 
     public AddressDto addressToDto(Address address) {
         if (address == null) {
