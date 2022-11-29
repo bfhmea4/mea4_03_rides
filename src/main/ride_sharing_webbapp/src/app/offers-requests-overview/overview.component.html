@@ -15,7 +15,7 @@
       </div>
     </div>
     <div id="requestsList" *ngIf="rideRequestsBtnClicked">
-      <div class="offer-request card-content" (click)="onClickOfferItem(rideRequest)" *ngFor="let rideRequest of rideRequests">
+      <div class="offer-request card-content" (click)="onClickRequestItem(rideRequest)" *ngFor="let rideRequest of rideRequests">
         <span hidden="true">{{rideRequest.id}}</span><br>
         <h2>{{rideRequest.title}}</h2><br>
         <p>{{rideRequest.description}}</p>

@@ -1,5 +1,6 @@
 package com.spring.webtest.service;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.database.repositories.RideOfferRepository;
 import com.spring.webtest.dto.RideOfferDto;
@@ -13,22 +14,31 @@ import java.util.List;
 @Service
 public class RideOfferService {
 
-    private RideOfferRepository repository;
+    private final RideOfferRepository repository;
+
+    private final UserService userService;
 
 
-    public RideOfferService(RideOfferRepository repository) {
+    public RideOfferService(RideOfferRepository repository, UserService userService) {
         this.repository = repository;
+        this.userService = userService;
     }
 
-    public RideOfferDto addRideOffer(RideOffer rideOffer) {
-        return rideOfferToDto(repository.save(rideOffer));
+    public RideOfferDto addRideOffer(RideOffer rideOffer) throws OperationNotSupportedException, IllegalAccessException {
+        try {
+            UserDto userDto = userService.getById(rideOffer.getUser().getId());
+            if (rideOffer.getUser() != null && userDto != null && userService.userToDto(rideOffer.getUser()).equals(userDto)) {
+                return rideOfferToDto(repository.save(rideOffer));
+            }
+            throw new IllegalAccessException();
+        } catch (NullPointerException e) {
+            throw new OperationNotSupportedException();
+        }
     }
 
     public List<RideOfferDto> getAllRideOffers() {
         List<RideOfferDto> offersList = new ArrayList<>();
-        repository.findAll().forEach(rideOffer -> {
-            offersList.add(rideOfferToDto(rideOffer));
-        });
+        repository.findAll().forEach(rideOffer -> offersList.add(rideOfferToDto(rideOffer)));
         return offersList;
     }
 
@@ -36,19 +46,26 @@ public class RideOfferService {
         return rideOfferToDto(repository.findById(id).orElse(null));
     }
 
-    public RideOfferDto updateRiderOffer(RideOffer rideOffer) {
-        repository.findById(rideOffer.getId()).orElseThrow(() ->
+    public RideOfferDto updateRiderOffer(RideOffer rideOffer) throws IllegalAccessException {
+        RideOffer saved = repository.findById(rideOffer.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Update offer: Ride offer with id: " + rideOffer.getId() + " not found"));
+        if (rideOffer.getUser() == null || saved.getUser().getId() != rideOffer.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         return rideOfferToDto(repository.save(rideOffer));
     }
 
-    public void deleteRideOfferById(long id) {
-        repository.findById(id).orElseThrow(() ->
+    public void deleteRideOffer(long id) throws IllegalAccessException {
+        RideOffer saved = repository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Delete offer by id: Ride offer with id: " + id + " not found"));
-        repository.deleteById(id);
+    //TODO Check id of user logged and saved to ensure deletion only from owner of offer
+//        if (rideOffer.getUser() == null || saved.getUser().getId() != rideOffer.getUser().getId()) {
+//            throw new IllegalAccessException();
+//        }
+        repository.deleteById(saved.getId());
     }
 
-    private RideOfferDto rideOfferToDto(RideOffer offer) {
+    public RideOfferDto rideOfferToDto(RideOffer offer) {
         if (offer == null) {
             return null;
         }

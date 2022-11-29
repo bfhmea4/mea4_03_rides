@@ -1,9 +1,9 @@
 package com.spring.webtest.controller;
 
-import com.google.gson.Gson;
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideRequest;
-import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.RideRequestDto;
+import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.RideRequestService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +17,8 @@ public class RideRequestController {
 
     private static final Logger logger = Logger.getLogger(FizzBuzzController.class.getName());
 
-    private static final Gson gson = new Gson();
-
     private final RideRequestService service;
+
 
 
     public RideRequestController(RideRequestService service) {
@@ -29,9 +28,16 @@ public class RideRequestController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/requests")
     ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequest rideRequest) {
-        logger.info("add ride offers");
-        RideRequestDto rideRequestDto = service.addRideRequest(rideRequest);
-        return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+        try {
+            logger.info("add ride offers");
+            RideRequestDto rideRequestDto = service.addRideRequest(rideRequest);
+            return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
+        } catch (OperationNotSupportedException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -57,8 +63,14 @@ public class RideRequestController {
     @PutMapping("/api/requests/{id}")
     ResponseEntity<RideRequestDto> updateRideRequest(@RequestBody RideRequest rideRequest) {
         logger.info("update ride offer with id: " + rideRequest.getId());
-        RideRequestDto rideRequestDto = service.updateRideRequest(rideRequest);
-        return new ResponseEntity<>(rideRequestDto, HttpStatus.OK);
+        try {
+            RideRequestDto rideRequestDto = service.updateRideRequest(rideRequest);
+            return new ResponseEntity<>(rideRequestDto, HttpStatus.OK);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
 
@@ -66,7 +78,13 @@ public class RideRequestController {
     @DeleteMapping("/api/requests/{id}")
     ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
         logger.info("delete ride offer with id: " + id);
-        service.deleteRideRequestById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            service.deleteRideRequest(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }

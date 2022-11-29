@@ -1,5 +1,6 @@
 package com.spring.webtest.controller;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
@@ -26,9 +27,15 @@ public class RideOfferController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOffer rideOffer) {
-        logger.info("add ride offers");
-        RideOfferDto rideOfferDto = service.addRideOffer(rideOffer);
-        return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
+        try {
+            logger.info("add ride offers");
+            RideOfferDto rideOfferDto = service.addRideOffer(rideOffer);
+            return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } catch (OperationNotSupportedException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -59,6 +66,8 @@ public class RideOfferController {
             return new ResponseEntity<>(rideOfferDto, HttpStatus.OK);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -68,10 +77,12 @@ public class RideOfferController {
     ResponseEntity<?> delete(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);
         try {
-            service.deleteRideOfferById(id);
+            service.deleteRideOffer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 }

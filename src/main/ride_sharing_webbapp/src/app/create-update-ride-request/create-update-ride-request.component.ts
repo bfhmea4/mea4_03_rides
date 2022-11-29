@@ -82,9 +82,9 @@ export class CreateUpdateRideRequestComponent implements OnInit {
     }
   }
 
-  clickOnDeleteButton(id: number) {
-    this.rideRequestService.deleteRequest(id).subscribe(() => {
-      console.log(`ride request with id ${id} deleted succesfully`)
+  clickOnDeleteButton(rideRequest: RideRequest) {
+    this.rideRequestService.deleteRequest(rideRequest).subscribe(() => {
+      console.log(`ride request with id ${rideRequest.id} deleted succesfully`)
       this.router.navigate(['/overview'])
     })
   }

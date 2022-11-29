@@ -8,20 +8,20 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
-class RideRequestWebClientInvoker implements RideRequestInvoker {
+class WebClientRideRequestInvoker implements RideRequestInvoker {
     private final WebTestClient client;
 
-    public RideRequestWebClientInvoker(WebTestClient client) {
+    public WebClientRideRequestInvoker(WebTestClient client) {
         this.client = client;
     }
 
-    static RideRequestWebClientInvoker remoteServer() {
-        return new RideRequestWebClientInvoker(WebTestClient.bindToServer().baseUrl("http://localhost:8080").build());
+    static WebClientRideRequestInvoker remoteServer() {
+        return new WebClientRideRequestInvoker(WebTestClient.bindToServer().baseUrl("http://localhost:8080").build());
     }
 
-    static RideRequestWebClientInvoker mockServer(RideRequestService service) {
+    static WebClientRideRequestInvoker mockServer(RideRequestService service) {
         System.out.println(service);
-        return new RideRequestWebClientInvoker(WebTestClient.bindToController(new RideRequestController(service)).build());
+        return new WebClientRideRequestInvoker(WebTestClient.bindToController(new RideRequestController(service)).build());
     }
 
     @Override
