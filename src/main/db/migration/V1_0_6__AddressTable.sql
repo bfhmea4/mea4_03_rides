@@ -1,4 +1,4 @@
-CREATE TABLE ride_request (
+CREATE TABLE address (
                               `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
                               `street` TEXT,
                               `house_number` INTEGER,
