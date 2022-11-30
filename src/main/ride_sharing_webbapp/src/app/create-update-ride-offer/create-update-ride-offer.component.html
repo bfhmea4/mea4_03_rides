@@ -28,7 +28,7 @@
            [readOnly]="!isOwner" placeholder="enter postal code">
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="from_location" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.location"
-           [readOnly]="!isOwner" placeholder="enter postal code">
+           [readOnly]="!isOwner" placeholder="enter location">
 
     <h3>To:</h3>
     <input name="to_id" hidden [(ngModel)]="rideOfferFromStorage.toAddress.id">
@@ -43,7 +43,7 @@
            [readOnly]="!isOwner" placeholder="enter postal code">
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="to_location" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.location"
-           [readOnly]="!isOwner" placeholder="enter postal code">
+           [readOnly]="!isOwner" placeholder="enter location">
   </div>
 
   <div class="button-row">
@@ -74,7 +74,7 @@
     <label class="profile-item-label">Postal Code</label>
     <input class="profile-item-value" name="new_from_postal_code" type="text" placeholder="enter postal code" ngModel>
     <label class="profile-item-label">Location</label>
-    <input class="profile-item-value" name="new_from_location" type="text" placeholder="enter postal code" ngModel>
+    <input class="profile-item-value" name="new_from_location" type="text" placeholder="enter location" ngModel>
 
     <h3>To:</h3>
     <label class="profile-item-label">Street</label>
@@ -84,7 +84,7 @@
     <label class="profile-item-label">Postal Code</label>
     <input class="profile-item-value" name="new_to_postal_code" type="text" placeholder="enter postal code" ngModel>
     <label class="profile-item-label">Location</label>
-    <input class="profile-item-value" name="new_to_location" type="text" placeholder="enter postal code" ngModel>
+    <input class="profile-item-value" name="new_to_location" type="text" placeholder="enter location" ngModel>
   </div>
   <div class="button-row">
     <button *ngIf="isLoggedIn" class="button button-row-button" type="submit">Save</button>
