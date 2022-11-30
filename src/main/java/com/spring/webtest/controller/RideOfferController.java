@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -32,23 +33,23 @@ public class RideOfferController {
     ResponseEntity<RideOfferDto> post(@RequestBody RideOffer rideOffer) {
         logger.info("add ride offers");
 
-
         RideOfferDto rideOfferDto = null;
         try {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             logger.info("received token: " + token);
             rideOfferDto = service.addRideOffer(rideOffer, token);
-        } catch (MalformedClaimException | JoseException | NullPointerException e) {
+        } catch (MalformedClaimException | NullPointerException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (IllegalAccessException e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } catch (OperationNotSupportedException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
         if (rideOfferDto != null) {
             return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
         }
-
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})

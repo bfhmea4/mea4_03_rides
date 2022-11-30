@@ -4,6 +4,8 @@ import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.service.RideRequestService;
 
+import javax.naming.OperationNotSupportedException;
+
 class RideRequestServiceInvoker implements RideRequestInvoker {
 
     private final RideRequestService service;
@@ -13,8 +15,9 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
     }
 
     @Override
-    public RideRequestDto createRequest(RideRequest rideRequest) throws OperationNotSupportedException, IllegalAccessException {
-        return service.addRideRequest(rideRequest);
+    public RideRequestDto createRequest(RideRequest rideRequest) throws IllegalAccessException {
+//        return service.addRideRequest(rideRequest);
+        return new RideRequestDto();
     }
 
     @Override

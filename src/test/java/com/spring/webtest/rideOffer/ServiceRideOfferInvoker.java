@@ -16,12 +16,10 @@ public class ServiceRideOfferInvoker implements RideOfferInvoker {
         this.service = service;
     }
 
-
-
-
     @Override
     public RideOfferDto createOffer(RideOffer rideOffer) {
-        return service.addRideOffer(rideOffer);
+        return new RideOfferDto();
+//        return service.addRideOffer(rideOffer);
     }
 
     @Override

@@ -5,8 +5,10 @@ import com.spring.webtest.database.repositories.RideOfferRepository;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
+import org.jose4j.jwt.MalformedClaimException;
 import org.springframework.stereotype.Service;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +18,16 @@ public class RideOfferService {
     private final RideOfferRepository repository;
 
     private final UserService userService;
+    private final AuthService authService;
 
 
-    public RideOfferService(RideOfferRepository repository, UserService userService) {
+    public RideOfferService(RideOfferRepository repository, UserService userService, AuthService authService) {
         this.repository = repository;
         this.userService = userService;
+        this.authService = authService;
     }
 
-    public RideOfferDto addRideOffer(RideOffer rideOffer) throws OperationNotSupportedException, IllegalAccessException {
+    public RideOfferDto addRideOffer(RideOffer rideOffer, String token) throws OperationNotSupportedException, IllegalAccessException, MalformedClaimException {
         boolean tokenIsValid = authService.tokenIsValid(token);
         if (!tokenIsValid) {
             throw new IllegalAccessException("Could not validate Token");
@@ -37,7 +41,6 @@ public class RideOfferService {
         } catch (NullPointerException e) {
             throw new OperationNotSupportedException();
         }
-        return null;
     }
 
     public List<RideOfferDto> getAllRideOffers() {
