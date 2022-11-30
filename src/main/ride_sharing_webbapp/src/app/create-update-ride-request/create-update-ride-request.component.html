@@ -28,7 +28,7 @@
            [readOnly]="!isOwner" placeholder="enter postal code">
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="from_location" type="text" [(ngModel)]="rideRequestFromStorage.fromAddress.location"
-           [readOnly]="!isOwner" placeholder="enter postal code">
+           [readOnly]="!isOwner" placeholder="enter location">
 
     <h3>To:</h3>
     <input name="to_id" hidden [(ngModel)]="rideRequestFromStorage.toAddress.id">
@@ -43,7 +43,7 @@
            [readOnly]="!isOwner" placeholder="enter postal code">
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="to_location" type="text" [(ngModel)]="rideRequestFromStorage.toAddress.location"
-           [readOnly]="!isOwner" placeholder="enter postal code">
+           [readOnly]="!isOwner" placeholder="enter location">
   </div>
 
   <div class="button-row">
@@ -67,7 +67,6 @@
     <input class="profile-item-value" name="description" type=text placeholder="enter description" ngModel>
 
     <h3>From:</h3>
-    <label class="profile-item-label">From:</label>
     <label class="profile-item-label">Street</label>
     <input class="profile-item-value" name="new_from_street" type="text" placeholder="enter street name" ngModel>
     <label class="profile-item-label">House Number</label>
@@ -75,10 +74,9 @@
     <label class="profile-item-label">Postal Code</label>
     <input class="profile-item-value" name="new_from_postal_code" type="text" placeholder="enter postal code" ngModel>
     <label class="profile-item-label">Location</label>
-    <input class="profile-item-value" name="new_from_location" type="text" placeholder="enter postal code" ngModel>
+    <input class="profile-item-value" name="new_from_location" type="text" placeholder="enter location" ngModel>
 
     <h3>To:</h3>
-    <label class="profile-item-label">To:</label>
     <label class="profile-item-label">Street</label>
     <input class="profile-item-value" name="new_to_street" type="text" placeholder="enter street name" ngModel>
     <label class="profile-item-label">House Number</label>
@@ -86,7 +84,7 @@
     <label class="profile-item-label">Postal Code</label>
     <input class="profile-item-value" name="new_to_postal_code" type="text" placeholder="enter postal code" ngModel>
     <label class="profile-item-label">Location</label>
-    <input class="profile-item-value" name="new_to_location" type="text" placeholder="enter postal code" ngModel>
+    <input class="profile-item-value" name="new_to_location" type="text" placeholder="enter location" ngModel>
   </div>
 
   <div class="button-row">
