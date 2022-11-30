@@ -1,7 +1,5 @@
 package com.spring.webtest.database.entities;
 
-import com.spring.webtest.dto.UserDto;
-
 import javax.persistence.*;
 import java.util.Objects;
 
