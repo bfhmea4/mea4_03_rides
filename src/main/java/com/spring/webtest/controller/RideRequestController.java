@@ -1,5 +1,6 @@
 package com.spring.webtest.controller;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
@@ -27,12 +28,16 @@ public class RideRequestController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/requests")
     ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequest rideRequest) {
-        logger.info("add ride offers");
-        RideRequestDto rideRequestDto = service.addRideRequest(rideRequest);
-        if (rideRequestDto != null) {
+        try {
+            logger.info("add ride offers");
+            RideRequestDto rideRequestDto = service.addRideRequest(rideRequest);
             return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
+        } catch (OperationNotSupportedException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -71,10 +76,10 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/requests/{id}")
-    ResponseEntity<?> deleteRideRequestById(@RequestBody RideRequest rideRequest) {
-        logger.info("delete ride offer with id: " + rideRequest.getId());
+    ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
+        logger.info("delete ride offer with id: " + id);
         try {
-            service.deleteRideRequest(rideRequest);
+            service.deleteRideRequest(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

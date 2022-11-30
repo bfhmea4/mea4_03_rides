@@ -13,7 +13,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Logger;
 
 @RestController
@@ -39,14 +38,17 @@ public class RideOfferController {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             logger.info("received token: " + token);
             rideOfferDto = service.addRideOffer(rideOffer, token);
-        } catch (MalformedClaimException | JoseException | NullPointerException | IllegalAccessException e) {
+        } catch (MalformedClaimException | JoseException | NullPointerException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } catch (OperationNotSupportedException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         if (rideOfferDto != null) {
             return new ResponseEntity<>(rideOfferDto, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -85,10 +87,10 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/offer/{id}")
-    ResponseEntity<?> delete(@RequestBody RideOffer rideOffer) {
-        logger.info("delete ride offer with id: " + rideOffer.getId());
+    ResponseEntity<?> delete(@PathVariable long id) {
+        logger.info("delete ride offer with id: " + id);
         try {
-            service.deleteRideOffer(rideOffer);
+            service.deleteRideOffer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -13,7 +13,7 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
     }
 
     @Override
-    public RideRequestDto createRequest(RideRequest rideRequest) {
+    public RideRequestDto createRequest(RideRequest rideRequest) throws OperationNotSupportedException, IllegalAccessException {
         return service.addRideRequest(rideRequest);
     }
 
@@ -23,14 +23,13 @@ class RideRequestServiceInvoker implements RideRequestInvoker {
     }
 
     @Override
-    public RideRequestDto updateRequest(RideRequest rideRequest) {
-//        return service.updateRideRequest(rideRequest);
-        return new RideRequestDto();
+    public RideRequestDto updateRequest(RideRequest rideRequest) throws IllegalAccessException {
+        return service.updateRideRequest(rideRequest);
     }
 
     @Override
-    public void deleteRequest(long id) {
-//        service.deleteRideRequest(id);
+    public void deleteRequest(long id) throws IllegalAccessException {
+        service.deleteRideRequest(id);
 
     }
 }

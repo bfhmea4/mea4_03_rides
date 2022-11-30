@@ -30,14 +30,13 @@ public class ServiceRideOfferInvoker implements RideOfferInvoker {
     }
 
     @Override
-    public RideOfferDto updateOffer(RideOffer rideOffer) {
-//        return service.updateRiderOffer(rideOffer);
-        return new RideOfferDto();
+    public RideOfferDto updateOffer(RideOffer rideOffer) throws IllegalAccessException {
+        return service.updateRiderOffer(rideOffer);
     }
 
     @Override
-    public void deleteOffer(long id) {
-//        service.deleteRideOffer(id);
+    public void deleteOffer(long id) throws IllegalAccessException {
+        service.deleteRideOffer(id);
 
     }
 }
