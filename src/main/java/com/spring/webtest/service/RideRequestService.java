@@ -7,6 +7,7 @@ import com.spring.webtest.dto.AddressDto;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
+import org.jose4j.jwt.MalformedClaimException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +18,28 @@ import java.util.List;
 public class RideRequestService {
     private final RideRequestRepository repository;
     private final UserService userService;
+    private final AuthService authService;
 
     private final AddressService addressService;
 
 
 
     @Autowired
-    public RideRequestService(RideRequestRepository repository, UserService userService, AddressService addressService) {
+    public RideRequestService(RideRequestRepository repository, UserService userService, AddressService addressService, AuthService authService) {
         this.repository = repository;
         this.userService = userService;
         this.addressService = addressService;
+        this.authService = authService;
     }
 
-    public RideRequestDto addRideRequest(RideRequest rideRequest) throws IllegalAccessException, OperationNotSupportedException {
+    public RideRequestDto addRideRequest(RideRequest rideRequest, String token) throws IllegalAccessException, OperationNotSupportedException, MalformedClaimException {
+        if (this.authService.tokenIsValid(token)) {
+            throw new IllegalAccessException();
+        }
+        Long userId = authService.getIdFromToken(token);
+        if (userId != rideRequest.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         try {
             UserDto userDto = userService.getById(rideRequest.getUser().getId());
             if (userService.userToDto(rideRequest.getUser()).equals(userDto)) {
@@ -53,7 +63,14 @@ public class RideRequestService {
         return rideRequestToDto(repository.findById(id).orElse(null));
     }
 
-    public RideRequestDto updateRideRequest(RideRequest rideRequest) throws IllegalAccessException {
+    public RideRequestDto updateRideRequest(RideRequest rideRequest, String token) throws IllegalAccessException, MalformedClaimException {
+        if (this.authService.tokenIsValid(token)) {
+            throw new IllegalAccessException();
+        }
+        Long userId = authService.getIdFromToken(token);
+        if (userId != rideRequest.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         RideRequest saved = repository.findById(rideRequest.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Update Request: Ride Request with id: " + rideRequest.getId() + " not found"));
         if (rideRequest.getUser() == null || saved.getUser().getId() != rideRequest.getUser().getId()) {
@@ -64,15 +81,16 @@ public class RideRequestService {
         return rideRequestToDto(repository.save(rideRequest));
     }
 
-    public void deleteRideRequest(long id) throws IllegalAccessException {
+    public void deleteRideRequest(long id, String token) throws IllegalAccessException, MalformedClaimException {
+        if (this.authService.tokenIsValid(token)) {
+            throw new IllegalAccessException();
+        }
         RideRequest saved = repository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Update Request: Ride Request with id: " + id + " not found"));
-
-        //TODO Check id of user logged in and saved to ensure deletion only from owner of request
-
-//        if (rideRequest.getUser() == null || saved.getUser().getId() != rideRequest.getUser().getId()) {
-//            throw new IllegalAccessException();
-//        }
+        Long userId = authService.getIdFromToken(token);
+        if (userId != saved.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         repository.deleteById(saved.getId());
     }
 
