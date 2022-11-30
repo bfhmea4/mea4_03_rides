@@ -3,6 +3,7 @@
 <form *ngIf="rideOfferFromStorage" class="centered-content" #UpdateRideOffer="ngForm"
       (ngSubmit)="onClickSubmitUpdate(UpdateRideOffer.value)">
   <div class="card-content profile-content">
+    <h3>Content:</h3>
     <input name="id" hidden [(ngModel)]="rideOfferFromStorage.id">
     <label class="profile-item-label">Title</label>
     <input class="profile-item-value" name="title" type="text" [(ngModel)]="rideOfferFromStorage.title"
@@ -12,7 +13,39 @@
            [readOnly]="!isOwner" placeholder="enter description">
     <label class="profile-item-label">Contact</label>
     <input class="profile-item-value" name="mail" type=text [(ngModel)]="rideOfferFromStorage.user.email" readonly>
+    <div><input name="from_id" hidden [(ngModel)]="rideOfferFromStorage.fromAddress.id"></div>
+
+    <h3>From:</h3>
+    <input name="from_id" hidden [(ngModel)]="rideOfferFromStorage.fromAddress.id">
+    <label class="profile-item-label">Street</label>
+    <input class="profile-item-value" name="from_street" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.street"
+           [readOnly]="!isOwner" placeholder="enter street name">
+    <label class="profile-item-label">House Number</label>
+    <input class="profile-item-value" name="from_house_number" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.houseNumber"
+           [readOnly]="!isOwner" placeholder="enter house number">
+    <label class="profile-item-label">Postal Code</label>
+    <input class="profile-item-value" name="from_postal_code" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.postalCode"
+           [readOnly]="!isOwner" placeholder="enter postal code">
+    <label class="profile-item-label">Location</label>
+    <input class="profile-item-value" name="from_location" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.location"
+           [readOnly]="!isOwner" placeholder="enter postal code">
+
+    <h3>To:</h3>
+    <input name="to_id" hidden [(ngModel)]="rideOfferFromStorage.toAddress.id">
+    <label class="profile-item-label">Street</label>
+    <input class="profile-item-value" name="to_street" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.street"
+           [readOnly]="!isOwner" placeholder="enter street name">
+    <label class="profile-item-label">House Number</label>
+    <input class="profile-item-value" name="to_house_number" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.houseNumber"
+           [readOnly]="!isOwner" placeholder="enter house number">
+    <label class="profile-item-label">Postal Code</label>
+    <input class="profile-item-value" name="to_postal_code" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.postalCode"
+           [readOnly]="!isOwner" placeholder="enter postal code">
+    <label class="profile-item-label">Location</label>
+    <input class="profile-item-value" name="to_location" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.location"
+           [readOnly]="!isOwner" placeholder="enter postal code">
   </div>
+
   <div class="button-row">
     <button *ngIf="isOwner" class="button button-row-button" type="submit">Save</button>
     <button *ngIf="isOwner" class="button button-row-button" type="button"
@@ -24,12 +57,34 @@
 
 
 <h2 *ngIf="!rideOfferFromStorage">Create Ride Offer</h2>
-<form *ngIf="!rideOfferFromStorage" class="centered-content" #CreateRideOffer="ngForm" (ngSubmit)="onClickSubmitCreate(CreateRideOffer.value)">
-  <div  class="card-content profile-content">
+<form *ngIf="!rideOfferFromStorage" class="centered-content" #CreateRideOffer="ngForm"
+      (ngSubmit)="onClickSubmitCreate(CreateRideOffer.value)">
+  <div class="card-content profile-content">
+    <h3>Content:</h3>
     <label class="profile-item-label">Title</label>
     <input class="profile-item-value" name="newTitle" type="text" placeholder="enter title" ngModel>
     <label class="profile-item-label">Description</label>
     <input class="profile-item-value" name="newDescription" type=text placeholder="enter description" ngModel>
+
+    <h3>From:</h3>
+    <label class="profile-item-label">Street</label>
+    <input class="profile-item-value" name="new_from_street" type="text" placeholder="enter street name" ngModel>
+    <label class="profile-item-label">House Number</label>
+    <input class="profile-item-value" name="new_from_house_number" type="text" placeholder="enter house number" ngModel>
+    <label class="profile-item-label">Postal Code</label>
+    <input class="profile-item-value" name="new_from_postal_code" type="text" placeholder="enter postal code" ngModel>
+    <label class="profile-item-label">Location</label>
+    <input class="profile-item-value" name="new_from_location" type="text" placeholder="enter postal code" ngModel>
+
+    <h3>To:</h3>
+    <label class="profile-item-label">Street</label>
+    <input class="profile-item-value" name="new_to_street" type="text" placeholder="enter street name" ngModel>
+    <label class="profile-item-label">House Number</label>
+    <input class="profile-item-value" name="new_to_house_number" type="text" placeholder="enter house number" ngModel>
+    <label class="profile-item-label">Postal Code</label>
+    <input class="profile-item-value" name="new_to_postal_code" type="text" placeholder="enter postal code" ngModel>
+    <label class="profile-item-label">Location</label>
+    <input class="profile-item-value" name="new_to_location" type="text" placeholder="enter postal code" ngModel>
   </div>
   <div class="button-row">
     <button *ngIf="isLoggedIn" class="button button-row-button" type="submit">Save</button>

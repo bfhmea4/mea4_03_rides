@@ -33,8 +33,10 @@ public class RideRequestService {
         try {
             UserDto userDto = userService.getById(rideRequest.getUser().getId());
             if (userService.userToDto(rideRequest.getUser()).equals(userDto)) {
-                addressService.addAddress(rideRequest.getFromAddress());
-                addressService.addAddress(rideRequest.getToAddress());
+                AddressDto fromAddress = addressService.addAddress(rideRequest.getFromAddress());
+                AddressDto toAddress = addressService.addAddress(rideRequest.getToAddress());
+                rideRequest.getFromAddress().setId(fromAddress.getId());
+                rideRequest.getToAddress().setId(toAddress.getId());
                 return rideRequestToDto(repository.save(rideRequest));
             }
             throw new IllegalAccessException();
