@@ -58,7 +58,14 @@ public class RideOfferService {
         return rideOfferToDto(repository.findById(id).orElse(null));
     }
 
-    public RideOfferDto updateRiderOffer(RideOffer rideOffer) throws IllegalAccessException {
+    public RideOfferDto updateRiderOffer(RideOffer rideOffer, String token) throws IllegalAccessException, MalformedClaimException {
+        if (!this.authService.tokenIsValid(token)) {
+            throw new IllegalAccessException();
+        }
+        Long userId = this.authService.getIdFromToken(token);
+        if (userId != rideOffer.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         RideOffer saved = repository.findById(rideOffer.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Update offer: Ride offer with id: " + rideOffer.getId() + " not found"));
         if (rideOffer.getUser() == null || saved.getUser().getId() != rideOffer.getUser().getId()) {
@@ -69,13 +76,16 @@ public class RideOfferService {
         return rideOfferToDto(repository.save(rideOffer));
     }
 
-    public void deleteRideOffer(long id) throws IllegalAccessException {
+    public void deleteRideOffer(long id, String token) throws IllegalAccessException, MalformedClaimException {
+        if (!this.authService.tokenIsValid(token)) {
+            throw new IllegalAccessException();
+        }
+        Long userId = this.authService.getIdFromToken(token);
         RideOffer saved = repository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Delete offer by id: Ride offer with id: " + id + " not found"));
-    //TODO Check id of user logged and saved to ensure deletion only from owner of offer
-//        if (rideOffer.getUser() == null || saved.getUser().getId() != rideOffer.getUser().getId()) {
-//            throw new IllegalAccessException();
-//        }
+        if (userId != saved.getUser().getId()) {
+            throw new IllegalAccessException();
+        }
         repository.deleteById(saved.getId());
     }
 

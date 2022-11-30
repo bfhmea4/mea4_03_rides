@@ -76,11 +76,13 @@ public class RideOfferController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         logger.info("update ride offer with id: " + id);
         try {
-            RideOfferDto rideOfferDto = service.updateRiderOffer(rideOffer);
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            logger.info("received token: " + token);
+            RideOfferDto rideOfferDto = service.updateRiderOffer(rideOffer, token);
             return new ResponseEntity<>(rideOfferDto, HttpStatus.OK);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException | MalformedClaimException | NullPointerException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
@@ -91,11 +93,13 @@ public class RideOfferController {
     ResponseEntity<?> delete(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);
         try {
-            service.deleteRideOffer(id);
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            logger.info("received token: " + token);
+            service.deleteRideOffer(id, token);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException | MalformedClaimException | NullPointerException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
