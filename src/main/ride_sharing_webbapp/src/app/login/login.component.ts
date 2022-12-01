@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
       password: data.password
     }
     console.log("logging in user: " + login.email);
-    this.authService.loginUser(login).subscribe(user => {
-      if (user) {
-        console.log("logged in User with id " + user.id + "and email:" + user.email);
-        localStorage.setItem("user", JSON.stringify(user));
+    this.authService.loginUser(login).subscribe(data => {
+      if (data) {
+        console.log("logged in User, got token: " + data.token);
+        localStorage.setItem("token", data.token);
         this.router.navigate(['/profile']);
       } else {
         console.error("could not login user!!")

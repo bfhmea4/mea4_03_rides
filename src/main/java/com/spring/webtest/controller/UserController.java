@@ -2,12 +2,14 @@ package com.spring.webtest.controller;
 
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.LoginDto;
+import com.spring.webtest.dto.TokenDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.UserService;
 import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.lang.JoseException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -26,15 +28,19 @@ public class UserController {
         this.service = service;
     }
 
-    @RequestMapping("/api/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+    @RequestMapping(
+            value = "/api/login",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TokenDto> login(@RequestBody LoginDto loginDto) {
         logger.info("Login User with email: " + loginDto.getEmail());
         if (loginDto.getEmail() == null || loginDto.getEmail().equals("")) {
-            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         try {
             String token = this.service.loginUser(loginDto);
-            return new ResponseEntity<>(token, HttpStatus.OK);
+            return new ResponseEntity<>(new TokenDto(token), HttpStatus.OK);
         } catch (JoseException | IllegalAccessException e) {
             logger.warning("Could not login user with email: " + loginDto.getEmail());
             e.printStackTrace();

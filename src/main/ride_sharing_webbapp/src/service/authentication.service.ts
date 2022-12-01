@@ -11,7 +11,6 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   loginUser(login: Login) {
-    console.log("loginobject in service: " + login.email);
     return this.http.post<any>(AppSettings.STR_URL_LOGIN, login, AppSettings.httpOptions);
   }
 
