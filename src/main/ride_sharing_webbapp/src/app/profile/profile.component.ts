@@ -22,19 +22,13 @@ export class ProfileComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    let token = localStorage.getItem("token");
-    if (token != null) {
-      this.userService.getByToken(token).subscribe(user => {
-        if (user == null) {
-          console.error("could not get user");
-          this.router.navigate(['/login']);
-        }
-          this.user = user;
-      });
-    } else {
-      console.error("you are not logged in!");
-      this.router.navigate(['/login']);
-    }
+    this.userService.getByToken().subscribe(user => {
+      if (user == null) {
+        console.error("could not get user");
+        this.router.navigate(['/login']);
+      }
+      this.user = user;
+    });
   }
 
   edit(): void {

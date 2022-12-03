@@ -6,6 +6,7 @@ import {rideRequestService} from "../../service/rideRequest.service";
 import {RideRequest} from "../../model/RideRequest";
 import {User} from "../../model/User";
 import {AuthenticationService} from "../../service/authentication.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-ride-offer',
@@ -25,16 +26,32 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   constructor(private rideOfferService: rideOfferService,
               private rideRequestService: rideRequestService,
+              private userService: UserService,
               private authService: AuthenticationService,
               private router: Router) {
 
   }
 
   ngOnInit(): void {
+    // Fetch user
     if (!this.authService.isAuthenticated()) {
       console.error("not Authenticated!");
       this.router.navigate(['/login']);
     }
+    let token = localStorage.getItem("token");
+    if (token != null) {
+      this.userService.getByToken().subscribe(user => {
+        if (user == null) {
+          console.error("could not get user");
+          this.router.navigate(['/login']);
+        }
+        this.user = user;
+      });
+    } else {
+      console.error("you are not logged in!");
+      this.router.navigate(['/login']);
+    }
+
     if (localStorage.getItem("selected-ride-request")) {
       this.requestsBtnClicked()
     } else {

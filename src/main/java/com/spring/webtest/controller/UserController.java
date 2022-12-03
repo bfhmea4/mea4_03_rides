@@ -40,6 +40,7 @@ public class UserController {
         }
         try {
             TokenDto tokenDto = this.service.loginUser(loginDto);
+            logger.info("user " + loginDto.getEmail() + " logged in successfully, sending token");
             return new ResponseEntity<>(tokenDto, HttpStatus.OK);
         } catch (JoseException | IllegalAccessException e) {
             logger.warning("Could not login user with email: " + loginDto.getEmail());
