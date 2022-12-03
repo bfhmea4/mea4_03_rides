@@ -1,60 +1,36 @@
 package com.spring.webtest.rideOffer;
 
-import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
-import com.spring.webtest.WebTestApplication;
-import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.TestApplication;
 import com.spring.webtest.database.entities.User;
-import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.dto.UserDto;
-import com.spring.webtest.service.RideOfferService;
-import com.spring.webtest.service.UserService;
 import com.spring.webtest.user.UserInvoker;
-import com.spring.webtest.user.UserServiceInvoker;
-import com.spring.webtest.user.UserWebClientInvoker;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@SpringBootTest(classes = {WebTestApplication.class, RideOfferService.class})
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@SpringBootTest(classes = {TestApplication.class})
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class RideOfferTests {
-    @Value("${useRestMode:true}")
-    private boolean useRestMode;
 
     @Autowired
-    private RideOfferService service;
-
-    @Autowired
-    private UserService userService;
-
+    @Qualifier("rideOfferInvoker")
     private RideOfferInvoker rideOfferInvoker;
 
+    @Autowired
+    @Qualifier("userInvoker")
     private UserInvoker userInvoker;
 
-
-    private User testUser;
-    private User wrongUser;
-
-
-    @BeforeAll
+    @BeforeEach
     void setup() {
-        if (useRestMode) {
-            this.rideOfferInvoker = WebClientRideOfferInvoker.mockServer(service);
-            userInvoker = UserWebClientInvoker.mockServer(userService);
-        } else {
-            this.rideOfferInvoker = new ServiceRideOfferInvoker(service);
-            userInvoker = new UserServiceInvoker(userService);
-        }
-        testUser = new User("Test", "User", "test@gmail.com", "Musteradresse", "thisIsAStrongPassword13.");
-        wrongUser = new User("Wrong", "User", "wrong@gmail.com", "Musteradresse", "thisIsAnotherStrongPassword14.");
+        User testUser = new User("Test", "User", "test@gmail.com", "Musteradresse", "thisIsAStrongPassword13.");
+        User wrongUser = new User("Wrong", "User", "wrong@gmail.com", "Musteradresse", "thisIsAnotherStrongPassword14.");
 
         UserDto testUserDto = userInvoker.createUser(testUser);
         testUser.setId(testUserDto.getId());
@@ -65,7 +41,7 @@ public class RideOfferTests {
 
     @Test
     public void getting_a_offer_that_does_not_exist() {
-        assertThat(rideOfferInvoker.getOffer(5465465)).isNull();
+        assertThat(rideOfferInvoker.getOffer(1000)).isNull();
     }
 
 //    @Test
@@ -203,11 +179,4 @@ public class RideOfferTests {
 //            assertThat(getCreated.getId()).isEqualTo(created.getId());
 //        }
 //    }
-
-
-    @AfterAll
-    void cleanUp() {
-        userInvoker.deleteUser(testUser.getId());
-        userInvoker.deleteUser(wrongUser.getId());
-    }
 }

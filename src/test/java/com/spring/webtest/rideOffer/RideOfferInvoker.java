@@ -4,7 +4,7 @@ import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.dto.RideOfferDto;
 
-interface RideOfferInvoker {
+public interface RideOfferInvoker {
     RideOfferDto createOffer(RideOffer rideOffer) throws OperationNotSupportedException, IllegalAccessException;
 
     RideOfferDto getOffer(long id);

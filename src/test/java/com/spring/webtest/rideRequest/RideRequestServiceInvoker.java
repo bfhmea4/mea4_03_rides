@@ -1,17 +1,18 @@
-package com.spring.webtest.request;
+package com.spring.webtest.rideRequest;
 
 import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideRequest;
 import com.spring.webtest.dto.RideRequestDto;
 import com.spring.webtest.service.RideRequestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
+public
 class RideRequestServiceInvoker implements RideRequestInvoker {
 
-    private final RideRequestService service;
-
-    RideRequestServiceInvoker(RideRequestService service) {
-        this.service = service;
-    }
+    @Autowired
+    private RideRequestService service;
 
     @Override
     public RideRequestDto createRequest(RideRequest rideRequest) throws OperationNotSupportedException, IllegalAccessException {

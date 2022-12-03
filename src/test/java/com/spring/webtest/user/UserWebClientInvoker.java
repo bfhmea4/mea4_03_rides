@@ -4,25 +4,15 @@ import com.spring.webtest.controller.UserController;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.service.UserService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 public class UserWebClientInvoker implements UserInvoker {
 
-    private final WebTestClient client;
-
-    public UserWebClientInvoker(WebTestClient client) {
-        this.client = client;
-    }
-
-    static UserWebClientInvoker remoteServer() {
-        return new UserWebClientInvoker(WebTestClient.bindToServer().baseUrl("http://localhost:8080").build());
-    }
-
-    public static UserWebClientInvoker mockServer(UserService service) {
-        return new UserWebClientInvoker(WebTestClient.bindToController(new UserController(service)).build());
-    }
+    private final WebTestClient client = WebTestClient.bindToServer().baseUrl("http://localhost:8080").build();
 
     @Override
     public UserDto getUser(long id) {
