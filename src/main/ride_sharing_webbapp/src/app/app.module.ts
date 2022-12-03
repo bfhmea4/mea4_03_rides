@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FizzbuzzComponent } from './fizzbuzz/fizzbuzz.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {NgToastModule} from 'ng-angular-popup';
 import {FizzbuzzService} from "../service/fizzbuzz.service";
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -32,7 +33,8 @@ import { CreateUpdateRideRequestComponent } from './create-update-ride-request/c
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgToastModule
   ],
   providers: [FizzbuzzService],
   bootstrap: [AppComponent]

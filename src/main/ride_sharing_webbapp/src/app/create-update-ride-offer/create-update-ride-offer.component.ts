@@ -39,6 +39,9 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
         this.isOwner = true;
       }
     }
+    if(rideOfferFromStore && !this.isLoggedIn) {
+      this.router.navigate(['/login'])
+    }
   }
 
   ngOnDestroy(): void {
