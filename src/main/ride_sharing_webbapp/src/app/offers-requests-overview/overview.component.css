@@ -8,7 +8,7 @@
 
 .tab-button {
   position: relative;
-  z-index: 0;
+  z-index: 1;
   flex: 1;
   border-radius: 14px;
   margin-bottom: 5px;
@@ -41,9 +41,47 @@
 
 .card-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .card-content:hover {
   cursor: pointer;
 }
+
+.filters {
+  position: relative;
+  width: 80%;
+  top: 30px;
+  display: flex;
+  float: top;
+  flex-direction: row;
+  margin: auto;
+  padding-bottom: 30px;
+  z-index: 0;
+}
+
+.select {
+  width: 55%;
+  border: none;
+  padding: 4px;
+  margin: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  box-shadow: 4px 4px 4px #888888;
+}
+
+.select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+}
+
