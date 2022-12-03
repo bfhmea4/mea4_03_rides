@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {RideRequest} from "../../model/RideRequest";
 import {User} from "../../model/User";
+import {Address} from "../../model/Address";
 
 @Component({
   selector: 'app-create-update-ride-request',
@@ -44,11 +45,27 @@ export class CreateUpdateRideRequestComponent implements OnInit {
 
   onClickSubmitUpdate(data: any) {
     if (this.user && this.isOwner) {
+      let fromAddress: Address = {
+        id: data.from_id,
+        street: data.from_street,
+        houseNumber: data.from_house_number,
+        postalCode: data.from_postal_code,
+        location: data.from_location
+      }
+      let toAddress: Address = {
+        id: data.to_id,
+        street: data.to_street,
+        houseNumber: data.to_house_number,
+        postalCode: data.to_postal_code,
+        location: data.to_location
+      }
       let rideRequestToUpdate: RideRequest = {
         id: data.id,
         title: data.title,
         description: data.description,
-        user: this.user
+        user: this.user,
+        fromAddress: fromAddress,
+        toAddress: toAddress
       }
 
       this.rideRequestService.updateRequest(rideRequestToUpdate).subscribe(() => {
@@ -64,11 +81,27 @@ export class CreateUpdateRideRequestComponent implements OnInit {
 
   onClickSubmitCreate(data: any) {
     if (this.user && this.isLoggedIn) {
+      let fromAddress: Address = {
+        id: 0,
+        street: data.new_from_street,
+        houseNumber: data.new_from_house_number,
+        postalCode: data.new_from_postal_code,
+        location: data.new_from_location
+      }
+      let toAddress: Address = {
+        id: 0,
+        street: data.new_to_street,
+        houseNumber: data.new_to_house_number,
+        postalCode: data.new_to_postal_code,
+        location: data.new_to_location
+      }
       let rideRequestToCreate: RideRequest = {
         id: data.id,
         title: data.title,
         description: data.description,
-        user: this.user
+        user: this.user,
+        fromAddress: fromAddress,
+        toAddress: toAddress
       }
       console.log(rideRequestToCreate);
       this.rideRequestService.createRequest(rideRequestToCreate).subscribe(() => {

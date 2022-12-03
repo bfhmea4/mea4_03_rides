@@ -38,8 +38,10 @@ public class RideOfferService {
         try {
             UserDto userDto = userService.getById(rideOffer.getUser().getId());
             if (rideOffer.getUser() != null && userDto != null && userService.userToDto(rideOffer.getUser()).equals(userDto)) {
-                addressService.addAddress(rideOffer.getFromAddress());
-                addressService.addAddress(rideOffer.getToAddress());
+                AddressDto fromAddress = addressService.addAddress(rideOffer.getFromAddress());
+                AddressDto toAddress = addressService.addAddress(rideOffer.getToAddress());
+                rideOffer.getFromAddress().setId(fromAddress.getId());
+                rideOffer.getToAddress().setId(toAddress.getId());
                 return rideOfferToDto(repository.save(rideOffer));
             }
             throw new IllegalAccessException();
