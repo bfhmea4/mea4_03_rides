@@ -27,10 +27,10 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    return this.http.put<any>(AppSettings.STR_URL_PUT_USER, user, AppSettings.httpOptions)
+    return this.http.put<any>(AppSettings.STR_URL_PUT_USER, user, this.authService.getHttpTokenOptions())
   }
 
   deleteUser(id: number) {
-    return this.http.delete(AppSettings.STR_URL_DELETE_USER + id, AppSettings.httpOptions)
+    return this.http.delete(AppSettings.STR_URL_DELETE_USER + id, this.authService.getHttpTokenOptions())
   }
 }

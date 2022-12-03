@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Login} from "../model/Login";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AppSettings} from "../environments/AppSettings";
@@ -32,13 +32,12 @@ export class AuthenticationService {
       console.error("No Token stored");
       return;
     }
-    let httpTokenOptions = {
+    return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + token
       })
-    }
-    return httpTokenOptions;
+    };
   }
 
 }
