@@ -40,6 +40,9 @@ export class CreateUpdateRideRequestComponent implements OnInit {
         this.isOwner = true;
       }
     }
+    if(rideRequestFromStore && !this.isLoggedIn) {
+      this.router.navigate(['/login'])
+    }
   }
 
 

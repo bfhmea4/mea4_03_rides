@@ -5,6 +5,7 @@ import {RideOffer} from "../../model/RideOffer";
 import {rideRequestService} from "../../service/rideRequest.service";
 import {RideRequest} from "../../model/RideRequest";
 import {User} from "../../model/User";
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-ride-offer',
@@ -37,7 +38,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   constructor(private rideOfferService: rideOfferService,
               private rideRequestService: rideRequestService,
-              private router: Router) {
+              private router: Router,
+              private toast: NgToastService) {
 
   }
 
@@ -59,6 +61,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     localStorage.removeItem("ride-offers");
     localStorage.removeItem("ride-requests");
   }
+
 
   getLocations(searchInOffers: boolean): void {
     if (searchInOffers) {
@@ -150,18 +153,26 @@ export class OverviewComponent implements OnInit, OnDestroy {
   onClickOfferItem(rideOffer: RideOffer) {
     //TODO method without TS ignore
     localStorage.setItem("selected-ride-offer", JSON.stringify(rideOffer));
-    console.log("navigate to update offer view");
-    // @ts-ignore
-    this.router.navigate(['/ride-offer'])
+    if(this.isLoggedIn) {
+      // @ts-ignore
+      this.router.navigate(['/ride-offer'])
+    }else{
+      this.toast.error(({detail:'Please Sign in', summary: 'Pleas log in to view details of an offer!', duration:5000}))
+      this.router.navigate(['/login']);
+    }
   }
 
   onClickRequestItem(rideRequest: RideRequest) {
     //TODO method without TS ignore
     localStorage.setItem("selected-ride-request", JSON.stringify(rideRequest));
-    console.log("navigate to update request view");
-    // @ts-ignore
+    if(this.isLoggedIn) {
+      // @ts-ignore
     this.router.navigate(['/ride-request']);
-    // this.router.navigate(`/ride-offer/${rideOffer.id}`)
+    }else{
+      this.toast.error(({detail:'Please Sign in', summary: 'Pleas log in to view details of a request!',duration:5000}));
+      this.router.navigate(['/login']);
+
+    }
   }
 
   navigateToNewOfferView() {
