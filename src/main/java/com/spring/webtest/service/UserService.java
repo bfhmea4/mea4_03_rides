@@ -3,6 +3,7 @@ package com.spring.webtest.service;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
 import com.spring.webtest.dto.LoginDto;
+import com.spring.webtest.dto.TokenDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import org.jose4j.jwt.MalformedClaimException;
@@ -51,9 +52,9 @@ public class UserService {
         return getById(id);
     }
 
-    public UserDto save(User user) {
+    public TokenDto save(User user) throws JoseException {
         user.setPassword(hashService.hash(user.getPassword()));
-        return userToDto(repository.save(user));
+        return new TokenDto(authService.generateJwt(repository.save(user)));
     }
 
     public UserDto update(User user, String token) throws MalformedClaimException, IllegalAccessException {
@@ -89,10 +90,10 @@ public class UserService {
                 user.getAddress());
     }
 
-    public String loginUser(LoginDto loginDto) throws JoseException, IllegalAccessException {
+    public TokenDto loginUser(LoginDto loginDto) throws JoseException, IllegalAccessException {
         User user = this.getByEmail(loginDto.getEmail());
         if (authService.credentialsAreValid(loginDto, user)) {
-            return this.authService.generateJwt(user);
+            return new TokenDto(this.authService.generateJwt(user));
         }
         throw new IllegalAccessException("Credentials are not valid");
     }

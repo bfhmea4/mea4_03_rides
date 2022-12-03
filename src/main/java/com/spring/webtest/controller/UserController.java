@@ -39,8 +39,8 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         try {
-            String token = this.service.loginUser(loginDto);
-            return new ResponseEntity<>(new TokenDto(token), HttpStatus.OK);
+            TokenDto tokenDto = this.service.loginUser(loginDto);
+            return new ResponseEntity<>(tokenDto, HttpStatus.OK);
         } catch (JoseException | IllegalAccessException e) {
             logger.warning("Could not login user with email: " + loginDto.getEmail());
             e.printStackTrace();
@@ -82,11 +82,15 @@ public class UserController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
-    ResponseEntity<UserDto> create(@RequestBody User user) {
-        logger.info("******\nController: Try to save User: " + user.getFirstName() + "\n******");
-        UserDto userDto = service.save(user);
-        System.out.println(userDto.getEmail());
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    ResponseEntity<TokenDto> create(@RequestBody User user) {
+        logger.info("******\nController: Try to save User: " + user.getEmail() + "\n******");
+        try {
+            TokenDto tokenDto = service.save(user);
+            return new ResponseEntity<>(tokenDto, HttpStatus.OK);
+        } catch (JoseException e) {
+            logger.warning("could not generate token");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
