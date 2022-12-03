@@ -1,5 +1,6 @@
 package com.spring.webtest.service;
 
+import com.spring.webtest.controller.UserController;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
 import com.spring.webtest.dto.LoginDto;
@@ -13,9 +14,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class UserService {
+
+    private static final Logger logger = Logger.getLogger(UserService.class.getName());
 
     private final UserRepository repository;
     private final HashService hashService;
@@ -93,6 +97,7 @@ public class UserService {
     public TokenDto loginUser(LoginDto loginDto) throws JoseException, IllegalAccessException {
         User user = this.getByEmail(loginDto.getEmail());
         if (authService.credentialsAreValid(loginDto, user)) {
+            logger.info("credentials of user " + loginDto.getEmail() + " are valid");
             return new TokenDto(this.authService.generateJwt(user));
         }
         throw new IllegalAccessException("Credentials are not valid");

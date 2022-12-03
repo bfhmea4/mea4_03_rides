@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {Login} from "../model/Login";
 import {HttpClient} from "@angular/common/http";
 import {AppSettings} from "../environments/AppSettings";
+import {JwtHelperService} from "@auth0/angular-jwt";
+
+const jwtHelper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +15,15 @@ export class AuthenticationService {
 
   loginUser(login: Login) {
     return this.http.post<any>(AppSettings.STR_URL_LOGIN, login, AppSettings.httpOptions);
+  }
+
+  isAuthenticated(): boolean {
+    let token = localStorage.getItem("token");
+    if (token == null) {
+      console.error("No Token stored");
+      return false;
+    }
+    return !jwtHelper.isTokenExpired(token);
   }
 
 }

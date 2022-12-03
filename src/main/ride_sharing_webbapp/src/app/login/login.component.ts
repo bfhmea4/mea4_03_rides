@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     console.log("logging in user: " + login.email);
     this.authService.loginUser(login).subscribe(data => {
       if (data) {
-        console.log("logged in User, got token: " + data.token);
+        console.log("user logged in successfully, received token");
         localStorage.setItem("token", data.token);
         this.router.navigate(['/profile']);
       } else {

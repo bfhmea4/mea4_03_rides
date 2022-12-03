@@ -34,9 +34,10 @@ export class RegisterComponent implements OnInit {
         address: data.address,
         password: data.password
     } as User;
-    this.userService.registerUser(user).subscribe(user => {
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
+    this.userService.registerUser(user).subscribe(data => {
+      if (data) {
+        console.log("logged in User, got token: " + data.token);
+        localStorage.setItem("token", data.token);
         this.router.navigate(['/profile']);
       } else {
         console.error("could not register, something went wrong");
