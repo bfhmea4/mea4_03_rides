@@ -71,7 +71,7 @@
       <p>From: {{rideRequest.fromAddress.location}} - To: {{rideRequest.toAddress.location}}</p>
     </div>
   </div>
-  <div class="button-row">
+  <div *ngIf="isLoggedIn" class="button-row">
     <button class="button button-row-button" (click)="navigateToNewOfferView()">+</button>
   </div>
 </div>

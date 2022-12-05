@@ -1,43 +1,32 @@
 package com.spring.webtest.user;
 
 
-import com.spring.webtest.WebTestApplication;
+import com.spring.webtest.TestApplication;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.UserDto;
-import com.spring.webtest.service.UserService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@SpringBootTest(classes = {WebTestApplication.class, UserService.class})
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserTest {
-
-    @Value("${useRestMode:true}")
-    private boolean useRestMode;
+@ActiveProfiles("servicetests")
+@SpringBootTest(classes = {TestApplication.class})
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+public class UserTests {
 
     @Autowired
-    private UserService service;
-
+    @Qualifier("userInvoker")
     private UserInvoker invoker;
-
-    @BeforeAll
-    void setup() {
-        if (useRestMode) {
-            this.invoker = UserWebClientInvoker.remoteServer();
-        } else {
-           this.invoker = new UserServiceInvoker(service);
-        }
-    }
 
     @Test
     void getting_a_user_that_does_not_exist_returns_null() {
-        assertThat(invoker.getUser(7777)).isNull();
+        assertThat(invoker.getUser(1)).isNull();
     }
 
     @Test

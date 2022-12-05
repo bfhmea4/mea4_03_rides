@@ -1,25 +1,22 @@
 package com.spring.webtest.rideOffer;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideOffer;
 import com.spring.webtest.dto.RideOfferDto;
 import com.spring.webtest.service.RideOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
-
-public class ServiceRideOfferInvoker implements RideOfferInvoker {
+@Component
+public class RideOfferServiceInvoker implements RideOfferInvoker {
 
     @Autowired
-    RideOfferService service;
-
-    public ServiceRideOfferInvoker (RideOfferService service) {
-        this.service = service;
-    }
+    private RideOfferService service;
 
     @Override
-    public RideOfferDto createOffer(RideOffer rideOffer) {
-        return new RideOfferDto();
-//        return service.addRideOffer(rideOffer);
+    public RideOfferDto createOffer(RideOffer rideOffer) throws OperationNotSupportedException, IllegalAccessException {
+        return service.addRideOffer(rideOffer);
     }
 
     @Override
@@ -35,7 +32,6 @@ public class ServiceRideOfferInvoker implements RideOfferInvoker {
     @Override
     public void deleteOffer(long id) throws IllegalAccessException {
         service.deleteRideOffer(id);
-
     }
 }
 
