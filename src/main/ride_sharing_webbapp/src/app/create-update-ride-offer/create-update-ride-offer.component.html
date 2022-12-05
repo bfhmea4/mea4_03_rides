@@ -22,10 +22,10 @@
            [readOnly]="!isOwner" placeholder="enter street name">
     <label class="profile-item-label">House Number</label>
     <input class="profile-item-value" name="from_house_number" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.houseNumber"
-           [readOnly]="!isOwner" placeholder="enter house number">
+           [readOnly]="!isOwner" placeholder="enter house number" pattern="[^A-Za-z0-9]+">
     <label class="profile-item-label">Postal Code</label>
     <input class="profile-item-value" name="from_postal_code" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.postalCode"
-           [readOnly]="!isOwner" placeholder="enter postal code">
+           [readOnly]="!isOwner" placeholder="enter postal code" pattern="[0-9]*">
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="from_location" type="text" [(ngModel)]="rideOfferFromStorage.fromAddress.location"
            [readOnly]="!isOwner" placeholder="enter location">
@@ -37,10 +37,10 @@
            [readOnly]="!isOwner" placeholder="enter street name">
     <label class="profile-item-label">House Number</label>
     <input class="profile-item-value" name="to_house_number" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.houseNumber"
-           [readOnly]="!isOwner" placeholder="enter house number">
+           [readOnly]="!isOwner" placeholder="enter house number" pattern="[^A-Za-z0-9]+">
     <label class="profile-item-label">Postal Code</label>
     <input class="profile-item-value" name="to_postal_code" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.postalCode"
-           [readOnly]="!isOwner" placeholder="enter postal code">
+           [readOnly]="!isOwner" placeholder="enter postal code" pattern="[0-9]*">
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="to_location" type="text" [(ngModel)]="rideOfferFromStorage.toAddress.location"
            [readOnly]="!isOwner" placeholder="enter location">
@@ -70,9 +70,9 @@
     <label class="profile-item-label">Street</label>
     <input class="profile-item-value" name="new_from_street" type="text" placeholder="enter street name" ngModel>
     <label class="profile-item-label">House Number</label>
-    <input class="profile-item-value" name="new_from_house_number" type="text" placeholder="enter house number" ngModel>
+    <input class="profile-item-value" name="new_from_house_number" type="text" placeholder="enter house number" pattern="[^A-Za-z0-9]+" ngModel>
     <label class="profile-item-label">Postal Code</label>
-    <input class="profile-item-value" name="new_from_postal_code" type="text" placeholder="enter postal code" ngModel>
+    <input class="profile-item-value" name="new_from_postal_code" type="text" placeholder="enter postal code" pattern="[0-9]*" ngModel>
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="new_from_location" type="text" placeholder="enter location" ngModel>
 
@@ -80,9 +80,9 @@
     <label class="profile-item-label">Street</label>
     <input class="profile-item-value" name="new_to_street" type="text" placeholder="enter street name" ngModel>
     <label class="profile-item-label">House Number</label>
-    <input class="profile-item-value" name="new_to_house_number" type="text" placeholder="enter house number" ngModel>
+    <input class="profile-item-value" name="new_to_house_number" type="text" placeholder="enter house number" pattern="[^A-Za-z0-9]+" ngModel>
     <label class="profile-item-label">Postal Code</label>
-    <input class="profile-item-value" name="new_to_postal_code" type="text" placeholder="enter postal code" ngModel>
+    <input class="profile-item-value" name="new_to_postal_code" type="text" placeholder="enter postal code" pattern="[0-9]*" ngModel>
     <label class="profile-item-label">Location</label>
     <input class="profile-item-value" name="new_to_location" type="text" placeholder="enter location" ngModel>
   </div>
