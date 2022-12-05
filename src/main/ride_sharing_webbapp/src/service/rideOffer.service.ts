@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AppSettings} from "../environments/AppSettings";
 import {Router} from "@angular/router";
 import {RideOffer} from "../model/RideOffer";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,25 +11,26 @@ import {RideOffer} from "../model/RideOffer";
 export class rideOfferService {
 
   constructor(private http: HttpClient,
+              private authService: AuthenticationService,
               private router: Router) {
   }
 
 
   getAllOffers() {
-    return this.http.get(AppSettings.STR_URL_GET_ALL_OFFERS, AppSettings.httpOptions);
+    return this.http.get(AppSettings.STR_URL_GET_ALL_OFFERS, this.authService.getHttpTokenOptions());
   }
 
   updateOffer(rideOfferToUpdate: RideOffer) {
-    return this.http.put<any>(AppSettings.STR_URL_PUT_OFFER + rideOfferToUpdate.id, rideOfferToUpdate, AppSettings.httpOptions);
+    return this.http.put<any>(AppSettings.STR_URL_PUT_OFFER + rideOfferToUpdate.id, rideOfferToUpdate, this.authService.getHttpTokenOptions());
 
   }
 
   createOffer(rideOfferToCreate: RideOffer) {
-    return this.http.post<any>(AppSettings.STR_URL_POST_OFFER, rideOfferToCreate, AppSettings.httpOptions);
+    return this.http.post<any>(AppSettings.STR_URL_POST_OFFER, rideOfferToCreate, this.authService.getHttpTokenOptions());
   }
 
-  deleteOffer(id: number) {
-    return this.http.delete(AppSettings.STR_URL_DELETE_OFFER + id, AppSettings.httpOptions)
+  deleteOffer(rideOfferToDelete: RideOffer) {
+    return this.http.delete(AppSettings.STR_URL_DELETE_OFFER + rideOfferToDelete.id, this.authService.getHttpTokenOptions())
   }
 }
 

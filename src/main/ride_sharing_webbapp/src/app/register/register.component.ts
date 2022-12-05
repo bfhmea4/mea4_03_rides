@@ -17,8 +17,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickSubmit(data: any) {
-      // this.router.navigate(["/profile"]);
     //TODO: Check if the 2 Passwords are the same
+    if (!data.email || !data.email.match(/^\w+([\.+-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+      alert("Email not correct!");
+      return;
+    }
+    if (data.password.length < 9 || data.password != data.passwordRepeat) {
+      alert("Password not allowed!");
+      return;
+    }
     console.log(data.firstName);
       let user: any = {
         firstName: data.firstName,
@@ -27,12 +34,11 @@ export class RegisterComponent implements OnInit {
         address: data.address,
         password: data.password
     } as User;
-    this.userService.registerUser(user).subscribe(user => {
-      if (user) {
-        localStorage.setItem("id", String(user.id));
-        console.log("returned user with id: " + user.id);
-        // localStorage.setItem("token", token);
-        this.router.navigate(["/profile"]);
+    this.userService.registerUser(user).subscribe(data => {
+      if (data) {
+        console.log("logged in User, got token: " + data.token);
+        localStorage.setItem("token", data.token);
+        this.router.navigate(['/profile']);
       } else {
         console.error("could not register, something went wrong");
       }

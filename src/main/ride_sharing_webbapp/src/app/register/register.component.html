@@ -6,8 +6,11 @@
     <input class="text-input" name="lastName" type="text" placeholder="Lastname" required ngModel>
     <input class="text-input" name="email" type="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required ngModel>
     <input class="text-input" name="address" type="text" placeholder="Address" required ngModel>
-    <input class="text-input" name="password" type="password" placeholder="Password" required ngModel>
-    <input class="text-input" name="passwordRepeat" type="password" placeholder="Password repeated" required ngModel>
-    <input class="input-button-red" type="submit" value="Register">d
+    <input class="text-input" name="password" type="password" placeholder="Password" required ngModel minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$">
+    <input class="text-input" name="passwordRepeat" type="password" placeholder="Password repeated" required ngModel minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$">
+
+    <div class="button-row">
+      <input class="button button-row-button" type="submit" value="Register">
+    </div>
   </form>
 </div>

@@ -1,29 +1,77 @@
-<div class="content">
-  <button class="selector" [ngClass]="rideOffersBtnClicked ? 'clicked' : 'unClicked'" (click)="offersBtnClicked()">
-    Offers
-  </button>
-  <button class="selector" [ngClass]="rideRequestsBtnClicked ? 'clicked' : 'unClicked'" (click)="requestsBtnClicked()">
-    Requests
-  </button>
-  <button class="add" (click)="navigateToNewOfferView()">+</button>
-  <br>
-  <ul id="offersList" class="clean" *ngIf="rideOffersBtnClicked">
-    <li class="item" *ngFor="let rideOffer of rideOffers">
-      <div (click)="onClickOfferItem(rideOffer)">
-        <span hidden="true">{{rideOffer.id}}</span><br>
-        <h2>{{rideOffer.title}}</h2><br>
-        <p>{{rideOffer.description}}</p>
-      </div>
-    </li>
-  </ul>
-  <ul id="requestsList" class="clean" *ngIf="rideRequestsBtnClicked">
-    <li class="item" *ngFor="let rideRequest of rideRequests">
-      <div (click)="onClickRequestItem(rideRequest)">
-        <span hidden="true">{{rideRequest.id}}</span><br>
-        <!--      <h2>{{rideRequest.title}}</h2><br>-->
-        <p>{{rideRequest.content}}</p>
-      </div>
+<div class="filters" *ngIf="rideOffersBtnClicked">
+    <h3>Start:</h3>
+    <div class="select">
+      <select id="offersFrom" (change)="filterOfferView(true, $event)">
+        <option value="">All</option>
+        <option *ngFor="let location of offersFromLocations" [value]="location">
+          {{location}}
+        </option>
+      </select>
+    </div>
+    <h3>Destination:</h3>
+    <div class="select">
+      <select id="offersTo" (change)="filterOfferView(false, $event)">
+        <option value="">All</option>
+        <option *ngFor="let location of offersToLocations" [value]="location">
+          {{location}}
+        </option>
+      </select>
+    </div>
+</div>
 
-    </li>
-  </ul>
+<div class="filters" *ngIf="rideRequestsBtnClicked">
+  <h3>Start:</h3>
+  <div class="select">
+    <select id="requestsFrom" (change)="filterRequestView(true, $event)">
+      <option value="">All</option>
+      <option *ngFor="let location of requestsFromLocations" [value]="location">
+        {{location}}
+      </option>
+    </select>
+  </div>
+  <h3>Destination:</h3>
+  <div class="select">
+    <select id="requestsTo" (change)="filterRequestView(false, $event)">
+      <option value="">All</option>
+      <option *ngFor="let location of requestsToLocations" [value]="location">
+        {{location}}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="centered-content">
+  <div class="tab-button-row">
+    <button class="tab-button" [class.selected]="rideOffersBtnClicked" (click)="offersBtnClicked()">
+      Offers
+    </button>
+    <button class="tab-button" [class.selected]="rideRequestsBtnClicked" (click)="requestsBtnClicked()">
+      Requests
+    </button>
+  </div>
+
+
+  <div id="offersList" *ngIf="rideOffersBtnClicked">
+    <div class="offer-request card-content" (click)="onClickOfferItem(rideOffer)"
+         *ngFor="let rideOffer of rideOffersDisplayed">
+      <span hidden>{{rideOffer.id}}</span><br>
+      <h2>{{rideOffer.title}}</h2><br>
+      <p>{{rideOffer.description}}</p>
+      <p>From: {{rideOffer.fromAddress.location}} - To: {{rideOffer.toAddress.location}}</p>
+    </div>
+  </div>
+
+
+  <div id="requestsList" *ngIf="rideRequestsBtnClicked">
+    <div class="offer-request card-content" (click)="onClickRequestItem(rideRequest)"
+         *ngFor="let rideRequest of rideRequestDisplayed">
+      <span hidden>{{rideRequest.id}}</span><br>
+      <h2>{{rideRequest.title}}</h2><br>
+      <p>{{rideRequest.description}}</p>
+      <p>From: {{rideRequest.fromAddress.location}} - To: {{rideRequest.toAddress.location}}</p>
+    </div>
+  </div>
+  <div *ngIf="isLoggedIn" class="button-row">
+    <button class="button button-row-button" (click)="navigateToNewOfferView()">+</button>
+  </div>
 </div>

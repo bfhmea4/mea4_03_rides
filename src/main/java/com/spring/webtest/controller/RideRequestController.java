@@ -1,11 +1,16 @@
 package com.spring.webtest.controller;
 
-import com.google.gson.Gson;
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideRequest;
+import com.spring.webtest.dto.RideRequestDto;
+import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.RideRequestService;
+import org.jose4j.jwt.MalformedClaimException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -15,9 +20,8 @@ public class RideRequestController {
 
     private static final Logger logger = Logger.getLogger(FizzBuzzController.class.getName());
 
-    private static final Gson gson = new Gson();
-
     private final RideRequestService service;
+
 
 
     public RideRequestController(RideRequestService service) {
@@ -26,17 +30,25 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/requests")
-    ResponseEntity<RideRequest> addRideRequest(@RequestBody RideRequest rideRequest) {
-        logger.info("add ride offers");
-        rideRequest = service.addRideRequest(rideRequest);
-        return new ResponseEntity<>(rideRequest, HttpStatus.CREATED);
+    ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequest rideRequest) {
+        try {
+            logger.info("add ride offers");
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            logger.info("received token: " + token);
+            RideRequestDto rideRequestDto = service.addRideRequest(rideRequest, token);
+            return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+        } catch (IllegalAccessException | MalformedClaimException | NullPointerException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } catch (OperationNotSupportedException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/requests")
-    ResponseEntity<List<RideRequest>> getAllRideRequests() {
+    ResponseEntity<List<RideRequestDto>> getAllRideRequests() {
         logger.info("get all ride offers");
-        List<RideRequest> rideRequests;
+        List<RideRequestDto> rideRequests;
         rideRequests = service.findAllRideRequests();
         return new ResponseEntity<>(rideRequests, HttpStatus.OK);
 
@@ -44,19 +56,27 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/requests/{id}")
-    ResponseEntity<RideRequest> getRideRequestById(@PathVariable int id) {
+    ResponseEntity<RideRequestDto> getRideRequestById(@PathVariable int id) {
         logger.info("get ride offer with id: " + id);
-        RideRequest rideRequest = service.findRideRequestById(id);
-        return new ResponseEntity<>(rideRequest, HttpStatus.OK);
+        RideRequestDto rideRequestDto = service.findRideRequestById(id);
+        return new ResponseEntity<>(rideRequestDto, HttpStatus.OK);
 
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/api/requests/{id}")
-    ResponseEntity<RideRequest> updateRideRequest(@RequestBody RideRequest rideRequest) {
+    ResponseEntity<RideRequestDto> updateRideRequest(@RequestBody RideRequest rideRequest) {
         logger.info("update ride offer with id: " + rideRequest.getId());
-        service.updateRideRequest(rideRequest);
-        return new ResponseEntity<>(rideRequest, HttpStatus.OK);
+        try {
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            logger.info("received token: " + token);
+            RideRequestDto rideRequestDto = service.updateRideRequest(rideRequest, token);
+            return new ResponseEntity<>(rideRequestDto, HttpStatus.OK);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException | MalformedClaimException | NullPointerException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
 
@@ -64,7 +84,15 @@ public class RideRequestController {
     @DeleteMapping("/api/requests/{id}")
     ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
         logger.info("delete ride offer with id: " + id);
-        service.deleteRideRequestById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+            logger.info("received token: " + token);
+            service.deleteRideRequest(id, token);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalAccessException | MalformedClaimException | NullPointerException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }

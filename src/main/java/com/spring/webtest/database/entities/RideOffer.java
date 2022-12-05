@@ -1,9 +1,6 @@
 package com.spring.webtest.database.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -18,21 +15,37 @@ public class RideOffer {
     private String title;
     private String description;
 
+    @ManyToOne(targetEntity = User.class)
+    private User user;
+
+    @OneToOne(targetEntity = Address.class, cascade = {CascadeType.REMOVE})
+    private Address fromAddress;
+
+    @OneToOne(targetEntity = Address.class, cascade = {CascadeType.REMOVE})
+    private Address toAddress;
+
 
     public RideOffer() {
     }
 
-    public RideOffer(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
-
-    public RideOffer(long id, String title, String description) {
+    public RideOffer(long id, String title, String description, User user, Address from, Address to) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.user = user;
+        this.fromAddress = from;
+        this.toAddress = to;
     }
+
+    public RideOffer(String title, String description, User user, Address from, Address to) {
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.fromAddress = from;
+        this.toAddress = to;
+    }
+
+
 
     public long getId() {
         return id;
@@ -50,10 +63,42 @@ public class RideOffer {
         this.title = title;
     }
 
-
-
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "from_address_id", nullable = false)
+    public Address getFromAddress() {
+        return fromAddress;
+    }
+
+    public void setFromAddress(Address fromAddress) {
+        this.fromAddress = fromAddress;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "to_address_id", nullable = false)
+    public Address getToAddress() {
+        return toAddress;
+    }
+
+    public void setToAddress(Address toAddress) {
+        this.toAddress = toAddress;
     }
 
     @Override
@@ -62,12 +107,13 @@ public class RideOffer {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", user=" + user +
+                ", fromAddress=" + fromAddress +
+                ", toAddress=" + toAddress +
                 '}';
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -80,5 +126,6 @@ public class RideOffer {
         if (!Objects.equals(title, rideOffer.title)) return false;
         return Objects.equals(description, rideOffer.description);
     }
+
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from "../../model/Login";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../service/authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService,
+  constructor(private authService: AuthenticationService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -22,16 +23,15 @@ export class LoginComponent implements OnInit {
       password: data.password
     }
     console.log("logging in user: " + login.email);
-    localStorage.setItem("userId", "4")
-    this.router.navigate(["/profile"]);
-    // this.router.navigate(["/overview"]);
-    this.userService.loginUser(login).subscribe(token => {
-      if (!token) {
-        this.router.navigate(['/login']);
+    this.authService.loginUser(login).subscribe(data => {
+      if (data) {
+        console.log("user logged in successfully, received token");
+        localStorage.setItem("token", data.token);
+        this.router.navigate(['/profile']);
+      } else {
+        console.error("could not login user!!")
       }
-      localStorage.setItem("token", token);
-      console.log("logged in successfully");
-    });
+    })
   }
 
   navigateToRegister() {

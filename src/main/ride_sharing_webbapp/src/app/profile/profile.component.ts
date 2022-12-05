@@ -22,19 +22,13 @@ export class ProfileComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    let userId = localStorage.getItem("userId")
-    if (!userId) {
-      this.router.navigate(['/login']);
-      return
-    }
-
-    this.userService.getUser(userId).subscribe(user => {
-      if (!user) {
+    this.userService.getByToken().subscribe(user => {
+      if (user == null) {
+        console.error("could not get user");
         this.router.navigate(['/login']);
-        return
       }
-      this.user = user as User;
-    })
+      this.user = user;
+    });
   }
 
   edit(): void {
@@ -44,6 +38,17 @@ export class ProfileComponent implements OnInit {
     this.profileAddress.nativeElement.contentEditable = true;
 
     this.editing = true;
+  }
+
+  delete(): void {
+    if (!confirm("Are you sure you want to delete your profile? This action can not be undone."))
+      return
+    this.userService.deleteUser(this.user.id).subscribe(() => {
+      localStorage.removeItem("user")
+      localStorage.removeItem("token")
+      this.router.navigate(['/login'])
+      return
+    });
   }
 
   cancel(): void {
@@ -71,6 +76,7 @@ export class ProfileComponent implements OnInit {
         this.user = user;
       }
       console.log("Updated successfully");
+      this.cancel()
     });
   }
 

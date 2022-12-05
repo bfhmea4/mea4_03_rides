@@ -34,3 +34,7 @@ build/
 
 ### Logfiles ###
 src/main/resources/logfile*
+
+
+### node.js packages lock ###
+package-lock.json

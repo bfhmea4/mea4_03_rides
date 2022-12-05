@@ -1,13 +1,15 @@
 package com.spring.webtest.rideOffer;
 
+import com.mysql.cj.jdbc.exceptions.OperationNotSupportedException;
 import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.dto.RideOfferDto;
 
-interface RideOfferInvoker {
-    RideOffer createOffer(RideOffer rideOffer);
+public interface RideOfferInvoker {
+    RideOfferDto createOffer(RideOffer rideOffer) throws OperationNotSupportedException, IllegalAccessException;
 
-    RideOffer getOffer(long id);
+    RideOfferDto getOffer(long id);
 
-    RideOffer updateOffer(RideOffer rideOffer);
+    RideOfferDto updateOffer(RideOffer rideOffer) throws IllegalAccessException;
 
-    void deleteOffer(long id);
+    void deleteOffer(long rideOffer) throws IllegalAccessException;
 }

@@ -1,11 +1,9 @@
 package com.spring.webtest.database.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="user_Table")
 public class User {
 
     @Id
@@ -13,12 +11,22 @@ public class User {
     private long id;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String address;
     private String password;
 
     public User() {
 
+    }
+
+    public User(long id, String firstName, String lastName, String email, String address, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.password = password;
     }
 
     public User(String firstName, String lastName, String email, String address, String password) {

@@ -60,6 +60,25 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		password hashing-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+			<version>5.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+<!--		JWT-->
+		<!-- https://mvnrepository.com/artifact/org.bitbucket.b_c/jose4j -->
+		<dependency>
+			<groupId>org.bitbucket.b_c</groupId>
+			<artifactId>jose4j</artifactId>
+			<version>0.9.2</version>
+		</dependency>
+
+
 
 	</dependencies>
 
