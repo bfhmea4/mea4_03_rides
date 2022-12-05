@@ -5,6 +5,7 @@ import {Location} from "@angular/common";
 import {RideRequest} from "../../model/RideRequest";
 import {User} from "../../model/User";
 import {Address} from "../../model/Address";
+import {AuthenticationService} from "../../service/authentication.service";
 
 @Component({
   selector: 'app-create-update-ride-request',
@@ -21,6 +22,7 @@ export class CreateUpdateRideRequestComponent implements OnInit {
 
 
   constructor(private rideRequestService: rideRequestService,
+              private authService: AuthenticationService,
               private router: Router,
               private location: Location) {
   }
@@ -33,7 +35,7 @@ export class CreateUpdateRideRequestComponent implements OnInit {
       // @ts-ignore
       this.location.replaceState('/ride-request/' + this.rideRequestFromStorage?.id)
     }
-    if (this.userString) {
+    if (this.userString && this.authService.isAuthenticated()) {
       this.user = JSON.parse(this.userString);
       this.isLoggedIn = true;
       if (this.user?.id == this.rideRequestFromStorage?.user.id) {

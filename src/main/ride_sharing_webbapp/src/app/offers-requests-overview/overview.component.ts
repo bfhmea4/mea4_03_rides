@@ -58,12 +58,16 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.userService.getByToken().subscribe(user => {
         if (user == null) {
           console.error("could not get user");
+          this.isLoggedIn = false;
           this.router.navigate(['/login']);
         }
         this.user = user;
+        localStorage.setItem("user", JSON.stringify(this.user));
+        this.isLoggedIn = true;
       });
     } else {
       console.error("you are not logged in!");
+      this.isLoggedIn = false;
       this.router.navigate(['/login']);
     }
 
@@ -74,10 +78,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
     localStorage.removeItem("selected-ride-request")
     localStorage.removeItem("selected-ride-offer")
-    if (this.userString) {
-      this.user = JSON.parse(this.userString);
-      this.isLoggedIn = true;
-    }
   }
 
   ngOnDestroy(): void {

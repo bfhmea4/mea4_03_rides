@@ -33,7 +33,7 @@ public class RideRequestService {
     }
 
     public RideRequestDto addRideRequest(RideRequest rideRequest, String token) throws IllegalAccessException, OperationNotSupportedException, MalformedClaimException {
-        if (this.authService.tokenIsValid(token)) {
+        if (!this.authService.tokenIsValid(token)) {
             throw new IllegalAccessException();
         }
         Long userId = authService.getIdFromToken(token);
