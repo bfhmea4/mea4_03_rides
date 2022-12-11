@@ -90,10 +90,9 @@ public class UserController {
     }
 
     @PostMapping("api/user")
-    ResponseEntity<TokenDto> create(@RequestBody UserDto userDto) {
-        logger.info("******\nController: Try to save User: " + userDto.getEmail() + "\n******");
+    ResponseEntity<TokenDto> create(@RequestBody User user) {
+        logger.info("******\nController: Try to save User: " + user.getEmail() + "\n******");
         try {
-            User user = modelMapper.map(userDto, User.class);
             TokenDto tokenDto = service.save(user);
             return new ResponseEntity<>(tokenDto, HttpStatus.OK);
         } catch (JoseException e) {
@@ -109,7 +108,7 @@ public class UserController {
         try {
             User user = modelMapper.map(userDto, User.class);
             savedUser = service.update(user);
-        } catch (MalformedClaimException | IllegalAccessException | NullPointerException e) {
+        } catch (MalformedClaimException | IllegalAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
@@ -120,10 +119,9 @@ public class UserController {
     ResponseEntity<Void> delete(@PathVariable long id) {
         logger.info("******\nController: Try to delete User: " + id + "\n******");
         try {
-            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            service.delete(id, token);
+            service.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (NullPointerException | IllegalAccessException | MalformedClaimException e) {
+        } catch (IllegalAccessException | MalformedClaimException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

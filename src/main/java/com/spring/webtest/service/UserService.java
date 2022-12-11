@@ -58,6 +58,7 @@ public class UserService {
     }
 
     public TokenDto save(User user) throws JoseException {
+        System.out.println("User password: " + user.getPassword());
         user.setPassword(hashService.hash(user.getPassword()));
         return new TokenDto(authService.generateJwt(repository.save(user)));
     }
@@ -74,8 +75,9 @@ public class UserService {
         throw new IllegalAccessException("Token is not valid");
     }
 
-    public void delete(long id, String token) throws IllegalAccessException, MalformedClaimException {
-        if (authService.tokenIsValid(token) && id == getByToken(token).getId()) {
+    public void delete(long id) throws IllegalAccessException, MalformedClaimException {
+        User loggedInUser = this.userContext.getUser();
+        if (id == loggedInUser.getId()) {
             repository.deleteById(id);
             return;
         }

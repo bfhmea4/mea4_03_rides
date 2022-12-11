@@ -37,10 +37,11 @@ public class RideRequestController {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             logger.info("received token: " + token);
             RideRequest rideRequest = modelMapper.map(rideRequestDto, RideRequest.class);
-            RideRequest savedRideRequest = service.addRideRequest(rideRequest, token);
+            RideRequest savedRideRequest = service.addRideRequest(rideRequest);
             RideRequestDto savedRideRequestDto = modelMapper.map(savedRideRequest, RideRequestDto.class);
-            return new ResponseEntity<>(rideRequestDto, HttpStatus.CREATED);
+            return new ResponseEntity<>(savedRideRequestDto, HttpStatus.CREATED);
         } catch (IllegalAccessException | MalformedClaimException | NullPointerException e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } catch (OperationNotSupportedException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -74,13 +75,11 @@ public class RideRequestController {
     ResponseEntity<RideRequestDto> updateRideRequest(@RequestBody RideRequestDto rideRequestDto) {
         logger.info("update ride offer with id: " + rideRequestDto.getId());
         try {
-            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            logger.info("received token: " + token);
             RideRequest rideRequest = modelMapper.map(rideRequestDto, RideRequest.class);
-            RideRequest savedRideRequest = service.updateRideRequest(rideRequest, token);
+            RideRequest savedRideRequest = service.updateRideRequest(rideRequest);
             RideRequestDto savedRideRequestDto = modelMapper.map(savedRideRequest, RideRequestDto.class);
             return new ResponseEntity<>(savedRideRequestDto, HttpStatus.OK);
-        } catch (IllegalAccessException | MalformedClaimException | NullPointerException ex) {
+        } catch (IllegalAccessException | MalformedClaimException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
@@ -91,11 +90,9 @@ public class RideRequestController {
     ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
         logger.info("delete ride offer with id: " + id);
         try {
-            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            logger.info("received token: " + token);
-            service.deleteRideRequest(id, token);
+            service.deleteRideRequest(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (IllegalAccessException | MalformedClaimException | NullPointerException ex) {
+        } catch (IllegalAccessException | MalformedClaimException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
