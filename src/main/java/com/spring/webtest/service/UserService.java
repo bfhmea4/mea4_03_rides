@@ -1,12 +1,10 @@
 package com.spring.webtest.service;
 
-import com.spring.webtest.controller.UserController;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
 import com.spring.webtest.dto.LoginDto;
 import com.spring.webtest.dto.TokenDto;
-import com.spring.webtest.dto.UserDto;
-import com.spring.webtest.exception.ResourceNotFoundException;
+import com.spring.webtest.exception.UserNotFoundException;
 import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,26 +30,25 @@ public class UserService {
         this.authService = authService;
     }
 
-    public List<UserDto> getAll() {
-        List<UserDto> userList = new ArrayList<>();
-        repository.findAll().forEach(user -> userList.add(userToDto(user)));
+    public List<User> getAll() {
+        List<User> userList = new ArrayList<>();
+        repository.findAll().forEach(userList::add);
         return userList;
     }
 
-    public UserDto getById(Long id) {
-        return userToDto(repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Could not find user with id: " + id)));
+    public User getById(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new UserNotFoundException(id)
+        );
     }
 
     public User getByEmail(String email) {
-        User user = repository.findByEmail(email);
-        if (user == null) {
-            throw new ResourceNotFoundException("Could not find user with email: " + email);
-        }
-        return user;
+        return repository.findByEmail(email).orElseThrow(() ->
+                new UserNotFoundException(String.format("Could not find User with email '%s'", email))
+        );
     }
 
-    public UserDto getByToken(String token) throws MalformedClaimException, IllegalAccessException {
+    public User getByToken(String token) throws MalformedClaimException, IllegalAccessException {
         Long id = this.authService.getIdFromToken(token);
         return getById(id);
     }
@@ -61,15 +58,14 @@ public class UserService {
         return new TokenDto(authService.generateJwt(repository.save(user)));
     }
 
-    public UserDto update(User user, String token) throws MalformedClaimException, IllegalAccessException {
+    public User update(User user, String token) throws MalformedClaimException, IllegalAccessException {
         if (authService.tokenIsValid(token) && user.getId() == getByToken(token).getId()) {
+            repository.findById(user.getId())
+                    .orElseThrow(() -> new UserNotFoundException(user.getId()));
             if (user.getPassword() != null) {
                 user.setPassword(hashService.hash(user.getPassword()));
             }
-            user.setPassword(repository.findById(user.getId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Could not find user with id: " + user.getId()))
-                    .getPassword());
-            return userToDto(repository.save(user));
+            return repository.save(user);
         }
         throw new IllegalAccessException("Token is not valid");
     }
@@ -80,18 +76,6 @@ public class UserService {
             return;
         }
         throw new IllegalAccessException("Token is not valid");
-    }
-
-    public UserDto userToDto(User user) {
-        if (user == null) {
-            return null;
-        }
-        return new UserDto(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                user.getAddress());
     }
 
     public TokenDto loginUser(LoginDto loginDto) throws JoseException, IllegalAccessException {

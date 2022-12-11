@@ -8,6 +8,7 @@ import com.spring.webtest.exception.ResourceNotFoundException;
 import com.spring.webtest.service.UserService;
 import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.lang.JoseException;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +17,19 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
 
     private final UserService service;
+    private final ModelMapper modelMapper;
 
     private static final Logger logger = Logger.getLogger(UserController.class.getName());
 
-    public UserController(UserService service) {
+    public UserController(UserService service, ModelMapper modelMapper) {
         this.service = service;
+        this.modelMapper = modelMapper;
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -52,8 +56,12 @@ public class UserController {
 //    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 //    @GetMapping("api/user")
 //    ResponseEntity<List<UserDto>> getAll() {
-//        System.out.println("******\nController: Try to get all users..." + "\n******");
-//        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+//        System.out.println("******\nController: Try to get all users...\n******");
+//        List<User> users = service.getAll();
+//        List<UserDto> userDtos = users.stream()
+//                .map(user -> modelMapper.map(user, UserDto.class))
+//                .toList();
+//        return new ResponseEntity<>(userDtos, HttpStatus.OK);
 //    }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
@@ -61,7 +69,8 @@ public class UserController {
     ResponseEntity<UserDto> getById(@PathVariable long id) {
         logger.info("******\nController: Try to get user with id: " + id + "\n******");
         try {
-            UserDto userDto = service.getById(id);
+            User user = service.getById(id);
+            UserDto userDto = modelMapper.map(user, UserDto.class);
             return new ResponseEntity<>(userDto, HttpStatus.OK);
         } catch (ResourceNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -74,7 +83,8 @@ public class UserController {
         logger.info("Getting user by token");
         try {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            UserDto userDto = service.getByToken(token);
+            User user = service.getByToken(token);
+            UserDto userDto = modelMapper.map(user, UserDto.class);
             return new ResponseEntity<>(userDto, HttpStatus.OK);
         } catch (ResourceNotFoundException | MalformedClaimException | IllegalAccessException | NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -83,9 +93,10 @@ public class UserController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
-    ResponseEntity<TokenDto> create(@RequestBody User user) {
-        logger.info("******\nController: Try to save User: " + user.getEmail() + "\n******");
+    ResponseEntity<TokenDto> create(@RequestBody UserDto userDto) {
+        logger.info("******\nController: Try to save User: " + userDto.getEmail() + "\n******");
         try {
+            User user = modelMapper.map(userDto, User.class);
             TokenDto tokenDto = service.save(user);
             return new ResponseEntity<>(tokenDto, HttpStatus.OK);
         } catch (JoseException e) {
@@ -96,16 +107,18 @@ public class UserController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("api/user")
-    ResponseEntity<UserDto> update(@RequestBody User user) {
-        logger.info("******\nController: Try to update User with id: " + user.getId() + "\n******");
-        UserDto userDto = null;
+    ResponseEntity<UserDto> update(@RequestBody UserDto userDto) {
+        logger.info("******\nController: Try to update User with id: " + userDto.getId() + "\n******");
+        User savedUser;
         try {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            userDto = service.update(user, token);
+            User user = modelMapper.map(userDto, User.class);
+            savedUser = service.update(user, token);
         } catch (MalformedClaimException | IllegalAccessException | NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
+        return new ResponseEntity<>(savedUserDto, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})

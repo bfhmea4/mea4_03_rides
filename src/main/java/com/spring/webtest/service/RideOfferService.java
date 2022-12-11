@@ -1,10 +1,10 @@
 package com.spring.webtest.service;
 
+import com.spring.webtest.database.entities.Address;
 import com.spring.webtest.database.entities.RideOffer;
+import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.RideOfferRepository;
 import com.spring.webtest.dto.AddressDto;
-import com.spring.webtest.dto.RideOfferDto;
-import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import org.jose4j.jwt.MalformedClaimException;
 import org.springframework.stereotype.Service;
@@ -30,37 +30,33 @@ public class RideOfferService {
         this.authService = authService;
     }
 
-    public RideOfferDto addRideOffer(RideOffer rideOffer, String token) throws OperationNotSupportedException, IllegalAccessException, MalformedClaimException {
+    public RideOffer addRideOffer(RideOffer rideOffer, String token) throws IllegalAccessException, MalformedClaimException {
         boolean tokenIsValid = authService.tokenIsValid(token);
         if (!tokenIsValid) {
             throw new IllegalAccessException("Could not validate Token");
         }
-        try {
-            UserDto userDto = userService.getById(rideOffer.getUser().getId());
-            if (rideOffer.getUser() != null && userDto != null && userService.userToDto(rideOffer.getUser()).equals(userDto)) {
-                AddressDto fromAddress = addressService.addAddress(rideOffer.getFromAddress());
-                AddressDto toAddress = addressService.addAddress(rideOffer.getToAddress());
-                rideOffer.getFromAddress().setId(fromAddress.getId());
-                rideOffer.getToAddress().setId(toAddress.getId());
-                return rideOfferToDto(repository.save(rideOffer));
-            }
-            throw new IllegalAccessException();
-        } catch (NullPointerException e) {
-            throw new OperationNotSupportedException();
+        User user = userService.getById(rideOffer.getUser().getId());
+        if (rideOffer.getUser() != null && rideOffer.getUser().equals(user)) {
+            Address fromAddress = addressService.addAddress(rideOffer.getFromAddress());
+            Address toAddress = addressService.addAddress(rideOffer.getToAddress());
+            rideOffer.getFromAddress().setId(fromAddress.getId());
+            rideOffer.getToAddress().setId(toAddress.getId());
+            return repository.save(rideOffer);
         }
+        throw new IllegalAccessException();
     }
 
-    public List<RideOfferDto> getAllRideOffers() {
-        List<RideOfferDto> offersList = new ArrayList<>();
-        repository.findAll().forEach(rideOffer -> offersList.add(rideOfferToDto(rideOffer)));
+    public List<RideOffer> getAllRideOffers() {
+        List<RideOffer> offersList = new ArrayList<>();
+        repository.findAll().forEach(offersList::add);
         return offersList;
     }
 
-    public RideOfferDto findRideOfferById(long id) {
-        return rideOfferToDto(repository.findById(id).orElse(null));
+    public RideOffer findRideOfferById(long id) {
+        return repository.findById(id).orElse(null);
     }
 
-    public RideOfferDto updateRiderOffer(RideOffer rideOffer, String token) throws IllegalAccessException, MalformedClaimException {
+    public RideOffer updateRiderOffer(RideOffer rideOffer, String token) throws IllegalAccessException, MalformedClaimException {
         if (!this.authService.tokenIsValid(token)) {
             throw new IllegalAccessException();
         }
@@ -75,7 +71,7 @@ public class RideOfferService {
         }
         addressService.updateAddress(rideOffer.getFromAddress());
         addressService.updateAddress(rideOffer.getToAddress());
-        return rideOfferToDto(repository.save(rideOffer));
+        return repository.save(rideOffer);
     }
 
     public void deleteRideOffer(long id, String token) throws IllegalAccessException, MalformedClaimException {
@@ -89,31 +85,6 @@ public class RideOfferService {
             throw new IllegalAccessException();
         }
         repository.deleteById(saved.getId());
-    }
-
-    public RideOfferDto rideOfferToDto(RideOffer offer) {
-        if (offer == null) {
-            return null;
-        }
-        return new RideOfferDto(
-                offer.getId(),
-                offer.getTitle(),
-                offer.getDescription(),
-                new UserDto(offer.getUser().getId(),
-                        offer.getUser().getFirstName(),
-                        offer.getUser().getLastName(),
-                        offer.getUser().getEmail(),
-                        offer.getUser().getAddress()),
-                new AddressDto(offer.getFromAddress().getId(),
-                        offer.getFromAddress().getStreet(),
-                        offer.getFromAddress().getHouseNumber(),
-                        offer.getFromAddress().getPostalCode(),
-                        offer.getFromAddress().getLocation()),
-                new AddressDto(offer.getToAddress().getId(),
-                        offer.getToAddress().getStreet(),
-                        offer.getToAddress().getHouseNumber(),
-                        offer.getToAddress().getPostalCode(),
-                        offer.getToAddress().getLocation()));
     }
 }
 
