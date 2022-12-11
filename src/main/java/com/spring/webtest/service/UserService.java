@@ -1,5 +1,6 @@
 package com.spring.webtest.service;
 
+import com.spring.webtest.context.UserContext;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
 import com.spring.webtest.dto.LoginDto;
@@ -22,6 +23,9 @@ public class UserService {
     private final UserRepository repository;
     private final HashService hashService;
     private final AuthService authService;
+
+    @Autowired
+    UserContext userContext;
 
     @Autowired
     public UserService(UserRepository repository, HashService hashService, AuthService authService) {
@@ -58,13 +62,13 @@ public class UserService {
         return new TokenDto(authService.generateJwt(repository.save(user)));
     }
 
-    public User update(User user, String token) throws MalformedClaimException, IllegalAccessException {
-        if (authService.tokenIsValid(token) && user.getId() == getByToken(token).getId()) {
-            repository.findById(user.getId())
-                    .orElseThrow(() -> new UserNotFoundException(user.getId()));
+    public User update(User user) throws MalformedClaimException, IllegalAccessException {
+        User loggedInUser = this.userContext.getUser();
+        if (user.getId() == loggedInUser.getId()) {
             if (user.getPassword() != null) {
                 user.setPassword(hashService.hash(user.getPassword()));
             }
+            user.setPassword(loggedInUser.getPassword());
             return repository.save(user);
         }
         throw new IllegalAccessException("Token is not valid");

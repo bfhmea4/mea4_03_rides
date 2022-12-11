@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserContext {
 
-    private ThreadLocal<User> userContext = new ThreadLocal<>();
+    private ThreadLocal<User> user = new ThreadLocal<>();
 
-    public User getUserContext() {
-        return this.userContext.get();
+    public User getUser() {
+        return this.user.get();
     }
 
-    public void setUserContext(User user) {
-        this.userContext.set(user);
+    public void setUser(User user) {
+        this.user.set(user);
     }
 }

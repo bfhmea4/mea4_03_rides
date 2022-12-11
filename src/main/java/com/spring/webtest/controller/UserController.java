@@ -81,7 +81,8 @@ public class UserController {
         logger.info("Getting user by token");
         try {
             String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            UserDto userDto = service.getByToken(token);
+            User user = service.getByToken(token);
+            UserDto userDto = modelMapper.map(user, UserDto.class);
             return new ResponseEntity<>(userDto, HttpStatus.OK);
         } catch (ResourceNotFoundException | MalformedClaimException | IllegalAccessException | NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -106,9 +107,8 @@ public class UserController {
         logger.info("******\nController: Try to update User with id: " + userDto.getId() + "\n******");
         User savedUser;
         try {
-            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
             User user = modelMapper.map(userDto, User.class);
-            savedUser = service.update(user, token);
+            savedUser = service.update(user);
         } catch (MalformedClaimException | IllegalAccessException | NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
