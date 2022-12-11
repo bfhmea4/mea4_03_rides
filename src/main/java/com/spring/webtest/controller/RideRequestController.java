@@ -34,8 +34,6 @@ public class RideRequestController {
     ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequestDto rideRequestDto) {
         try {
             logger.info("add ride offers");
-            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            logger.info("received token: " + token);
             RideRequest rideRequest = modelMapper.map(rideRequestDto, RideRequest.class);
             RideRequest savedRideRequest = service.addRideRequest(rideRequest);
             RideRequestDto savedRideRequestDto = modelMapper.map(savedRideRequest, RideRequestDto.class);

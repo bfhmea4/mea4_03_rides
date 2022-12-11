@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class RideRequestService {
@@ -23,7 +24,7 @@ public class RideRequestService {
     private final AddressService addressService;
 
     @Autowired
-    UserContext userContext;
+    private UserContext userContext;
 
     @Autowired
     public RideRequestService(RideRequestRepository repository, UserService userService, AddressService addressService, AuthService authService) {
@@ -76,6 +77,9 @@ public class RideRequestService {
     }
 
     private void checkIfUserIsAuthorized(RideRequest rideRequest) throws IllegalAccessException {
+        if (Objects.isNull(rideRequest)) {
+            throw new IllegalAccessException();
+        }
         User savedUser = userService.getById(rideRequest.getUser().getId());
         User contextUser = userContext.getUser();
         if (!savedUser.equals(contextUser)) {
