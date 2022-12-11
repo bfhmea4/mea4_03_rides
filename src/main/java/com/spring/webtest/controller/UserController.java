@@ -28,7 +28,6 @@ public class UserController {
         this.service = service;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @RequestMapping(
             value = "/api/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -49,14 +48,6 @@ public class UserController {
         }
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-//    @GetMapping("api/user")
-//    ResponseEntity<List<UserDto>> getAll() {
-//        System.out.println("******\nController: Try to get all users..." + "\n******");
-//        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
-//    }
-
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> getById(@PathVariable long id) {
         logger.info("******\nController: Try to get user with id: " + id + "\n******");
@@ -68,7 +59,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/byToken")
     ResponseEntity<UserDto> getByToken() {
         logger.info("Getting user by token");
@@ -81,7 +71,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
     ResponseEntity<TokenDto> create(@RequestBody User user) {
         logger.info("******\nController: Try to save User: " + user.getEmail() + "\n******");
@@ -94,7 +83,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("api/user")
     ResponseEntity<UserDto> update(@RequestBody User user) {
         logger.info("******\nController: Try to update User with id: " + user.getId() + "\n******");
@@ -108,7 +96,6 @@ public class UserController {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("api/user/{id}")
     ResponseEntity<Void> delete(@PathVariable long id) {
         logger.info("******\nController: Try to delete User: " + id + "\n******");
