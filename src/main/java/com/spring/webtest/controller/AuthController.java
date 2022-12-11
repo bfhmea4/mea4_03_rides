@@ -1,8 +1,10 @@
 package com.spring.webtest.controller;
 
+import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.LoginDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final UserService service;
+    private final ModelMapper modelMapper;
 
-    public AuthController(UserService service) {
+    public AuthController(UserService service, ModelMapper modelMapper) {
         this.service = service;
+        this.modelMapper = modelMapper;
     }
 
     @RequestMapping("/api/login")
@@ -26,11 +30,12 @@ public class AuthController {
         if (loginDto.getEmail() == null || loginDto.getEmail().equals("")) {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
-        UserDto dto = this.service.compareCredentials(loginDto);
-        if (dto == null) {
+        User user = this.service.compareCredentials(loginDto.getEmail(), loginDto.getPassword());
+        if (user == null) {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        UserDto userDto = modelMapper.map(user, UserDto.class);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
 }

@@ -2,8 +2,7 @@ package com.spring.webtest.service;
 
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
-import com.spring.webtest.dto.LoginDto;
-import com.spring.webtest.dto.UserDto;
+import com.spring.webtest.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,53 +21,44 @@ public class UserService {
         this.hashService = hashService;
     }
 
-    public List<UserDto> getAll() {
-        List<UserDto> userList = new ArrayList<>();
-        repository.findAll().forEach(user -> userList.add(userToDto(user)));
+    public List<User> getAll() {
+        List<User> userList = new ArrayList<>();
+        repository.findAll().forEach(userList::add);
         return userList;
     }
 
-    public UserDto getById(Long id) {
-        return userToDto(repository.findById(id).orElse(null));
+    public User getById(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new UserNotFoundException(id)
+        );
     }
 
-    public UserDto getByEmail(String email) {
-        return userToDto(repository.findByEmail(email));
+    public User getByEmail(String email) {
+        return repository.findByEmail(email).orElseThrow(() ->
+                new UserNotFoundException(String.format("Could not find User with email '%s'", email))
+        );
     }
 
-    public UserDto save(User user) {
+    public User save(User user) {
         user.setPassword(hashService.hash(user.getPassword()));
-        return userToDto(repository.save(user));
+        return repository.save(user);
     }
 
-    public UserDto update(User user) {
+    public User update(User user) {
         user.setPassword(hashService.hash(user.getPassword()));
-        return userToDto(repository.save(user));
+        return repository.save(user);
     }
 
     public void delete(long id) {
         repository.deleteById(id);
     }
 
-    public UserDto compareCredentials(LoginDto loginDto) {
-        loginDto.setPassword(hashService.hash(loginDto.getPassword()));
-        User user = repository.findByEmail(loginDto.getEmail());
-        if (user != null && user.getPassword().equals(loginDto.getPassword())){
-            return userToDto(user);
+    public User compareCredentials(String email, String password) {
+        User user = getByEmail(email);
+        String hashedPassword = hashService.hash(password);
+        if (user.getPassword().equals(hashedPassword)){
+            return user;
         }
         return null;
     }
-
-    public UserDto userToDto(User user) {
-        if (user == null) {
-            return null;
-        }
-        return new UserDto(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                user.getAddress());
-    }
-
 }

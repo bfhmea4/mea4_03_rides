@@ -3,7 +3,7 @@ package com.spring.webtest.database.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user_Table")
+@Table(name="user_table")
 public class User {
 
     @Id
