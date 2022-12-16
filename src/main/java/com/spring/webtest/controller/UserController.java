@@ -32,6 +32,7 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @RequestMapping(
             value = "/api/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -63,7 +64,7 @@ public class UserController {
 //        return new ResponseEntity<>(userDtos, HttpStatus.OK);
 //    }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> getById(@PathVariable long id) {
         logger.info("******\nController: Try to get user with id: " + id + "\n******");
@@ -76,6 +77,7 @@ public class UserController {
         }
     }
 
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/byToken")
     ResponseEntity<UserDto> getByToken() {
         logger.info("Getting user by token");
@@ -89,6 +91,7 @@ public class UserController {
         }
     }
 
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
     ResponseEntity<TokenDto> create(@RequestBody User user) {
         logger.info("******\nController: Try to save User: " + user.getEmail() + "\n******");
@@ -101,6 +104,7 @@ public class UserController {
         }
     }
 
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("api/user")
     ResponseEntity<UserDto> update(@RequestBody UserDto userDto) {
         logger.info("******\nController: Try to update User with id: " + userDto.getId() + "\n******");
@@ -115,6 +119,7 @@ public class UserController {
         return new ResponseEntity<>(savedUserDto, HttpStatus.OK);
     }
 
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("api/user/{id}")
     ResponseEntity<Void> delete(@PathVariable long id) {
         logger.info("******\nController: Try to delete User: " + id + "\n******");

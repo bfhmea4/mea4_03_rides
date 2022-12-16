@@ -24,7 +24,7 @@ public class AddressController {
 
     private static final Logger logger = Logger.getLogger(FizzBuzzController.class.getName());
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/address")
     ResponseEntity<AddressDto> post(@RequestBody AddressDto addressDto) {
         logger.info("add ride address: " + addressDto);
@@ -34,7 +34,7 @@ public class AddressController {
         return new ResponseEntity<>(savedAddressDto, HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/address/{id}")
     ResponseEntity<AddressDto> get(@PathVariable long id) {
         logger.info("get address with id: " + id);
@@ -43,7 +43,7 @@ public class AddressController {
         return new ResponseEntity<>(addressDto, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/address/{id}")
     ResponseEntity<AddressDto> put(@PathVariable long id, @RequestBody AddressDto addressDto) {
         if (id != addressDto.getId())
