@@ -9,6 +9,7 @@ import org.jose4j.jwt.MalformedClaimException;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -32,6 +33,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
+    @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOfferDto rideOfferDto) {
         logger.info("add ride offers");
 
@@ -54,6 +56,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/offers")
+    @Secured("ROLE_USER")
     ResponseEntity<List<RideOfferDto>> getAll() {
         logger.info("get all ride offers");
         List<RideOffer> rideOffers = service.getAllRideOffers();
@@ -65,6 +68,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/offer/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> get(@PathVariable long id) {
         logger.info("get ride offer with id: " + id);
         RideOffer rideOffer = service.findRideOfferById(id);
@@ -74,6 +78,7 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/api/offer/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> update(@PathVariable long id, @RequestBody RideOfferDto rideOfferDto) {
         if (id != rideOfferDto.getId())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -94,12 +99,13 @@ public class RideOfferController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/offer/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<?> delete(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);
         try {
             service.deleteRideOffer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (IllegalAccessException | MalformedClaimException ex) {
+        } catch (IllegalAccessException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }

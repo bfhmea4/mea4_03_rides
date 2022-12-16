@@ -9,6 +9,7 @@ import org.jose4j.jwt.MalformedClaimException;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -31,6 +32,7 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/requests")
+    @Secured("ROLE_USER")
     ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequestDto rideRequestDto) {
         try {
             logger.info("add ride offers");
@@ -38,7 +40,7 @@ public class RideRequestController {
             RideRequest savedRideRequest = service.addRideRequest(rideRequest);
             RideRequestDto savedRideRequestDto = modelMapper.map(savedRideRequest, RideRequestDto.class);
             return new ResponseEntity<>(savedRideRequestDto, HttpStatus.CREATED);
-        } catch (IllegalAccessException | MalformedClaimException | NullPointerException e) {
+        } catch (IllegalAccessException | NullPointerException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } catch (OperationNotSupportedException e) {
@@ -48,6 +50,7 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/requests")
+    @Secured("ROLE_USER")
     ResponseEntity<List<RideRequestDto>> getAllRideRequests() {
         logger.info("get all ride offers");
         List<RideRequest> rideRequests = service.findAllRideRequests();
@@ -60,6 +63,7 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/requests/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<RideRequestDto> getRideRequestById(@PathVariable int id) {
         logger.info("get ride offer with id: " + id);
         RideRequest rideRequest = service.findRideRequestById(id);
@@ -70,6 +74,7 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/api/requests/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<RideRequestDto> updateRideRequest(@RequestBody RideRequestDto rideRequestDto) {
         logger.info("update ride offer with id: " + rideRequestDto.getId());
         try {
@@ -77,7 +82,7 @@ public class RideRequestController {
             RideRequest savedRideRequest = service.updateRideRequest(rideRequest);
             RideRequestDto savedRideRequestDto = modelMapper.map(savedRideRequest, RideRequestDto.class);
             return new ResponseEntity<>(savedRideRequestDto, HttpStatus.OK);
-        } catch (IllegalAccessException | MalformedClaimException ex) {
+        } catch (IllegalAccessException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
@@ -85,12 +90,13 @@ public class RideRequestController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/requests/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
         logger.info("delete ride offer with id: " + id);
         try {
             service.deleteRideRequest(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (IllegalAccessException | MalformedClaimException ex) {
+        } catch (IllegalAccessException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }

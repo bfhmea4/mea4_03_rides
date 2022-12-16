@@ -1,6 +1,5 @@
 package com.spring.webtest.service;
 
-import com.spring.webtest.controller.UserController;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.dto.LoginDto;
 import org.jose4j.jwa.AlgorithmConstraints;
@@ -17,20 +16,34 @@ import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.lang.JoseException;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
 public class AuthService {
 
-    //            Tutorial from https://bitbucket.org/b_c/jose4j/wiki/JWT%20Examples
+    //Tutorial from https://bitbucket.org/b_c/jose4j/wiki/JWT%20Examples
     private static final Logger logger = Logger.getLogger(AuthService.class.getName());
-    RsaJsonWebKey rsaJsonWebKey;
-    HashService hashService;
+    private final RsaJsonWebKey rsaJsonWebKey;
+    private final HashService hashService;
+    private final JwtConsumer jwtConsumer;
 
     public AuthService(HashService hashService) throws JoseException {
+        this.hashService = hashService;
+
         rsaJsonWebKey = RsaJwkGenerator.generateJwk(2048);
         rsaJsonWebKey.setKeyId("k1");
-        this.hashService = hashService;
+
+        jwtConsumer = new JwtConsumerBuilder()
+                .setRequireExpirationTime()
+                .setAllowedClockSkewInSeconds(30)
+                .setRequireSubject()
+                .setExpectedIssuer("Service Provider")
+                .setExpectedAudience("Audience")
+                .setVerificationKey(rsaJsonWebKey.getPublicKey())
+                .setJweAlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT,
+                        AlgorithmIdentifiers.RSA_USING_SHA256)
+                .build();
     }
 
     public boolean credentialsAreValid(LoginDto loginDto, User user) {
@@ -38,16 +51,12 @@ public class AuthService {
         return loginDto.getPassword().equals(user.getPassword());
     }
 
-    public Long getIdFromToken(String token) throws MalformedClaimException, IllegalAccessException {
+    public Long getIdFromToken(String token) throws IllegalAccessException {
         JwtClaims claims = getClaimsFromToken(token);
         if (claims != null) {
-            return (Long) claims.getClaimValue("userId");
+            return (long) claims.getClaimValue("userId");
         }
         throw new IllegalAccessException("Could not get Info out of the Token");
-    }
-
-    public boolean tokenIsValid(String jwt) throws MalformedClaimException {
-        return getClaimsFromToken(jwt) != null;
     }
 
     public String generateJwt(User user) throws JoseException {
@@ -74,44 +83,28 @@ public class AuthService {
         return jwt;
     }
 
-    public JwtClaims getClaimsFromToken(String jwt) throws MalformedClaimException {
-        // Remove the substring "Bearer"
-        jwt = jwt.substring(7);
-
-        JwtConsumer jwtConsumer = new JwtConsumerBuilder()
-                .setRequireExpirationTime()
-                .setAllowedClockSkewInSeconds(30)
-                .setRequireSubject()
-                .setExpectedIssuer("Service Provider")
-                .setExpectedAudience("Audience")
-                .setVerificationKey(rsaJsonWebKey.getPublicKey())
-                .setJweAlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT,
-                        AlgorithmIdentifiers.RSA_USING_SHA256)
-                .build();
-
+    public JwtClaims getClaimsFromToken(String jwt) {
         try {
-            JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);
-            System.out.println("JWT validation succeeded! " + jwtClaims);
-            return jwtClaims;
+            return jwtConsumer.processToClaims(jwt);
         } catch (InvalidJwtException e) {
-//                Failed Processing or validating
-            System.out.println("Invalid JWT! " + e);
+            logger.log(Level.INFO, "JWT Token is invalid: {0}", e.getMessage());
 
-            // Programmatic access to (some) specific reasons for JWT invalidity is also possible
-            // should you want different error handling behavior for certain conditions.
-
-            // Whether or not the JWT has expired being one common reason for invalidity
-            if (e.hasExpired())
+            if (e.hasErrorCode(ErrorCodes.EXPIRED))
             {
-                System.out.println("JWT expired at " + e.getJwtContext().getJwtClaims().getExpirationTime());
-                return null;
+                try {
+                    logger.log(Level.INFO, "JWT expired at {0}", e.getJwtContext().getJwtClaims().getExpirationTime());
+                } catch (MalformedClaimException malformedClaimException) {
+                    logger.log(Level.WARNING, "Could not get Expiration Time from Token", malformedClaimException);
+                }
             }
 
-            // Or maybe the audience was invalid
             if (e.hasErrorCode(ErrorCodes.AUDIENCE_INVALID))
             {
-                System.out.println("JWT had wrong audience: " + e.getJwtContext().getJwtClaims().getAudience());
-                return null;
+                try {
+                    logger.log(Level.INFO, "JWT has wrong audience: {0}", e.getJwtContext().getJwtClaims().getAudience());
+                } catch (MalformedClaimException malformedClaimException) {
+                    logger.log(Level.WARNING, "Could not get Audience from Token", malformedClaimException);
+                }
             }
         }
         return null;
