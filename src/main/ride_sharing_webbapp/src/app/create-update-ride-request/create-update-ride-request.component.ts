@@ -68,14 +68,17 @@ export class CreateUpdateRideRequestComponent implements OnInit {
         id: data.id,
         title: data.title,
         description: data.description,
+        startTime: new Date(),
         user: this.user,
         fromAddress: fromAddress,
         toAddress: toAddress
       }
 
-      this.rideRequestService.updateRequest(rideRequestToUpdate).subscribe(() => {
-          console.log(`ride request with id ${rideRequestToUpdate.id} updated succesfully`);
-          this.router.navigate(['/overview'])
+      this.rideRequestService.updateRequest(rideRequestToUpdate).subscribe((result) => {
+        console.log(`ride request with id ${rideRequestToUpdate.id} updated succesfully`);
+        console.log("************************************\nresult from backen (updated rideRequest):");
+        console.log(result);
+        this.router.navigate(['/overview'])
         }
       )
     } else {
@@ -104,15 +107,17 @@ export class CreateUpdateRideRequestComponent implements OnInit {
         id: data.id,
         title: data.title,
         description: data.description,
+        startTime: new Date(),
         user: this.user,
         fromAddress: fromAddress,
         toAddress: toAddress
       }
       console.log(rideRequestToCreate);
-      this.rideRequestService.createRequest(rideRequestToCreate).subscribe(() => {
-        console.log(`Create ride request successfull`)
-        localStorage.setItem("selected-ride-request", JSON.stringify(rideRequestToCreate))
-        this.router.navigate(['/overview'])
+      this.rideRequestService.createRequest(rideRequestToCreate).subscribe((result) => {
+        console.log(`Create ride request successfull: `);
+        console.log(result);
+        localStorage.setItem("selected-ride-request", JSON.stringify(rideRequestToCreate));
+        this.router.navigate(['/overview']);
       })
     } else {
       console.error("please login with the correct account to create request");

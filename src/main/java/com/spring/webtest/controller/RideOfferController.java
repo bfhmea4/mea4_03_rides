@@ -33,7 +33,7 @@ public class RideOfferController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOfferDto rideOfferDto) {
-        logger.info("add ride offers");
+        logger.info("add ride offer");
 
         RideOfferDto savedRideOfferDto;
         try {

@@ -1,9 +1,13 @@
 package com.spring.webtest.dto;
 
+import java.time.LocalDateTime;
+
 public class RideRequestDto {
     private long id;
     private String title;
     private String description;
+
+    private LocalDateTime startTime;
 
     private UserDto user;
 
@@ -12,10 +16,11 @@ public class RideRequestDto {
     private AddressDto toAddress;
 
 
-    public RideRequestDto(long id, String title, String description, UserDto user, AddressDto fromAddress, AddressDto toAddress) {
+    public RideRequestDto(long id, String title, String description, LocalDateTime startTime, UserDto user, AddressDto fromAddress, AddressDto toAddress) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.startTime = startTime;
         this.user = user;
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
@@ -45,6 +50,14 @@ public class RideRequestDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDateTime getStartTime() {
+        return this.startTime;
+    }
+
+    public void setStartTime(LocalDateTime time) {
+        this.startTime = time;
     }
 
     public UserDto getUser() {

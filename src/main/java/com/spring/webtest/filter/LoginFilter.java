@@ -39,9 +39,11 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURL().toString();
+        System.out.println("Request on: " + url);
+        System.out.println("Method: " + request.getMethod());
 
         if (url.equals("http://localhost:8080/api/login") ||
-                (url.equals("http://localhost:8080/api/user") && request.getMethod().equals("POST")) ||
+                ((url.equals("http://localhost:8080/api/user/") && request.getMethod().equals("POST"))) ||
                 request.getMethod().equals("OPTIONS")) {
             System.out.println("Request does not need a token");
             filterChain.doFilter(request, response);

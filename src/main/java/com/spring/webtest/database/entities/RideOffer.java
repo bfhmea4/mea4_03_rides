@@ -1,6 +1,7 @@
 package com.spring.webtest.database.entities;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -15,6 +16,8 @@ public class RideOffer {
     private String title;
     private String description;
 
+    private LocalDateTime startTime;
+
     @ManyToOne(targetEntity = User.class)
     private User user;
 
@@ -28,18 +31,20 @@ public class RideOffer {
     public RideOffer() {
     }
 
-    public RideOffer(long id, String title, String description, User user, Address from, Address to) {
+    public RideOffer(long id, String title, String description, LocalDateTime startTime, User user, Address from, Address to) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.startTime = startTime;
         this.user = user;
         this.fromAddress = from;
         this.toAddress = to;
     }
 
-    public RideOffer(String title, String description, User user, Address from, Address to) {
+    public RideOffer(String title, String description, LocalDateTime startTime, User user, Address from, Address to) {
         this.title = title;
         this.description = description;
+        this.startTime = startTime;
         this.user = user;
         this.fromAddress = from;
         this.toAddress = to;
@@ -69,6 +74,14 @@ public class RideOffer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDateTime getStartTime() {
+        return this.startTime;
+    }
+
+    public void setStartTime(LocalDateTime time) {
+        this.startTime = time;
     }
 
     @ManyToOne
@@ -107,6 +120,7 @@ public class RideOffer {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", startTime='" + startTime + '\'' +
                 ", user=" + user +
                 ", fromAddress=" + fromAddress +
                 ", toAddress=" + toAddress +

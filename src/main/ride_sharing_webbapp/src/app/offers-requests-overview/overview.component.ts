@@ -8,6 +8,7 @@ import {User} from "../../model/User";
 import { NgToastService } from 'ng-angular-popup';
 import {AuthenticationService} from "../../service/authentication.service";
 import {UserService} from "../../service/user.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-ride-offer',
@@ -271,4 +272,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
       return offer.fromAddress.location == this.selectedFromLocationRequest && offer.toAddress.location == this.selectedToLocationRequest
     })
   }
+
+  formatedDateTime(date: Date) {
+    // let pipe = new DatePipe('en-US');
+    // return pipe.transform(date, 'short');
+    return
+  }
+
 }

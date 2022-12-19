@@ -71,6 +71,7 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
         id: data.id,
         title: data.title,
         description: data.description,
+        startTime: new Date(),
         user: this.user,
         fromAddress: fromAddress,
         toAddress: toAddress
@@ -107,6 +108,7 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
         id: 0,
         title: data.newTitle,
         description: data.newDescription,
+        startTime: new Date(),
         user: this.user,
         fromAddress: from,
         toAddress: to

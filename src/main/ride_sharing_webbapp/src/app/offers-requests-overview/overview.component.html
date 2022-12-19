@@ -57,6 +57,8 @@
       <span hidden>{{rideOffer.id}}</span><br>
       <h2>{{rideOffer.title}}</h2><br>
       <p>{{rideOffer.description}}</p>
+<!--      <p>At: {{this.formatedDateTime(rideOffer.startTime)}}</p>-->
+      <p>At: {{rideOffer.startTime | date: 'hh:mm dd.MM.YY'}}</p>
       <p>From: {{rideOffer.fromAddress.location}} - To: {{rideOffer.toAddress.location}}</p>
     </div>
   </div>
@@ -68,6 +70,7 @@
       <span hidden>{{rideRequest.id}}</span><br>
       <h2>{{rideRequest.title}}</h2><br>
       <p>{{rideRequest.description}}</p>
+      <p>At: {{rideRequest.startTime}}</p>
       <p>From: {{rideRequest.fromAddress.location}} - To: {{rideRequest.toAddress.location}}</p>
     </div>
   </div>
