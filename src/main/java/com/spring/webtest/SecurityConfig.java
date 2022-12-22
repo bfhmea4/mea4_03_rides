@@ -35,6 +35,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, LoginFilter loginFilter, JwtAuthenticationEntryPoint unauthorizedHandler) throws Exception {
         http
+                .csrf().disable()
                 .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
