@@ -92,7 +92,7 @@
       <span hidden>{{rideRequest.id}}</span><br>
       <h2>{{rideRequest.title}}</h2><br>
       <p>{{rideRequest.description}}</p>
-      <p>At: {{rideRequest.startTime}}</p>
+      <p>At: {{rideRequest.startTime | date: 'hh:mm   dd.MM.YY'}}</p>
       <p>From: {{rideRequest.fromAddress.location}} - To: {{rideRequest.toAddress.location}}</p>
     </div>
   </div>

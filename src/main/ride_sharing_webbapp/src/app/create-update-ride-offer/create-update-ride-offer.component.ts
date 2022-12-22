@@ -68,7 +68,7 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
         location: data.to_location
       }
       let date = new Date(data.startTime);
-      date.setHours(date.getHours() + 1);   //
+      date.setHours(date.getHours() + 1);   // vlaue from input is 1h to early
       let rideOfferToUpdate: RideOffer = {
         id: data.id,
         title: data.title,
