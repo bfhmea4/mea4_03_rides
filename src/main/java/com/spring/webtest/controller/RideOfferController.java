@@ -35,7 +35,7 @@ public class RideOfferController {
     @PostMapping("/api/offer")
     @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOfferDto rideOfferDto) {
-        logger.info("add ride offers");
+        logger.info("add ride offer");
 
         RideOfferDto savedRideOfferDto;
         try {

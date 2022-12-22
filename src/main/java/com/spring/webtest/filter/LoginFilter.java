@@ -42,8 +42,6 @@ public class LoginFilter extends OncePerRequestFilter {
             return;
         }
 
-        //TODO: Try to return 403 instead of 401
-
         String token = authHeader.substring(7);
         JwtClaims claims = authService.getClaimsFromToken(token);
 

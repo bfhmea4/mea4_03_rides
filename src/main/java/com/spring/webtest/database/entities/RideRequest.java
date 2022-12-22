@@ -1,6 +1,9 @@
 package com.spring.webtest.database.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class RideRequest {
@@ -12,6 +15,8 @@ public class RideRequest {
     private String title;
 
     private String description;
+
+    private LocalDateTime startTime;
 
     @ManyToOne(targetEntity = User.class)
     private User user;
@@ -25,19 +30,21 @@ public class RideRequest {
     protected RideRequest() {
     }
 
-    public RideRequest(Long id, String title, String description, User user, Address fromAddress, Address toAddress) {
+    public RideRequest(Long id, String title, String description, LocalDateTime startTime, User user, Address fromAddress, Address toAddress) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.startTime = startTime;
         this.user = user;
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
     }
 
 
-    public RideRequest(String title, String description, User user, Address fromAddress, Address toAddress) {
+    public RideRequest(String title, String description, LocalDateTime startTime, User user, Address fromAddress, Address toAddress) {
         this.title = title;
         this.description = description;
+        this.startTime = startTime;
         this.user = user;
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
@@ -53,6 +60,14 @@ public class RideRequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDateTime getStartTime() {
+        return this.startTime;
+    }
+
+    public void setStartTime(LocalDateTime time) {
+        this.startTime = time;
     }
 
     public void setId(Long id) {
@@ -104,6 +119,7 @@ public class RideRequest {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", startTime='" + startTime + '\'' +
                 ", user=" + user +
                 ", fromAddress=" + fromAddress +
                 ", toAddress=" + toAddress +
