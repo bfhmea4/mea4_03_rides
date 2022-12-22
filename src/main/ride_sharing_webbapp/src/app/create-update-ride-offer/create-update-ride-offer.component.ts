@@ -67,11 +67,13 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
         postalCode: data.to_postal_code,
         location: data.to_location
       }
+      let date = new Date(data.startTime);
+      date.setHours(date.getHours() + 1);   //
       let rideOfferToUpdate: RideOffer = {
         id: data.id,
         title: data.title,
         description: data.description,
-        startTime: new Date(),
+        startTime: date,
         user: this.user,
         fromAddress: fromAddress,
         toAddress: toAddress
@@ -103,16 +105,19 @@ export class CreateUpdateRideOfferComponent implements OnInit, OnDestroy {
         postalCode: data.new_to_postal_code,
         location: data.new_to_location
       }
+      let date = new Date(data.newStartTime);
+      date.setHours(date.getHours() + 1);   // vlaue from input is 1h to early
       console.log('to: ' + to.street + to.location + to.postalCode);
       let rideOfferToCreate: RideOffer = {
         id: 0,
         title: data.newTitle,
         description: data.newDescription,
-        startTime: new Date(),
+        startTime: date,
         user: this.user,
         fromAddress: from,
         toAddress: to
       }
+      console.log("rideOfferToCreate: ")
       console.log(rideOfferToCreate);
       this.rideOfferService.createOffer(rideOfferToCreate).subscribe(() => {
         console.log(`Create ride offer successfull`)

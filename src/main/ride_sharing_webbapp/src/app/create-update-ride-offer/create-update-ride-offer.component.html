@@ -14,6 +14,8 @@
     <label class="profile-item-label">Contact</label>
     <input class="profile-item-value" name="mail" type=text [(ngModel)]="rideOfferFromStorage.user.email" readonly>
     <div><input name="from_id" hidden [(ngModel)]="rideOfferFromStorage.fromAddress.id"></div>
+    <label class="profile-item-label">Start Time</label>
+    <input class="profile-item-value" name="startTime" type="datetime-local" placeholder="enter start time" [ngModel]="rideOfferFromStorage.startTime">
 
     <h3>From:</h3>
     <input name="from_id" hidden [(ngModel)]="rideOfferFromStorage.fromAddress.id">
@@ -65,6 +67,8 @@
     <input class="profile-item-value" name="newTitle" type="text" placeholder="enter title" ngModel>
     <label class="profile-item-label">Description</label>
     <input class="profile-item-value" name="newDescription" type=text placeholder="enter description" ngModel>
+    <label class="profile-item-label">Start Time</label>
+    <input class="profile-item-value" name="newStartTime" type="datetime-local" placeholder="enter start time" ngModel required>
 
     <h3>From:</h3>
     <label class="profile-item-label">Street</label>
