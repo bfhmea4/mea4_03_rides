@@ -230,12 +230,12 @@ export class OverviewComponent implements OnInit, OnDestroy {
         return;
       })
 
-      this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(offer => {
-        let offerDate = new Date(offer.startTime);
+      this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(request => {
+        let offerDate = new Date(request.startTime);
         if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
           offerDate.getMonth() == dateToFilterBy.getMonth() &&
           offerDate.getDay() == dateToFilterBy.getDay()) {
-          return offer;
+          return request;
         }
         return;
       })
