@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -32,7 +33,6 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @RequestMapping(
             value = "/api/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -53,18 +53,6 @@ public class UserController {
         }
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
-//    @GetMapping("api/user")
-//    ResponseEntity<List<UserDto>> getAll() {
-//        System.out.println("******\nController: Try to get all users...\n******");
-//        List<User> users = service.getAll();
-//        List<UserDto> userDtos = users.stream()
-//                .map(user -> modelMapper.map(user, UserDto.class))
-//                .toList();
-//        return new ResponseEntity<>(userDtos, HttpStatus.OK);
-//    }
-
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> getById(@PathVariable long id) {
         logger.info("******\nController: Try to get user with id: " + id + "\n******");
@@ -77,7 +65,6 @@ public class UserController {
         }
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/byToken")
     ResponseEntity<UserDto> getByToken() {
         logger.info("Getting user by token");
@@ -91,7 +78,6 @@ public class UserController {
         }
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("api/user")
     ResponseEntity<TokenDto> create(@RequestBody User user) {
         logger.info("******\nController: Try to save User: " + user.getEmail() + "\n******");
@@ -104,29 +90,29 @@ public class UserController {
         }
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("api/user")
+    @Secured("ROLE_USER")
     ResponseEntity<UserDto> update(@RequestBody UserDto userDto) {
         logger.info("******\nController: Try to update User with id: " + userDto.getId() + "\n******");
         User savedUser;
         try {
             User user = modelMapper.map(userDto, User.class);
             savedUser = service.update(user);
-        } catch (MalformedClaimException | IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
         return new ResponseEntity<>(savedUserDto, HttpStatus.OK);
     }
 
-//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("api/user/{id}")
+    @Secured("ROLE_USER")
     ResponseEntity<Void> delete(@PathVariable long id) {
         logger.info("******\nController: Try to delete User: " + id + "\n******");
         try {
             service.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (IllegalAccessException | MalformedClaimException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
