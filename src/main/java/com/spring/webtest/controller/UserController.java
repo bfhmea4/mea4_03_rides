@@ -5,6 +5,7 @@ import com.spring.webtest.dto.LoginDto;
 import com.spring.webtest.dto.TokenDto;
 import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
+import com.spring.webtest.security.UserPrincipal;
 import com.spring.webtest.service.UserService;
 import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.lang.JoseException;
@@ -13,10 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.security.Principal;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -65,17 +69,13 @@ public class UserController {
         }
     }
 
-    @GetMapping("api/user/byToken")
-    ResponseEntity<UserDto> getByToken() {
+    @GetMapping("api/user/me")
+    @Secured("ROLE_USER")
+    ResponseEntity<UserDto> getMe(Principal principal) {
         logger.info("Getting user by token");
-        try {
-            String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
-            User user = service.getByToken(token);
-            UserDto userDto = modelMapper.map(user, UserDto.class);
-            return new ResponseEntity<>(userDto, HttpStatus.OK);
-        } catch (ResourceNotFoundException | MalformedClaimException | IllegalAccessException | NullPointerException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        User user = service.getByEmail(principal.getName());
+        UserDto userDto = modelMapper.map(user, UserDto.class);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PostMapping("api/user")
