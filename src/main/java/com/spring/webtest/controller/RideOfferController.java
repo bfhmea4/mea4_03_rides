@@ -30,7 +30,7 @@ public class RideOfferController {
     private static final Logger logger = Logger.getLogger(FizzBuzzController.class.getName());
 
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOfferDto rideOfferDto) {
         logger.info("add ride offer");
@@ -52,7 +52,7 @@ public class RideOfferController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/offers")
     ResponseEntity<List<RideOfferDto>> getAll() {
         logger.info("get all ride offers");
@@ -63,7 +63,7 @@ public class RideOfferController {
         return new ResponseEntity<>(rideOfferDtos, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/offer/{id}")
     ResponseEntity<RideOfferDto> get(@PathVariable long id) {
         logger.info("get ride offer with id: " + id);
@@ -72,7 +72,7 @@ public class RideOfferController {
         return new ResponseEntity<>(rideOfferDto, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/api/offer/{id}")
     ResponseEntity<RideOfferDto> update(@PathVariable long id, @RequestBody RideOfferDto rideOfferDto) {
         if (id != rideOfferDto.getId())
@@ -92,7 +92,7 @@ public class RideOfferController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/offer/{id}")
     ResponseEntity<?> delete(@PathVariable long id) {
         logger.info("delete ride offer with id: " + id);

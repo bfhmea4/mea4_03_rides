@@ -25,7 +25,7 @@ public class FizzBuzzController {
         this.repository = repository;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping(value = "/fizzbuzz/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<String> fizzBuzz(@PathVariable int number) {
         logger.info("getting FizzBuzz for number :" + number);

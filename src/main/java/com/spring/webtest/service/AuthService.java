@@ -47,7 +47,7 @@ public class AuthService {
     }
 
     public boolean tokenIsValid(String jwt) throws MalformedClaimException {
-        return getClaimsFromToken(jwt) != null;
+        return jwt != null && jwt.startsWith("Bearer ") && getClaimsFromToken(jwt) != null;
     }
 
     public String generateJwt(User user) throws JoseException {

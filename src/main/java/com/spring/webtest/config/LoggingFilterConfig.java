@@ -1,4 +1,4 @@
-package com.spring.webtest.util;
+package com.spring.webtest.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
