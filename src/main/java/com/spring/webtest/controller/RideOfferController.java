@@ -31,7 +31,7 @@ public class RideOfferController {
     private static final Logger logger = Logger.getLogger(FizzBuzzController.class.getName());
 
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/offer")
     @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> post(@RequestBody RideOfferDto rideOfferDto) {
@@ -54,7 +54,7 @@ public class RideOfferController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/offers")
     @Secured("ROLE_USER")
     ResponseEntity<List<RideOfferDto>> getAll() {
@@ -66,7 +66,7 @@ public class RideOfferController {
         return new ResponseEntity<>(rideOfferDtos, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/offer/{id}")
     @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> get(@PathVariable long id) {
@@ -76,7 +76,7 @@ public class RideOfferController {
         return new ResponseEntity<>(rideOfferDto, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/api/offer/{id}")
     @Secured("ROLE_USER")
     ResponseEntity<RideOfferDto> update(@PathVariable long id, @RequestBody RideOfferDto rideOfferDto) {
@@ -97,7 +97,7 @@ public class RideOfferController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/offer/{id}")
     @Secured("ROLE_USER")
     ResponseEntity<?> delete(@PathVariable long id) {

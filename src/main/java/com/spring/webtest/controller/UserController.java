@@ -53,7 +53,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("api/user/{id}")
     ResponseEntity<UserDto> getById(@PathVariable long id) {
         logger.info("******\nController: Try to get user with id: " + id + "\n******");

@@ -30,7 +30,7 @@ public class RideRequestController {
         this.modelMapper = modelMapper;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PostMapping("/api/requests")
     @Secured("ROLE_USER")
     ResponseEntity<RideRequestDto> addRideRequest(@RequestBody RideRequestDto rideRequestDto) {
@@ -48,7 +48,7 @@ public class RideRequestController {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/requests")
     @Secured("ROLE_USER")
     ResponseEntity<List<RideRequestDto>> getAllRideRequests() {
@@ -61,7 +61,7 @@ public class RideRequestController {
 
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @GetMapping("/api/requests/{id}")
     @Secured("ROLE_USER")
     ResponseEntity<RideRequestDto> getRideRequestById(@PathVariable int id) {
@@ -72,7 +72,7 @@ public class RideRequestController {
 
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @PutMapping("/api/requests/{id}")
     @Secured("ROLE_USER")
     ResponseEntity<RideRequestDto> updateRideRequest(@RequestBody RideRequestDto rideRequestDto) {
@@ -88,7 +88,7 @@ public class RideRequestController {
     }
 
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
     @DeleteMapping("/api/requests/{id}")
     @Secured("ROLE_USER")
     ResponseEntity<?> deleteRideRequestById(@PathVariable int id) {
