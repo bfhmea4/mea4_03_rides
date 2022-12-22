@@ -24,7 +24,8 @@ CREATE TABLE ride_request
     `description`     TEXT,
     `user_id`         INTEGER REFERENCES `user_Table` (id),
     `from_address_id` INTEGER REFERENCES address (id),
-    `to_address_id`   INTEGER REFERENCES address (id)
+    `to_address_id`   INTEGER REFERENCES address (id),
+    `start_time`      DATETIME
 );
 
 CREATE TABLE ride_offer
@@ -34,5 +35,6 @@ CREATE TABLE ride_offer
     `description`     TEXT,
     `user_id`         INTEGER REFERENCES `user_Table` (id),
     `from_address_id` INTEGER REFERENCES address (id),
-    `to_address_id`   INTEGER REFERENCES address (id)
+    `to_address_id`   INTEGER REFERENCES address (id),
+    `start_time`      DATETIME
 );
