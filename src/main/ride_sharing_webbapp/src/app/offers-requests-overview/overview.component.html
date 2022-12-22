@@ -1,42 +1,64 @@
 <div class="filters" *ngIf="rideOffersBtnClicked">
+  <div class="select-holder">
     <h3>Start:</h3>
-    <div class="select">
-      <select id="offersFrom" (change)="filterOfferView(true, $event)">
-        <option value="">All</option>
-        <option *ngFor="let location of offersFromLocations" [value]="location">
-          {{location}}
-        </option>
-      </select>
-    </div>
+      <div class="select">
+        <select id="offersFrom" (change)="filterOfferView(true, $event)">
+          <option value="">All</option>
+          <option *ngFor="let location of offersFromLocations" [value]="location">
+            {{location}}
+          </option>
+        </select>
+      </div>
+  </div>
+  <div class="select-holder">
     <h3>Destination:</h3>
+      <div class="select">
+        <select id="offersTo" (change)="filterOfferView(false, $event)">
+          <option value="">All</option>
+          <option *ngFor="let location of offersToLocations" [value]="location">
+            {{location}}
+          </option>
+        </select>
+      </div>
+  </div>
+  <div class="break-column"></div>
+  <div class="select-holder">
+    <h3>Date: </h3>
     <div class="select">
-      <select id="offersTo" (change)="filterOfferView(false, $event)">
-        <option value="">All</option>
-        <option *ngFor="let location of offersToLocations" [value]="location">
-          {{location}}
-        </option>
-      </select>
+      <input type="date" [(ngModel)]="selectedDate" (ngModelChange)="filterByDate($event)">
     </div>
+  </div>
 </div>
 
 <div class="filters" *ngIf="rideRequestsBtnClicked">
-  <h3>Start:</h3>
-  <div class="select">
-    <select id="requestsFrom" (change)="filterRequestView(true, $event)">
-      <option value="">All</option>
-      <option *ngFor="let location of requestsFromLocations" [value]="location">
-        {{location}}
-      </option>
-    </select>
+  <div class="select-holder">
+    <h3>Start:</h3>
+    <div class="select">
+      <select id="requestsFrom" (change)="filterRequestView(true, $event)">
+        <option value="">All</option>
+        <option *ngFor="let location of requestsFromLocations" [value]="location">
+          {{location}}
+        </option>
+      </select>
+    </div>
   </div>
-  <h3>Destination:</h3>
-  <div class="select">
-    <select id="requestsTo" (change)="filterRequestView(false, $event)">
-      <option value="">All</option>
-      <option *ngFor="let location of requestsToLocations" [value]="location">
-        {{location}}
-      </option>
-    </select>
+  <div class="select-holder">
+    <h3>Destination:</h3>
+    <div class="select">
+      <select id="requestsTo" (change)="filterRequestView(false, $event)">
+        <option value="">All</option>
+        <option *ngFor="let location of requestsToLocations" [value]="location">
+          {{location}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="break-column"></div>
+  <div class="select-holder">
+    <h3>Date: </h3>
+    <div class="select">
+      <input type="date" [(ngModel)]="selectedDate" (ngModelChange)="filterByDate($event)">
+    </div>
   </div>
 </div>
 
@@ -58,7 +80,7 @@
       <h2>{{rideOffer.title}}</h2><br>
       <p>{{rideOffer.description}}</p>
 <!--      <p>At: {{this.formatedDateTime(rideOffer.startTime)}}</p>-->
-      <p>At: {{rideOffer.startTime | date: 'hh:mm dd.MM.YY'}}</p>
+      <p>At: {{rideOffer.startTime | date: 'hh:mm   dd.MM.YY'}}</p>
       <p>From: {{rideOffer.fromAddress.location}} - To: {{rideOffer.toAddress.location}}</p>
     </div>
   </div>
@@ -66,7 +88,7 @@
 
   <div id="requestsList" *ngIf="rideRequestsBtnClicked">
     <div class="offer-request card-content" (click)="onClickRequestItem(rideRequest)"
-         *ngFor="let rideRequest of rideRequestDisplayed">
+         *ngFor="let rideRequest of rideRequestsDisplayed">
       <span hidden>{{rideRequest.id}}</span><br>
       <h2>{{rideRequest.title}}</h2><br>
       <p>{{rideRequest.description}}</p>
