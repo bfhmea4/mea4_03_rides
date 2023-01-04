@@ -4,10 +4,10 @@ export class AppSettings {
 
   public static STR_URL_LOGIN:              string = "http://localhost:8080/api/login";
   public static STR_URL_GET_USER_BY_ID:     string = "http://localhost:8080/api/user/";
-  public static STR_URL_GET_USER_BY_TOKEN:     string = "http://localhost:8080/api/user/byToken";
+  public static STR_URL_GET_USER_ME:        string = "http://localhost:8080/api/user/me";
   public static STR_URL_POST_USER:          string = "http://localhost:8080/api/user/";
   public static STR_URL_PUT_USER:           string = "http://localhost:8080/api/user/";
-  public static STR_URL_DELETE_USER:           string = "http://localhost:8080/api/user/";
+  public static STR_URL_DELETE_USER:        string = "http://localhost:8080/api/user/";
   public static STR_URL_GET_ALL_OFFERS:     string = "http://localhost:8080/api/offers/";
   public static STR_URL_PUT_OFFER:          string = "http://localhost:8080/api/offer/";
   public static STR_URL_POST_OFFER:         string = "http://localhost:8080/api/offer/";

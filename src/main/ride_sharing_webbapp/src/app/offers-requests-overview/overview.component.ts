@@ -8,6 +8,7 @@ import {User} from "../../model/User";
 import { NgToastService } from 'ng-angular-popup';
 import {AuthenticationService} from "../../service/authentication.service";
 import {UserService} from "../../service/user.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-ride-offer',
@@ -19,7 +20,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   rideOffers: RideOffer[] = [];
   rideRequests: RideRequest[] = [];
   rideOffersDisplayed: RideOffer[] = [];
-  rideRequestDisplayed: RideRequest[] = [];
+  rideRequestsDisplayed: RideRequest[] = [];
   rideRequestsBtnClicked: boolean = false;
   rideOffersBtnClicked: boolean = true;
 
@@ -32,6 +33,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   selectedToLocationOffer: string = '';
   selectedFromLocationRequest: string = '';
   selectedToLocationRequest: string = '';
+
+  selectedDate: Date = new Date() ;
+
 
   isLoggedIn: boolean = false;
   userString: string | null = localStorage.getItem("user");
@@ -155,7 +159,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     let requestsListStorage: string | null = localStorage.getItem("ride-requests")
     if (requestsListStorage) {
       this.rideRequests = JSON.parse(requestsListStorage);
-      this.rideRequestDisplayed = this.rideRequests;
+      this.rideRequestsDisplayed = this.rideRequests;
       this.getLocations(false);
 
 
@@ -165,7 +169,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.rideRequests = [];
       this.rideRequestService.getAllRequests().subscribe(requests => {
         this.rideRequests = <RideRequest[]>requests;
-        this.rideRequestDisplayed = this.rideRequests;
+        this.rideRequestsDisplayed = this.rideRequests;
         this.getLocations(false);
         localStorage.setItem("ride-requests", JSON.stringify(this.rideRequests));
       })
@@ -211,6 +215,33 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
   }
 
+  filterByDate(event: string) {
+    let dateToFilterBy = new Date(event);
+    this.selectedDate = dateToFilterBy;
+    console.log("Filter list for date: " + dateToFilterBy);
+    if (this.selectedDate) {
+      this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+        let offerDate = new Date(offer.startTime);
+        if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
+            offerDate.getMonth() == dateToFilterBy.getMonth() &&
+            offerDate.getDay() == dateToFilterBy.getDay()) {
+          return offer;
+        }
+        return;
+      })
+
+      this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(request => {
+        let offerDate = new Date(request.startTime);
+        if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
+          offerDate.getMonth() == dateToFilterBy.getMonth() &&
+          offerDate.getDay() == dateToFilterBy.getDay()) {
+          return request;
+        }
+        return;
+      })
+
+    }
+  }
 
   filterOfferView(filterFrom: boolean, event: Event) {
     if (filterFrom) {
@@ -233,7 +264,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
     if (!this.selectedToLocationOffer) {
       this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-        return offer.fromAddress.location === this.selectedFromLocationOffer
+        return offer.fromAddress.location == this.selectedFromLocationOffer
       })
       return;
     }
@@ -252,23 +283,30 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.selectedToLocationRequest = event.target.value;
     }
     if (!this.selectedFromLocationRequest && !this.selectedToLocationRequest) {
-      this.rideRequestDisplayed = this.rideRequests;
+      this.rideRequestsDisplayed = this.rideRequests;
       return;
     }
     if (!this.selectedFromLocationRequest) {
-      this.rideRequestDisplayed = this.rideRequests.filter(offer => {
+      this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
         return offer.toAddress.location == this.selectedToLocationRequest
       })
       return;
     }
     if (!this.selectedToLocationRequest) {
-      this.rideRequestDisplayed = this.rideRequests.filter(offer => {
+      this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
         return offer.fromAddress.location === this.selectedFromLocationRequest
       })
       return;
     }
-    this.rideRequestDisplayed = this.rideRequests.filter(offer => {
+    this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
       return offer.fromAddress.location == this.selectedFromLocationRequest && offer.toAddress.location == this.selectedToLocationRequest
     })
   }
+
+  formatedDateTime(date: Date) {
+    // let pipe = new DatePipe('en-US');
+    // return pipe.transform(date, 'short');
+    return
+  }
+
 }

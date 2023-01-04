@@ -19,7 +19,7 @@ export class UserService {
   }
 
   getByToken() {
-    return this.http.get<User>(AppSettings.STR_URL_GET_USER_BY_TOKEN, this.authService.getHttpTokenOptions());
+    return this.http.get<User>(AppSettings.STR_URL_GET_USER_ME, this.authService.getHttpTokenOptions());
   }
 
   registerUser(user: User) {

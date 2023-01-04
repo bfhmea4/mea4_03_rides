@@ -1,9 +1,10 @@
 package com.spring.webtest.database.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name="user_Table")
+@Table(name="user_table")
 public class User {
 
     @Id
@@ -92,5 +93,35 @@ public class User {
         setEmail(user.getEmail());
         setAddress(user.getAddress());
         setPassword(user.getPassword());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(address, user.address) &&
+                Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, address, password);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

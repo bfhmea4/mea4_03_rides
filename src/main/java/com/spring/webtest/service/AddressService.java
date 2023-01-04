@@ -3,7 +3,6 @@ package com.spring.webtest.service;
 
 import com.spring.webtest.database.entities.Address;
 import com.spring.webtest.database.repositories.AddressRepository;
-import com.spring.webtest.dto.AddressDto;
 import com.spring.webtest.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -18,24 +17,24 @@ public class AddressService {
         this.repository = repository;
     }
 
-    public AddressDto addAddress(Address address) {
-        return addressToDto(repository.save(address));
+    public Address addAddress(Address address) {
+        return repository.save(address);
     }
 
-    public AddressDto findAddressById(long id) {
-        return addressToDto(repository.findById(id).orElse(null));
+    public Address findAddressById(long id) {
+        return repository.findById(id).orElse(null);
     }
 
-    public List<AddressDto> findAddressesByLocation(String location) {
-        List<AddressDto> addresses = new ArrayList<>();
-        repository.findByLocation(location).forEach(address ->  addresses.add(addressToDto(address)));
+    public List<Address> findAddressesByLocation(String location) {
+        List<Address> addresses = new ArrayList<>();
+        repository.findByLocation(location).forEach(addresses::add);
         return addresses;
     }
 
-    public AddressDto updateAddress(Address address) {
+    public Address updateAddress(Address address) {
         repository.findById(address.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Update address: Address " + address + " not found"));
-        return addressToDto(repository.save(address));
+        return repository.save(address);
     }
 
 //    public void deleteAddress(long id) {
@@ -43,17 +42,4 @@ public class AddressService {
 //                new ResourceNotFoundException("Delete address: Address with id " + id + " not found"));
 //        repository.deleteById(id);
 //    }
-
-    public AddressDto addressToDto(Address address) {
-        if (address == null) {
-            return null;
-        }
-        return new AddressDto(
-                address.getId(),
-                address.getStreet(),
-                address.getHouseNumber(),
-                address.getPostalCode(),
-                address.getLocation()
-        );
-    }
 }

@@ -21,12 +21,12 @@ export class rideRequestService {
   }
 
   updateRequest(rideRequestToUpdate: RideRequest) {
-    return this.http.put<any>(AppSettings.STR_URL_PUT_REQUEST + rideRequestToUpdate.id, rideRequestToUpdate,
+    return this.http.put<RideRequest>(AppSettings.STR_URL_PUT_REQUEST + rideRequestToUpdate.id, rideRequestToUpdate,
       this.authService.getHttpTokenOptions())
   }
 
   createRequest(rideRequestToCreate: RideRequest) {
-    return this.http.post<any>(AppSettings.STR_URL_POST_REQUEST, rideRequestToCreate, this.authService.getHttpTokenOptions())
+    return this.http.post<RideRequest>(AppSettings.STR_URL_POST_REQUEST, rideRequestToCreate, this.authService.getHttpTokenOptions())
 
   }
 

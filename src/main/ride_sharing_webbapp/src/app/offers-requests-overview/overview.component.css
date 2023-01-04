@@ -52,12 +52,23 @@
   position: relative;
   width: 80%;
   top: 30px;
-  display: flex;
   float: top;
-  flex-direction: row;
+  display: flex;
+  flex-flow: wrap;
   margin: auto;
   padding-bottom: 30px;
   z-index: 0;
+}
+
+.select-holder {
+  flex-grow: 1;
+  width: 50%;
+}
+
+.break-column {
+  flex-basis: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .select {

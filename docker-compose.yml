@@ -1,12 +1,55 @@
 version: "3.9"
+
+volumes:
+  db-data: {}
+
+networks:
+  net:
+    driver_opts:
+      com.docker.network.bridge.name: rideSharing
+
 services:
+
+  mysql:
+    image: mysql
+    container_name: ride-sharing-mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"
+    networks:
+      - net
+    environment:
+      MYSQL_ROOT_PASSWORD: 'changeme'
+      MYSQL_DATABASE: 'rideSharing'
+      MYSQL_USER: 'rideSharing'
+      MYSQL_PASSWORD: 'changeme'
+      condition: service_healthy
+    volumes:
+      - db-data:/var/lib/mysqldb/data
+      - ./src/main/resources/db/migration/init.sql:/docker-entrypoint-initdb.d/init.sql
+
   backend:
     image: ride-sharing-backend
     container_name: ride-sharing-backend
+    environment:
+      SPRING_DATASOURCE_PASSWORD: 'changeme'
+      SPRING_FLYWAY_PASSWORD: 'changeme'
     build:
       context: ./
     ports:
       - "8080:8080"
+    networks:
+      - net
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=changeme --database=rideSharing --execute \"SELECT * FROM ride_offer;\""
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
   frontend:
     image: ride-sharing-frontend
     container_name: ride-sharing-frontend
@@ -14,5 +57,10 @@ services:
       context: ./src/main/ride_sharing_webbapp
     ports:
       - "4200:80"
+    networks:
+      - net
+    environment:
+      ENV_API_URL: 'http://127.0.0.1:8080'
     depends_on:
       - backend
+
