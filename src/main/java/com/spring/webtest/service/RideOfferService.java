@@ -26,7 +26,7 @@ public class RideOfferService {
     }
 
     public RideOffer addRideOffer(RideOffer rideOffer) throws IllegalAccessException, OperationNotSupportedException {
-        authContext.assureHasId(rideOffer.getUser().getId());
+        authContext.assureHasUsername(rideOffer.getUser().getEmail());
         try {
             Address fromAddress = addressService.addAddress(rideOffer.getFromAddress());
             Address toAddress = addressService.addAddress(rideOffer.getToAddress());
@@ -53,15 +53,15 @@ public class RideOfferService {
 
     public RideOffer updateRiderOffer(RideOffer rideOffer) throws IllegalAccessException {
         RideOffer saved = repository.findById(rideOffer.getId()).orElseThrow(() -> new RideOfferNotFoundException(rideOffer.getId()));
-        authContext.assureHasId(saved.getUser().getId());
+        authContext.assureHasUsername(saved.getUser().getEmail());
         addressService.updateAddress(rideOffer.getFromAddress());
         addressService.updateAddress(rideOffer.getToAddress());
         return repository.save(rideOffer);
     }
 
     public void deleteRideOffer(long id) throws IllegalAccessException {
-        authContext.assureHasId(id);
-        repository.findById(id).orElseThrow(() -> new RideOfferNotFoundException(id));
+        RideOffer rideOffer = repository.findById(id).orElseThrow(() -> new RideOfferNotFoundException(id));
+        authContext.assureHasUsername(rideOffer.getUser().getEmail());
         repository.deleteById(id);
     }
 }
