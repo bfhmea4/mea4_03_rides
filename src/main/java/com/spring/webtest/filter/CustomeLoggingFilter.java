@@ -1,4 +1,4 @@
-package com.spring.webtest.util;
+package com.spring.webtest.filter;
 
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 

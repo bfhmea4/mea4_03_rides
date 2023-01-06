@@ -1,5 +1,6 @@
 package com.spring.webtest.util;
 
+import com.spring.webtest.filter.CustomeLoggingFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
