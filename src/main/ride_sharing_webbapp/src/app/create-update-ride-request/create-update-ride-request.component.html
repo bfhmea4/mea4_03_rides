@@ -15,7 +15,7 @@
     <label class="profile-item-label">Contact</label>
     <input class="profile-item-value" name="mail" type=text [(ngModel)]="rideRequestFromStorage.user.email" readonly>
     <label class="profile-item-label">Start Time</label>
-    <input class="profile-item-value" name="startTime" type="datetime-local" placeholder="enter start time" [ngModel]="rideRequestFromStorage.startTime">
+    <input class="profile-item-value" name="startTime" type="datetime-local" placeholder="enter start time" [(ngModel)]="rideRequestFromStorage.startTime">
 
     <h3>From:</h3>
     <input name="from_id" hidden [(ngModel)]="rideRequestFromStorage.fromAddress.id">

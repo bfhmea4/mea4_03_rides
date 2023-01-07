@@ -5,10 +5,9 @@ import {RideOffer} from "../../model/RideOffer";
 import {rideRequestService} from "../../service/rideRequest.service";
 import {RideRequest} from "../../model/RideRequest";
 import {User} from "../../model/User";
-import { NgToastService } from 'ng-angular-popup';
+import {NgToastService} from 'ng-angular-popup';
 import {AuthenticationService} from "../../service/authentication.service";
 import {UserService} from "../../service/user.service";
-import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-ride-offer',
@@ -82,6 +81,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
     localStorage.removeItem("selected-ride-request")
     localStorage.removeItem("selected-ride-offer")
+
   }
 
   ngOnDestroy(): void {
@@ -137,8 +137,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   getAllOffers() {
     let offersListStorage: string | null = localStorage.getItem("ride-offers")
-    if (offersListStorage) {
-      this.rideOffers = JSON.parse(offersListStorage);
+    if (false) {
+      // this.rideOffers = JSON.parse(offersListStorage);
       this.rideOffersDisplayed = this.rideOffers;
       this.getLocations(true);
       console.log("Get all offer via storage.....")
@@ -146,7 +146,12 @@ export class OverviewComponent implements OnInit, OnDestroy {
       console.log("sending GET ALL OFFERS request...");
       this.rideOffers = [];
       this.rideOfferService.getAllOffers().subscribe(offers => {
-        this.rideOffers = <RideOffer[]>offers;
+        let temp = <any[]>offers;
+        temp.forEach(offer => {
+          let numbers = <number[]>offer.startTime;
+          offer.startTime = new Date(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);
+        })
+        this.rideOffers = <RideOffer[]>temp;
         this.rideOffersDisplayed = this.rideOffers;
         this.getLocations(true);
         localStorage.setItem("ride-offers", JSON.stringify(this.rideOffers));
@@ -157,18 +162,21 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   getAllRequests() {
     let requestsListStorage: string | null = localStorage.getItem("ride-requests")
-    if (requestsListStorage) {
-      this.rideRequests = JSON.parse(requestsListStorage);
+    if (false) {
+      // this.rideRequests = JSON.parse(requestsListStorage);
       this.rideRequestsDisplayed = this.rideRequests;
       this.getLocations(false);
-
-
       console.log("Get all requests via storage.....")
     } else {
       console.log("sending GET ALL REQUESTS request...");
       this.rideRequests = [];
       this.rideRequestService.getAllRequests().subscribe(requests => {
-        this.rideRequests = <RideRequest[]>requests;
+        let temp = <any[]>requests;
+        temp.forEach(request => {
+          let numbers = <number[]>request.startTime;
+          request.startTime = new Date(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);
+        })
+        this.rideRequests = <RideRequest[]>temp;
         this.rideRequestsDisplayed = this.rideRequests;
         this.getLocations(false);
         localStorage.setItem("ride-requests", JSON.stringify(this.rideRequests));
@@ -218,7 +226,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
   filterByDate(event: string) {
     let dateToFilterBy = new Date(event);
     this.selectedDate = dateToFilterBy;
-    console.log("Filter list for date: " + dateToFilterBy);
     if (this.selectedDate) {
       this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
         let offerDate = new Date(offer.startTime);
@@ -302,11 +309,4 @@ export class OverviewComponent implements OnInit, OnDestroy {
       return offer.fromAddress.location == this.selectedFromLocationRequest && offer.toAddress.location == this.selectedToLocationRequest
     })
   }
-
-  formatedDateTime(date: Date) {
-    // let pipe = new DatePipe('en-US');
-    // return pipe.transform(date, 'short');
-    return
-  }
-
 }
