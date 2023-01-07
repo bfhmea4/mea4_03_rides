@@ -101,8 +101,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
           this.offersFromLocations.push(offer.fromAddress.location)
         }
       }
-      console.log('Offers to location: ' + this.offersToLocations.toString());
-      console.log('Offers From location: ' + this.offersFromLocations.toString());
     }
     if (!searchInOffers) {
       for (const request of this.rideRequests) {
@@ -155,7 +153,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
         this.rideOffersDisplayed = this.rideOffers;
         this.getLocations(true);
         localStorage.setItem("ride-offers", JSON.stringify(this.rideOffers));
-        console.log(localStorage.getItem("ride-offers"));
       })
     }
   }
