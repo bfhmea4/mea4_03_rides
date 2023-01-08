@@ -33,6 +33,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   selectedFromLocationRequest: string = '';
   selectedToLocationRequest: string = '';
 
+  selectedDateString: string = '';
   selectedDate: Date = new Date();
   dateFilterActive: boolean = false
   selectedFromLocation: string = '';
@@ -296,6 +297,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   filterByDate(event: string) {
+    console.log("filter by date!");
     let dateToFilterBy = new Date(event);
     this.selectedDate = dateToFilterBy;
     this.dateFilterActive = true;
