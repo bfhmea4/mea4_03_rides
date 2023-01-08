@@ -26,8 +26,11 @@
   <div class="select-holder">
     <h3>Date: </h3>
     <div class="select">
-      <input type="date" [(ngModel)]="selectedDateString" (ngModelChange)="filterByDate($event)">
+      <input type="date" [(ngModel)]="selectedDateString" (ngModelChange)="initiateFilterByDate($event)">
     </div>
+  </div>
+  <div class="select-holder">
+    <button class="button button-row-button" (click)="resetFilters()">Reset</button>
   </div>
 </div>
 
@@ -35,7 +38,7 @@
   <div class="select-holder">
     <h3>Start:</h3>
     <div class="select">
-      <select id="requestsFrom" (change)="filterRequestView(true, $event)">
+      <select id="requestsFrom" (change)="filterFromLocation($event)">
         <option value="">All</option>
         <option *ngFor="let location of requestsFromLocations" [value]="location">
           {{location}}
@@ -46,7 +49,7 @@
   <div class="select-holder">
     <h3>Destination:</h3>
     <div class="select">
-      <select id="requestsTo" (change)="filterRequestView(false, $event)">
+      <select id="requestsTo" (change)="filterToLocation($event)">
         <option value="">All</option>
         <option *ngFor="let location of requestsToLocations" [value]="location">
           {{location}}
@@ -58,8 +61,11 @@
   <div class="select-holder">
     <h3>Date: </h3>
     <div class="select">
-      <input type="date" [(ngModel)]="selectedDateString" (ngModelChange)="filterByDate($event)">
+      <input type="date" [(ngModel)]="selectedDateString" (ngModelChange)="initiateFilterByDate($event)">
     </div>
+  </div>
+  <div class="select-holder">
+    <button class="button button-row-button" (click)="resetFilters()">Reset</button>
   </div>
 </div>
 

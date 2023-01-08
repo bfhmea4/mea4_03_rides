@@ -230,7 +230,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     this.rideRequestsDisplayed = this.rideRequests;
     console.log("Ride Offers Displayed: ");
     console.log(this.rideOffersDisplayed);
-    this.filterByDate2();
+    this.filterByDate();
     this.filterByFromLocation();
     this.filterByToLocation();
     console.log("****************************\n Filter ended...");
@@ -238,7 +238,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
     console.log(this.rideRequestsDisplayed);
   }
 
-  filterByDate2() {
+  initiateFilterByDate(event: string) {
+    console.log("filter by date!");
+    this.selectedDate = new Date(event);
+    this.dateFilterActive = true;
+    this.filter();
+  }
+
+  filterByDate() {
     if (!this.selectedDate || !this.dateFilterActive) {
       console.log("no date to filter");
       return;
@@ -296,14 +303,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
     });
   }
 
-  filterByDate(event: string) {
-    console.log("filter by date!");
-    let dateToFilterBy = new Date(event);
-    this.selectedDate = dateToFilterBy;
-    this.dateFilterActive = true;
-    this.filter();
-  }
-
   filterFromLocation(event: Event) {
     console.log("Filter offers from Location");
     // @ts-ignore
@@ -317,63 +316,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
     this.filter();
   }
 
-  filterOfferView(filterFrom: boolean, event: Event) {
-    if (filterFrom) {
-      // @ts-ignore
-      this.selectedFromLocationOffer = event.target.value;
-    }
-    if (!filterFrom) {
-      // @ts-ignore
-      this.selectedToLocationOffer = event.target.value;
-    }
-    if (!this.selectedFromLocationOffer && !this.selectedToLocationOffer) {
-      this.rideOffersDisplayed = this.rideOffers;
-      return;
-    }
-    if (!this.selectedFromLocationOffer) {
-      this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-        return offer.toAddress.location == this.selectedToLocationOffer
-      })
-      return;
-    }
-    if (!this.selectedToLocationOffer) {
-      this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-        return offer.fromAddress.location == this.selectedFromLocationOffer
-      })
-      return;
-    }
-    this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-      return offer.fromAddress.location == this.selectedFromLocationOffer && offer.toAddress.location == this.selectedToLocationOffer
-    })
-  }
-
-  filterRequestView(filterFrom: boolean, event: Event) {
-    if (filterFrom) {
-      // @ts-ignore
-      this.selectedFromLocationRequest = event.target.value;
-    }
-    if (!filterFrom) {
-      // @ts-ignore
-      this.selectedToLocationRequest = event.target.value;
-    }
-    if (!this.selectedFromLocationRequest && !this.selectedToLocationRequest) {
-      this.rideRequestsDisplayed = this.rideRequests;
-      return;
-    }
-    if (!this.selectedFromLocationRequest) {
-      this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
-        return offer.toAddress.location == this.selectedToLocationRequest
-      })
-      return;
-    }
-    if (!this.selectedToLocationRequest) {
-      this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
-        return offer.fromAddress.location === this.selectedFromLocationRequest
-      })
-      return;
-    }
-    this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
-      return offer.fromAddress.location == this.selectedFromLocationRequest && offer.toAddress.location == this.selectedToLocationRequest
-    })
+  resetFilters() {
+    this.dateFilterActive = false;
+    this.selectedDateString = '';
+    this.selectedFromLocation = '';
+    this.selectedToLocation = '';
+    this.filter();
   }
 }
