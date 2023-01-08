@@ -122,7 +122,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
   }
 
-
   offersBtnClicked() {
     this.getAllOffers();
     this.rideOffersBtnClicked = true;
@@ -223,23 +222,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   filter() {
-    console.log("selectedFrom Location: " + this.selectedFromLocation);
-    console.log("selectedTo Location: " + this.selectedToLocation);
-    console.log("selected Date: " + this.selectedDate);
     this.rideOffersDisplayed = this.rideOffers;
     this.rideRequestsDisplayed = this.rideRequests;
-    console.log("Ride Offers Displayed: ");
-    console.log(this.rideOffersDisplayed);
     this.filterByDate();
     this.filterByFromLocation();
     this.filterByToLocation();
-    console.log("****************************\n Filter ended...");
-    console.log(this.rideOffersDisplayed);
-    console.log(this.rideRequestsDisplayed);
   }
 
   initiateFilterByDate(event: string) {
-    console.log("filter by date!");
     this.selectedDate = new Date(event);
     this.dateFilterActive = true;
     this.filter();
@@ -247,7 +237,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   filterByDate() {
     if (!this.selectedDate || !this.dateFilterActive) {
-      console.log("no date to filter");
       return;
     }
     this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
@@ -276,12 +265,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   filterByFromLocation() {
     if (!this.selectedFromLocation!) {
-      console.log("No FromLocation to filter");
       return;
     }
-    console.log("Filter for fromLocation: " + this.selectedFromLocation);
-    console.log("Ride Offers Displayed: ");
-    console.log(this.rideOffersDisplayed);
     this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
       return offer.fromAddress.location == this.selectedFromLocation
     });
@@ -292,7 +277,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   filterByToLocation() {
     if (!this.selectedToLocation) {
-      console.log("No ToLocation to filter");
       return;
     }
     this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
@@ -304,7 +288,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   filterFromLocation(event: Event) {
-    console.log("Filter offers from Location");
     // @ts-ignore
     this.selectedFromLocation = event.target.value;
     this.filter();
