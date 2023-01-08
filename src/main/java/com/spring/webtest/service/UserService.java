@@ -6,7 +6,6 @@ import com.spring.webtest.database.repositories.UserRepository;
 import com.spring.webtest.dto.LoginDto;
 import com.spring.webtest.dto.TokenDto;
 import com.spring.webtest.exception.UserNotFoundException;
-import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class UserService {
 
     private static final Logger logger = Logger.getLogger(UserService.class.getName());
 
-    private final UserRepository repository;
+    public final UserRepository repository;
     private final HashService hashService;
     private final AuthService authService;
 
@@ -33,23 +32,21 @@ public class UserService {
     }
 
     public User getById(Long id) {
-        authContext.assureHasId(id);
-        return repository.findById(id).orElseThrow(() ->
+        authContext.assureIsAuthenticated();
+        User user = repository.findById(id).orElseThrow(() ->
                 new UserNotFoundException(id)
         );
-    }
-
-    public User getByEmail(String email) {
-        User user = repository.findByEmail(email).orElseThrow(() ->
-                new UserNotFoundException(String.format("Could not find User with email '%s'", email))
-        );
-        //authContext.assureHasId(user.getId());
+        authContext.assureHasUsername(user.getEmail());
         return user;
     }
 
-    public User getByToken(String token) throws IllegalAccessException, MalformedClaimException {
-        Long id = this.authService.getIdFromToken(token);
-        return getById(id);
+    public User getByEmail(String email) {
+        authContext.assureIsAuthenticated();
+        User user = repository.findByEmail(email).orElseThrow(() ->
+                new UserNotFoundException(String.format("Could not find User with email '%s'", email))
+        );
+        authContext.assureHasUsername(user.getEmail());
+        return user;
     }
 
     public TokenDto save(User user) throws JoseException {
@@ -58,16 +55,20 @@ public class UserService {
         return new TokenDto(authService.generateJwt(repository.save(user)));
     }
 
-    public User update(User user) throws IllegalAccessException {
-        authContext.assureHasId(user.getId());
+    public User update(User user) {
+        authContext.assureHasUsername(user.getEmail());
         if (user.getPassword() != null) {
             user.setPassword(hashService.hash(user.getPassword()));
         }
         return repository.save(user);
     }
 
-    public void delete(long id) throws IllegalAccessException {
-        authContext.assureHasId(id);
+    public void delete(long id) {
+        authContext.assureIsAuthenticated();
+        User user = repository.findById(id).orElseThrow(() ->
+                new UserNotFoundException(id)
+        );
+        authContext.assureHasUsername(user.getEmail());
         repository.deleteById(id);
     }
 

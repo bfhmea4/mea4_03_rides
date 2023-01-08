@@ -6,6 +6,7 @@ which
 can be imported in the application. As a platform, Angular includes a component-based framework for building scalable
 web applications from a single-developer project to enterprise level-applications. It contains also a suite of tools to
 help develop, build and test the code.
+See [Angular documentation](https://angular.io/docs) for more details.
 
 ## Structure
 
