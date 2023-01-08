@@ -33,7 +33,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
   selectedFromLocationRequest: string = '';
   selectedToLocationRequest: string = '';
 
-  selectedDate: Date = new Date() ;
+  selectedDate: Date = new Date();
+  dateFilterActive: boolean = false
+  selectedFromLocation: string = '';
+  selectedToLocation: string = '';
 
 
   isLoggedIn: boolean = false;
@@ -121,14 +124,12 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   offersBtnClicked() {
     this.getAllOffers();
-
     this.rideOffersBtnClicked = true;
     this.rideRequestsBtnClicked = false;
   }
 
   requestsBtnClicked() {
     this.getAllRequests();
-
     this.rideRequestsBtnClicked = true;
     this.rideOffersBtnClicked = false;
   }
@@ -220,31 +221,98 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
   }
 
+  filter() {
+    console.log("selectedFrom Location: " + this.selectedFromLocation);
+    console.log("selectedTo Location: " + this.selectedToLocation);
+    console.log("selected Date: " + this.selectedDate);
+    this.rideOffersDisplayed = this.rideOffers;
+    this.rideRequestsDisplayed = this.rideRequests;
+    console.log("Ride Offers Displayed: ");
+    console.log(this.rideOffersDisplayed);
+    this.filterByDate2();
+    this.filterByFromLocation();
+    this.filterByToLocation();
+    console.log("****************************\n Filter ended...");
+    console.log(this.rideOffersDisplayed);
+    console.log(this.rideRequestsDisplayed);
+  }
+
+  filterByDate2() {
+    if (!this.selectedDate || !this.dateFilterActive) {
+      console.log("no date to filter");
+      return;
+    }
+    this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+      let offerDate = new Date(offer.startTime);
+      if (offerDate.getFullYear() == this.selectedDate.getFullYear() &&
+        offerDate.getMonth() == this.selectedDate.getMonth() &&
+        offerDate.getDay() == this.selectedDate.getDay()) {
+        return offer;
+      }
+      this.dateFilterActive = false;
+      return;
+    });
+
+    this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(request => {
+      let offerDate = new Date(request.startTime);
+      if (offerDate.getFullYear() == this.selectedDate.getFullYear() &&
+        offerDate.getMonth() == this.selectedDate.getMonth() &&
+        offerDate.getDay() == this.selectedDate.getDay()) {
+        return request;
+      }
+      this.dateFilterActive = false;
+      return;
+    });
+
+  }
+
+  filterByFromLocation() {
+    if (!this.selectedFromLocation!) {
+      console.log("No FromLocation to filter");
+      return;
+    }
+    console.log("Filter for fromLocation: " + this.selectedFromLocation);
+    console.log("Ride Offers Displayed: ");
+    console.log(this.rideOffersDisplayed);
+    this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+      return offer.fromAddress.location == this.selectedFromLocation
+    });
+    this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(offer => {
+      return offer.fromAddress.location == this.selectedFromLocation
+    });
+  }
+
+  filterByToLocation() {
+    if (!this.selectedToLocation) {
+      console.log("No ToLocation to filter");
+      return;
+    }
+    this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+      return offer.toAddress.location == this.selectedToLocation
+    });
+    this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(offer => {
+      return offer.toAddress.location == this.selectedToLocation
+    });
+  }
+
   filterByDate(event: string) {
     let dateToFilterBy = new Date(event);
     this.selectedDate = dateToFilterBy;
-    if (this.selectedDate) {
-      this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
-        let offerDate = new Date(offer.startTime);
-        if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
-            offerDate.getMonth() == dateToFilterBy.getMonth() &&
-            offerDate.getDay() == dateToFilterBy.getDay()) {
-          return offer;
-        }
-        return;
-      })
+    this.dateFilterActive = true;
+    this.filter();
+  }
 
-      this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(request => {
-        let offerDate = new Date(request.startTime);
-        if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
-          offerDate.getMonth() == dateToFilterBy.getMonth() &&
-          offerDate.getDay() == dateToFilterBy.getDay()) {
-          return request;
-        }
-        return;
-      })
+  filterFromLocation(event: Event) {
+    console.log("Filter offers from Location");
+    // @ts-ignore
+    this.selectedFromLocation = event.target.value;
+    this.filter();
+  }
 
-    }
+  filterToLocation(event: Event) {
+    // @ts-ignore
+    this.selectedToLocation = event.target.value;
+    this.filter();
   }
 
   filterOfferView(filterFrom: boolean, event: Event) {

@@ -2,7 +2,8 @@
   <div class="select-holder">
     <h3>Start:</h3>
       <div class="select">
-        <select id="offersFrom" (change)="filterOfferView(true, $event)">
+<!--        <select id="offersFrom" (change)="filterOfferView(true, $event)">-->
+        <select id="offersFrom" (change)="filterFromLocation($event)">
           <option value="">All</option>
           <option *ngFor="let location of offersFromLocations" [value]="location">
             {{location}}
@@ -13,7 +14,7 @@
   <div class="select-holder">
     <h3>Destination:</h3>
       <div class="select">
-        <select id="offersTo" (change)="filterOfferView(false, $event)">
+        <select id="offersTo" (change)="filterToLocation($event)">
           <option value="">All</option>
           <option *ngFor="let location of offersToLocations" [value]="location">
             {{location}}
