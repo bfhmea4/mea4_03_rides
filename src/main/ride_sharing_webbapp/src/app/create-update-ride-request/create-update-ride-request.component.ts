@@ -107,6 +107,7 @@ export class CreateUpdateRideRequestComponent implements OnInit {
       }
       let date = new Date(data.newStartTime);
       date.setHours(date.getHours() + 1);   // vlaue from input is 1h to early
+      date.setMonth(date.getMonth() - 2);  // vlaue from input is 2Month to late
       let rideRequestToCreate: RideRequest = {
         id: data.id,
         title: data.title,
