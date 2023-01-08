@@ -1,42 +1,47 @@
 <div class="filters" *ngIf="rideOffersBtnClicked">
   <div class="select-holder">
-    <h3>Start:</h3>
-      <div class="select">
-<!--        <select id="offersFrom" (change)="filterOfferView(true, $event)">-->
-        <select id="offersFrom" (change)="filterFromLocation($event)">
-          <option value="">All</option>
-          <option *ngFor="let location of offersFromLocations" [value]="location">
-            {{location}}
-          </option>
-        </select>
-      </div>
+    <div class="filter-label">
+      <h3>Start:</h3>
+    </div>
+    <div class="select">
+      <select id="offersFrom" (change)="filterFromLocation($event)">
+        <option value="">All</option>
+        <option *ngFor="let location of offersFromLocations" [value]="location">
+          {{location}}
+        </option>
+      </select>
+    </div>
   </div>
   <div class="select-holder">
-    <h3>Destination:</h3>
-      <div class="select">
-        <select id="offersTo" (change)="filterToLocation($event)">
-          <option value="">All</option>
-          <option *ngFor="let location of offersToLocations" [value]="location">
-            {{location}}
-          </option>
-        </select>
-      </div>
+    <div class="filter-label">
+      <h3>Destination:</h3>
+    </div>
+    <div class="select">
+      <select id="offersTo" (change)="filterToLocation($event)">
+        <option value="">All</option>
+        <option *ngFor="let location of offersToLocations" [value]="location">
+          {{location}}
+        </option>
+      </select>
+    </div>
   </div>
-  <div class="break-column"></div>
+<!--  <div class="break-column"></div>-->
   <div class="select-holder">
-    <h3>Date: </h3>
+    <div class="filter-label">
+      <h3>Date:</h3>
+    </div>
     <div class="select">
       <input type="date" [(ngModel)]="selectedDateString" (ngModelChange)="initiateFilterByDate($event)">
     </div>
   </div>
-  <div class="select-holder">
-    <button class="button button-row-button" (click)="resetFilters()">Reset</button>
-  </div>
+    <button class="button button-row-button reset-button" (click)="resetFilters()">Reset Filter</button>
 </div>
 
 <div class="filters" *ngIf="rideRequestsBtnClicked">
   <div class="select-holder">
-    <h3>Start:</h3>
+    <div class="filter-label">
+      <h3>Start:</h3>
+    </div>
     <div class="select">
       <select id="requestsFrom" (change)="filterFromLocation($event)">
         <option value="">All</option>
@@ -47,7 +52,9 @@
     </div>
   </div>
   <div class="select-holder">
-    <h3>Destination:</h3>
+    <div class="filter-label">
+      <h3>Destination:</h3>
+    </div>
     <div class="select">
       <select id="requestsTo" (change)="filterToLocation($event)">
         <option value="">All</option>
@@ -59,14 +66,14 @@
   </div>
   <div class="break-column"></div>
   <div class="select-holder">
-    <h3>Date: </h3>
+    <div class="filter-label">
+      <h3>Date:</h3>
+    </div>
     <div class="select">
       <input type="date" [(ngModel)]="selectedDateString" (ngModelChange)="initiateFilterByDate($event)">
     </div>
   </div>
-  <div class="select-holder">
-    <button class="button button-row-button" (click)="resetFilters()">Reset</button>
-  </div>
+    <button class="button button-row-button reset-button" (click)="resetFilters()">Reset Filter</button>
 </div>
 
 <div class="centered-content">
