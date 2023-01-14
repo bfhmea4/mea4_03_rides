@@ -26,7 +26,7 @@ services:
       condition: service_healthy
     volumes:
       - db-data:/var/lib/mysqldb/data
-      - ./src/main/resources/db/migration/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/main/db/migration_docker/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
     image: ride-sharing-backend
