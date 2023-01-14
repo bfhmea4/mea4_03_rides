@@ -21,8 +21,8 @@ encoding.
 Authentication is done with a JWT Token configured in the `security` folder.
 
 Next to the `controller` directory (in which the content should be clear) there is a `database` folder
-containing all the entity-model and repository classes are stored which are our API to our DB. Together with the
-multiple services interface, Spring (with the correct annotations: `@Entity, @RestController, @Service` and repository
+containing all the entity-model and repository classes which are our API to our DB. Together with the
+multiple services interface. Spring (with the correct annotations: `@Entity, @RestController, @Service` and repository
 interfaces implementing the `CrudRepository`) is able to build a functioning REST API without the need to manually write
 a JDBC API including the queries.
 
