@@ -1,5 +1,6 @@
 package com.spring.webtest.service;
 
+import com.spring.webtest.exception.UnauthenticatedException;
 import com.spring.webtest.security.AuthContext;
 import com.spring.webtest.database.entities.User;
 import com.spring.webtest.database.repositories.UserRepository;
@@ -73,11 +74,13 @@ public class UserService {
     }
 
     public TokenDto loginUser(LoginDto loginDto) throws IllegalAccessException, JoseException {
-        User user = this.getByEmail(loginDto.getEmail());
+        User user = repository.findByEmail(loginDto.getEmail()).orElseThrow(() ->
+            new UnauthenticatedException("Credentials are not valid")
+        );
         if (authService.credentialsAreValid(loginDto, user)) {
             logger.info("credentials of user " + loginDto.getEmail() + " are valid");
             return new TokenDto(this.authService.generateJwt(user));
         }
-        throw new IllegalAccessException("Credentials are not valid");
+        throw new UnauthenticatedException("Credentials are not valid");
     }
 }
