@@ -1,23 +1,43 @@
-//package com.spring.webtest.rideOffer;
-//
+package com.spring.webtest.rideOffer;
+
 //import com.spring.webtest.TestApplication;
-//import com.spring.webtest.database.entities.User;
-//import com.spring.webtest.dto.UserDto;
-//import com.spring.webtest.user.UserInvoker;
-//import org.junit.jupiter.api.*;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Qualifier;
-//import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.annotation.DirtiesContext;
-//
-//import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-//
-//
+import com.spring.webtest.database.entities.User;
+import com.spring.webtest.dto.UserDto;
+import com.spring.webtest.exception.RideOfferNotFoundException;
+import com.spring.webtest.service.RideOfferService;
+import com.spring.webtest.user.UserInvoker;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+
 //@SpringBootTest(classes = {TestApplication.class})
-//@AutoConfigureTestDatabase
-//@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-//public class RideOfferTests {
+@SpringBootTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+public class RideOfferTests {
+
+    @Autowired
+    private RideOfferService rideOfferService;
+
+    @BeforeAll
+    public void init() {
+        System.out.println("Initializing RideOfferTests");
+    }
+
+    @Test
+    void getting_a_ride_offer_that_does_not_exist_throws_exception() {
+        assertThrows(
+                RideOfferNotFoundException.class, () -> rideOfferService.findRideOfferById(1000L)
+        );
+    }
 //
 //    @Autowired
 //    @Qualifier("rideOfferInvoker")
@@ -179,4 +199,4 @@
 ////            assertThat(getCreated.getId()).isEqualTo(created.getId());
 ////        }
 ////    }
-//}
+}
