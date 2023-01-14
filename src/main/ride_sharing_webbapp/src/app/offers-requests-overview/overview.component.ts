@@ -5,10 +5,9 @@ import {RideOffer} from "../../model/RideOffer";
 import {rideRequestService} from "../../service/rideRequest.service";
 import {RideRequest} from "../../model/RideRequest";
 import {User} from "../../model/User";
-import { NgToastService } from 'ng-angular-popup';
+import {NgToastService} from 'ng-angular-popup';
 import {AuthenticationService} from "../../service/authentication.service";
 import {UserService} from "../../service/user.service";
-import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-ride-offer',
@@ -34,7 +33,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
   selectedFromLocationRequest: string = '';
   selectedToLocationRequest: string = '';
 
-  selectedDate: Date = new Date() ;
+  selectedDateString: string = '';
+  selectedDate: Date = new Date();
+  dateFilterActive: boolean = false
+  selectedFromLocation: string = '';
+  selectedToLocation: string = '';
 
 
   isLoggedIn: boolean = false;
@@ -82,6 +85,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
     localStorage.removeItem("selected-ride-request")
     localStorage.removeItem("selected-ride-offer")
+
   }
 
   ngOnDestroy(): void {
@@ -101,8 +105,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
           this.offersFromLocations.push(offer.fromAddress.location)
         }
       }
-      console.log('Offers to location: ' + this.offersToLocations.toString());
-      console.log('Offers From location: ' + this.offersFromLocations.toString());
     }
     if (!searchInOffers) {
       for (const request of this.rideRequests) {
@@ -120,25 +122,22 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
   }
 
-
   offersBtnClicked() {
     this.getAllOffers();
-
     this.rideOffersBtnClicked = true;
     this.rideRequestsBtnClicked = false;
   }
 
   requestsBtnClicked() {
     this.getAllRequests();
-
     this.rideRequestsBtnClicked = true;
     this.rideOffersBtnClicked = false;
   }
 
   getAllOffers() {
     let offersListStorage: string | null = localStorage.getItem("ride-offers")
-    if (offersListStorage) {
-      this.rideOffers = JSON.parse(offersListStorage);
+    if (false) {
+      // this.rideOffers = JSON.parse(offersListStorage);
       this.rideOffersDisplayed = this.rideOffers;
       this.getLocations(true);
       console.log("Get all offer via storage.....")
@@ -146,29 +145,36 @@ export class OverviewComponent implements OnInit, OnDestroy {
       console.log("sending GET ALL OFFERS request...");
       this.rideOffers = [];
       this.rideOfferService.getAllOffers().subscribe(offers => {
-        this.rideOffers = <RideOffer[]>offers;
+        let temp = <any[]>offers;
+        temp.forEach(offer => {
+          let numbers = <number[]>offer.startTime;
+          offer.startTime = new Date(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);
+        })
+        this.rideOffers = <RideOffer[]>temp;
         this.rideOffersDisplayed = this.rideOffers;
         this.getLocations(true);
         localStorage.setItem("ride-offers", JSON.stringify(this.rideOffers));
-        console.log(localStorage.getItem("ride-offers"));
       })
     }
   }
 
   getAllRequests() {
     let requestsListStorage: string | null = localStorage.getItem("ride-requests")
-    if (requestsListStorage) {
-      this.rideRequests = JSON.parse(requestsListStorage);
+    if (false) {
+      // this.rideRequests = JSON.parse(requestsListStorage);
       this.rideRequestsDisplayed = this.rideRequests;
       this.getLocations(false);
-
-
       console.log("Get all requests via storage.....")
     } else {
       console.log("sending GET ALL REQUESTS request...");
       this.rideRequests = [];
       this.rideRequestService.getAllRequests().subscribe(requests => {
-        this.rideRequests = <RideRequest[]>requests;
+        let temp = <any[]>requests;
+        temp.forEach(request => {
+          let numbers = <number[]>request.startTime;
+          request.startTime = new Date(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);
+        })
+        this.rideRequests = <RideRequest[]>temp;
         this.rideRequestsDisplayed = this.rideRequests;
         this.getLocations(false);
         localStorage.setItem("ride-requests", JSON.stringify(this.rideRequests));
@@ -215,98 +221,89 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
   }
 
-  filterByDate(event: string) {
-    let dateToFilterBy = new Date(event);
-    this.selectedDate = dateToFilterBy;
-    console.log("Filter list for date: " + dateToFilterBy);
-    if (this.selectedDate) {
-      this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
-        let offerDate = new Date(offer.startTime);
-        if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
-            offerDate.getMonth() == dateToFilterBy.getMonth() &&
-            offerDate.getDay() == dateToFilterBy.getDay()) {
-          return offer;
-        }
-        return;
-      })
-
-      this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(request => {
-        let offerDate = new Date(request.startTime);
-        if (offerDate.getFullYear() == dateToFilterBy.getFullYear() &&
-          offerDate.getMonth() == dateToFilterBy.getMonth() &&
-          offerDate.getDay() == dateToFilterBy.getDay()) {
-          return request;
-        }
-        return;
-      })
-
-    }
+  filter() {
+    this.rideOffersDisplayed = this.rideOffers;
+    this.rideRequestsDisplayed = this.rideRequests;
+    this.filterByDate();
+    this.filterByFromLocation();
+    this.filterByToLocation();
   }
 
-  filterOfferView(filterFrom: boolean, event: Event) {
-    if (filterFrom) {
-      // @ts-ignore
-      this.selectedFromLocationOffer = event.target.value;
-    }
-    if (!filterFrom) {
-      // @ts-ignore
-      this.selectedToLocationOffer = event.target.value;
-    }
-    if (!this.selectedFromLocationOffer && !this.selectedToLocationOffer) {
-      this.rideOffersDisplayed = this.rideOffers;
-      return;
-    }
-    if (!this.selectedFromLocationOffer) {
-      this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-        return offer.toAddress.location == this.selectedToLocationOffer
-      })
-      return;
-    }
-    if (!this.selectedToLocationOffer) {
-      this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-        return offer.fromAddress.location == this.selectedFromLocationOffer
-      })
-      return;
-    }
-    this.rideOffersDisplayed = this.rideOffers.filter(offer => {
-      return offer.fromAddress.location == this.selectedFromLocationOffer && offer.toAddress.location == this.selectedToLocationOffer
-    })
+  initiateFilterByDate(event: string) {
+    this.selectedDate = new Date(event);
+    this.dateFilterActive = true;
+    this.filter();
   }
 
-  filterRequestView(filterFrom: boolean, event: Event) {
-    if (filterFrom) {
-      // @ts-ignore
-      this.selectedFromLocationRequest = event.target.value;
-    }
-    if (!filterFrom) {
-      // @ts-ignore
-      this.selectedToLocationRequest = event.target.value;
-    }
-    if (!this.selectedFromLocationRequest && !this.selectedToLocationRequest) {
-      this.rideRequestsDisplayed = this.rideRequests;
+  filterByDate() {
+    if (!this.selectedDate || !this.dateFilterActive) {
       return;
     }
-    if (!this.selectedFromLocationRequest) {
-      this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
-        return offer.toAddress.location == this.selectedToLocationRequest
-      })
+    this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+      let offerDate = new Date(offer.startTime);
+      if (offerDate.getFullYear() == this.selectedDate.getFullYear() &&
+        offerDate.getMonth() == this.selectedDate.getMonth() &&
+        offerDate.getDay() == this.selectedDate.getDay()) {
+        return offer;
+      }
+      this.dateFilterActive = false;
       return;
-    }
-    if (!this.selectedToLocationRequest) {
-      this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
-        return offer.fromAddress.location === this.selectedFromLocationRequest
-      })
+    });
+
+    this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(request => {
+      let offerDate = new Date(request.startTime);
+      if (offerDate.getFullYear() == this.selectedDate.getFullYear() &&
+        offerDate.getMonth() == this.selectedDate.getMonth() &&
+        offerDate.getDay() == this.selectedDate.getDay()) {
+        return request;
+      }
+      this.dateFilterActive = false;
       return;
-    }
-    this.rideRequestsDisplayed = this.rideRequests.filter(offer => {
-      return offer.fromAddress.location == this.selectedFromLocationRequest && offer.toAddress.location == this.selectedToLocationRequest
-    })
+    });
+
   }
 
-  formatedDateTime(date: Date) {
-    // let pipe = new DatePipe('en-US');
-    // return pipe.transform(date, 'short');
-    return
+  filterByFromLocation() {
+    if (!this.selectedFromLocation!) {
+      return;
+    }
+    this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+      return offer.fromAddress.location == this.selectedFromLocation
+    });
+    this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(offer => {
+      return offer.fromAddress.location == this.selectedFromLocation
+    });
   }
 
+  filterByToLocation() {
+    if (!this.selectedToLocation) {
+      return;
+    }
+    this.rideOffersDisplayed = this.rideOffersDisplayed.filter(offer => {
+      return offer.toAddress.location == this.selectedToLocation
+    });
+    this.rideRequestsDisplayed = this.rideRequestsDisplayed.filter(offer => {
+      return offer.toAddress.location == this.selectedToLocation
+    });
+  }
+
+  filterFromLocation(event: Event) {
+    // @ts-ignore
+    this.selectedFromLocation = event.target.value;
+    this.filter();
+  }
+
+  filterToLocation(event: Event) {
+    // @ts-ignore
+    this.selectedToLocation = event.target.value;
+    this.filter();
+  }
+
+  resetFilters() {
+    this.dateFilterActive = false;
+    this.selectedDateString = '';
+    this.selectedFromLocation = '';
+    this.selectedToLocation = '';
+    this.filter();
+  }
 }

@@ -94,13 +94,8 @@ public class UserController {
     @Secured("ROLE_USER")
     ResponseEntity<UserDto> update(@RequestBody UserDto userDto) {
         logger.info("******\nController: Try to update User with id: " + userDto.getId() + "\n******");
-        User savedUser;
-        try {
-            User user = modelMapper.map(userDto, User.class);
-            savedUser = service.update(user);
-        } catch (IllegalAccessException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        User user = modelMapper.map(userDto, User.class);
+        User savedUser = service.update(user);
         UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
         return new ResponseEntity<>(savedUserDto, HttpStatus.OK);
     }
@@ -109,12 +104,7 @@ public class UserController {
     @Secured("ROLE_USER")
     ResponseEntity<Void> delete(@PathVariable long id) {
         logger.info("******\nController: Try to delete User: " + id + "\n******");
-        try {
-            service.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        service.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

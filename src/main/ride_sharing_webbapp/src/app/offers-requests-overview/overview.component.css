@@ -35,6 +35,11 @@
   border-bottom-right-radius: 0;
 }
 
+.reset-button {
+  margin: 10px 0 10px 10px;
+  height: 3em;
+}
+
 .offer-request:first-child {
   margin-top: 0;
 }
@@ -53,16 +58,17 @@
   width: 80%;
   top: 30px;
   float: top;
-  display: flex;
-  flex-flow: wrap;
   margin: auto;
   padding-bottom: 30px;
   z-index: 0;
 }
 
+.filter-label {
+  float: left;
+}
+
 .select-holder {
-  flex-grow: 1;
-  width: 50%;
+  height: 4em;
 }
 
 .break-column {
@@ -72,10 +78,11 @@
 }
 
 .select {
+  float: right;
   width: 55%;
   border: none;
   padding: 4px;
-  margin: 10px;
+  margin: 10px 0 10px 10px;
   font-size: 1.25rem;
   cursor: pointer;
   line-height: 1.1;

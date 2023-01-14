@@ -4,12 +4,13 @@ import com.spring.webtest.exception.UnauthenticatedException;
 import com.spring.webtest.exception.UnauthorizedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AuthContext {
 
-    public UserPrincipal getUser() {
+    public UserDetails getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication == null)
@@ -17,22 +18,24 @@ public class AuthContext {
 
         Object principal = authentication.getPrincipal();
 
-        if (!(principal instanceof UserPrincipal))
+        if (!(principal instanceof UserDetails))
             return null;
 
-        return (UserPrincipal) principal;
+        return (UserDetails) principal;
     }
 
     public void assureIsAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || !(authentication.getPrincipal() instanceof UserPrincipal) || !authentication.isAuthenticated())
+        if (authentication == null || authentication.getPrincipal() instanceof String || !authentication.isAuthenticated()) {
+            System.out.println("Unauthenticated xoxo");
             throw new UnauthenticatedException("User is not authenticated");
+        }
     }
 
-    public void assureHasId(Long id) {
+    public void assureHasUsername(String username) {
         assureIsAuthenticated();
-        UserPrincipal user = getUser();
-        if (user == null || user.getId() != id)
+        UserDetails user = getUser();
+        if (user == null || !user.getUsername().equals(username))
             throw new UnauthorizedException("User is not authorized");
     }
 }

@@ -28,11 +28,6 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(final AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
-    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, LoginFilter loginFilter, JwtAuthenticationEntryPoint unauthorizedHandler) throws Exception {
         http
                 .csrf().disable()

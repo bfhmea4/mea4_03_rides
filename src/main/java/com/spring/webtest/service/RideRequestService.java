@@ -53,7 +53,7 @@ public class RideRequestService {
 
     public RideRequest updateRideRequest(RideRequest rideRequest) throws IllegalAccessException {
         RideRequest saved = repository.findById(rideRequest.getId()).orElseThrow(() -> new RideRequestNotFoundException(rideRequest.getId()));
-        authContext.assureHasId(saved.getUser().getId());
+        authContext.assureHasUsername(saved.getUser().getEmail());
         addressService.updateAddress(rideRequest.getFromAddress());
         addressService.updateAddress(rideRequest.getToAddress());
         return repository.save(rideRequest);
@@ -61,7 +61,7 @@ public class RideRequestService {
 
     public void deleteRideRequest(long id) throws IllegalAccessException {
         RideRequest saved = repository.findById(id).orElseThrow(() -> new RideRequestNotFoundException(id));
-        authContext.assureHasId(saved.getUser().getId());
+        authContext.assureHasUsername(saved.getUser().getEmail());
         repository.deleteById(id);
     }
 }
