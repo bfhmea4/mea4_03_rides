@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Objects;
 
 @Entity
 public class RideRequest {
@@ -124,5 +125,21 @@ public class RideRequest {
                 ", fromAddress=" + fromAddress +
                 ", toAddress=" + toAddress +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RideRequest rideRequest = (RideRequest) o;
+        return (Objects.equals(id, rideRequest.id) &&
+                Objects.equals(title, rideRequest.title) &&
+                Objects.equals(description, rideRequest.description) &&
+                Objects.equals(startTime, rideRequest.startTime) &&
+                Objects.equals(user, rideRequest.user) &&
+                Objects.equals(fromAddress, rideRequest.fromAddress) &&
+                Objects.equals(toAddress, rideRequest.toAddress));
+
     }
 }

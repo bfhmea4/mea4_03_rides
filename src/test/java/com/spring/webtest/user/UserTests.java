@@ -60,7 +60,7 @@ public class UserTests {
 
     @Test
     @WithMockUser(username = "notmyemail@me.com")
-    void getting_a_user_when_authorized_with_different_userthrows_exception() throws JoseException {
+    void getting_a_user_when_authorized_with_different_user_throws_exception() throws JoseException {
         User testUser = new User(1L, "A", "User", "myemail@me.com", "My Address", "My Password");
         service.save(testUser);
         assertThrows(UnauthorizedException.class, () -> service.getById(1L));
