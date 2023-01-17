@@ -135,10 +135,14 @@ public class RideOffer {
         if (o == null || getClass() != o.getClass()) return false;
 
         RideOffer rideOffer = (RideOffer) o;
+        return (id == rideOffer.id &&
+                Objects.equals(title, rideOffer.title) &&
+                Objects.equals(description, rideOffer.description) &&
+                Objects.equals(startTime, rideOffer.startTime) &&
+                Objects.equals(user, rideOffer.user) &&
+                Objects.equals(fromAddress, rideOffer.fromAddress) &&
+                Objects.equals(toAddress, rideOffer.toAddress));
 
-        if (id != rideOffer.id) return false;
-        if (!Objects.equals(title, rideOffer.title)) return false;
-        return Objects.equals(description, rideOffer.description);
     }
 
 
