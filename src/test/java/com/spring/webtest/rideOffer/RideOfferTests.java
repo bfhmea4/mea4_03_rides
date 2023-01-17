@@ -1,23 +1,20 @@
 package com.spring.webtest.rideOffer;
 
-//import com.spring.webtest.TestApplication;
-import com.spring.webtest.database.entities.User;
-import com.spring.webtest.dto.UserDto;
 import com.spring.webtest.exception.RideOfferNotFoundException;
 import com.spring.webtest.service.RideOfferService;
-import com.spring.webtest.user.UserInvoker;
-import org.junit.jupiter.api.*;
+import com.spring.webtest.service.UserService;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-//@SpringBootTest(classes = {TestApplication.class})
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureTestDatabase
@@ -25,44 +22,23 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class RideOfferTests {
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private RideOfferService rideOfferService;
+
 
     @BeforeAll
     public void init() {
-        System.out.println("Initializing RideOfferTests");
+        System.out.println("Initializing UserTests");
     }
 
+
     @Test
-    void getting_a_ride_offer_that_does_not_exist_throws_exception() {
-        assertThrows(
-                RideOfferNotFoundException.class, () -> rideOfferService.findRideOfferById(1000L)
-        );
+    @WithMockUser(username = "myemail@me.com")
+    public void getting_a_offer_that_does_not_exist() {
+        assertThrows(RideOfferNotFoundException.class, () -> rideOfferService.findRideOfferById(1000L));
     }
-//
-//    @Autowired
-//    @Qualifier("rideOfferInvoker")
-//    private RideOfferInvoker rideOfferInvoker;
-//
-//    @Autowired
-//    @Qualifier("userInvoker")
-//    private UserInvoker userInvoker;
-//
-//    @BeforeEach
-//    void setup() {
-//        User testUser = new User("Test", "User", "test@gmail.com", "Musteradresse", "thisIsAStrongPassword13.");
-//        User wrongUser = new User("Wrong", "User", "wrong@gmail.com", "Musteradresse", "thisIsAnotherStrongPassword14.");
-//
-//        UserDto testUserDto = userInvoker.createUser(testUser);
-//        testUser.setId(testUserDto.getId());
-//        UserDto wrongUserDto = userInvoker.createUser(wrongUser);
-//        wrongUser.setId(wrongUserDto.getId());
-//
-//    }
-//
-//    @Test
-//    public void getting_a_offer_that_does_not_exist() {
-//        assertThat(rideOfferInvoker.getOffer(1000)).isNull();
-//    }
 //
 ////    @Test
 ////    void get_offer_by_id() throws OperationNotSupportedException, IllegalAccessException {
