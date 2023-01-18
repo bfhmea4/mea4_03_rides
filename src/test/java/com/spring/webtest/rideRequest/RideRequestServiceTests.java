@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureTestDatabase
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class RideRequestServiceTests {
+public class RideRequestServiceTests {
 
 
     @Autowired
@@ -41,7 +41,7 @@ class RideRequestServiceTests {
 
     @BeforeAll
     public void init() {
-        System.out.println("Initializing UserTests");
+        System.out.println("Initializing RideRequestServiceTests");
     }
 
 

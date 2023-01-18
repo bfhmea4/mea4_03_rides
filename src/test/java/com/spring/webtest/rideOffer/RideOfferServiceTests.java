@@ -7,14 +7,12 @@ import com.spring.webtest.database.entities.User;
 import com.spring.webtest.exception.RideOfferNotFoundException;
 import com.spring.webtest.exception.UnauthenticatedException;
 import com.spring.webtest.exception.UnauthorizedException;
-import com.spring.webtest.service.AddressService;
 import com.spring.webtest.service.RideOfferService;
 import com.spring.webtest.service.UserService;
 import org.jose4j.lang.JoseException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,12 +20,11 @@ import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 
-import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @SpringBootTest
@@ -44,7 +41,7 @@ public class RideOfferServiceTests {
 
     @BeforeAll
     public void init() {
-        System.out.println("Initializing UserTests");
+        System.out.println("Initializing RideOfferServiceTests");
     }
 
 

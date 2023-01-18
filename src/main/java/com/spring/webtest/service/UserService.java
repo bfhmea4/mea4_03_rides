@@ -51,7 +51,6 @@ public class UserService {
     }
 
     public TokenDto save(User user) throws JoseException {
-        System.out.println("User password: " + user.getPassword());
         user.setPassword(hashService.hash(user.getPassword()));
         return new TokenDto(authService.generateJwt(repository.save(user)));
     }

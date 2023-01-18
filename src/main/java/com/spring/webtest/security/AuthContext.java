@@ -27,7 +27,6 @@ public class AuthContext {
     public void assureIsAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication.getPrincipal() instanceof String || !authentication.isAuthenticated()) {
-            System.out.println("Unauthenticated xoxo");
             throw new UnauthenticatedException("User is not authenticated");
         }
     }
