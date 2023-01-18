@@ -46,19 +46,19 @@ public class RideRequestServiceTests {
 
 
     @Test
-    public void getting_an_request_when_not_authorized_throws_exception() {
+    public void getting_a_request_when_not_authorized_throws_exception() {
         assertThrows(UnauthenticatedException.class, () -> this.service.findRideRequestById(1L));
     }
 
     @Test
     @WithMockUser(username = "myemail@me.com")
-    public void getting_an_request_that_does_not_exist() {
+    public void getting_a_request_that_does_not_exist() {
         assertThrows(RideRequestNotFoundException.class, () -> this.service.findRideRequestById(1000L));
     }
 
     @Test
     @WithMockUser(username = "myemail@me.com")
-    public void getting_an_Request_without_saved_user_throws_exception() throws JoseException, OperationNotSupportedException, IllegalAccessException {
+    public void getting_a_request_without_saved_user_throws_exception() throws JoseException, OperationNotSupportedException, IllegalAccessException {
         User testUser = new User(1L, "A", "User", "myemail@me.com", "My Address", "My Password");
         LocalDateTime testTime = LocalDateTime.of(2023, Month.JANUARY, 11, 11,11);
         Address testFromAddress = new Address(1L, "Elfistrasse", "11", 3011L, "Bern");
@@ -70,7 +70,7 @@ public class RideRequestServiceTests {
 
     @Test
     @WithMockUser(username = "myemail@me.com")
-    public void getting_an_Request_by_id_returns_Request() throws JoseException, OperationNotSupportedException, IllegalAccessException {
+    public void getting_a_request_by_id_returns_request() throws JoseException, OperationNotSupportedException, IllegalAccessException {
         User testUser = new User(1L, "A", "User", "myemail@me.com", "My Address", "My Password");
         userService.save(testUser);
         LocalDateTime testTime = LocalDateTime.of(2023, Month.JANUARY, 11, 11,11);
@@ -79,13 +79,13 @@ public class RideRequestServiceTests {
         RideRequest testRequest = new RideRequest(1L, "From Bern to Thun", "Ride from Bern to Thun", testTime, testUser, testFromAddress, testToAddress);
         this.service.addRideRequest(testRequest);
 
-        RideRequest Request = this.service.findRideRequestById(1L);
-        assertEquals(testRequest, Request);
+        RideRequest request = this.service.findRideRequestById(1L);
+        assertEquals(testRequest, request);
     }
 
     @Test
     @WithMockUser(username = "myemail@me.com")
-    public void updating_an_Request_returns_updated_Request() throws JoseException, OperationNotSupportedException, IllegalAccessException {
+    public void updating_a_request_returns_updatedrRequest() throws JoseException, OperationNotSupportedException, IllegalAccessException {
         User testUser = new User(1L, "A", "User", "myemail@me.com", "My Address", "My Password");
         userService.save(testUser);
         LocalDateTime testTime = LocalDateTime.of(2023, Month.JANUARY, 11, 11,11);
@@ -95,14 +95,14 @@ public class RideRequestServiceTests {
         this.service.addRideRequest(testRequest);
 
         testRequest.setDescription("From Bern to Oberland");
-        RideRequest Request = this.service.updateRideRequest(testRequest);
+        RideRequest request = this.service.updateRideRequest(testRequest);
 
-        assertEquals("From Bern to Oberland", Request.getDescription());
+        assertEquals("From Bern to Oberland", request.getDescription());
     }
 
     @Test
     @WithMockUser(username = "myemail@me.com")
-    public void deleting_an_Request_and_get_it_throws_exception() throws JoseException, OperationNotSupportedException, IllegalAccessException {
+    public void deleting_a_request_and_get_it_throws_exception() throws JoseException, OperationNotSupportedException, IllegalAccessException {
         User testUser = new User(1L, "A", "User", "myemail@me.com", "My Address", "My Password");
         userService.save(testUser);
         LocalDateTime testTime = LocalDateTime.of(2023, Month.JANUARY, 11, 11,11);
