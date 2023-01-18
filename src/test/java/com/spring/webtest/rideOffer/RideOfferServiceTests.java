@@ -42,9 +42,6 @@ public class RideOfferServiceTests {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private AddressService addressService;
-
     @BeforeAll
     public void init() {
         System.out.println("Initializing UserTests");
@@ -133,6 +130,4 @@ public class RideOfferServiceTests {
 
         assertThrows(RideOfferNotFoundException.class, () -> this.service.findRideOfferById(1L));
     }
-
-
 }
