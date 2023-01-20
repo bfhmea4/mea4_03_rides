@@ -85,7 +85,8 @@ Run the application to use the changed DB.
 
 ## How to start the application using docker:
 
-There is a Docker compose file which builds the application in a container group and starts it:
+There is a Docker compose file which builds the application in a container group and starts it: [docker-compose](docker-compose.yml)
+
 Build and run the application: 
 ```cmd
 docker compose up
@@ -129,6 +130,17 @@ After the container is removed, all persisted data will be deleted!
 Build and run the application to test the changes made: 
 ```cmd
 docker compose up
+```
+
+### Testing
+
+There are some unit tests covering the most important functions and processes for the application.
+If you want to add new tests add them in src/test/java under the corresponding object. 
+
+To run the unit tests, which call the service directly:
+
+```cmd
+mvn test
 ```
 
 

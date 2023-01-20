@@ -48,3 +48,8 @@ separation of the configuration and specification from the actual business logic
 Objects that build the backbone of the application, are called beans in Spring. They are managed by the IoC Container.
 Beans and the dependencies between them are reflected in the metadata configuration used by a container.
 
+## Authentication
+
+The Authentication and Authorization in our application are done with a `JWT Token`. Next to our login and register 
+endpoints all others are only reachable with a valid JWT Token which is checked in the LoginFilter.
+
