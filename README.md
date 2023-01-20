@@ -60,7 +60,12 @@ mvn clean -Dflyway.configFiles=src/main/resources/application-local.properties f
 
 - Run:
   ```cmd
-  npm install
+  npm i -g @a
+  ngular/cli@14.2.10
+  npm i ajv-keyword
+  npm i @angular/core -s
+  npm i @angular/router -s
+  npm i @angular/forms
   ```
 
 - start the angular application:  
@@ -109,6 +114,8 @@ This will delete all persisted data!
 Run the application to use the changed DB.
 
 ## How to start the application using docker:
+
+Please refer to the docker section in the [overview documentation](docs/architecture/overview.md) how to install docker.
 
 There is a Docker compose file which builds the application in a container group and starts
 it: [docker-compose](docker-compose.yml)
