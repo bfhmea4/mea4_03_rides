@@ -60,12 +60,11 @@ mvn clean -Dflyway.configFiles=src/main/resources/application-local.properties f
 
 - Run:
   ```cmd
-  npm i -g @a
-  ngular/cli@14.2.10
+  npm i -g @angular/cli@14.2.10
   npm i ajv-keyword
   npm i @angular/core -s
   npm i @angular/router -s
-  npm i @angular/forms
+  npm i @angular/forms -s
   ```
 
 - start the angular application:  
