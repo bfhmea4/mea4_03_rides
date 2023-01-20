@@ -49,7 +49,7 @@ mvn clean -Dflyway.configFiles=src/main/resources/application-local.properties f
   ```
 - Run the application:
   ```cmd
-  mvn spring-boot:run
+  mvn spring-boot:run -Dspring-boot.run.profiles=local
   ```
 - After the startup the application is runs on port 8080
 
