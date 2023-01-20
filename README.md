@@ -53,19 +53,25 @@ mvn clean -Dflyway.configFiles=src/main/resources/application-local.properties f
   ```
 - After the startup the application is runs on port 8080
 
+#### Intellij
+
+- Under Run configurations / Active profiles enter: local
+
+Run the [main class](com/spring/webtest/WebTestApplication.java)
+
+
 ### Running the Webapp
 
 - open a command line tool of your choice and navigate to the root folder
   of the webapp "\mea4_03_rides\src\main\ride_sharing_webbapp".
 
-- Run:
+- If npm is not installed on the computer run:
   ```cmd
-  npm i -g @a
-  ngular/cli@14.2.10
-  npm i ajv-keyword
-  npm i @angular/core -s
-  npm i @angular/router -s
-  npm i @angular/forms
+  npm i -g @angular/cli@14.2.10
+  ```
+- install all necessary modules:
+  ```cmd
+  npm install
   ```
 
 - start the angular application:  
